@@ -1,7 +1,7 @@
-# [Project Name] — Copilot Context
+# Modryn Studio — Copilot Context
 
 ## Who I Am
-<!-- TODO: describe yourself, your product, and your target user -->
+I'm Luke, a one-person studio owner building AI-first tools and micro-SaaS products under Modryn Studio (modrynstudio.com). I build fast using AI-assisted development — detecting rising trends, scoring them, and shipping a targeted tool in 48 hours to capture organic search traffic early. The site is a product studio launchpad that grows with every tool I ship, not a portfolio or agency brochure. Target users are impatient people who hate bad software and don't want to do the research — they want it handed to them, fast.
 
 ## Stack
 - Next.js 15 (App Router) with TypeScript
@@ -9,21 +9,27 @@
 - Vercel for deployment
 - GA4 for custom event tracking (via `@/lib/analytics.ts` — never call `gtag()` directly)
 - Vercel Analytics `<Analytics />` component in `layout.tsx` for pageviews only — do not use their `track()` API
-<!-- TODO: add project-specific services (e.g. Resend, Stripe, Prisma, Supabase) -->
+- Resend for email capture (follow-the-build signup)
+- MDX for build log content (no CMS, no database)
 
 ## Project Structure
 ```
 /app                    → Next.js App Router pages
 /components             → Reusable UI components
 /lib                    → Utilities, helpers, data fetching
-<!-- TODO: add any project-specific directories -->
+/content/tools          → Tool data as JSON files (adding a tool = add a JSON file)
+/content/log            → Build log posts as MDX files
 ```
 
 ## Route Map
-<!-- TODO: list every route and what it does -->
-- `/`                → (home)
-- `/privacy`         → Privacy policy
-- `/terms`           → Terms of service
+- `/`                  → Hero + tools grid + build log preview + email signup
+- `/tools`             → All tools (live, beta, coming soon)
+- `/tools/[slug]`      → Individual tool page — SEO magnet + launch page with status badge, description, screenshot, and email capture if not live
+- `/log`               → Build in public feed (MDX files)
+- `/log/[slug]`        → Individual log post
+- `/about`             → Who Luke is, how he works, his stack
+- `/privacy`           → Privacy policy
+- `/terms`             → Terms of service
 
 ## API Route Logging
 
@@ -81,6 +87,35 @@ Tell Copilot **"check logs"** at any point — it reads `dev.log` and flags erro
 - Prefer early returns for error handling
 - Never break existing functionality when adding new features
 - Leave TODO comments for post-launch polish items
+
+## Brand & Voice
+
+**Voice**
+- Short sentences. Direct. No jargon.
+- Honest about what doesn't exist yet
+- Confident without being arrogant
+- Never use: "powerful", "seamless", "revolutionary", "unlock"
+
+**The User**
+Impatient people who hate bad software and don't want to do the research. They want it handed to them. Fast.
+
+**Visual Rules**
+- Dark mode base, system toggle
+- Accent: Amber / Burnt Orange
+- Fonts: Space Grotesk (headlines) + Space Mono (badges/log/code)
+- Minimal motion. One scroll fade max.
+- No fake testimonials, no stock photos, no popups
+
+**Emotional Arc**
+Land → "Wait, this is different"
+Read → "This person actually builds real things"
+Scroll → "I want to follow this journey"
+Convert → "I don't want to miss the next one"
+
+**Copy Examples (use as reference)**
+- Hero: "Tools for people who don't have time for bad software."
+- CTA: "Don't miss the drop."
+- Footer: "Built by Luke. Paid for by a day job. Shipping anyway."
 
 ## Core Rules
 - Every page earns its place — no pages for businesses not yet running
