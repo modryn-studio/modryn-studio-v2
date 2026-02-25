@@ -1,0 +1,140 @@
+{
+  "project_name": "Modryn Studio",
+  "design_philosophy": {
+    "identity": "Industrial, Brutalist, Functional, Anti-Corporate",
+    "core_principles": [
+      "Content is King: No fluff, no stock photos, no gradients.",
+      "Raw Aesthetics: Exposed grids, borders, monospace typography.",
+      "Terminal Energy: Command-line vibes, direct language.",
+      "High Contrast: Amber/Orange against deep black."
+    ],
+    "user_choices": {
+      "theme": "Dark Mode Default with Light Mode Toggle",
+      "accent": "Amber / Burnt Orange",
+      "motion": "Minimal - subtle scroll fade only"
+    }
+  },
+  "typography": {
+    "font_family": {
+      "headings": "\"Space Grotesk\", sans-serif",
+      "body": "\"Space Mono\", monospace",
+      "code": "\"Space Mono\", monospace"
+    },
+    "import_url": "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap",
+    "scale": {
+      "h1": "text-5xl md:text-7xl lg:text-9xl font-bold tracking-tighter uppercase leading-[0.9]",
+      "h2": "text-3xl md:text-5xl font-semibold tracking-tight uppercase",
+      "h3": "text-xl md:text-2xl font-medium tracking-tight",
+      "body": "text-base md:text-lg font-normal leading-relaxed",
+      "small": "text-sm font-normal tracking-wide uppercase"
+    },
+    "rules": [
+      "Use Space Grotesk for all Headings (H1-H3).",
+      "Use Space Mono for Body, Build Logs, Badges, and Navigation.",
+      "Headings should be TIGHT (tracking-tighter) and often UPPERCASE.",
+      "Body text should have generous line-height."
+    ]
+  },
+  "colors": {
+    "palette": {
+      "light": {
+        "background": "#F2F2F2",
+        "foreground": "#111111",
+        "card": "#FFFFFF",
+        "card_foreground": "#111111",
+        "primary": "#111111",
+        "primary_foreground": "#F2F2F2",
+        "accent": "#EA580C",
+        "border": "#111111"
+      },
+      "dark": {
+        "background": "#050505",
+        "foreground": "#E5E5E5",
+        "card": "#0A0A0A",
+        "card_foreground": "#E5E5E5",
+        "primary": "#E5E5E5",
+        "primary_foreground": "#050505",
+        "accent": "#F97316",
+        "border": "#333333"
+      }
+    },
+    "semantic": {
+      "accent_main": "text-orange-600 dark:text-orange-500",
+      "border_strong": "border-black dark:border-white/20",
+      "status_live": "text-emerald-600 dark:text-emerald-400 border-emerald-600/20 bg-emerald-500/10",
+      "status_beta": "text-blue-600 dark:text-blue-400 border-blue-600/20 bg-blue-500/10",
+      "status_building": "text-orange-600 dark:text-orange-400 border-orange-600/20 bg-orange-500/10"
+    }
+  },
+  "layout": {
+    "grid_system": {
+      "tools_grid": "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-l border-border",
+      "bento_grid": "Not used specifically, preferring strict uniform grid for tools."
+    },
+    "spacing": {
+      "container_padding": "p-6 md:p-12 lg:p-24",
+      "section_gap": "gap-0",
+      "element_gap": "gap-4"
+    },
+    "borders": {
+      "style": "1px solid",
+      "radius": "rounded-none"
+    }
+  },
+  "components": {
+    "navbar": {
+      "style": "Sticky, minimal height, backdrop-blur-md supports dark/light toggle.",
+      "content": "Logo (Left), Links (Center/Right), Theme Toggle.",
+      "border": "border-b border-border"
+    },
+    "hero": {
+      "style": "Type-driven, centered or left-aligned, massive H1.",
+      "content": "Headline: 'ONE PERSON.\nAI TOOLS.\nNO BULLSHIT.' (or similar vibe). Subtext: 'Building practical AI utilities for builders.'",
+      "cta": "High contrast button: 'See the work'."
+    },
+    "tools_grid": {
+      "style": "Grid of cards. NO GAPS between cards visually (use -ml-px -mt-px strategy or grid-gap-0 with borders).",
+      "card_style": "Aspect square or 4:3. Border-r border-b border-border. Hover: bg-accent/5 transition-colors.",
+      "badges": "Top right corner. Mono font. Small."
+    },
+    "build_log": {
+      "style": "Terminal / Feed style. Vertical list.",
+      "container": "bg-black/5 dark:bg-white/5 p-4 font-mono text-sm border border-border",
+      "item_style": "flex gap-4 py-2 border-b border-border/50 last:border-0",
+      "content": "Date | Project | Commit Message."
+    },
+    "email_signup": {
+      "style": "Centered, stark, high contrast.",
+      "input": "rounded-none border-2 border-primary bg-transparent h-12 px-4 focus:ring-0",
+      "button": "rounded-none h-12 px-8 bg-primary text-primary-foreground font-bold hover:bg-accent hover:text-white transition-colors"
+    },
+    "footer": {
+      "style": "Minimal, text-sm, monospace.",
+      "content": "Copyright, Social Links (GitHub, X), 'Built by Luke'."
+    }
+  },
+  "visual_enhancers": {
+    "textures": "Subtle noise overlay (opacity 0.05) allowed.",
+    "icons": "Use Lucide React or Radix Icons. Stroke width 1.5 or 2.",
+    "motion": "Scroll fade-in for sections (opacity 0 -> 1, y 20 -> 0). Duration 0.5s."
+  },
+  "universal_guidelines": [
+    "No gradients.",
+    "No rounded corners (use rounded-none or rounded-sm max).",
+    "No stock photos.",
+    "Dark mode is default.",
+    "Use 'Space Grotesk' for all headings.",
+    "Use 'Space Mono' for all body text.",
+    "Always use data-testid attributes.",
+    "Mobile first responsiveness."
+  ],
+  "instructions_to_main_agent": [
+    "1. Install fonts: Add import to index.css.",
+    "2. Configure Tailwind: Add fonts to tailwind.config.js, extend colors.",
+    "3. Build Layout: Sticky Nav + Main Content.",
+    "4. Implement Sections: Hero -> Tools Grid -> Build Log -> Signup -> Footer.",
+    "5. Ensure Theme Toggle works (use next-themes).",
+    "6. strictly follow the grid layout for tools - exposed borders are key."
+  ],
+  "image_urls": {}
+}
