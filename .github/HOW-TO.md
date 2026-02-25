@@ -1,0 +1,95 @@
+# Copilot Setup — How To Use
+
+## Modes (built into VS Code)
+
+| Mode | When to use | How |
+|------|-------------|-----|
+| **Ask** | Quick questions about your codebase | Chat → select "Ask" |
+| **Plan** | Blueprint a feature before building | Chat → select "Plan" |
+| **Agent** | Build, edit files, run commands | Chat → select "Agent" |
+
+Open chat: `Ctrl+Alt+I`
+
+## Custom Agent
+
+**`@launch-check`** — Pre-ship quality gate. Scans → fixes → lints → builds → commits. Never pushes.
+
+Usage: switch to Agent mode, then type:
+```
+@launch-check run the pre-ship checklist
+```
+
+## Slash Commands
+
+**`/project-init`** — New project setup. Reads `context.md` + `development-principles.md` and fills in the TODO sections of `copilot-instructions.md`.
+
+**`/review`** — Quick read-only scan (runs in Ask mode). Reports issues without touching code.
+
+**`/check-deps`** — Check all dependencies for newer versions. Shows outdated packages, asks before updating.
+
+**`/seo-launch`** — Pre-launch SEO checklist. Audits the codebase for missing SEO files, then walks you through Google Search Console, Bing, and OG validation.
+
+Usage: type `/project-init`, `/review`, `/check-deps`, or `/seo-launch` in chat.
+
+## Hooks (auto-runs after edits)
+
+**PostToolUse** — Auto-formats files with Prettier after the agent edits them.
+Configured in `.github/hooks/post-edit-format.json`. Requires Prettier installed (`npm i -D prettier`).
+
+## MCP Servers
+
+- **GitHub** — create issues, PRs, manage repos from chat (type `http`)
+- **Fetch** — pull live web pages into context (requires `uvx` / `uv` installed)
+
+## File Map
+
+```
+.github/
+├── copilot-instructions.md        ← Always-on context (edit per project)
+├── instructions/
+│   ├── nextjs.instructions.md     ← Auto-applied to .ts/.tsx files
+│   └── seo.instructions.md        ← Auto-applied to .ts/.tsx files
+├── agents/
+│   └── launch-check.agent.md      ← @launch-check agent
+├── prompts/
+│   ├── project-init.prompt.md        ← /project-init command (fills copilot-instructions from context.md)
+│   ├── review.prompt.md           ← /review command (ask mode, read-only)
+│   ├── check-deps.prompt.md       ← /check-deps command (update checker)
+│   └── seo-launch.prompt.md       ← /seo-launch command (SEO audit + registration)
+├── hooks/
+│   └── post-edit-format.json      ← Auto-format after agent edits
+.vscode/
+├── settings.json                  ← Agent mode enabled
+└── mcp.json                       ← MCP server config (http + stdio)
+src/lib/
+├── cn.ts                          ← Tailwind class merge utility (clsx + tailwind-merge)
+├── route-logger.ts                ← API route logging utility (createRouteLogger)
+└── analytics.ts                   ← GA4 event tracking abstraction (analytics.track)
+context.md                         ← Fill this in per project, then run /project-init
+development-principles.md          ← Permanent product philosophy — do not edit per project
+```
+
+## New Project Setup
+
+1. Copy `.github/`, `.vscode/`, and `src/lib/` into the new project
+2. Run `npm i -D prettier` (for the post-edit hook)
+3. Fill in `context.md` — product idea, target user, stack additions, and routes
+4. Type `/project-init` — Copilot reads `context.md` + `development-principles.md` and fills in `.github/copilot-instructions.md`
+5. Done — everything else applies automatically
+
+## Live Log Monitoring
+
+`Ctrl+Shift+B` starts the dev server and pipes all output to `dev.log`.
+Once it's running, tell Copilot **"check logs"** at any point — it reads `dev.log` and flags errors, slow API requests, or unexpected responses without you having to paste anything.
+
+Prerequisite: the server must be running and `dev.log` must be capturing output before Copilot can read it. If you haven't started the server yet, do that first.
+
+## Day-to-Day Workflow
+
+1. **Plan** → use Plan mode to scope the feature
+2. **Build** → switch to Agent mode and execute
+3. **Check** → type `/review` for a quick scan
+4. **Ship** → type `@launch-check run the pre-ship checklist`
+5. **Push** → review the commit diff, then `git push` yourself
+
+> Tip: `Configure Chat (gear icon) > Diagnostics` shows all loaded configs and errors.

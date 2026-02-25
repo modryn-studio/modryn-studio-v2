@@ -1,0 +1,29 @@
+// analytics.ts — GA4 event tracking abstraction
+// Never call gtag() directly outside this file.
+// Add a named method for each distinct user action — keeps events typed
+// and discoverable instead of magic strings scattered across the codebase.
+
+declare global {
+  interface Window {
+    gtag: (command: string, ...args: unknown[]) => void;
+  }
+}
+
+type EventProps = Record<string, string | number | boolean | undefined>;
+
+function track(eventName: string, props?: EventProps): void {
+  // SSR guard — gtag is browser-only
+  if (typeof window === 'undefined') return;
+  if (typeof window.gtag !== 'function') return;
+  window.gtag('event', eventName, props);
+}
+
+// Add project-specific named methods below.
+// Pattern: namedAction: (props: { ... }) => track('event_name', props)
+//
+// Example:
+//   signupCompleted: (props: { method: 'email' | 'oauth' }) =>
+//     track('signup_completed', props),
+export const analytics = {
+  track,
+};
