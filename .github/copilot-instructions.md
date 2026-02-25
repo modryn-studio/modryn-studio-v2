@@ -4,13 +4,15 @@
 I'm Luke, a one-person studio owner building AI-first tools and micro-SaaS products under Modryn Studio (modrynstudio.com). I build fast using AI-assisted development — detecting rising trends, scoring them, and shipping a targeted tool in 48 hours to capture organic search traffic early. The site is a product studio launchpad that grows with every tool I ship, not a portfolio or agency brochure. Target users are impatient people who hate bad software and don't want to do the research — they want it handed to them, fast.
 
 ## Stack
-- Next.js 15 (App Router) with TypeScript
-- Tailwind CSS for styling
+- Next.js 16 (App Router) with TypeScript
+- React 19
+- Tailwind CSS v4 for styling
+- Radix UI primitives (`@radix-ui/react-separator`, `@radix-ui/react-slot`)
+- `class-variance-authority`, `clsx`, `tailwind-merge` for component variants and class merging
+- `lucide-react` for icons
 - Vercel for deployment
 - GA4 for custom event tracking (via `@/lib/analytics.ts` — never call `gtag()` directly)
 - Vercel Analytics `<Analytics />` component in `layout.tsx` for pageviews only — do not use their `track()` API
-- Resend for email capture (follow-the-build signup)
-- MDX for build log content (no CMS, no database)
 
 ## Project Structure
 ```
