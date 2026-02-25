@@ -6,12 +6,34 @@ import { Input } from "@/components/ui/input";
 
 export default function EmailSignup() {
   const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [done, setDone] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    if (email.trim()) {
-      setSubmitted(true);
+    if (!email.trim() || submitting) return;
+
+    setSubmitting(true);
+    setError("");
+
+    try {
+      const res = await fetch("/api/feedback", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ type: "newsletter", email }),
+      });
+
+      if (!res.ok) {
+        setError("Something went wrong. Try again.");
+        return;
+      }
+
+      setDone(true);
+    } catch {
+      setError("Something went wrong. Try again.");
+    } finally {
+      setSubmitting(false);
     }
   };
 
@@ -27,7 +49,7 @@ export default function EmailSignup() {
             newsletters. Just launches.
           </p>
 
-          {!submitted ? (
+          {!done ? (
             <form
               onSubmit={handleSubmit}
               className="mt-8 flex flex-col gap-3 sm:flex-row"
@@ -38,19 +60,25 @@ export default function EmailSignup() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
+                disabled={submitting}
                 className="h-12 flex-1 rounded-none border-2 border-foreground/20 bg-transparent px-4 font-mono text-sm placeholder:text-muted-foreground focus-visible:ring-1 focus-visible:ring-amber"
               />
               <Button
                 type="submit"
-                className="h-12 rounded-none bg-amber px-8 font-mono text-sm font-bold text-white hover:bg-amber/90"
+                disabled={submitting}
+                className="h-12 rounded-none bg-amber px-8 font-mono text-sm font-bold text-white hover:bg-amber/90 disabled:opacity-50"
               >
-                Notify me
+                {submitting ? "Sending..." : "Notify me"}
               </Button>
             </form>
           ) : (
             <div className="mt-8 border border-amber/30 bg-amber/5 p-4 font-mono text-sm text-amber">
               You&apos;re on the list. Next launch, your inbox.
             </div>
+          )}
+
+          {error && (
+            <p className="mt-4 font-mono text-sm text-destructive">{error}</p>
           )}
         </div>
       </div>
