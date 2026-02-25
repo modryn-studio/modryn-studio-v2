@@ -20,10 +20,7 @@ function track(eventName: string, props?: EventProps): void {
 
 // Add project-specific named methods below.
 // Pattern: namedAction: (props: { ... }) => track('event_name', props)
-//
-// Example:
-//   signupCompleted: (props: { method: 'email' | 'oauth' }) =>
-//     track('signup_completed', props),
 export const analytics = {
   track,
+  newsletterSignup: () => track('newsletter_signup'),
 };

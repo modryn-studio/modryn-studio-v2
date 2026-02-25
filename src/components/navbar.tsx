@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Sun, Moon, Menu, X } from "lucide-react";
 import { useTheme } from "@/components/theme-provider";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export default function Navbar() {
   const { theme, setTheme } = useTheme();
@@ -27,31 +28,31 @@ export default function Navbar() {
   };
 
   const navLinks = [
-    { label: "Tools", href: "#tools" },
-    { label: "Log", href: "#log" },
-    { label: "About", href: "#about" },
+    { label: "Tools", href: "/tools" },
+    { label: "Log", href: "/log" },
+    { label: "About", href: "/about" },
   ];
 
   return (
     <nav className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-6">
-        <a
-          href="#"
+        <Link
+          href="/"
           className="font-heading text-lg font-semibold tracking-tight text-foreground"
         >
           Modryn Studio
-        </a>
+        </Link>
 
         {/* Desktop nav */}
         <div className="hidden items-center gap-1 md:flex">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.label}
               href={link.href}
               className="px-3 py-2 font-mono text-sm text-muted-foreground transition-colors hover:text-foreground"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
           <Button
             variant="ghost"
@@ -70,11 +71,11 @@ export default function Navbar() {
               <span className="h-4 w-4" />
             )}
           </Button>
-          <a href="#signup">
+          <Link href="/#signup">
             <Button className="ml-2 rounded-none bg-amber text-white font-mono text-sm hover:bg-amber/90">
               Get Updates
             </Button>
-          </a>
+          </Link>
         </div>
 
         {/* Mobile controls */}
@@ -117,20 +118,20 @@ export default function Navbar() {
       {mobileOpen && (
         <div className="border-t border-border bg-background px-6 py-4 md:hidden">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.label}
               href={link.href}
               onClick={() => setMobileOpen(false)}
               className="block py-2 font-mono text-sm text-muted-foreground transition-colors hover:text-foreground"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
-          <a href="#signup" onClick={() => setMobileOpen(false)}>
+          <Link href="/#signup" onClick={() => setMobileOpen(false)}>
             <Button className="mt-3 w-full rounded-none bg-amber text-white font-mono text-sm hover:bg-amber/90">
               Get Updates
             </Button>
-          </a>
+          </Link>
         </div>
       )}
     </nav>

@@ -3,6 +3,7 @@
 import { useState, type FormEvent } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { analytics } from "@/lib/analytics";
 
 export default function EmailSignup() {
   const [email, setEmail] = useState("");
@@ -30,6 +31,7 @@ export default function EmailSignup() {
       }
 
       setDone(true);
+      analytics.newsletterSignup();
     } catch {
       setError("Something went wrong. Try again.");
     } finally {

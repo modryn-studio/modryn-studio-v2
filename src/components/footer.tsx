@@ -1,10 +1,12 @@
+import Link from "next/link";
+
 export default function Footer() {
   const links = [
-    { label: "Tools", href: "#tools" },
-    { label: "Log", href: "#log" },
-    { label: "About", href: "#about" },
-    { label: "Privacy", href: "#" },
-    { label: "Terms", href: "#" },
+    { label: "Tools", href: "/tools" },
+    { label: "Log", href: "/log" },
+    { label: "About", href: "/about" },
+    { label: "Privacy", href: "/privacy" },
+    { label: "Terms", href: "/terms" },
   ];
 
   return (
@@ -19,13 +21,13 @@ export default function Footer() {
           {/* Links */}
           <nav className="flex flex-wrap items-center justify-center gap-4">
             {links.map((link) => (
-              <a
+              <Link
                 key={link.label}
                 href={link.href}
                 className="font-mono text-xs text-muted-foreground transition-colors hover:text-foreground uppercase tracking-wider"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
