@@ -13,7 +13,7 @@ Then edit `.github/copilot-instructions.md` and replace every `<!-- TODO -->` se
 
 - **[Project Name]** — the product name from context.md
 - **Who I Am** — 2–4 sentences: who Luke is, what the product does, who it's for. Use development-principles.md for tone (fast shipper, AI-assisted builder, micro-niche focus).
-- **Stack** — keep all boilerplate entries (Next.js, Tailwind, Vercel, GA4, Vercel Analytics). Add any project-specific services from context.md (e.g. Resend, Stripe, Prisma). Remove the `<!-- TODO -->` comment.
+- **Stack** — read `package.json` as the source of truth: list only what is actually installed. Use context.md for planned/future additions and flag them as "not yet installed". Never list something as part of the stack if it isn't in `package.json`.
 - **Project Structure** — keep `/app`, `/components`, `/lib`. Add any project-specific directories from context.md. Remove the `<!-- TODO -->` comment.
 - **Route Map** — list every route from context.md with a one-line description. Always include `/privacy` and `/terms`.
 - **Brand & Voice** — populate from brand.md: voice rules, visual rules (colors, fonts, motion), target user description, emotional arc, and copy examples to use as reference.
