@@ -1,0 +1,128 @@
+import { useState } from "react";
+import { Sun, Moon, Menu, X } from "lucide-react";
+import { useTheme } from "@/components/ThemeProvider";
+import { Button } from "@/components/ui/button";
+
+export default function Navbar() {
+  const { theme, setTheme } = useTheme();
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  const resolvedTheme = theme === "system"
+    ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light")
+    : theme;
+
+  const toggleTheme = () => {
+    setTheme(resolvedTheme === "dark" ? "light" : "dark");
+  };
+
+  const navLinks = [
+    { label: "Tools", href: "#tools" },
+    { label: "Log", href: "#log" },
+    { label: "About", href: "#about" },
+  ];
+
+  return (
+    <nav
+      data-testid="navbar"
+      className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-md"
+    >
+      <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-6">
+        <a
+          href="#"
+          data-testid="nav-logo"
+          className="font-heading text-lg font-semibold tracking-tight text-foreground"
+        >
+          Modryn Studio
+        </a>
+
+        {/* Desktop nav */}
+        <div className="hidden items-center gap-1 md:flex">
+          {navLinks.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              data-testid={`nav-link-${link.label.toLowerCase()}`}
+              className="px-3 py-2 font-mono text-sm text-muted-foreground transition-colors hover:text-foreground"
+            >
+              {link.label}
+            </a>
+          ))}
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={toggleTheme}
+            data-testid="theme-toggle"
+            className="ml-2 h-9 w-9"
+          >
+            {resolvedTheme === "dark" ? (
+              <Sun className="h-4 w-4" />
+            ) : (
+              <Moon className="h-4 w-4" />
+            )}
+          </Button>
+          <a href="#signup">
+            <Button
+              data-testid="nav-get-updates-btn"
+              className="ml-2 rounded-none bg-amber text-white font-mono text-sm hover:bg-amber/90"
+            >
+              Get Updates
+            </Button>
+          </a>
+        </div>
+
+        {/* Mobile controls */}
+        <div className="flex items-center gap-2 md:hidden">
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={toggleTheme}
+            data-testid="theme-toggle-mobile"
+            className="h-9 w-9"
+          >
+            {resolvedTheme === "dark" ? (
+              <Sun className="h-4 w-4" />
+            ) : (
+              <Moon className="h-4 w-4" />
+            )}
+          </Button>
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            data-testid="mobile-menu-toggle"
+            className="h-9 w-9"
+          >
+            {mobileOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+          </Button>
+        </div>
+      </div>
+
+      {/* Mobile menu */}
+      {mobileOpen && (
+        <div
+          data-testid="mobile-menu"
+          className="border-t border-border bg-background px-6 py-4 md:hidden"
+        >
+          {navLinks.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              onClick={() => setMobileOpen(false)}
+              className="block py-2 font-mono text-sm text-muted-foreground transition-colors hover:text-foreground"
+            >
+              {link.label}
+            </a>
+          ))}
+          <a href="#signup" onClick={() => setMobileOpen(false)}>
+            <Button
+              data-testid="nav-get-updates-btn-mobile"
+              className="mt-3 w-full rounded-none bg-amber text-white font-mono text-sm hover:bg-amber/90"
+            >
+              Get Updates
+            </Button>
+          </a>
+        </div>
+      )}
+    </nav>
+  );
+}
