@@ -5,6 +5,8 @@ import { Analytics } from '@vercel/analytics/react';
 import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
 import Script from 'next/script';
+import { site } from '@/config/site';
+import { SiteSchema } from '@/components/site-schema';
 import './globals.css';
 
 const spaceGrotesk = Space_Grotesk({
@@ -20,29 +22,26 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://modrynstudio.com'),
-  title: 'Modryn Studio',
-  description:
-    "Tools for people who don't have time for bad software. Fast, focused AI tools — built one at a time.",
-  manifest: '/manifest.json',
+  metadataBase: new URL(site.url),
+  title: site.name,
+  description: site.description,
+  // manifest.ts in app/ is auto-detected — no need to declare it here
   icons: {
     icon: '/icon.png',
     apple: '/apple-icon.png',
   },
   openGraph: {
-    title: 'Modryn Studio | Fast, Focused AI Tools for Builders',
-    description:
-      "Fast, focused AI tools built one at a time. No bloat, no nonsense. Built for people who don't have time for bad software.",
-    url: 'https://modrynstudio.com',
-    siteName: 'Modryn Studio',
+    title: site.ogTitle,
+    description: site.ogDescription,
+    url: site.url,
+    siteName: site.name,
     type: 'website',
     images: [{ url: '/og-image.png', width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Modryn Studio | Fast, Focused AI Tools for Builders',
-    description:
-      "Fast, focused AI tools built one at a time. No bloat, no nonsense. Built for people who don't have time for bad software.",
+    title: site.ogTitle,
+    description: site.ogDescription,
     images: ['/og-image.png'],
   },
 };
@@ -63,32 +62,7 @@ export default function RootLayout({
           </div>
           <Analytics />
         </ThemeProvider>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify([
-              {
-                '@context': 'https://schema.org',
-                '@type': 'WebSite',
-                name: 'Modryn Studio',
-                url: 'https://modrynstudio.com',
-                description: 'Fast, focused AI tools built one at a time.',
-              },
-              {
-                '@context': 'https://schema.org',
-                '@type': 'Organization',
-                name: 'Modryn Studio',
-                url: 'https://modrynstudio.com',
-                logo: 'https://modrynstudio.com/icon.png',
-                description: 'Fast, focused AI tools built one at a time.',
-                founder: {
-                  '@type': 'Person',
-                  name: 'Luke Hanner',
-                },
-              },
-            ]),
-          }}
-        />
+        <SiteSchema />
         {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
           <>
             <Script

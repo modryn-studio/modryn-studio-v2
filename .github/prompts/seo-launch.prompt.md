@@ -68,49 +68,59 @@ Sitemap: https://DOMAIN.com/sitemap.xml
    icons: { icon: "/icon.png", apple: "/apple-icon.png" },
    ```
 
-**`public/manifest.json`** — if missing, read the site name, description, and brand colors from `layout.tsx` metadata and `copilot-instructions.md`, then create:
-```json
-{
-  "name": "<site name from layout.tsx title>",
-  "short_name": "<abbreviated name>",
-  "description": "<site description from layout.tsx>",
-  "start_url": "/",
-  "display": "standalone",
-  "background_color": "<dark bg from brand, e.g. #0a0a0a>",
-  "theme_color": "<accent color from brand, e.g. #f59e0b>",
-  "icons": [
-    { "src": "/icon.png", "sizes": "1024x1024", "type": "image/png", "purpose": "any maskable" }
-  ]
+**`src/config/site.ts`** — if missing, create it by reading the site name, URL, description, OG copy, and brand colors from `layout.tsx` and `copilot-instructions.md`:
+```ts
+// Single source of truth for all site-wide metadata.
+export const site = {
+  name: '<site name>',
+  shortName: '<abbreviated name>',
+  url: 'https://<domain>',
+  description: '<meta description (110–160 chars)>',
+  ogTitle: '<OG title (50–60 chars)>',
+  ogDescription: '<OG description (110–160 chars)>',
+  founder: '<founder name>',
+  accent: '<brand accent hex, e.g. #F97415>',
+  bg: '<brand bg hex, e.g. #050505>',
+} as const;
+```
+Then update `layout.tsx` to import `site` and replace all hardcoded strings. Remove `manifest: '/manifest.json'` from the metadata export (Next.js auto-injects it from `manifest.ts`).
+
+**`src/app/manifest.ts`** — if missing, create it (Next.js serves this at `/manifest.webmanifest` automatically — do NOT create `public/manifest.json`):
+```ts
+import { MetadataRoute } from 'next';
+import { site } from '@/config/site';
+
+export default function manifest(): MetadataRoute.Manifest {
+  return {
+    name: site.name,
+    short_name: site.shortName,
+    description: site.description,
+    start_url: '/',
+    display: 'standalone',
+    background_color: site.bg,
+    theme_color: site.accent,
+    icons: [{ src: '/icon.png', sizes: '1024x1024', type: 'image/png', purpose: 'any maskable' }],
+  };
 }
 ```
-Then ensure `layout.tsx` metadata includes `manifest: "/manifest.json"`.
 
-**JSON-LD in `layout.tsx`** — if a `<script type="application/ld+json">` block is absent from the root layout, add a `WebSite` + `Organization` schema. Read the site name, URL, and description from the existing metadata in `layout.tsx`. Insert it inside the `<body>` tag (before `{children}`):
+**`src/components/site-schema.tsx`** — if missing, create it and add `<SiteSchema />` inside `<body>` in `layout.tsx`:
 ```tsx
-<script
-  type="application/ld+json"
-  dangerouslySetInnerHTML={{
-    __html: JSON.stringify({
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "WebSite",
-          "@id": "https://DOMAIN.com/#website",
-          "url": "https://DOMAIN.com",
-          "name": "<site name>",
-          "description": "<site description>",
-        },
-        {
-          "@type": "Organization",
-          "@id": "https://DOMAIN.com/#organization",
-          "url": "https://DOMAIN.com",
-          "name": "<site name>",
-          "logo": "https://DOMAIN.com/brand/logomark.png",
-        },
-      ],
-    }),
-  }}
-/>
+import { site } from '@/config/site';
+
+export function SiteSchema() {
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify([
+          { '@context': 'https://schema.org', '@type': 'WebSite', name: site.name, url: site.url, description: site.description },
+          { '@context': 'https://schema.org', '@type': 'Organization', name: site.name, url: site.url, logo: `${site.url}/icon.png`, description: site.description, founder: { '@type': 'Person', name: site.founder } },
+        ]),
+      }}
+    />
+  );
+}
 ```
 
 Report which files were created vs already existed.

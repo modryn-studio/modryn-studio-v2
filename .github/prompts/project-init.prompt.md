@@ -18,6 +18,15 @@ Then edit `.github/copilot-instructions.md` and replace every `<!-- TODO -->` se
 - **Route Map** — list every route from context.md with a one-line description. Always include `/privacy` and `/terms`.
 - **Brand & Voice** — populate from brand.md: voice rules, visual rules (colors, fonts, motion), target user description, emotional arc, and copy examples to use as reference.
 
+Also fill in `src/config/site.ts` — replace every placeholder value with real content from context.md and brand.md:
+- `name` / `shortName` — product name from context.md
+- `url` — domain from context.md (use `https://` prefix)
+- `description` — 110–160 char meta description that describes what the product does and who it's for
+- `ogTitle` — 50–60 char title formatted as "Product Name | Short Value Prop"
+- `ogDescription` — 110–160 char OG description, slightly more marketing-forward than the meta description
+- `founder` — from context.md or default to "Luke Hanner"
+- `accent` / `bg` — brand colors from brand.md (hex values)
+
 Do not modify any section without a `<!-- TODO -->` marker.
 Do not add new sections.
 Do not touch API Route Logging, Analytics, Dev Server, Code Style, or Core Rules.

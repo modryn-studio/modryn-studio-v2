@@ -63,6 +63,8 @@ Configured via `editor.formatOnSave: true` in `.vscode/settings.json`. Requires 
 ├── settings.json                  ← Agent mode enabled, formatOnSave, Prettier as default formatter
 ├── extensions.json                ← Recommends Prettier extension on first open
 └── mcp.json                       ← MCP server config (http + stdio)
+src/config/
+└── site.ts                        ← Single source of truth: site name, URL, description, brand colors
 src/lib/
 ├── cn.ts                          ← Tailwind class merge utility (clsx + tailwind-merge)
 ├── route-logger.ts                ← API route logging utility (createRouteLogger)
@@ -74,7 +76,7 @@ development-principles.md          ← Permanent product philosophy — do not e
 
 ## New Project Setup
 
-1. Copy `.github/`, `.vscode/`, and `src/lib/` into the new project
+1. Copy `.github/`, `.vscode/`, `src/lib/`, and `src/config/` into the new project
 2. Run `npm install` — this installs Prettier automatically (it's in `devDependencies`)
 3. Fill in `context.md` — product idea, target user, stack additions, and routes
 4. Fill in `brand.md` — voice, visual rules, emotional arc, and copy examples

@@ -1,8 +1,9 @@
 import { MetadataRoute } from 'next';
 import { getAllPosts } from '@/lib/log';
 import { getAllTools } from '@/lib/tools';
+import { site } from '@/config/site';
 
-const BASE_URL = 'https://modrynstudio.com';
+const BASE_URL = site.url;
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const posts = getAllPosts();
