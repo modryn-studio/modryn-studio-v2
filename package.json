@@ -1,6 +1,7 @@
 {
   "name": "modryn-studio",
   "version": "0.1.0",
+  "description": "Fast, focused AI tools built one at a time.",
   "private": true,
   "scripts": {
     "dev": "next dev",

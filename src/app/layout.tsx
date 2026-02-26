@@ -24,16 +24,26 @@ export const metadata: Metadata = {
   title: "Modryn Studio",
   description:
     "Tools for people who don't have time for bad software. Fast, focused AI tools — built one at a time.",
+  manifest: "/manifest.json",
   icons: {
     icon: "/icon.png",
     apple: "/apple-icon.png",
   },
   openGraph: {
-    title: "Modryn Studio",
-    description: "Tools for people who don't have time for bad software.",
+    title: "Modryn Studio | Fast, Focused AI Tools for Builders",
+    description:
+      "Fast, focused AI tools built one at a time. No bloat, no nonsense. Built for people who don't have time for bad software.",
     url: "https://modrynstudio.com",
     siteName: "Modryn Studio",
     type: "website",
+    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Modryn Studio | Fast, Focused AI Tools for Builders",
+    description:
+      "Fast, focused AI tools built one at a time. No bloat, no nonsense. Built for people who don't have time for bad software.",
+    images: ["/og-image.png"],
   },
 };
 
@@ -55,6 +65,21 @@ export default function RootLayout({
           </div>
           <Analytics />
         </ThemeProvider>
+        <Script id="json-ld" type="application/ld+json" strategy="beforeInteractive">
+          {`{
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "Modryn Studio",
+            "url": "https://modrynstudio.com",
+            "description": "Fast, focused AI tools built one at a time.",
+            "publisher": {
+              "@type": "Organization",
+              "name": "Modryn Studio",
+              "url": "https://modrynstudio.com",
+              "logo": "https://modrynstudio.com/icon.png"
+            }
+          }`}
+        </Script>
         {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
           <>
             <Script

@@ -1,0 +1,16 @@
+{
+  "name": "Modryn Studio",
+  "short_name": "Modryn",
+  "description": "Fast, focused AI tools built one at a time.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050505",
+  "theme_color": "#F97415",
+  "icons": [
+    {
+      "src": "/icon.png",
+      "sizes": "1024x1024",
+      "type": "image/png"
+    }
+  ]
+}
