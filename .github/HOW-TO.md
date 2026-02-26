@@ -12,11 +12,11 @@ Open chat: `Ctrl+Alt+I`
 
 ## Custom Agent
 
-**`@push`** — Pre-ship quality gate. Checks for bugs → scans → fixes → lints → builds → commits. Never pushes.
+**`@check`** — Pre-ship quality gate. Checks for bugs → scans → fixes → lints → builds → commits. Never pushes.
 
 Usage: switch to Agent mode, then type:
 ```
-@push
+@check
 ```
 
 ## Slash Commands
@@ -50,7 +50,7 @@ Configured in `.github/hooks/post-edit-format.json`. Requires Prettier installed
 │   ├── nextjs.instructions.md     ← Auto-applied to .ts/.tsx files
 │   └── seo.instructions.md        ← Auto-applied to .ts/.tsx files
 ├── agents/
-│   └── push.agent.md              ← @push agent (pre-ship quality gate)
+│   └── check.agent.md             ← @check agent (pre-ship quality gate)
 ├── prompts/
 │   ├── project-init.prompt.md     ← /project-init command (fills copilot-instructions from context.md)
 │   ├── add-tool.prompt.md         ← /add-tool command (creates content/tools/<slug>.json)
@@ -88,7 +88,7 @@ Prerequisite: the server must be running and `dev.log` must be capturing output 
 
 1. **Plan** → use Plan mode to scope the feature
 2. **Build** → switch to Agent mode and execute
-3. **Ship** → type `@push`
+3. **Ship** → type `@check`
 4. **Push** → review the commit diff, then `git push` yourself
 
 > Tip: `Configure Chat (gear icon) > Diagnostics` shows all loaded configs and errors.
