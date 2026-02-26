@@ -1,5 +1,6 @@
 import { createRouteLogger } from '@/lib/route-logger';
 import nodemailer from 'nodemailer';
+import { Resend } from 'resend';
 
 const log = createRouteLogger('feedback');
 
@@ -82,6 +83,25 @@ export async function POST(req: Request): Promise<Response> {
     });
 
     log.info(ctx.reqId, 'Email sent', { to: feedbackTo });
+
+    // Add to Resend Audiences for newsletter signups (best-effort — never blocks the response)
+    if (body.type === 'newsletter') {
+      const resendKey = process.env.RESEND_API_KEY;
+      const audienceId = process.env.RESEND_AUDIENCE_ID;
+      if (resendKey && audienceId) {
+        try {
+          const resend = new Resend(resendKey);
+          await resend.contacts.create({ email: body.email, audienceId, unsubscribed: false });
+          log.info(ctx.reqId, 'Resend contact created');
+        } catch (resendError) {
+          // Non-fatal — inbox notification already sent, list add failed silently
+          log.warn(ctx.reqId, 'Resend contact creation failed', { error: resendError });
+        }
+      } else {
+        log.warn(ctx.reqId, 'Resend not configured — signup not added to audience');
+      }
+    }
+
     return log.end(ctx, Response.json({ ok: true }));
   } catch (error) {
     log.err(ctx, error);
