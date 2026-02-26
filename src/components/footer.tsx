@@ -18,7 +18,8 @@ export default function Footer() {
 
   return (
     <footer id="about" className="border-border border-t">
-      <div className="mx-auto max-w-6xl px-6 pt-10 pb-20 md:pb-10">
+      <div className="mx-auto max-w-6xl px-6 py-10">
+        {/* Main row */}
         <div className="flex flex-col items-center gap-6 md:flex-row md:justify-between">
           {/* Logo */}
           <span className="font-heading text-foreground text-base font-semibold tracking-tight">
@@ -38,33 +39,33 @@ export default function Footer() {
             ))}
           </nav>
 
-          {/* Social + Tagline */}
-          <div className="flex flex-col items-center gap-3 md:items-end">
-            <div className="flex items-center gap-4">
-              <a
-                href="https://github.com/modryn-studio"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub"
-                className="text-muted-foreground hover:text-foreground transition-colors"
-              >
-                <Github className="h-4 w-4" />
-              </a>
-              <a
-                href="https://x.com/lukehanner"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="X (Twitter)"
-                className="text-muted-foreground hover:text-foreground transition-colors"
-              >
-                <XIcon />
-              </a>
-            </div>
-            <p className="text-muted-foreground text-center font-mono text-xs md:text-right">
-              Built by Luke. Paid for by a day job. Shipping anyway.
-            </p>
+          {/* Social icons */}
+          <div className="flex items-center gap-4">
+            <a
+              href="https://github.com/modryn-studio"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <Github className="h-4 w-4" />
+            </a>
+            <a
+              href="https://x.com/lukehanner"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="X (Twitter)"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <XIcon />
+            </a>
           </div>
         </div>
+
+        {/* Tagline — full width, centered, separate row */}
+        <p className="text-muted-foreground mt-6 text-center font-mono text-xs">
+          Built by Luke. Paid for by a day job. Shipping anyway.
+        </p>
       </div>
     </footer>
   );
