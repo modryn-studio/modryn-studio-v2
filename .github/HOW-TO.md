@@ -25,7 +25,7 @@ Usage: switch to Agent mode, then type:
 
 **`/tool`** — Register a new tool on the site. Each tool (live, beta, or coming soon) lives as a JSON file in `content/tools/`. This command asks you 5 questions and creates that file. Without it, the tool won't appear on the site.
 
-**`/log`** — Draft a build log post from recent git activity. Reads your last 20 commits and generates a MDX stub in `content/log/`. You fill in the narrative, then push. Run this after shipping anything notable.
+**`/log`** — Draft a build log post. Works in two modes: if you're in this repo, it reads the last 20 commits and drafts locally (you edit, then push). If you're in a different project repo, it reads that repo's commits, drafts the post, and opens a PR against modryn-studio-v2 via GitHub MCP — merge when you're ready to publish.
 
 **`/deps`** — Check all dependencies for newer versions. Shows outdated packages, asks before updating.
 
