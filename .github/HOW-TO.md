@@ -41,8 +41,7 @@ Configured via `editor.formatOnSave: true` in `.vscode/settings.json`. Requires 
 
 ## MCP Servers
 
-- **GitHub** — create issues, PRs, manage repos from chat (type `http`)
-- **Fetch** — pull live web pages into context (requires `uvx` / `uv` installed)
+- **GitHub** — create issues, PRs, manage repos from chat
 
 ## File Map
 
