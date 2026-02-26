@@ -17,17 +17,21 @@ export default function Footer() {
   ];
 
   return (
-    <footer id="about" className="border-border border-t">
-      <div className="mx-auto max-w-6xl px-6 py-10">
-        {/* Main row */}
-        <div className="flex flex-col items-center gap-6 md:flex-row md:justify-between">
-          {/* Logo */}
-          <span className="font-heading text-foreground text-base font-semibold tracking-tight">
+    <footer className="border-border border-t">
+      <div className="mx-auto max-w-6xl px-6 py-6">
+        <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
+          {/* Left: Logo */}
+          <span className="font-heading text-foreground text-sm font-semibold tracking-tight shrink-0">
             Modryn Studio
           </span>
 
-          {/* Links */}
-          <nav className="flex flex-wrap items-center justify-center gap-4">
+          {/* Center: Tagline */}
+          <p className="text-muted-foreground font-mono text-xs order-last sm:order-0">
+            Built by Luke. Paid for by a day job. Shipping anyway.
+          </p>
+
+          {/* Right: Nav + Social */}
+          <div className="flex items-center gap-4 shrink-0">
             {links.map((link) => (
               <Link
                 key={link.label}
@@ -37,10 +41,7 @@ export default function Footer() {
                 {link.label}
               </Link>
             ))}
-          </nav>
-
-          {/* Social icons */}
-          <div className="flex items-center gap-4">
+            <span className="bg-border h-3 w-px" aria-hidden="true" />
             <a
               href="https://github.com/modryn-studio"
               target="_blank"
@@ -61,11 +62,6 @@ export default function Footer() {
             </a>
           </div>
         </div>
-
-        {/* Tagline — full width, centered, separate row */}
-        <p className="text-muted-foreground mt-6 text-center font-mono text-xs">
-          Built by Luke. Paid for by a day job. Shipping anyway.
-        </p>
       </div>
     </footer>
   );
