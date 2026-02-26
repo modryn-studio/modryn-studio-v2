@@ -10,7 +10,9 @@ Add a new tool to this project. Ask me for the following if not already provided
 2. **Description** — one sentence, plain language, no jargon. What it does and who it's for.
 3. **Status** — one of: `live`, `beta`, `building`, `coming-soon`
 4. **URL** — (optional) external URL if the tool lives at a separate domain
-5. **Icon** — (optional) icon name or path
+5. **Screenshot URL** — (optional) path or public URL to a preview image (e.g. `/screenshots/trend-detector.png`)
+6. **Launched date** — (optional, only ask if status is `live` or `beta`) ISO date the tool shipped, e.g. `2026-03-01`
+7. **Log slug** — (optional) slug of the `/log` post that documented this build (e.g. `2026-03-01-trend-detector`)
 
 Then:
 - Derive the slug from the name: lowercase, spaces → hyphens, remove special characters (e.g. "Trend Detector" → `trend-detector`)
@@ -22,6 +24,6 @@ Then:
     "status": "..."
   }
   ```
-  Only include `url` and `icon` if provided.
+  Only include optional fields (`url`, `screenshotUrl`, `launchedAt`, `logSlug`) if provided.
 - Confirm the file was created and show the final JSON.
 - Remind me: if status is `live`, the tool page at `/tools/<slug>` is now public and will appear in the sitemap on next build.
