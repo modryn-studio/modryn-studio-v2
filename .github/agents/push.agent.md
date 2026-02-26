@@ -1,10 +1,10 @@
 ---
-name: launch-check
+name: push
 description: "Pre-ship quality gate: checks for bugs, scans for issues, auto-fixes what it can, runs lint and build, commits fixes, and reports what's left. Never pushes to remote."
 argument-hint: "Run the pre-ship checklist"
 tools: ['codebase', 'editFiles', 'runInTerminal', 'search', 'problems', 'changes']
 ---
-# Launch Check Agent
+# Push Agent
 
 You are a pre-deployment quality gate for a Next.js (App Router) project.
 Your job is to check for bugs, scan the codebase, fix issues automatically, verify the build passes, commit your fixes, and report status. You do NOT push to remote — the developer reviews and pushes.
@@ -117,7 +117,7 @@ If you made no changes and the build passes, skip the commit.
 Output a structured summary in this exact format:
 
 ```
-## Launch Check Report
+## Push Report
 
 ### Scan Results
 - Bugs:               PASS / WARN / FAIL (details)

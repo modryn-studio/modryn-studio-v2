@@ -12,22 +12,24 @@ Open chat: `Ctrl+Alt+I`
 
 ## Custom Agent
 
-**`@launch-check`** — Pre-ship quality gate. Checks for bugs → scans → fixes → lints → builds → commits. Never pushes.
+**`@push`** — Pre-ship quality gate. Checks for bugs → scans → fixes → lints → builds → commits. Never pushes.
 
 Usage: switch to Agent mode, then type:
 ```
-@launch-check
+@push
 ```
 
 ## Slash Commands
 
 **`/project-init`** — New project setup. Reads `context.md` + `development-principles.md` and fills in the TODO sections of `copilot-instructions.md`.
 
+**`/add-tool`** — Add a new tool to the site. Asks 5 questions, creates `content/tools/<slug>.json`.
+
 **`/check-deps`** — Check all dependencies for newer versions. Shows outdated packages, asks before updating.
 
 **`/seo-launch`** — Pre-launch SEO checklist. Audits the codebase for missing SEO files, then walks you through Google Search Console, Bing, and OG validation.
 
-Usage: type `/project-init`, `/check-deps`, or `/seo-launch` in chat.
+Usage: type any slash command in chat.
 
 ## Hooks (auto-runs after edits)
 
@@ -48,9 +50,10 @@ Configured in `.github/hooks/post-edit-format.json`. Requires Prettier installed
 │   ├── nextjs.instructions.md     ← Auto-applied to .ts/.tsx files
 │   └── seo.instructions.md        ← Auto-applied to .ts/.tsx files
 ├── agents/
-│   └── launch-check.agent.md      ← @launch-check agent
+│   └── push.agent.md              ← @push agent (pre-ship quality gate)
 ├── prompts/
-│   ├── project-init.prompt.md        ← /project-init command (fills copilot-instructions from context.md)
+│   ├── project-init.prompt.md     ← /project-init command (fills copilot-instructions from context.md)
+│   ├── add-tool.prompt.md         ← /add-tool command (creates content/tools/<slug>.json)
 │   ├── check-deps.prompt.md       ← /check-deps command (update checker)
 │   └── seo-launch.prompt.md       ← /seo-launch command (SEO audit + registration)
 ├── hooks/
@@ -85,7 +88,7 @@ Prerequisite: the server must be running and `dev.log` must be capturing output 
 
 1. **Plan** → use Plan mode to scope the feature
 2. **Build** → switch to Agent mode and execute
-3. **Ship** → type `@launch-check`
+3. **Ship** → type `@push`
 4. **Push** → review the commit diff, then `git push` yourself
 
 > Tip: `Configure Chat (gear icon) > Diagnostics` shows all loaded configs and errors.
