@@ -1,7 +1,7 @@
 # Modryn Studio — Copilot Context
 
 ## Who I Am
-I'm Luke, a one-person studio owner building AI-first tools and micro-SaaS products under Modryn Studio (modrynstudio.com). I build fast using AI-assisted development — detecting rising trends, scoring them, and shipping a targeted tool in 48 hours to capture organic search traffic early. The site is a product studio launchpad that grows with every tool I ship, not a portfolio or agency brochure. Target users are impatient people who hate bad software and don't want to do the research — they want it handed to them, fast.
+I'm Luke, a one-person studio owner building micro-SaaS products under Modryn Studio (modrynstudio.com). I build fast using AI-assisted development — detecting rising trends, scoring them, and shipping a targeted tool in 48 hours to capture organic search traffic early. The site is a product studio launchpad that grows with every tool I ship, not a portfolio or agency brochure. Target users are impatient people who hate bad software and don't want to do the research — they want it handed to them, fast.
 
 ## Stack
 - Next.js 16 (App Router) with TypeScript
@@ -126,3 +126,22 @@ Convert → "I don't want to miss the next one"
 - Ship one killer feature, not ten mediocre ones
 - Instrument analytics before features — data from day one
 - Onboard users to value in under 2 minutes
+
+## Positioning Decision: AI
+Do NOT lead with "AI" in copy or headlines. The backlash is real and targets AI hype, not useful tools. Lead with outcomes and the user's problem. AI is an implementation detail, not a selling point.
+- ✅ "Tools for people who don't have time for bad software"
+- ✅ "I did the research so you don't have to"
+- ❌ "AI-powered", "AI-first", "built with AI"
+Products use AI internally. The marketing never needs to say so.
+
+## Active Products
+
+**Trend Detector** (`modryn-studio/trend-detector`)
+- Private Python pipeline — runs locally, not yet public
+- Phase 1: daily cron → pytrends-modern → scored JSON in `data/trends_YYYY-MM-DD.json`
+- Phase 2: public web tool (blocked on reliable Google Trends API access)
+- Site entry: `content/tools/trend-detector.json`, status: `"building"`
+- Key files: `fetcher.py`, `scorer.py`, `pipeline.py`
+- Run manually: `python pipeline.py --all` (covers all 6 categories)
+- Brand noise filter in `scorer.py` blocks known product names (claude, chatgpt, etc.)
+- Decision signal: search demand from pipeline + Reddit/HN complaint = build it
