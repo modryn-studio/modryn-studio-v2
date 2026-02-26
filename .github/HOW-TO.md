@@ -12,7 +12,7 @@ Open chat: `Ctrl+Alt+I`
 
 ## Custom Agent
 
-**`@launch-check`** — Pre-ship quality gate. Scans → fixes → lints → builds → commits. Never pushes.
+**`@launch-check`** — Pre-ship quality gate. Checks for bugs → scans → fixes → lints → builds → commits. Never pushes.
 
 Usage: switch to Agent mode, then type:
 ```
@@ -23,13 +23,11 @@ Usage: switch to Agent mode, then type:
 
 **`/project-init`** — New project setup. Reads `context.md` + `development-principles.md` and fills in the TODO sections of `copilot-instructions.md`.
 
-**`/review`** — Quick read-only scan (runs in Ask mode). Reports issues without touching code.
-
 **`/check-deps`** — Check all dependencies for newer versions. Shows outdated packages, asks before updating.
 
 **`/seo-launch`** — Pre-launch SEO checklist. Audits the codebase for missing SEO files, then walks you through Google Search Console, Bing, and OG validation.
 
-Usage: type `/project-init`, `/review`, `/check-deps`, or `/seo-launch` in chat.
+Usage: type `/project-init`, `/check-deps`, or `/seo-launch` in chat.
 
 ## Hooks (auto-runs after edits)
 
@@ -53,7 +51,6 @@ Configured in `.github/hooks/post-edit-format.json`. Requires Prettier installed
 │   └── launch-check.agent.md      ← @launch-check agent
 ├── prompts/
 │   ├── project-init.prompt.md        ← /project-init command (fills copilot-instructions from context.md)
-│   ├── review.prompt.md           ← /review command (ask mode, read-only)
 │   ├── check-deps.prompt.md       ← /check-deps command (update checker)
 │   └── seo-launch.prompt.md       ← /seo-launch command (SEO audit + registration)
 ├── hooks/
@@ -88,8 +85,7 @@ Prerequisite: the server must be running and `dev.log` must be capturing output 
 
 1. **Plan** → use Plan mode to scope the feature
 2. **Build** → switch to Agent mode and execute
-3. **Check** → type `/review` for a quick scan
-4. **Ship** → type `@launch-check run the pre-ship checklist`
-5. **Push** → review the commit diff, then `git push` yourself
+3. **Ship** → type `@launch-check run the pre-ship checklist`
+4. **Push** → review the commit diff, then `git push` yourself
 
 > Tip: `Configure Chat (gear icon) > Diagnostics` shows all loaded configs and errors.
