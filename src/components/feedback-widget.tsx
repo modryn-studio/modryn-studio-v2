@@ -113,8 +113,7 @@ export default function FeedbackWidget() {
                   className="border-border placeholder:text-muted-foreground focus:border-amber mt-2 w-full border bg-transparent p-3 font-mono text-xs outline-none transition-colors disabled:opacity-50"
                 />
                 {error && <p className="text-destructive mt-2 font-mono text-xs">{error}</p>}
-                <div className="mt-3 flex items-center justify-between">
-                  <span className="text-muted-foreground font-mono text-xs">⌘↵ to send</span>
+                <div className="mt-3 flex justify-end">
                   <button
                     onClick={handleSubmit}
                     disabled={!message.trim() || state === 'submitting'}

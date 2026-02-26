@@ -31,4 +31,9 @@ Do not modify any section without a `<!-- TODO -->` marker.
 Do not add new sections.
 Do not touch API Route Logging, Analytics, Dev Server, Code Style, or Core Rules.
 
+Finally, wire `FeedbackWidget` into `src/app/layout.tsx`:
+- Add `import FeedbackWidget from '@/components/feedback-widget'` with the other component imports
+- Add `<FeedbackWidget />` as the last child inside the root layout wrapper div, after `<Footer />`
+- This must be present in every project — it's how Luke collects feedback from day one
+
 After editing, confirm what was filled in and flag anything that was missing from context.md or brand.md that Luke should provide.
