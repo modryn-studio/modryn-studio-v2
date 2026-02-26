@@ -10,45 +10,32 @@ Walk me through the SEO launch steps for this project. First auto-generate any m
 ## Step 0: Auto-Generate Missing Files
 Before auditing, check for and CREATE the following files if they are absent:
 
-**`src/app/sitemap.ts`** — if missing, create it with this pattern:
+**`src/app/sitemap.ts`** — if missing, create it. First check whether `@/config/site` exists — if it does, import `site.url`; otherwise hardcode the domain from `layout.tsx`:
 ```ts
 import { MetadataRoute } from "next";
-import { getAllPosts } from "@/lib/log";
-import { getAllTools } from "@/lib/tools";
-
-const BASE_URL = "https://DOMAIN.com"; // replace with actual domain from layout.tsx
+import { site } from "@/config/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const posts = getAllPosts();
-  const tools = getAllTools();
   const staticRoutes: MetadataRoute.Sitemap = [
-    { url: BASE_URL, lastModified: new Date(), changeFrequency: "weekly", priority: 1 },
+    { url: site.url, lastModified: new Date(), changeFrequency: "weekly", priority: 1 },
     // add remaining static routes from app/ directory
   ];
-  const logRoutes = posts.map((post) => ({
-    url: `${BASE_URL}/log/${post.slug}`,
-    lastModified: new Date(post.date),
-    changeFrequency: "monthly" as const,
-    priority: 0.7,
-  }));
-  const toolRoutes = tools
-    .filter((t) => t.status === "live")
-    .map((t) => ({
-      url: `${BASE_URL}/tools/${t.slug}`,
-      lastModified: new Date(),
-      changeFrequency: "weekly" as const,
-      priority: 0.8,
-    }));
-  return [...staticRoutes, ...logRoutes, ...toolRoutes];
+  return staticRoutes;
 }
 ```
+Adapt as needed for any dynamic routes (log posts, tool pages, etc.).
 
-**`public/robots.txt`** — if missing, create it:
-```
-User-agent: *
-Allow: /
+**`src/app/robots.ts`** — if missing (do NOT create `public/robots.txt`), create it:
+```ts
+import { MetadataRoute } from 'next';
+import { site } from '@/config/site';
 
-Sitemap: https://DOMAIN.com/sitemap.xml
+export default function robots(): MetadataRoute.Robots {
+  return {
+    rules: { userAgent: '*', allow: '/' },
+    sitemap: `${site.url}/sitemap.xml`,
+  };
+}
 ```
 
 **Favicon files** — if `src/app/favicon.ico`, `src/app/icon.png`, or `src/app/apple-icon.png` are missing:
@@ -134,10 +121,11 @@ Check the codebase for:
 - [ ] `src/app/apple-icon.png` exists
 - [ ] OG title is 50–60 chars, description is 110–160 chars
 - [ ] `public/og-image.png` exists (1200×630px)
-- [ ] `public/robots.txt` exists and references the sitemap URL
+- [ ] `src/config/site.ts` exists and is fully filled in (no placeholder values)
+- [ ] `src/app/manifest.ts` exists (do NOT check for `public/manifest.json`)
+- [ ] `src/app/robots.ts` exists (do NOT check for `public/robots.txt`)
+- [ ] `src/components/site-schema.tsx` exists and `<SiteSchema />` is rendered in `layout.tsx`
 - [ ] `src/app/sitemap.ts` exists and lists all public routes
-- [ ] `public/manifest.json` exists
-- [ ] JSON-LD `SoftwareApplication` script in `layout.tsx`
 - [ ] `package.json` has a `description` field
 
 Report PASS / MISSING for each item with file paths for anything missing.
