@@ -1,0 +1,36 @@
+---
+title: How I set up my Copilot workflow
+date: 2026-02-26
+tag: dev
+---
+
+Every new project I start now gets the same setup: a `.github/` folder that
+turns VS Code into a disciplined co-pilot rather than an eager yes-man.
+
+Here's what's in it.
+
+**`@check`** — a pre-ship agent. Before every push, I type `@check` and it
+reads all recently changed files, hunts for bugs, runs lint, runs a build,
+and commits any fixes. It never pushes. I review the diff, then push myself.
+That one habit has caught at least three dumb mistakes that would have gone
+to production.
+
+**`/init`** — new project setup. I fill in two files (`context.md` and
+`brand.md`) with the product facts and brand rules, then run `/init`.
+Copilot reads both and fills in the always-on instructions file that
+lives in every session. Takes 5 minutes instead of 20.
+
+**`/seo`** — pre-launch checklist. Generates `sitemap.ts`, `robots.ts`,
+`manifest.ts`, and JSON-LD structured data automatically. Audits for
+missing OG images and character counts. Then walks me through Google
+Search Console and Bing registration step by step.
+
+**`src/config/site.ts`** — single source of truth for the site name, URL,
+description, and brand colors. Change it once and the manifest, JSON-LD,
+sitemap, and metadata all update on the next build. No sync needed.
+
+The whole thing is in a public repo at
+[github.com/modryn-studio/boilerplate](https://github.com/modryn-studio/boilerplate).
+Copy the `.github/` folder into any Next.js project and it works.
+
+Built for one-person studios that ship fast and can't afford to forget things.
