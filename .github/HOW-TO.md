@@ -16,7 +16,7 @@ Open chat: `Ctrl+Alt+I`
 
 Usage: switch to Agent mode, then type:
 ```
-@launch-check run the pre-ship checklist
+@launch-check
 ```
 
 ## Slash Commands
@@ -85,7 +85,7 @@ Prerequisite: the server must be running and `dev.log` must be capturing output 
 
 1. **Plan** → use Plan mode to scope the feature
 2. **Build** → switch to Agent mode and execute
-3. **Ship** → type `@launch-check run the pre-ship checklist`
+3. **Ship** → type `@launch-check`
 4. **Push** → review the commit diff, then `git push` yourself
 
 > Tip: `Configure Chat (gear icon) > Diagnostics` shows all loaded configs and errors.
