@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Space_Grotesk, Space_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Analytics } from "@vercel/analytics/react";
+import Navbar from "@/components/navbar";
+import Footer from "@/components/footer";
 import Script from "next/script";
 import "./globals.css";
 
@@ -34,7 +36,11 @@ export default function RootLayout({
         className={`${spaceGrotesk.variable} ${spaceMono.variable} antialiased`}
       >
         <ThemeProvider defaultTheme="system" storageKey="modryn-theme">
-          {children}
+          <div className="noise-overlay flex min-h-screen flex-col bg-background text-foreground">
+            <Navbar />
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </div>
           <Analytics />
         </ThemeProvider>
         {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
