@@ -8,6 +8,13 @@ export const metadata: Metadata = {
   title: "Tools — Modryn Studio",
   description:
     "All tools from Modryn Studio — live, beta, and coming soon.",
+  openGraph: {
+    title: "Tools — Modryn Studio",
+    description: "All tools from Modryn Studio — live, beta, and coming soon.",
+    url: "https://modrynstudio.com/tools",
+    siteName: "Modryn Studio",
+    type: "website",
+  },
 };
 
 const STATUS_CONFIG: Record<ToolStatus, { label: string; className: string }> = {

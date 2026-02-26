@@ -21,6 +21,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${post.title} — Modryn Studio`,
     description: `Build log: ${post.title}`,
+    openGraph: {
+      title: `${post.title} — Modryn Studio`,
+      description: `Build log: ${post.title}`,
+      url: `https://modrynstudio.com/log/${slug}`,
+      siteName: "Modryn Studio",
+      type: "article",
+    },
   };
 }
 

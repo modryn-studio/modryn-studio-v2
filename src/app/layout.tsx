@@ -23,6 +23,13 @@ export const metadata: Metadata = {
   title: "Modryn Studio",
   description:
     "Tools for people who don't have time for bad software. Fast, focused AI tools — built one at a time.",
+  openGraph: {
+    title: "Modryn Studio",
+    description: "Tools for people who don't have time for bad software.",
+    url: "https://modrynstudio.com",
+    siteName: "Modryn Studio",
+    type: "website",
+  },
 };
 
 export default function RootLayout({

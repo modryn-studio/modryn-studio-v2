@@ -56,7 +56,11 @@ export default function EmailSignup() {
               onSubmit={handleSubmit}
               className="mt-8 flex flex-col gap-3 sm:flex-row"
             >
+              <label htmlFor="signup-email" className="sr-only">
+                Email address
+              </label>
               <Input
+                id="signup-email"
                 type="email"
                 placeholder="your@email.com"
                 value={email}

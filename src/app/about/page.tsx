@@ -5,6 +5,13 @@ export const metadata: Metadata = {
   title: "About — Modryn Studio",
   description:
     "I'm Luke. I build tools for people who don't have time for bad software. One person. Wisconsin. Shipping anyway.",
+  openGraph: {
+    title: "About — Modryn Studio",
+    description: "I'm Luke. I build tools for people who don't have time for bad software. One person. Wisconsin. Shipping anyway.",
+    url: "https://modrynstudio.com/about",
+    siteName: "Modryn Studio",
+    type: "profile",
+  },
 };
 
 export default function AboutPage() {

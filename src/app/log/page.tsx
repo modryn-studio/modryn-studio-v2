@@ -6,6 +6,13 @@ export const metadata: Metadata = {
   title: "Build Log — Modryn Studio",
   description:
     "Every build, kill, and lesson — posted as it happens.",
+  openGraph: {
+    title: "Build Log — Modryn Studio",
+    description: "Every build, kill, and lesson — posted as it happens.",
+    url: "https://modrynstudio.com/log",
+    siteName: "Modryn Studio",
+    type: "website",
+  },
 };
 
 export default function LogPage() {
