@@ -10,15 +10,16 @@ export default function PrivacyPage() {
     <div className="mx-auto max-w-3xl px-6 py-24">
       <h1 className="font-heading text-4xl font-bold tracking-tighter">Privacy Policy</h1>
       <p className="text-muted-foreground mt-2 font-mono text-xs">
-        Last updated: February 25, 2026
+        Last updated: February 26, 2026
       </p>
 
       <div className="text-foreground/80 mt-8 space-y-6 font-mono text-sm leading-relaxed">
         <section>
           <h2 className="font-heading text-foreground text-lg font-semibold">What we collect</h2>
           <p className="mt-2">
-            If you sign up for email notifications, we collect your email address. That&apos;s it.
-            No names, no phone numbers, no payment info.
+            If you sign up for email notifications, we collect your email address. If you submit
+            feedback via the feedback widget, we collect your message and, optionally, your email
+            address if you choose to include it. No names, no phone numbers, no payment info.
           </p>
         </section>
 
@@ -50,8 +51,9 @@ export default function PrivacyPage() {
         <section>
           <h2 className="font-heading text-foreground text-lg font-semibold">Third parties</h2>
           <p className="mt-2">
-            Email notifications are sent via Gmail SMTP. Analytics data is processed by Google and
-            Vercel. No other third-party services have access to your data.
+            Email notifications are sent via Gmail SMTP. Newsletter signups are stored in Resend,
+            which we use to send broadcast emails. Analytics data is processed by Google and Vercel.
+            No other third-party services have access to your data.
           </p>
         </section>
 
