@@ -18,7 +18,7 @@ export default function Footer() {
 
   return (
     <footer id="about" className="border-border border-t">
-      <div className="mx-auto max-w-6xl px-6 py-10">
+      <div className="mx-auto max-w-6xl px-6 pt-10 pb-20 md:pb-10">
         <div className="flex flex-col items-center gap-6 md:flex-row md:justify-between">
           {/* Logo */}
           <span className="font-heading text-foreground text-base font-semibold tracking-tight">
