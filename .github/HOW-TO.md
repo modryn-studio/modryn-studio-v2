@@ -21,13 +21,13 @@ Usage: switch to Agent mode, then type:
 
 ## Slash Commands
 
-**`/project-init`** — New project setup. Reads `context.md` + `brand.md` + `development-principles.md` and fills in the TODO sections of `copilot-instructions.md`. Run this once at the start of every new project.
+**`/init`** — New project setup. Reads `context.md` + `brand.md` + `development-principles.md` and fills in the TODO sections of `copilot-instructions.md` and `src/config/site.ts`. Run this once at the start of every new project.
 
-**`/add-tool`** — Register a new tool on the site. Each tool (live, beta, or coming soon) lives as a JSON file in `content/tools/`. This command asks you 5 questions and creates that file. Without it, the tool won't appear on the site.
+**`/tool`** — Register a new tool on the site. Each tool (live, beta, or coming soon) lives as a JSON file in `content/tools/`. This command asks you 5 questions and creates that file. Without it, the tool won't appear on the site.
 
-**`/check-deps`** — Check all dependencies for newer versions. Shows outdated packages, asks before updating.
+**`/deps`** — Check all dependencies for newer versions. Shows outdated packages, asks before updating.
 
-**`/seo-launch`** — Pre-launch SEO checklist. Audits the codebase for missing SEO files, then walks you through Google Search Console, Bing, and OG validation.
+**`/seo`** — Pre-launch SEO checklist. Auto-generates missing SEO files, then walks you through Google Search Console, Bing, and OG validation.
 
 Usage: type any slash command in chat.
 
@@ -53,10 +53,10 @@ Configured via `editor.formatOnSave: true` in `.vscode/settings.json`. Requires 
 ├── agents/
 │   └── check.agent.md             ← @check agent (pre-ship quality gate)
 ├── prompts/
-│   ├── project-init.prompt.md     ← /project-init command (fills copilot-instructions from context.md + brand.md)
-│   ├── add-tool.prompt.md         ← /add-tool command (creates content/tools/<slug>.json)
-│   ├── check-deps.prompt.md       ← /check-deps command (update checker)
-│   └── seo-launch.prompt.md       ← /seo-launch command (SEO audit + registration)
+│   ├── init.prompt.md             ← /init command (fills copilot-instructions + site.ts from context.md + brand.md)
+│   ├── tool.prompt.md             ← /tool command (creates content/tools/<slug>.json)
+│   ├── deps.prompt.md             ← /deps command (update checker)
+│   └── seo.prompt.md              ← /seo command (SEO audit + registration)
 ├── hooks/
 │   └── post-edit-format.json      ← Legacy hook file (Claude Code format — not used by VS Code)
 .vscode/

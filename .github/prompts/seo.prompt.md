@@ -1,5 +1,5 @@
 ---
-name: seo-launch
+name: seo
 description: "Pre-launch SEO checklist: validate OG tags, register with search engines, submit sitemap."
 agent: ask
 ---
@@ -61,7 +61,7 @@ Sitemap: https://DOMAIN.com/sitemap.xml
    Copy-Item public\brand\logomark.png src\app\icon.png
    Copy-Item public\brand\logomark.png src\app\apple-icon.png
    ```
-3. If `public/brand/logomark.png` is absent, tell the user: "Drop your 1024×1024 logomark at `public/brand/logomark.png` and re-run `@seo-launch` to auto-generate favicons."
+3. If `public/brand/logomark.png` is absent, tell the user: "Drop your 1024×1024 logomark at `public/brand/logomark.png` and re-run `/seo` to auto-generate favicons."
 4. Ensure `layout.tsx` metadata includes:
    ```ts
    metadataBase: new URL("https://DOMAIN.com"),

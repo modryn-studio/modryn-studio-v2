@@ -1,5 +1,5 @@
 ---
-name: add-tool
+name: tool
 description: "Add a new tool entry to content/tools/. Creates the JSON file and confirms the slug."
 agent: agent
 ---

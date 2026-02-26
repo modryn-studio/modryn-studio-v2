@@ -1,6 +1,6 @@
 ---
-name: project-init
-description: Reads context.md, development-principles.md, and brand.md, then fills in copilot-instructions.md for a new project
+name: init
+description: Reads context.md, development-principles.md, and brand.md, then fills in copilot-instructions.md and site.ts for a new project
 agent: agent
 ---
 

@@ -1,5 +1,5 @@
 ---
-name: check-deps
+name: deps
 description: "Check all dependencies for newer versions and report what can be updated."
 agent: agent
 tools: ['runInTerminal', 'editFiles']
