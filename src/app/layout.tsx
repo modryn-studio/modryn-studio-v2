@@ -65,21 +65,32 @@ export default function RootLayout({
           </div>
           <Analytics />
         </ThemeProvider>
-        <Script id="json-ld" type="application/ld+json" strategy="beforeInteractive">
-          {`{
-            "@context": "https://schema.org",
-            "@type": "WebSite",
-            "name": "Modryn Studio",
-            "url": "https://modrynstudio.com",
-            "description": "Fast, focused AI tools built one at a time.",
-            "publisher": {
-              "@type": "Organization",
-              "name": "Modryn Studio",
-              "url": "https://modrynstudio.com",
-              "logo": "https://modrynstudio.com/icon.png"
-            }
-          }`}
-        </Script>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([
+              {
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                "name": "Modryn Studio",
+                "url": "https://modrynstudio.com",
+                "description": "Fast, focused AI tools built one at a time.",
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                "name": "Modryn Studio",
+                "url": "https://modrynstudio.com",
+                "logo": "https://modrynstudio.com/icon.png",
+                "description": "Fast, focused AI tools built one at a time.",
+                "founder": {
+                  "@type": "Person",
+                  "name": "Luke Hanner",
+                },
+              },
+            ]),
+          }}
+        />
         {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
           <>
             <Script
