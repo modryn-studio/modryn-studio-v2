@@ -80,7 +80,7 @@ development-principles.md          ← Permanent product philosophy — do not e
 2. Run `npm install` — this installs Prettier automatically (it's in `devDependencies`)
 3. Fill in `context.md` — product idea, target user, stack additions, and routes
 4. Fill in `brand.md` — voice, visual rules, emotional arc, and copy examples
-5. Type `/project-init` — Copilot reads all three files and fills in `.github/copilot-instructions.md`
+5. Type `/init` — Copilot reads all three files and fills in `.github/copilot-instructions.md` + `src/config/site.ts`
 6. Done — everything else applies automatically
 
 ## Live Log Monitoring
