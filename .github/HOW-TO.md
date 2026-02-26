@@ -23,7 +23,7 @@ Usage: switch to Agent mode, then type:
 
 **`/init`** — New project setup. Reads `context.md` + `brand.md` + `development-principles.md` and fills in the TODO sections of `copilot-instructions.md` and `src/config/site.ts`. Run this once at the start of every new project.
 
-**`/tool`** — Register a new tool on the site. Each tool (live, beta, or coming soon) lives as a JSON file in `content/tools/`. This command asks you 5 questions and creates that file. Without it, the tool won't appear on the site.
+**`/tool`** — Register or update a tool on the site. Creates or updates `content/tools/<slug>.json`. Run it from this repo to write the file directly. Run it from any other project repo to open a PR here instead — useful when shipping a tool that lives in its own repo (flip status to `live`, add URL, screenshot, launch date).
 
 **`/log`** — Draft a build log post. Works in two modes: if you're in this repo, it reads the last 20 commits and drafts locally (you edit, then push). If you're in a different project repo, it reads that repo's commits, drafts the post, and opens a PR against modryn-studio-v2 via GitHub MCP — merge when you're ready to publish.
 
@@ -56,7 +56,7 @@ Configured via `editor.formatOnSave: true` in `.vscode/settings.json`. Requires 
 │   └── check.agent.md             ← @check agent (pre-ship quality gate)
 ├── prompts/
 │   ├── init.prompt.md             ← /init command (fills copilot-instructions + site.ts from context.md + brand.md)
-│   ├── tool.prompt.md             ← /tool command (creates content/tools/<slug>.json)
+│   ├── tool.prompt.md             ← /tool command (creates or updates content/tools/<slug>.json; cross-repo PR if outside modryn-studio-v2)
 │   ├── log.prompt.md              ← /log command (drafts a build log post from git history)
 │   ├── deps.prompt.md             ← /deps command (update checker)
 │   └── seo.prompt.md              ← /seo command (SEO audit + registration)
