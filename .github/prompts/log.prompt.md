@@ -1,10 +1,18 @@
 ---
 name: log
-description: Drafts a build log post from recent git activity. Run after shipping something notable.
+description: Drafts a build log post for modrynstudio.com. Run from the modryn-studio-v2 workspace after shipping something notable — in this repo or any other.
 agent: agent
 ---
 
-Run `git log --oneline -20` in the terminal to see the last 20 commits.
+First, ask Luke one question:
+
+> "What are you logging? This repo (modryn-studio-v2) or a different project?"
+
+**If this repo:** Run `git log --oneline -20` to get the last 20 commits. Use those as the source of truth for what shipped.
+
+**If a different project:** Ask: "Give me a quick brain dump — what shipped, what's the tool/project, and why did you make these decisions?" Use the freeform answer as the source of truth. Do not run git log.
+
+---
 
 Read one existing file from `content/log/` to understand the MDX frontmatter format and writing style.
 
@@ -20,7 +28,7 @@ Then create a new MDX file in `content/log/` with:
   ```
 - Post body structured as:
 
-  **What shipped** — bullet list of the 3–5 most significant commits, written as human outcomes not git messages. Not "feat: add X" but "X is now live".
+  **What shipped** — bullet list of the 3–5 most significant things, written as human outcomes. Not "feat: add X" but "X is now live".
 
   **Why** — 1–2 sentences on the decision or problem it solves. Use Luke's voice: short, direct, honest.
 
