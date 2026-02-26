@@ -23,9 +23,14 @@ Draft a new MDX file in `content/log/`:
   ---
   title: ""
   date: "YYYY-MM-DD"
-  summary: ""
+  tag: ""
   ---
   ```
+  The `tag` field must be the project slug — used for filtering on /log later. Use one of:
+  - `modryn-studio` — posts about modrynstudio.com itself
+  - `meta` — process, workflow, how-I-work posts (not project-specific)
+  - the tool or project slug (e.g. `project-loom`, `trend-detector`) — for anything else
+  Ask Luke which tag to use if it isn't obvious from context.
 - Post body:
 
   **What shipped** — bullet list of the 3–5 most significant things, written as human outcomes. Not "feat: add X" but "X is now live".
