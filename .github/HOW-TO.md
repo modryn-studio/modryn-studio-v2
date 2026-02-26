@@ -25,6 +25,8 @@ Usage: switch to Agent mode, then type:
 
 **`/tool`** — Register a new tool on the site. Each tool (live, beta, or coming soon) lives as a JSON file in `content/tools/`. This command asks you 5 questions and creates that file. Without it, the tool won't appear on the site.
 
+**`/log`** — Draft a build log post from recent git activity. Reads your last 20 commits and generates a MDX stub in `content/log/`. You fill in the narrative, then push. Run this after shipping anything notable.
+
 **`/deps`** — Check all dependencies for newer versions. Shows outdated packages, asks before updating.
 
 **`/seo`** — Pre-launch SEO checklist. Auto-generates missing SEO files, then walks you through Google Search Console, Bing, and OG validation.
@@ -55,6 +57,7 @@ Configured via `editor.formatOnSave: true` in `.vscode/settings.json`. Requires 
 ├── prompts/
 │   ├── init.prompt.md             ← /init command (fills copilot-instructions + site.ts from context.md + brand.md)
 │   ├── tool.prompt.md             ← /tool command (creates content/tools/<slug>.json)
+│   ├── log.prompt.md              ← /log command (drafts a build log post from git history)
 │   ├── deps.prompt.md             ← /deps command (update checker)
 │   └── seo.prompt.md              ← /seo command (SEO audit + registration)
 ├── hooks/
