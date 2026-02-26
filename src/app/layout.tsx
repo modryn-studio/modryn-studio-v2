@@ -20,9 +20,14 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://modrynstudio.com"),
   title: "Modryn Studio",
   description:
     "Tools for people who don't have time for bad software. Fast, focused AI tools — built one at a time.",
+  icons: {
+    icon: "/icon.png",
+    apple: "/apple-icon.png",
+  },
   openGraph: {
     title: "Modryn Studio",
     description: "Tools for people who don't have time for bad software.",

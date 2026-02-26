@@ -5,7 +5,53 @@ agent: ask
 ---
 # SEO Launch Checklist
 
-Walk me through the SEO launch steps for this project. Check what already exists in the codebase and report what's missing, then guide me through the external steps I need to do manually.
+Walk me through the SEO launch steps for this project. First auto-generate any missing required files, then audit the full codebase, then guide me through the external steps I need to do manually.
+
+## Step 0: Auto-Generate Missing Files
+Before auditing, check for and CREATE the following files if they are absent:
+
+**`src/app/sitemap.ts`** — if missing, create it with this pattern:
+```ts
+import { MetadataRoute } from "next";
+import { getAllPosts } from "@/lib/log";
+import { getAllTools } from "@/lib/tools";
+
+const BASE_URL = "https://DOMAIN.com"; // replace with actual domain from layout.tsx
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  const posts = getAllPosts();
+  const tools = getAllTools();
+  const staticRoutes: MetadataRoute.Sitemap = [
+    { url: BASE_URL, lastModified: new Date(), changeFrequency: "weekly", priority: 1 },
+    // add remaining static routes from app/ directory
+  ];
+  const logRoutes = posts.map((post) => ({
+    url: `${BASE_URL}/log/${post.slug}`,
+    lastModified: new Date(post.date),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+  const toolRoutes = tools
+    .filter((t) => t.status === "live")
+    .map((t) => ({
+      url: `${BASE_URL}/tools/${t.slug}`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
+    }));
+  return [...staticRoutes, ...logRoutes, ...toolRoutes];
+}
+```
+
+**`public/robots.txt`** — if missing, create it:
+```
+User-agent: *
+Allow: /
+
+Sitemap: https://DOMAIN.com/sitemap.xml
+```
+
+Report which files were created vs already existed.
 
 ## Step 1: Code Audit
 Check the codebase for:
