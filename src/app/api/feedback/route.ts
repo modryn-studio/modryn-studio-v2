@@ -14,11 +14,12 @@ interface FeedbackBody {
 const VALID_TYPES: FeedbackType[] = ['newsletter', 'feedback', 'bug'];
 
 function buildHtml(body: FeedbackBody): string {
-  const heading = body.type === 'newsletter'
-    ? '📬 New Newsletter Signup'
-    : body.type === 'feedback'
-      ? '💬 New Feedback'
-      : '🐛 Bug Report';
+  const heading =
+    body.type === 'newsletter'
+      ? '📬 New Newsletter Signup'
+      : body.type === 'feedback'
+        ? '💬 New Feedback'
+        : '🐛 Bug Report';
 
   return `
     <div style="font-family: monospace; padding: 20px; max-width: 500px;">

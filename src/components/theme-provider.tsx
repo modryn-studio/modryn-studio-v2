@@ -1,14 +1,8 @@
-"use client";
+'use client';
 
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-  type ReactNode,
-} from "react";
+import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
 
-type Theme = "dark" | "light" | "system";
+type Theme = 'dark' | 'light' | 'system';
 
 interface ThemeContextValue {
   theme: Theme;
@@ -25,11 +19,11 @@ interface ThemeProviderProps {
 
 export function ThemeProvider({
   children,
-  defaultTheme = "system",
-  storageKey = "modryn-theme",
+  defaultTheme = 'system',
+  storageKey = 'modryn-theme',
 }: ThemeProviderProps) {
   const [theme, setThemeState] = useState<Theme>(() => {
-    if (typeof window !== "undefined") {
+    if (typeof window !== 'undefined') {
       return (localStorage.getItem(storageKey) as Theme) || defaultTheme;
     }
     return defaultTheme;
@@ -37,13 +31,12 @@ export function ThemeProvider({
 
   useEffect(() => {
     const root = window.document.documentElement;
-    root.classList.remove("light", "dark");
+    root.classList.remove('light', 'dark');
 
-    if (theme === "system") {
-      const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
-        .matches
-        ? "dark"
-        : "light";
+    if (theme === 'system') {
+      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
+        ? 'dark'
+        : 'light';
       root.classList.add(systemTheme);
       return;
     }
@@ -56,17 +49,13 @@ export function ThemeProvider({
     setThemeState(newTheme);
   };
 
-  return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
-      {children}
-    </ThemeContext.Provider>
-  );
+  return <ThemeContext.Provider value={{ theme, setTheme }}>{children}</ThemeContext.Provider>;
 }
 
 export function useTheme() {
   const context = useContext(ThemeContext);
   if (context === undefined) {
-    throw new Error("useTheme must be used within a ThemeProvider");
+    throw new Error('useTheme must be used within a ThemeProvider');
   }
   return context;
 }

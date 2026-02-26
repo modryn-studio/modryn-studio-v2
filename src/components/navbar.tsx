@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
-import { Sun, Moon, Menu, X } from "lucide-react";
-import { useTheme } from "@/components/theme-provider";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import { useState, useEffect } from 'react';
+import { Sun, Moon, Menu, X } from 'lucide-react';
+import { useTheme } from '@/components/theme-provider';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 export default function Navbar() {
   const { theme, setTheme } = useTheme();
@@ -17,29 +17,28 @@ export default function Navbar() {
   }, []);
 
   const resolvedTheme =
-    theme === "system"
-      ? typeof window !== "undefined" &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? "dark"
-        : "light"
+    theme === 'system'
+      ? typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches
+        ? 'dark'
+        : 'light'
       : theme;
 
   const toggleTheme = () => {
-    setTheme(resolvedTheme === "dark" ? "light" : "dark");
+    setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
   };
 
   const navLinks = [
-    { label: "Tools", href: "/tools" },
-    { label: "Log", href: "/log" },
-    { label: "About", href: "/about" },
+    { label: 'Tools', href: '/tools' },
+    { label: 'Log', href: '/log' },
+    { label: 'About', href: '/about' },
   ];
 
   return (
-    <nav className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
+    <nav className="border-border bg-background/80 sticky top-0 z-50 border-b backdrop-blur-md">
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-6">
         <Link
           href="/"
-          className="font-heading text-lg font-semibold tracking-tight text-foreground"
+          className="font-heading text-foreground text-lg font-semibold tracking-tight"
         >
           Modryn Studio
         </Link>
@@ -50,7 +49,7 @@ export default function Navbar() {
             <Link
               key={link.label}
               href={link.href}
-              className="px-3 py-2 font-mono text-sm text-muted-foreground transition-colors hover:text-foreground"
+              className="text-muted-foreground hover:text-foreground px-3 py-2 font-mono text-sm transition-colors"
             >
               {link.label}
             </Link>
@@ -59,11 +58,17 @@ export default function Navbar() {
             variant="ghost"
             size="icon"
             onClick={toggleTheme}
-            aria-label={mounted ? (resolvedTheme === "dark" ? "Switch to light mode" : "Switch to dark mode") : "Toggle theme"}
+            aria-label={
+              mounted
+                ? resolvedTheme === 'dark'
+                  ? 'Switch to light mode'
+                  : 'Switch to dark mode'
+                : 'Toggle theme'
+            }
             className="ml-2 h-9 w-9"
           >
             {mounted ? (
-              resolvedTheme === "dark" ? (
+              resolvedTheme === 'dark' ? (
                 <Sun className="h-4 w-4" />
               ) : (
                 <Moon className="h-4 w-4" />
@@ -73,7 +78,7 @@ export default function Navbar() {
             )}
           </Button>
           <Link href="/#signup">
-            <Button className="ml-2 rounded-none bg-amber text-white font-mono text-sm hover:bg-amber/90">
+            <Button className="bg-amber hover:bg-amber/90 ml-2 rounded-none font-mono text-sm text-white">
               Get Updates
             </Button>
           </Link>
@@ -85,11 +90,17 @@ export default function Navbar() {
             variant="ghost"
             size="icon"
             onClick={toggleTheme}
-            aria-label={mounted ? (resolvedTheme === "dark" ? "Switch to light mode" : "Switch to dark mode") : "Toggle theme"}
+            aria-label={
+              mounted
+                ? resolvedTheme === 'dark'
+                  ? 'Switch to light mode'
+                  : 'Switch to dark mode'
+                : 'Toggle theme'
+            }
             className="h-9 w-9"
           >
             {mounted ? (
-              resolvedTheme === "dark" ? (
+              resolvedTheme === 'dark' ? (
                 <Sun className="h-4 w-4" />
               ) : (
                 <Moon className="h-4 w-4" />
@@ -102,34 +113,30 @@ export default function Navbar() {
             variant="ghost"
             size="icon"
             onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+            aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={mobileOpen}
             className="h-9 w-9"
           >
-            {mobileOpen ? (
-              <X className="h-4 w-4" />
-            ) : (
-              <Menu className="h-4 w-4" />
-            )}
+            {mobileOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
           </Button>
         </div>
       </div>
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="border-t border-border bg-background px-6 py-4 md:hidden">
+        <div className="border-border bg-background border-t px-6 py-4 md:hidden">
           {navLinks.map((link) => (
             <Link
               key={link.label}
               href={link.href}
               onClick={() => setMobileOpen(false)}
-              className="block py-2 font-mono text-sm text-muted-foreground transition-colors hover:text-foreground"
+              className="text-muted-foreground hover:text-foreground block py-2 font-mono text-sm transition-colors"
             >
               {link.label}
             </Link>
           ))}
           <Link href="/#signup" onClick={() => setMobileOpen(false)}>
-            <Button className="mt-3 w-full rounded-none bg-amber text-white font-mono text-sm hover:bg-amber/90">
+            <Button className="bg-amber hover:bg-amber/90 mt-3 w-full rounded-none font-mono text-sm text-white">
               Get Updates
             </Button>
           </Link>
