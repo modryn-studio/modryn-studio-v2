@@ -4,6 +4,15 @@ import { Badge } from '@/components/ui/badge';
 import { getAllTools, type ToolStatus } from '@/lib/tools';
 import { Wrench, Rocket, FlaskConical, Clock } from 'lucide-react';
 
+function formatLaunchDate(iso: string): string {
+  return new Intl.DateTimeFormat('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+    timeZone: 'UTC',
+  }).format(new Date(iso));
+}
+
 export const metadata: Metadata = {
   title: 'Tools — Modryn Studio',
   description: 'All tools from Modryn Studio — live, beta, and coming soon.',
@@ -74,6 +83,25 @@ export default function ToolsPage() {
                 <p className="text-muted-foreground mt-2 font-mono text-sm leading-relaxed">
                   {tool.description}
                 </p>
+
+                {tool.screenshotUrl && (
+                  <div className="border-border mt-4 overflow-hidden border">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={tool.screenshotUrl}
+                      alt={`${tool.name} preview`}
+                      className="w-full object-cover"
+                      width={400}
+                      height={225}
+                    />
+                  </div>
+                )}
+
+                {tool.launchedAt && (
+                  <p className="text-muted-foreground mt-4 font-mono text-xs">
+                    Shipped {formatLaunchDate(tool.launchedAt)}
+                  </p>
+                )}
               </Link>
             );
           })}

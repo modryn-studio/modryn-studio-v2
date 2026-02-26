@@ -12,6 +12,12 @@ export interface Tool {
   status: ToolStatus;
   url?: string;
   icon?: string;
+  /** Public URL to a screenshot or preview image */
+  screenshotUrl?: string;
+  /** ISO date string (YYYY-MM-DD) — when the tool shipped */
+  launchedAt?: string;
+  /** Slug of the /log post that documented this build */
+  logSlug?: string;
 }
 
 const TOOLS_DIR = path.join(process.cwd(), 'content', 'tools');

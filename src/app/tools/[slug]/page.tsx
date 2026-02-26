@@ -6,6 +6,15 @@ import { Button } from '@/components/ui/button';
 import { getToolBySlug, getAllTools, type ToolStatus } from '@/lib/tools';
 import { ArrowLeft, ExternalLink } from 'lucide-react';
 
+function formatLaunchDate(iso: string): string {
+  return new Intl.DateTimeFormat('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+    timeZone: 'UTC',
+  }).format(new Date(iso));
+}
+
 type Props = {
   params: Promise<{ slug: string }>;
 };
@@ -81,6 +90,25 @@ export default async function ToolPage({ params }: Props) {
           {tool.description}
         </p>
 
+        {tool.launchedAt && (
+          <p className="text-muted-foreground mt-2 font-mono text-xs">
+            Shipped {formatLaunchDate(tool.launchedAt)}
+          </p>
+        )}
+
+        {tool.screenshotUrl && (
+          <div className="border-border mt-8 overflow-hidden border">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={tool.screenshotUrl}
+              alt={`${tool.name} screenshot`}
+              className="w-full object-cover"
+              width={900}
+              height={506}
+            />
+          </div>
+        )}
+
         {tool.status === 'live' && tool.url && (
           <a href={tool.url} target="_blank" rel="noopener noreferrer">
             <Button className="bg-amber hover:bg-amber/90 mt-8 rounded-none px-6 font-mono text-sm text-white">
@@ -99,6 +127,17 @@ export default async function ToolPage({ params }: Props) {
               </Link>{' '}
               to get notified when it launches.
             </p>
+          </div>
+        )}
+
+        {tool.logSlug && (
+          <div className="mt-8">
+            <Link
+              href={`/log/${tool.logSlug}`}
+              className="text-muted-foreground hover:text-foreground font-mono text-sm transition-colors"
+            >
+              Read the build →
+            </Link>
           </div>
         )}
       </div>
