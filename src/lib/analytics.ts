@@ -23,4 +23,5 @@ function track(eventName: string, props?: EventProps): void {
 export const analytics = {
   track,
   newsletterSignup: () => track('newsletter_signup'),
+  feedbackSubmit: () => track('feedback_submit'),
 };

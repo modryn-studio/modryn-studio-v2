@@ -10,6 +10,7 @@ interface FeedbackBody {
   type: FeedbackType;
   email: string;
   message?: string;
+  page?: string;
 }
 
 const VALID_TYPES: FeedbackType[] = ['newsletter', 'feedback', 'bug'];
@@ -27,6 +28,7 @@ function buildHtml(body: FeedbackBody): string {
       <h2 style="margin: 0 0 16px;">${heading}</h2>
       <p><strong>Email:</strong> ${body.email}</p>
       ${body.message ? `<p><strong>Message:</strong><br/>${body.message}</p>` : ''}
+      ${body.page ? `<p><strong>Page:</strong> ${body.page}</p>` : ''}
       <hr style="margin: 16px 0; border: 1px solid #333;" />
       <p style="color: #666; font-size: 12px;">Sent from modrynstudio.com</p>
     </div>

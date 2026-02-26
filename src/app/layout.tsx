@@ -4,6 +4,7 @@ import { ThemeProvider } from '@/components/theme-provider';
 import { Analytics } from '@vercel/analytics/react';
 import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
+import FeedbackWidget from '@/components/feedback-widget';
 import Script from 'next/script';
 import { site } from '@/config/site';
 import { SiteSchema } from '@/components/site-schema';
@@ -59,6 +60,7 @@ export default function RootLayout({
             <Navbar />
             <main className="flex-1">{children}</main>
             <Footer />
+            <FeedbackWidget />
           </div>
           <Analytics />
         </ThemeProvider>
