@@ -1,0 +1,70 @@
+---
+title: Why every tool I build will be local-first
+date: 2026-02-27
+tag: philosophy
+---
+
+I spent last night writing a manifesto that boils down to one line:
+
+**Your prompts never leave your device.**
+
+Not a promise. An architectural guarantee. The app runs on your machine.
+API calls go directly from your browser to the AI provider. My server
+only touches the billing layer. I never see your content.
+
+Here's why this matters and why I think the current model is broken.
+
+## The gatekeeping problem
+
+Want to try an AI tool? Create an account. Verify your email. Pick a plan.
+Enter your credit card. Now you're locked in — paying $15/month whether you
+use it once or a hundred times, getting promo emails you never asked for,
+with your prompts stored on servers you can't audit.
+
+That's not a product. That's a trap dressed up as a product.
+
+## What I'm building instead
+
+**No accounts.** You open the tool and use it. No username, no password,
+no "sign up to continue."
+
+**No subscriptions.** Pay for what you use, when you use it. Prepaid
+credits. Top up when you want, stop when you want. Like a transit card —
+not a gym membership.
+
+**No data harvesting.** I don't store, log, or mine your inputs. My backend
+handles credit deduction. The content of what you're asking bypasses me
+entirely.
+
+## The business model
+
+I'm a utility reseller. AI providers are the power generators — I buy
+wholesale tokens, sell retail. The margin between what I pay per token and
+what I charge is the business. Simple, transparent, scales with usage.
+
+Free trial on launch. Rate-limited, using my API key, so you can experience
+the tool with zero friction. When you want more, you buy credits through
+a one-time Stripe payment. No account created. No subscription initiated.
+
+## Where this goes
+
+In five years, on-device inference will handle most everyday AI tasks. The
+cloud API becomes reserved for heavy lifting. When that happens, "your
+prompts never leave your device" becomes even more true — and my costs
+drop because I'm not paying for API calls.
+
+The account-per-tool model will feel as outdated as remembering your AOL
+login. Device-level identity and native payment rails will replace it.
+
+I want to be building for that future. Starting now.
+
+## First up: SpecifyThat
+
+[SpecifyThat](https://specifythat.com) is the first tool getting rebuilt
+with this philosophy. Today it's a server-side app where my API routes
+see every prompt. The rebuild flips that: API routes become thin proxies
+that forward to OpenAI without logging or storing what you send. My server
+never writes your prompt to a database or a log. Same tool, fundamentally
+different architecture.
+
+More on that soon.

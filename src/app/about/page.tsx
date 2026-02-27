@@ -71,6 +71,31 @@ export default function AboutPage() {
           </div>
         </section>
 
+        {/* Section — How I Think About Your Data */}
+        <section>
+          <h2 className="font-heading text-foreground text-xl font-semibold">
+            How I Think About Your Data
+          </h2>
+          <div className="mt-4 space-y-4 font-mono">
+            <p>
+              Most tools want your email before you can try them. Then a password. Then a plan.
+              Then a credit card. Now you&apos;re locked in, getting promo emails, paying
+              whether you use it or not.
+            </p>
+            <p>I think that&apos;s lazy product design dressed up as a business model.</p>
+            <p>
+              I&apos;m building the opposite: tools that run on your device, don&apos;t require
+              an account, don&apos;t store your data on my servers, and charge you only for what
+              you actually use. No subscriptions. No lock-in. No dark patterns.
+            </p>
+            <p>
+              When you use one of my tools, your input stays on your machine. I handle billing.
+              That&apos;s it. I don&apos;t want your prompts. I don&apos;t want your data.
+              I want to build something good enough that you come back because you want to.
+            </p>
+          </div>
+        </section>
+
         {/* Section 3 */}
         <section>
           <h2 className="font-heading text-foreground text-xl font-semibold">The Model</h2>
@@ -81,6 +106,11 @@ export default function AboutPage() {
               AI-assisted development means I can move at a speed that wasn&apos;t possible two
               years ago. I use that speed advantage to take more bets, learn faster, and get more
               shots at building something people actually care about.
+            </p>
+            <p>
+              The business model is simple: pay for what you use, like electricity. No monthly
+              subscription. No &quot;cancel anytime&quot; fine print. Top up when you want, stop
+              when you want. My tools cost what they cost to run, plus a margin. That&apos;s it.
             </p>
             <p>
               It&apos;s a numbers game. I know most ideas won&apos;t land. The ones that do will

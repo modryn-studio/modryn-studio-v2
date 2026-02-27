@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 
-export type LogTag = 'launch' | 'build' | 'killed' | 'milestone' | 'learning';
+export type LogTag = 'launch' | 'build' | 'killed' | 'milestone' | 'learning' | 'meta' | 'philosophy';
 
 export interface LogPost {
   slug: string;
