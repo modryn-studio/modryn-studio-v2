@@ -45,6 +45,11 @@ export const metadata: Metadata = {
     description: site.ogDescription,
     images: ['/og-image.png'],
   },
+  alternates: {
+    types: {
+      'application/rss+xml': [{ url: '/feed.xml', title: `${site.name} — Build Log` }],
+    },
+  },
 };
 
 export default function RootLayout({

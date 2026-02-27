@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
 import { getPostBySlug, getAllPosts } from '@/lib/log';
+import { ShareButtons } from '@/components/share-buttons';
 import { ArrowLeft } from 'lucide-react';
 
 type Props = {
@@ -104,6 +105,8 @@ export default async function LogPostPage({ params }: Props) {
             {post.content}
           </ReactMarkdown>
         </div>
+
+        <ShareButtons title={post.title} slug={post.slug} />
       </article>
     </div>
   );
