@@ -31,6 +31,8 @@ Usage: switch to Agent mode, then type:
 
 **`/seo`** — Pre-launch SEO checklist. Auto-generates missing SEO files, then walks you through Google Search Console, Bing, and OG validation.
 
+**`/social`** — Write ready-to-paste social copy for a log post or tool launch. Attach the MDX or tool JSON file, then run `/social`. Outputs X, Reddit (with flair selection + reason), shipordie.club (tool launches only), and a dev.to reminder. Uses your voice rules and brand guidelines automatically.
+
 Usage: type any slash command in chat.
 
 ## Hooks (auto-runs after edits)
@@ -58,7 +60,8 @@ Configured via `editor.formatOnSave: true` in `.vscode/settings.json`. Requires 
 │   ├── tool.prompt.md             ← /tool command (creates or updates content/tools/<slug>.json; cross-repo PR if outside modryn-studio-v2)
 │   ├── log.prompt.md              ← /log command (drafts a build log post from git history)
 │   ├── deps.prompt.md             ← /deps command (update checker)
-│   └── seo.prompt.md              ← /seo command (SEO audit + registration)
+│   ├── seo.prompt.md              ← /seo command (SEO audit + registration)
+│   └── social.prompt.md           ← /social command (write X, Reddit, shipordie.club copy for a post or tool launch)
 ├── hooks/
 │   └── post-edit-format.json      ← Legacy hook file (Claude Code format — not used by VS Code)
 .vscode/
