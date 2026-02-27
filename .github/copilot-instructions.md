@@ -126,6 +126,7 @@ Convert → "I don't want to miss the next one"
 - Ship one killer feature, not ten mediocre ones
 - Instrument analytics before features — data from day one
 - Onboard users to value in under 2 minutes
+- **Local-first by default** — no accounts, no data stored server-side, pay only when you use it. This is a brand-level commitment across every product, not a feature toggle.
 
 ## Positioning Decision: AI
 Do NOT lead with "AI" in copy or headlines. The backlash is real and targets AI hype, not useful tools. Lead with outcomes and the user's problem. AI is an implementation detail, not a selling point.
@@ -134,7 +135,18 @@ Do NOT lead with "AI" in copy or headlines. The backlash is real and targets AI 
 - ❌ "AI-powered", "AI-first", "built with AI"
 Products use AI internally. The marketing never needs to say so.
 
+## Distribution Infrastructure
+- `/feed.xml` — RSS feed of all log posts, auto-polled by dev.to (posts land as drafts, publish manually)
+- `/social` prompt — generates X, Reddit, and shipordie.club copy from any log post or tool JSON. Run it here after merging a PR from another repo.
+- Share buttons on every log post (X, Reddit, HN, copy link)
+
 ## Active Products
+
+**SpecifyThat** (`modryn-studio/specifythat`)
+- Spec generator — 13 questions, build-ready spec in under 60 seconds
+- v1 live; v2 rebuild in progress (7 GitHub issues, sequential)
+- v2 decisions: OpenAI proxy pattern (never log prompts), localStorage persistence (VersionedStorage), IP rate limiting (free trial), Stripe deferred until >20% users hit limits
+- Site entry: `content/tools/specifythat.json`, status: `"building"`
 
 **Trend Detector** (`modryn-studio/trend-detector`)
 - Private Python pipeline — runs locally, not yet public
