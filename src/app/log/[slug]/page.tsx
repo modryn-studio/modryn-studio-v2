@@ -4,6 +4,7 @@ import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
 import { getPostBySlug, getAllPosts } from '@/lib/log';
 import { ShareButtons } from '@/components/share-buttons';
+import EmailSignupInline from '@/components/email-signup-inline';
 import { ArrowLeft } from 'lucide-react';
 
 type Props = {
@@ -22,10 +23,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: `${post.title} — Modryn Studio`,
-    description: `Build log: ${post.title}`,
+    description: post.description,
     openGraph: {
       title: `${post.title} — Modryn Studio`,
-      description: `Build log: ${post.title}`,
+      description: post.description,
       url: `https://modrynstudio.com/log/${slug}`,
       siteName: 'Modryn Studio',
       type: 'article',
@@ -65,13 +66,17 @@ export default async function LogPostPage({ params }: Props) {
           <ReactMarkdown
             components={{
               h2: ({ children }) => (
-                <h2 className="font-heading mt-10 mb-3 text-xl font-bold tracking-tight">{children}</h2>
+                <h2 className="font-heading mt-10 mb-3 text-xl font-bold tracking-tight">
+                  {children}
+                </h2>
               ),
               h3: ({ children }) => (
                 <h3 className="font-heading mt-8 mb-2 text-lg font-semibold">{children}</h3>
               ),
               p: ({ children }) => (
-                <p className="text-foreground/80 mb-4 font-mono text-sm leading-relaxed">{children}</p>
+                <p className="text-foreground/80 mb-4 font-mono text-sm leading-relaxed">
+                  {children}
+                </p>
               ),
               strong: ({ children }) => (
                 <strong className="text-foreground font-semibold">{children}</strong>
@@ -81,20 +86,26 @@ export default async function LogPostPage({ params }: Props) {
                   href={href}
                   target={href?.startsWith('http') ? '_blank' : undefined}
                   rel={href?.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  className="text-amber underline underline-offset-2 hover:opacity-80 transition-opacity"
+                  className="text-amber underline underline-offset-2 transition-opacity hover:opacity-80"
                 >
                   {children}
                 </a>
               ),
               ul: ({ children }) => (
-                <ul className="text-foreground/80 mb-4 ml-4 list-disc font-mono text-sm leading-relaxed">{children}</ul>
+                <ul className="text-foreground/80 mb-4 ml-4 list-disc font-mono text-sm leading-relaxed">
+                  {children}
+                </ul>
               ),
               ol: ({ children }) => (
-                <ol className="text-foreground/80 mb-4 ml-4 list-decimal font-mono text-sm leading-relaxed">{children}</ol>
+                <ol className="text-foreground/80 mb-4 ml-4 list-decimal font-mono text-sm leading-relaxed">
+                  {children}
+                </ol>
               ),
               li: ({ children }) => <li className="mb-1">{children}</li>,
               blockquote: ({ children }) => (
-                <blockquote className="border-amber border-l-2 pl-4 italic opacity-70 my-4">{children}</blockquote>
+                <blockquote className="border-amber my-4 border-l-2 pl-4 italic opacity-70">
+                  {children}
+                </blockquote>
               ),
               code: ({ children }) => (
                 <code className="bg-muted rounded px-1 py-0.5 font-mono text-xs">{children}</code>
@@ -107,6 +118,7 @@ export default async function LogPostPage({ params }: Props) {
         </div>
 
         <ShareButtons title={post.title} slug={post.slug} />
+        <EmailSignupInline />
       </article>
     </div>
   );

@@ -1,5 +1,7 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import type { Metadata } from 'next';
+import EmailSignupInline from '@/components/email-signup-inline';
 
 export const metadata: Metadata = {
   title: 'About — Modryn Studio',
@@ -19,12 +21,24 @@ export default function AboutPage() {
   return (
     <div className="mx-auto max-w-3xl px-6 py-24">
       {/* Header */}
-      <h1 className="font-heading text-4xl font-bold tracking-tighter sm:text-5xl">
-        I&apos;m Luke. I build tools for people who don&apos;t have time for bad software.
-      </h1>
-      <p className="text-muted-foreground mt-4 font-mono text-sm">
-        One person. Wisconsin. Shipping anyway.
-      </p>
+      <div className="flex flex-col gap-8 sm:flex-row sm:items-start sm:gap-12">
+        <Image
+          src="/luke.png"
+          alt="Luke"
+          width={96}
+          height={96}
+          className="border-border h-24 w-24 shrink-0 rounded-none border-2 object-cover grayscale"
+          priority
+        />
+        <div>
+          <h1 className="font-heading text-4xl font-bold tracking-tighter sm:text-5xl">
+            I&apos;m Luke. I build tools for people who don&apos;t have time for bad software.
+          </h1>
+          <p className="text-muted-foreground mt-4 font-mono text-sm">
+            One person. Wisconsin. Shipping anyway.
+          </p>
+        </div>
+      </div>
 
       <div className="text-foreground/80 mt-16 space-y-16 text-sm leading-relaxed">
         {/* Section 1 */}
@@ -78,20 +92,20 @@ export default function AboutPage() {
           </h2>
           <div className="mt-4 space-y-4 font-mono">
             <p>
-              Most tools want your email before you can try them. Then a password. Then a plan.
-              Then a credit card. Now you&apos;re locked in, getting promo emails, paying
-              whether you use it or not.
+              Most tools want your email before you can try them. Then a password. Then a plan. Then
+              a credit card. Now you&apos;re locked in, getting promo emails, paying whether you use
+              it or not.
             </p>
             <p>I think that&apos;s lazy product design dressed up as a business model.</p>
             <p>
-              I&apos;m building the opposite: tools that run on your device, don&apos;t require
-              an account, don&apos;t store your data on my servers, and charge you only for what
-              you actually use. No subscriptions. No lock-in. No dark patterns.
+              I&apos;m building the opposite: tools that run on your device, don&apos;t require an
+              account, don&apos;t store your data on my servers, and charge you only for what you
+              actually use. No subscriptions. No lock-in. No dark patterns.
             </p>
             <p>
               When you use one of my tools, your input stays on your machine. I handle billing.
-              That&apos;s it. I don&apos;t want your prompts. I don&apos;t want your data.
-              I want to build something good enough that you come back because you want to.
+              That&apos;s it. I don&apos;t want your prompts. I don&apos;t want your data. I want to
+              build something good enough that you come back because you want to.
             </p>
           </div>
         </section>
@@ -169,13 +183,8 @@ export default function AboutPage() {
           >
             Read the log →
           </Link>
-          <Link
-            href="/#signup"
-            className="hover:text-foreground underline underline-offset-4 transition-colors"
-          >
-            Get notified →
-          </Link>
         </div>
+        <EmailSignupInline />
       </div>
     </div>
   );

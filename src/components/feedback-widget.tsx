@@ -75,9 +75,7 @@ export default function FeedbackWidget() {
         <div className="border-border bg-background w-72 border-2 shadow-xl">
           {/* Header */}
           <div className="border-border flex items-center justify-between border-b px-4 py-3">
-            <span className="font-mono text-xs font-bold tracking-widest uppercase">
-              Feedback
-            </span>
+            <span className="font-mono text-xs font-bold tracking-widest uppercase">Feedback</span>
             <button
               onClick={close}
               className="text-muted-foreground hover:text-foreground -mr-1 p-1 transition-colors"
@@ -98,10 +96,10 @@ export default function FeedbackWidget() {
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   onKeyDown={handleKeyDown}
-                  placeholder="What are you building? What's broken? What's missing?"
+                  placeholder="What's broken? What's missing? What do you need?"
                   disabled={state === 'submitting'}
                   rows={4}
-                  className="border-border placeholder:text-muted-foreground focus:border-amber w-full resize-none border bg-transparent p-3 font-mono text-sm outline-none transition-colors disabled:opacity-50"
+                  className="border-border placeholder:text-muted-foreground focus:border-amber w-full resize-none border bg-transparent p-3 font-mono text-sm transition-colors outline-none disabled:opacity-50"
                 />
                 <input
                   type="email"
@@ -110,7 +108,7 @@ export default function FeedbackWidget() {
                   onKeyDown={handleKeyDown}
                   placeholder="Email (optional — for a reply)"
                   disabled={state === 'submitting'}
-                  className="border-border placeholder:text-muted-foreground focus:border-amber mt-2 w-full border bg-transparent p-3 font-mono text-xs outline-none transition-colors disabled:opacity-50"
+                  className="border-border placeholder:text-muted-foreground focus:border-amber mt-2 w-full border bg-transparent p-3 font-mono text-xs transition-colors outline-none disabled:opacity-50"
                 />
                 {error && <p className="text-destructive mt-2 font-mono text-xs">{error}</p>}
                 <div className="mt-3 flex justify-end">

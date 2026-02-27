@@ -2,14 +2,36 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 
-export type LogTag = 'launch' | 'build' | 'killed' | 'milestone' | 'learning' | 'meta' | 'philosophy';
+export type LogTag =
+  | 'launch'
+  | 'build'
+  | 'killed'
+  | 'milestone'
+  | 'learning'
+  | 'meta'
+  | 'philosophy';
 
 export interface LogPost {
   slug: string;
   title: string;
   date: string;
   tag: LogTag;
+  description: string;
   content: string;
+}
+
+/** Pull first ~160 chars of plain text from markdown content as a fallback description. */
+function excerptFromContent(content: string): string {
+  const plain = content
+    .replace(/^#+\s+.+$/gm, '') // strip headings
+    .replace(/\*\*(.+?)\*\*/g, '$1') // strip bold
+    .replace(/\*(.+?)\*/g, '$1') // strip italic
+    .replace(/`(.+?)`/g, '$1') // strip inline code
+    .replace(/\[(.+?)\]\(.+?\)/g, '$1') // strip links
+    .replace(/^[-*>]\s+/gm, '') // strip list/blockquote markers
+    .trim();
+  const first = plain.split('\n').filter(Boolean)[0] ?? '';
+  return first.length > 160 ? first.slice(0, 157) + '...' : first;
 }
 
 const LOG_DIR = path.join(process.cwd(), 'content', 'log');
@@ -28,6 +50,7 @@ export function getAllPosts(): LogPost[] {
       title: data.title ?? filename,
       date: data.date instanceof Date ? data.date.toISOString().slice(0, 10) : (data.date ?? ''),
       tag: data.tag ?? 'build',
+      description: data.description ?? excerptFromContent(content),
       content,
     } as LogPost;
   });
@@ -48,6 +71,7 @@ export function getPostBySlug(slug: string): LogPost | null {
     title: data.title ?? slug,
     date: data.date instanceof Date ? data.date.toISOString().slice(0, 10) : (data.date ?? ''),
     tag: data.tag ?? 'build',
+    description: data.description ?? excerptFromContent(content),
     content,
   };
 }

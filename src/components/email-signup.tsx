@@ -43,7 +43,7 @@ export default function EmailSignup() {
     <section id="signup" className="border-border border-t">
       <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
         <div className="mx-auto max-w-lg text-center">
-          <h2 className="font-heading text-3xl font-semibold tracking-tight md:text-5xl">
+          <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl">
             Don&apos;t miss the drop.
           </h2>
           <p className="text-muted-foreground mt-4 font-mono text-sm md:text-base">
