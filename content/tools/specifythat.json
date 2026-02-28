@@ -1,8 +1,8 @@
 {
   "name": "SpecifyThat",
-  "description": "Turn a vague idea into a build-ready spec in under 30 minutes. 13 targeted questions, AI gap-filling when you don't know an answer, copy-ready output for Cursor, Copilot, or whatever you build with.",
-  "status": "beta",
+  "description": "Get the context file your AI coding tool needs — describe your idea, answer a few questions, download in 60 seconds.",
+  "status": "live",
   "url": "https://specifythat.com",
-  "launchedAt": "2025-12-13",
+  "launchedAt": "2026-02-28",
   "logSlug": "2026-02-26-specifythat"
 }
