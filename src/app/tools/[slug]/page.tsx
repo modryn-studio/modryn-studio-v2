@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { getToolBySlug, getAllTools, type ToolStatus } from '@/lib/tools';
+import { ToolScreenshot } from '@/components/tool-screenshot';
 import { ArrowLeft, ExternalLink } from 'lucide-react';
 
 function formatLaunchDate(iso: string): string {
@@ -98,9 +99,9 @@ export default async function ToolPage({ params }: Props) {
 
         {tool.screenshotUrl && (
           <div className="border-border mt-8 overflow-hidden border">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={tool.screenshotUrl}
+            <ToolScreenshot
+              lightUrl={tool.screenshotUrl}
+              darkUrl={tool.screenshotUrlDark}
               alt={`${tool.name} screenshot`}
               className="w-full object-cover"
               width={900}
@@ -136,7 +137,7 @@ export default async function ToolPage({ params }: Props) {
               href={`/log/${tool.logSlug}`}
               className="text-muted-foreground hover:text-foreground font-mono text-sm transition-colors"
             >
-              Read the build →
+              Read the build &rarr;
             </Link>
           </div>
         )}

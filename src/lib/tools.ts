@@ -12,8 +12,10 @@ export interface Tool {
   status: ToolStatus;
   url?: string;
   icon?: string;
-  /** Public URL to a screenshot or preview image */
+  /** Public URL to a light-mode screenshot or preview image */
   screenshotUrl?: string;
+  /** Public URL to a dark-mode screenshot (falls back to screenshotUrl if absent) */
+  screenshotUrlDark?: string;
   /** ISO date string (YYYY-MM-DD) — when the tool shipped */
   launchedAt?: string;
   /** Slug of the /log post that documented this build */

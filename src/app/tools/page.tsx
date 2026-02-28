@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
 import { getAllTools, type ToolStatus } from '@/lib/tools';
+import { ToolScreenshot } from '@/components/tool-screenshot';
 import { Wrench, Rocket, FlaskConical, Clock } from 'lucide-react';
 
 function formatLaunchDate(iso: string): string {
@@ -86,9 +87,9 @@ export default function ToolsPage() {
 
                 {tool.screenshotUrl && (
                   <div className="border-border mt-4 overflow-hidden border">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={tool.screenshotUrl}
+                    <ToolScreenshot
+                      lightUrl={tool.screenshotUrl}
+                      darkUrl={tool.screenshotUrlDark}
                       alt={`${tool.name} preview`}
                       className="w-full object-cover"
                       width={400}
