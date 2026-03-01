@@ -2,11 +2,11 @@
 
 ## Modes (built into VS Code)
 
-| Mode | When to use | How |
-|------|-------------|-----|
-| **Ask** | Quick questions about your codebase | Chat → select "Ask" |
-| **Plan** | Blueprint a feature before building | Chat → select "Plan" |
-| **Agent** | Build, edit files, run commands | Chat → select "Agent" |
+| Mode      | When to use                         | How                   |
+| --------- | ----------------------------------- | --------------------- |
+| **Ask**   | Quick questions about your codebase | Chat → select "Ask"   |
+| **Plan**  | Blueprint a feature before building | Chat → select "Plan"  |
+| **Agent** | Build, edit files, run commands     | Chat → select "Agent" |
 
 Open chat: `Ctrl+Alt+I`
 
@@ -15,6 +15,7 @@ Open chat: `Ctrl+Alt+I`
 **`@check`** — Pre-ship quality gate. Checks for bugs → scans → fixes → lints → builds → commits. Never pushes.
 
 Usage: switch to Agent mode, then type:
+
 ```
 @check
 ```
