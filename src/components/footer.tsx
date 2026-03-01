@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Github } from 'lucide-react';
 import { FeedbackTrigger } from '@/components/feedback-trigger';
+import { site } from '@/config/site';
 
 const XIcon = () => (
   <svg viewBox="0 0 24 24" className="h-4 w-4 fill-current" aria-hidden="true">
@@ -40,7 +41,7 @@ export default function Footer() {
                 Modryn Studio
               </span>
             </Link>
-            <p className="text-muted-foreground max-w-[220px] font-mono text-xs leading-relaxed">
+            <p className="text-muted-foreground max-w-55 font-mono text-xs leading-relaxed">
               Built by Luke. Paid for by a day job. Shipping anyway.
             </p>
           </div>
@@ -73,7 +74,7 @@ export default function Footer() {
             {/* Social */}
             <div className="flex items-center gap-4">
               <a
-                href="https://github.com/modryn-studio"
+                href={site.social.github}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub"
@@ -82,7 +83,7 @@ export default function Footer() {
                 <Github className="h-4 w-4" />
               </a>
               <a
-                href="https://x.com/lukehanner"
+                href={site.social.twitter}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="X (Twitter)"

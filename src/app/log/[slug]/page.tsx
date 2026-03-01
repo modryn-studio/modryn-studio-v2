@@ -30,8 +30,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url: `https://modrynstudio.com/log/${slug}`,
       siteName: 'Modryn Studio',
       type: 'article',
-      images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Modryn Studio' }],
     },
+    authors: [{ name: 'Luke Hanner', url: 'https://modrynstudio.com/about' }],
     twitter: {
       card: 'summary_large_image',
     },

@@ -16,4 +16,12 @@ export const site = {
   // Brand colors — used in manifest theme_color / background_color
   accent: '#F97415',
   bg: '#050505',
+  // Social profiles — used in footer links and Twitter card metadata
+  social: {
+    twitter: 'https://x.com/lukehanner',
+    twitterHandle: '@lukehanner',
+    github: 'https://github.com/modryn-studio',
+    devto: 'https://dev.to/lukehanner',
+    shipordie: 'https://shipordie.club/lukehanner',
+  },
 } as const;

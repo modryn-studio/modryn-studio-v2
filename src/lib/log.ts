@@ -2,14 +2,9 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 
-export type LogTag =
-  | 'launch'
-  | 'build'
-  | 'killed'
-  | 'milestone'
-  | 'learning'
-  | 'meta'
-  | 'philosophy';
+// Tags are free-form project slugs or category names (e.g. 'modryn-studio', 'specifythat', 'meta').
+// No fixed union — new tools and projects can use their own slug without a type change here.
+export type LogTag = string;
 
 export interface LogPost {
   slug: string;

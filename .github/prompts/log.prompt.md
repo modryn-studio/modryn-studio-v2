@@ -17,6 +17,7 @@ Run `git log --oneline -20` in the terminal to get the last 20 commits.
 Read one existing file from `content/log/` to understand the MDX frontmatter format and writing style.
 
 Draft a new MDX file in `content/log/`:
+
 - Filename: `YYYY-MM-DD-[slug].mdx` — use today's date, slug derived from the topic
 - Frontmatter:
   ```
@@ -24,13 +25,16 @@ Draft a new MDX file in `content/log/`:
   title: ""
   date: "YYYY-MM-DD"
   tag: ""
+  description: ""
   ---
   ```
-  The `tag` field must be the project slug — used for filtering on /log later. Use one of:
-  - `modryn-studio` — posts about modrynstudio.com itself
-  - `meta` — process, workflow, how-I-work posts (not project-specific)
-  - the tool or project slug (e.g. `project-loom`, `trend-detector`) — for anything else
-  Ask Luke which tag to use if it isn't obvious from context.
+
+  - `tag` — the project slug, used for filtering on /log and in OG image cards. Use one of:
+    - `modryn-studio` — posts about modrynstudio.com itself
+    - `meta` — process, workflow, how-I-work posts (not project-specific)
+    - the tool or project slug (e.g. `specifythat`, `trend-detector`) — for anything else
+      Ask Luke which tag to use if it isn't obvious from context.
+  - `description` — one sentence (under 160 chars). Used in `<meta description>` and social card preview text. Write it as a plain-English summary of what this post covers, not a headline.
 - Post body:
 
   **What shipped** — bullet list of the 3–5 most significant things, written as human outcomes. Not "feat: add X" but "X is now live".

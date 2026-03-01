@@ -33,6 +33,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${tool.name} — Modryn Studio`,
     description: tool.description,
+    alternates: {
+      canonical: `https://modrynstudio.com/tools/${slug}`,
+    },
     openGraph: {
       title: `${tool.name} — Modryn Studio`,
       description: tool.description,

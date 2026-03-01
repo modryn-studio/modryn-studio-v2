@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Link2, Check } from 'lucide-react';
 import { cn } from '@/lib/cn';
 import { site } from '@/config/site';
+import { analytics } from '@/lib/analytics';
 
 interface ShareButtonsProps {
   title: string;
@@ -20,6 +21,7 @@ export function ShareButtons({ title, slug }: ShareButtonsProps) {
   const handleCopy = async () => {
     await navigator.clipboard.writeText(url);
     setCopied(true);
+    analytics.shareClick({ platform: 'copy', slug });
     setTimeout(() => setCopied(false), 2000);
   };
 
@@ -50,6 +52,7 @@ export function ShareButtons({ title, slug }: ShareButtonsProps) {
           href={href}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => analytics.shareClick({ platform: label, slug })}
           className="border-border hover:border-foreground/50 rounded border px-3 py-1.5 font-mono text-xs transition-colors"
         >
           {label}
@@ -60,7 +63,7 @@ export function ShareButtons({ title, slug }: ShareButtonsProps) {
         onClick={handleCopy}
         className={cn(
           'border-border hover:border-foreground/50 inline-flex items-center gap-1.5 rounded border px-3 py-1.5 font-mono text-xs transition-colors',
-          copied && 'border-green-500/50 text-green-400',
+          copied && 'border-green-500/50 text-green-400'
         )}
       >
         {copied ? <Check className="h-3 w-3" /> : <Link2 className="h-3 w-3" />}
