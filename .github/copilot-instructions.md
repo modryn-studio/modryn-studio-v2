@@ -163,17 +163,21 @@ Do NOT lead with "AI" in copy or headlines. The backlash is real and targets AI 
 **SpecifyThat** (`modryn-studio/specifythat`)
 
 - Spec generator — 13 questions, build-ready spec in under 60 seconds
-- v1 live; v2 rebuild in progress (7 GitHub issues, sequential)
-- v2 decisions: OpenAI proxy pattern (never log prompts), localStorage persistence (VersionedStorage), IP rate limiting (free trial), Stripe deferred until >20% users hit limits
-- Site entry: `content/tools/specifythat.json`, status: `"building"`
+- v2 live at specifythat.com (launched 2026-02-28)
+- Architecture: OpenAI proxy pattern (never log prompts), localStorage persistence (VersionedStorage), IP rate limiting (free trial), Stripe deferred until >20% users hit limits
+- Site entry: `content/tools/specifythat.json`, status: `"live"`
 
 **Trend Detector** (`modryn-studio/trend-detector`)
 
 - Private Python pipeline — runs locally, not yet public
-- Phase 1: daily cron → pytrends-modern → scored JSON in `data/trends_YYYY-MM-DD.json`
-- Phase 2: public web tool (blocked on reliable Google Trends API access)
+- Engine: trendspy (`trending_now()` + `trending_now_showcase_timeline()`) — replaced pytrends-modern
+- Data sources (3-layer):
+  1. **trendspy** — real-time trending via Google's internal API (2-3 calls, pure requests)
+  2. **Google Trends RSS** — public feed at `https://trends.google.com/trending/rss?geo=US` (no auth, XML → JSON)
+  3. **Gmail newsletter ingest** — daily Google Trends email parsed via IMAP + BeautifulSoup (curated editorial picks with growth %, categories)
+- Cross-reference: trends appearing in 2+ sources = high-confidence signal → `data/signals_YYYY-MM-DD.json`
 - Site entry: `content/tools/trend-detector.json`, status: `"building"`
-- Key files: `fetcher.py`, `scorer.py`, `pipeline.py`
-- Run manually: `python pipeline.py --all` (covers all 6 categories)
+- Key files: `fetcher.py`, `scorer.py`, `pipeline.py`, `rss_fetcher.py`, `email_ingest.py`
+- Run manually: `python pipeline.py --all` (runs all 3 sources + cross-reference)
 - Brand noise filter in `scorer.py` blocks known product names (claude, chatgpt, etc.)
 - Decision signal: search demand from pipeline + Reddit/HN complaint = build it
