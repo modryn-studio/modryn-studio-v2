@@ -29,6 +29,12 @@ The v2 flow exists because the original interview — question by question, one 
 
 ## What's next
 
-Rate limit analytics — find out whether anyone's actually hitting the free tier ceiling before deciding if credits are worth building.
+Three things in the backlog, in rough priority order:
+
+**AI confidence review.** After generating, a second AI pass reads the spec against the original project description and surfaces 1-3 gaps — things that are ambiguous, missing, or contradictory. You answer them or skip. The idea came from manually asking a model "review this until you're 95% sure you could build it" — that step should be automatic. Planning to use Claude Opus 4.6 for this, which is built for exactly this kind of sustained critical review.
+
+**UI/design constraints.** One new question in the interview: "Any UI/design constraints AI should know?" — mobile-first vs desktop, dark mode requirement, component library already in use. Not a brand exercise; just enough context so AI doesn't make arbitrary stack choices. Users with a `brand.md` can skip it.
+
+**Brand discovery mode.** A separate interview mode that generates a `brand.md` instead of a context file — vibe, tone, personality, emotional direction. Parked until there's user signal that people want it, but the interview pattern fits naturally.
 
 <!-- TODO: fill in narrative -->
