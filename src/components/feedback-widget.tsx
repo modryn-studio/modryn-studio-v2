@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { MessageSquare, X, Send } from 'lucide-react';
+import { X, Send } from 'lucide-react';
 import { analytics } from '@/lib/analytics';
 
 type WidgetState = 'idle' | 'open' | 'submitting' | 'done';
@@ -17,6 +17,13 @@ export default function FeedbackWidget() {
   useEffect(() => {
     if (state === 'open') textareaRef.current?.focus();
   }, [state]);
+
+  // Open via custom event — used by the mobile footer trigger
+  useEffect(() => {
+    const handler = () => setState('open');
+    window.addEventListener('open-feedback', handler);
+    return () => window.removeEventListener('open-feedback', handler);
+  }, []);
 
   // Auto-collapse 3s after success
   useEffect(() => {
@@ -47,7 +54,6 @@ export default function FeedbackWidget() {
           type: 'feedback',
           message: message.trim(),
           email: email.trim() || undefined,
-          // Silently include the page — useful for routing feedback without extra UI
           page: window.location.pathname,
         }),
       });
@@ -68,74 +74,99 @@ export default function FeedbackWidget() {
 
   const isOpen = state === 'open' || state === 'submitting' || state === 'done';
 
-  return (
-    <div className="fixed right-6 bottom-6 z-50 flex flex-col items-end gap-3">
-      {/* Card — slides in above the button */}
-      {isOpen && (
-        <div className="border-border bg-background w-72 border-2 shadow-xl">
-          {/* Header */}
-          <div className="border-border flex items-center justify-between border-b px-4 py-3">
-            <span className="font-mono text-xs font-bold tracking-widest uppercase">Feedback</span>
+  // Shared form body used in both mobile and desktop panels
+  const formBody = (
+    <div className="p-4">
+      {state === 'done' ? (
+        <p className="font-mono text-sm">Thanks. Noted. 👊</p>
+      ) : (
+        <>
+          <textarea
+            ref={textareaRef}
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            onKeyDown={handleKeyDown}
+            placeholder="What's broken? What's missing? What do you need?"
+            disabled={state === 'submitting'}
+            rows={4}
+            className="border-border placeholder:text-muted-foreground focus:border-amber w-full resize-none border bg-transparent p-3 font-mono text-sm transition-colors outline-none disabled:opacity-50"
+          />
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            onKeyDown={handleKeyDown}
+            placeholder="Email (optional — for a reply)"
+            disabled={state === 'submitting'}
+            className="border-border placeholder:text-muted-foreground focus:border-amber mt-2 w-full border bg-transparent p-3 font-mono text-xs transition-colors outline-none disabled:opacity-50"
+          />
+          {error && <p className="text-destructive mt-2 font-mono text-xs">{error}</p>}
+          <div className="mt-3 flex justify-end">
             <button
-              onClick={close}
-              className="text-muted-foreground hover:text-foreground -mr-1 p-1 transition-colors"
-              aria-label="Close"
+              onClick={handleSubmit}
+              disabled={!message.trim() || state === 'submitting'}
+              className="bg-amber hover:bg-amber/90 disabled:bg-muted flex items-center gap-2 px-4 py-2 font-mono text-xs font-bold text-white transition-colors disabled:cursor-not-allowed disabled:text-white/50"
             >
-              <X size={14} />
+              <Send size={12} />
+              {state === 'submitting' ? 'Sending...' : 'Send'}
             </button>
           </div>
-
-          {/* Body */}
-          <div className="p-4">
-            {state === 'done' ? (
-              <p className="font-mono text-sm">Thanks. Noted. 👊</p>
-            ) : (
-              <>
-                <textarea
-                  ref={textareaRef}
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                  onKeyDown={handleKeyDown}
-                  placeholder="What's broken? What's missing? What do you need?"
-                  disabled={state === 'submitting'}
-                  rows={4}
-                  className="border-border placeholder:text-muted-foreground focus:border-amber w-full resize-none border bg-transparent p-3 font-mono text-sm transition-colors outline-none disabled:opacity-50"
-                />
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  onKeyDown={handleKeyDown}
-                  placeholder="Email (optional — for a reply)"
-                  disabled={state === 'submitting'}
-                  className="border-border placeholder:text-muted-foreground focus:border-amber mt-2 w-full border bg-transparent p-3 font-mono text-xs transition-colors outline-none disabled:opacity-50"
-                />
-                {error && <p className="text-destructive mt-2 font-mono text-xs">{error}</p>}
-                <div className="mt-3 flex justify-end">
-                  <button
-                    onClick={handleSubmit}
-                    disabled={!message.trim() || state === 'submitting'}
-                    className="bg-amber hover:bg-amber/90 disabled:bg-muted flex items-center gap-2 px-4 py-2 font-mono text-xs font-bold text-white transition-colors disabled:cursor-not-allowed disabled:text-white/50"
-                  >
-                    <Send size={12} />
-                    {state === 'submitting' ? 'Sending...' : 'Send'}
-                  </button>
-                </div>
-              </>
-            )}
-          </div>
-        </div>
+        </>
       )}
+    </div>
+  );
 
-      {/* Toggle button */}
+  const panelHeader = (
+    <div className="border-border flex items-center justify-between border-b px-4 py-3">
+      <span className="font-mono text-xs font-bold tracking-widest uppercase">Feedback</span>
       <button
-        onClick={() => setState(isOpen ? 'idle' : 'open')}
-        className="bg-amber hover:bg-amber/90 flex items-center gap-2 px-4 py-2.5 font-mono text-xs font-bold text-white shadow-lg transition-colors"
-        aria-label={isOpen ? 'Close feedback' : 'Open feedback'}
+        onClick={close}
+        className="text-muted-foreground hover:text-foreground -mr-1 p-1 transition-colors"
+        aria-label="Close"
       >
-        <MessageSquare size={14} />
-        Feedback
+        <X size={14} />
       </button>
     </div>
+  );
+
+  return (
+    <>
+      {/* ── Mobile: slide-up sheet from bottom ── */}
+      <div
+        className={`fixed inset-x-0 bottom-0 z-50 transition-transform duration-300 ease-out md:hidden ${
+          isOpen ? 'translate-y-0' : 'translate-y-full'
+        }`}
+      >
+        {/* Tap-outside backdrop */}
+        {isOpen && <div className="fixed inset-0 -z-10 bg-black/20" onClick={close} />}
+        <div className="border-border bg-background border-t-2 shadow-2xl">
+          {panelHeader}
+          {formBody}
+        </div>
+      </div>
+
+      {/* ── Desktop: filing-cabinet drawer ── */}
+      {/* Whole assembly translates together. Closed = shifted right by panel width (w-72 = 288px),
+          leaving only the tab visible at the viewport edge. Open = translate-x-0. */}
+      <div
+        className={`fixed top-1/2 right-0 z-50 hidden -translate-y-1/2 items-start transition-transform duration-300 ease-out md:flex ${
+          isOpen ? 'translate-x-0' : 'translate-x-72'
+        }`}
+      >
+        {/* Tab — leftmost, always the visible "handle" */}
+        <button
+          onClick={() => setState(isOpen ? 'idle' : 'open')}
+          className="border-border bg-background hover:bg-muted text-amber flex shrink-0 items-center border-y-2 border-l-2 px-1.5 py-3 font-mono text-[0.6rem] font-bold tracking-widest uppercase shadow-md transition-colors"
+          aria-label={isOpen ? 'Close feedback' : 'Open feedback'}
+        >
+          <span style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}>Feedback</span>
+        </button>
+        {/* Panel — slides in with the tab */}
+        <div className="border-border bg-background w-72 border-2 shadow-xl">
+          {panelHeader}
+          {formBody}
+        </div>
+      </div>
+    </>
   );
 }
