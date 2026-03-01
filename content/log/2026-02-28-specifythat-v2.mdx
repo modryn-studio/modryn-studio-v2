@@ -8,7 +8,7 @@ The last update on SpecifyThat said it just needed to work again. It works. It's
 
 But the more important thing that shipped isn't the status badge — it's clarity about what the tool actually makes.
 
-<!-- TODO: fill in narrative -->
+The clearest signal was trying to explain it to someone. A spec is a document you write before you build. A context file is a document your AI reads while it builds. One sits in Notion. The other gets used. I'd been calling it the wrong thing for months.
 
 ## What shipped
 
@@ -17,7 +17,7 @@ But the more important thing that shipped isn't the status badge — it's clarit
 - **Works for every major AI coding tool.** Cursor, Claude Code, Windsurf, Bolt, Copilot. Each one expects its context in a different file at a different path. The generated file works for all of them. [/how-it-works](https://specifythat.com/how-it-works) now explains where to drop it for each.
 - **Multi-part support.** If your project has distinct modules or you want to spec a backend and frontend separately, you can run the flow multiple times in one session and get a file per part.
 
-<!-- TODO: fill in narrative -->
+Those four changes shipped in the same push. They felt like separate things right up until I noticed they were all solving the same problem: getting from vague idea to a file your AI can actually use, with as little friction as possible.
 
 ## Why
 
@@ -25,7 +25,7 @@ The old framing — "generate a spec" — was wrong. Nobody pastes a spec into C
 
 The v2 flow exists because the original interview — question by question, one at a time — felt like homework. The point was always to skip the planning step, not to disguise it as a chat.
 
-<!-- TODO: fill in narrative -->
+I built this for me first. I skip the planning step too. Now I don't have to.
 
 ## What's next
 
@@ -37,4 +37,6 @@ Three things in the backlog, in rough priority order:
 
 **Brand discovery mode.** A separate interview mode that generates a `brand.md` instead of a context file — vibe, tone, personality, emotional direction. Parked until there's user signal that people want it, but the interview pattern fits naturally.
 
-<!-- TODO: fill in narrative -->
+None of those ship before there's signal. The rate limit data will tell me when to add billing. Usage will tell me what to build next. The issues are parked until then.
+
+Right now it just needs to be used.
