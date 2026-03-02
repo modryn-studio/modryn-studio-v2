@@ -35,7 +35,7 @@ Read the attached file (log post MDX or tool JSON). Then generate ready-to-paste
 - This is a community of builders posting daily progress
 - Format: "Day N. What shipped today. What's next."
 - Keep it to 2–3 sentences max
-- End with bare URL to modrynstudio.com (homepage, not the post)
+- End with bare URL to the log post or tool page (e.g. https://modrynstudio.com/log/slug or https://modrynstudio.com/tools/slug) — not the homepage
 - Tone: peer-to-peer, no selling, just honest progress update
 - Only use this platform for tool launches and significant shipping milestones — not every log post
 
