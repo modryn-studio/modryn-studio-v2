@@ -6,7 +6,7 @@ tag: "trend-detector"
 
 Every morning I was making the same guess: what search trend is big enough right now that I could ship a tool around it in a weekend? Gut feel is a bad input. So I built something that answers the question with data instead.
 
-<!-- TODO: fill in narrative -->
+This morning it found four clusters independently: spring break travel, community clubs, third places, making friends. Nine keywords hit breakout simultaneously across three separate sources. The pipeline named the through-line: social connection. Multiple search angles on the same underlying need. I wouldn't have connected those manually — I would have seen four separate trends and picked one at random.
 
 ## What shipped
 
@@ -16,16 +16,14 @@ Every morning I was making the same guess: what search trend is big enough right
 - **Reddit pain signal validation.** The top clusters get searched on Reddit automatically. The system flags posts with "wish there was", "looking for", "frustrated" — and marks results as unreliable if the pain posts are clearly off-topic. No false confidence.
 - **The whole thing runs ~7 API calls with zero paid services.**
 
-<!-- TODO: fill in narrative -->
-
 ## Why
 
-I needed a repeatable answer to "what should I build this week" that didn't rely on Twitter scrolling or gut feel. The data exists — Google publishes it — it just needed pulling together and scored against what's actually buildable in 48 hours.
+Before this, the decision was Twitter, Reddit, and whatever felt interesting on a given morning. An hour of reading and I'd still end up on gut feel. The data existed — Google publishes it — it just needed pulling together and scored against what's actually buildable in 48 hours.
 
-<!-- TODO: fill in narrative -->
+I built this for me first. I'm the one who needs to know what to build next.
 
 ## What's next
 
-Run it privately for a few months to validate signal quality, then turn it into a public tool: enter a niche, get back the 5 trends most worth building around right now.
+Run it privately for a few months to validate signal quality. If the output holds, it becomes a public tool: enter a niche, get back the five trends most worth building around this week.
 
-<!-- TODO: fill in narrative -->
+The issues are parked until then.
