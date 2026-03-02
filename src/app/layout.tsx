@@ -8,6 +8,8 @@ import FeedbackWidget from '@/components/feedback-widget';
 import Script from 'next/script';
 import { site } from '@/config/site';
 import { SiteSchema } from '@/components/site-schema';
+import { getAllPosts } from '@/lib/log';
+import { getAllTools } from '@/lib/tools';
 import './globals.css';
 
 const spaceGrotesk = Space_Grotesk({
@@ -54,17 +56,26 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cutoff = new Date();
+  cutoff.setDate(cutoff.getDate() - 7);
+  const cutoffStr = cutoff.toISOString().slice(0, 10);
+
+  const newPostsCount = getAllPosts().filter((p) => p.date >= cutoffStr).length;
+  const newToolsCount = getAllTools().filter(
+    (t) => t.launchedAt && t.launchedAt >= cutoffStr
+  ).length;
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${spaceGrotesk.variable} ${spaceMono.variable} antialiased`}>
         <ThemeProvider defaultTheme="system" storageKey="modryn-theme">
           <div className="noise-overlay bg-background text-foreground flex min-h-screen flex-col">
-            <Navbar />
+            <Navbar newPostsCount={newPostsCount} newToolsCount={newToolsCount} />
             <main className="flex-1">{children}</main>
             <Footer />
             <FeedbackWidget />

@@ -7,7 +7,12 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import Image from 'next/image';
 
-export default function Navbar() {
+interface NavbarProps {
+  newToolsCount?: number;
+  newPostsCount?: number;
+}
+
+export default function Navbar({ newToolsCount = 0, newPostsCount = 0 }: NavbarProps) {
   const { theme, setTheme } = useTheme();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -29,9 +34,9 @@ export default function Navbar() {
   };
 
   const navLinks = [
-    { label: 'Tools', href: '/tools' },
-    { label: 'Log', href: '/log' },
-    { label: 'About', href: '/about' },
+    { label: 'Tools', href: '/tools', badge: newToolsCount },
+    { label: 'Log', href: '/log', badge: newPostsCount },
+    { label: 'About', href: '/about', badge: 0 },
   ];
 
   return (
@@ -56,9 +61,14 @@ export default function Navbar() {
             <Link
               key={link.label}
               href={link.href}
-              className="text-muted-foreground hover:text-foreground px-3 py-2 font-mono text-sm transition-colors"
+              className="text-muted-foreground hover:text-foreground relative px-3 py-2 font-mono text-sm transition-colors"
             >
               {link.label}
+              {link.badge > 0 && (
+                <span className="bg-amber ml-1 inline-flex h-4 min-w-4 items-center justify-center rounded-full px-1 font-mono text-[10px] text-white">
+                  {link.badge > 9 ? '9+' : link.badge}
+                </span>
+              )}
             </Link>
           ))}
           <Button
@@ -140,6 +150,11 @@ export default function Navbar() {
               className="text-muted-foreground hover:text-foreground block py-2 font-mono text-sm transition-colors"
             >
               {link.label}
+              {link.badge > 0 && (
+                <span className="bg-amber ml-1 inline-flex h-4 min-w-4 items-center justify-center rounded-full px-1 font-mono text-[10px] text-white">
+                  {link.badge > 9 ? '9+' : link.badge}
+                </span>
+              )}
             </Link>
           ))}
           <Link href="/#signup" onClick={() => setMobileOpen(false)}>
