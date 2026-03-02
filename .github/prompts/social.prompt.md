@@ -22,6 +22,7 @@ Read the attached file (log post MDX or tool JSON). Then generate ready-to-paste
 ## Platform Copy
 
 ### X / Twitter
+
 - 3 lines max, no hashtags, no emojis unless they add meaning
 - First line = the hook (the take, the tension, the outcome)
 - Last line = the link — bare URL, no "click here"
@@ -32,6 +33,7 @@ Read the attached file (log post MDX or tool JSON). Then generate ready-to-paste
 ---
 
 ### shipordie.club
+
 - This is a community of builders posting daily progress
 - Format: "Day N. What shipped today. What's next."
 - Keep it to 2–3 sentences max
@@ -42,21 +44,23 @@ Read the attached file (log post MDX or tool JSON). Then generate ready-to-paste
 ---
 
 ### Reddit (r/SideProject)
+
 Pick the single best flair from this list:
 
-| Flair | When to use |
-|-------|-------------|
-| No flair | If nothing fits |
-| Meta | Posts about r/SideProject itself |
-| Showcase: Prerelease | Tool exists but isn't fully launched yet |
-| Showcase: Open Source | Tool is open source |
-| Showcase: Free(mium) | Tool is free or freemium |
-| Showcase: Purchase Required | Tool requires payment |
-| Feedback Request | You want specific feedback on something |
-| Question | You're asking the community something |
-| Discussion | You have a take and want debate |
+| Flair                       | When to use                              |
+| --------------------------- | ---------------------------------------- |
+| No flair                    | If nothing fits                          |
+| Meta                        | Posts about r/SideProject itself         |
+| Showcase: Prerelease        | Tool exists but isn't fully launched yet |
+| Showcase: Open Source       | Tool is open source                      |
+| Showcase: Free(mium)        | Tool is free or freemium                 |
+| Showcase: Purchase Required | Tool requires payment                    |
+| Feedback Request            | You want specific feedback on something  |
+| Question                    | You're asking the community something    |
+| Discussion                  | You have a take and want debate          |
 
 Rules:
+
 - Title: short, direct, no clickbait, no question marks unless it's a genuine question
 - Body: 2–4 short paragraphs. State the situation, give your take, share the link, invite debate or feedback
 - End with one line that opens the thread — a genuine question or an invitation to push back
@@ -66,6 +70,7 @@ Rules:
 ---
 
 ### dev.to (reminder only — no copy needed)
+
 Posts auto-sync via RSS at modrynstudio.com/feed.xml. Log into dev.to → Dashboard → Drafts to publish manually. The canonical URL is already set to modrynstudio.com.
 
 ---
