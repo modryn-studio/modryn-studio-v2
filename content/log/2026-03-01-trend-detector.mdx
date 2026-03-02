@@ -1,0 +1,31 @@
+---
+title: "I built a pipeline that tells me what to build next"
+date: "2026-03-01"
+tag: "trend-detector"
+---
+
+Every morning I was making the same guess: what search trend is big enough right now that I could ship a tool around it in a weekend? Gut feel is a bad input. So I built something that answers the question with data instead.
+
+<!-- TODO: fill in narrative -->
+
+## What shipped
+
+- **Daily briefing, automated.** Every morning at 9AM the pipeline runs without me touching it. I open `briefings/briefing_YYYY-MM-DD.md` and read a ranked list of trend clusters with scores, breakout signals, and a plain-English "my read" on what to build.
+- **Three data sources, cross-referenced.** trendspy (Google's internal API — 400+ trending topics per call), Google Trends RSS, and Gmail newsletter ingest all run in parallel. A keyword appearing in 2+ sources gets a confidence boost. One source = a trend might be happening. Two sources = it's real.
+- **Scoring that actually means something.** Each keyword gets a 0–100 score: 35% growth velocity, 25% buildability (does the search query imply a tool someone would pay for?), 20% volume, 20% freshness from 30-day time series data.
+- **Reddit pain signal validation.** The top clusters get searched on Reddit automatically. The system flags posts with "wish there was", "looking for", "frustrated" — and marks results as unreliable if the pain posts are clearly off-topic. No false confidence.
+- **The whole thing runs ~7 API calls with zero paid services.**
+
+<!-- TODO: fill in narrative -->
+
+## Why
+
+I needed a repeatable answer to "what should I build this week" that didn't rely on Twitter scrolling or gut feel. The data exists — Google publishes it — it just needed pulling together and scored against what's actually buildable in 48 hours.
+
+<!-- TODO: fill in narrative -->
+
+## What's next
+
+Run it privately for a few months to validate signal quality, then turn it into a public tool: enter a niche, get back the 5 trends most worth building around right now.
+
+<!-- TODO: fill in narrative -->
