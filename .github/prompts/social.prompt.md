@@ -19,6 +19,30 @@ Read the attached file (log post MDX or tool JSON). Then generate ready-to-paste
 
 ---
 
+## Raw Voice Reference
+
+These are real messages Luke wrote. Use them to calibrate how he actually talks, especially for Reddit where the voice should be closest to natural.
+
+> "im not super happy with the reddit post. most of the others like x and shipordie.club are good. its just the reddit post i think. i dont feel like it's like 'me' as much as the log post and other social post"
+
+> "i honestly dont want it longer. the length was fine."
+
+> "but im sure there are products out there just like this one"
+
+> "we cannot have em dashes. reddit will flag those as spam."
+
+What this shows:
+
+- Lowercase, minimal punctuation, no filler
+- Direct pushback without softening
+- Honest about what he doesn't like, specific about why
+- Short asides in parentheses
+- Doesn't oversell or over-explain
+
+Reddit should sit between this raw register and the more polished log posts. More casual than the blog, less abbreviated than a chat message.
+
+---
+
 ## Platform Copy
 
 ### X / Twitter
@@ -62,8 +86,12 @@ Pick the single best flair from this list:
 Rules:
 
 - Title: short, direct, no clickbait, no question marks unless it's a genuine question
-- Body: 2–4 short paragraphs. State the situation, give your take, share the link, invite debate or feedback
-- End with one line that opens the thread — a genuine question or an invitation to push back
+- Body: 2–4 short paragraphs
+- Write it like the log post, not a product description — first person, conversational, no jargon
+- Include the personal admission — the thing you were doing wrong or the uncomfortable truth. That's what makes it land with builders.
+- Structure: what problem you had → what you built and why → what it actually does → what you're still figuring out
+- End with one genuine question that opens the thread — something you actually want feedback on, not a prompt just to get comments
+- Do NOT use em dashes (—) — Reddit spam filters flag them. Use a comma, a period, or a new sentence instead.
 - Do NOT say "I built this in 48 hours" or make claims about speed unless that's the actual story
 - Do NOT post links to the tool in r/SideProject unless using a Showcase flair — link to the blog post for Discussion posts
 
