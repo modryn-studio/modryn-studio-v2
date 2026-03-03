@@ -5,6 +5,16 @@ import { Wrench, Rocket, FlaskConical, Clock } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { type Tool, type ToolStatus } from '@/lib/tools';
 import { analytics } from '@/lib/analytics';
+import { ToolScreenshot } from '@/components/tool-screenshot';
+
+function formatLaunchDate(iso: string): string {
+  return new Intl.DateTimeFormat('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+    timeZone: 'UTC',
+  }).format(new Date(iso));
+}
 
 const STATUS_CONFIG: Record<ToolStatus, { label: string; className: string }> = {
   live: {
@@ -32,7 +42,7 @@ const STATUS_ICON: Record<ToolStatus, React.ReactNode> = {
   'coming-soon': <Clock className="text-amber h-5 w-5" />,
 };
 
-export function ToolCard({ tool }: { tool: Tool }) {
+export function ToolCard({ tool, showDetails = false }: { tool: Tool; showDetails?: boolean }) {
   const status = STATUS_CONFIG[tool.status];
   const icon = STATUS_ICON[tool.status];
 
@@ -52,6 +62,23 @@ export function ToolCard({ tool }: { tool: Tool }) {
         <p className="text-muted-foreground mt-2 font-mono text-sm leading-relaxed">
           {tool.description}
         </p>
+        {showDetails && tool.screenshotUrl && (
+          <div className="border-border mt-4 overflow-hidden border">
+            <ToolScreenshot
+              lightUrl={tool.screenshotUrl}
+              darkUrl={tool.screenshotUrlDark}
+              alt={`${tool.name} preview`}
+              className="w-full object-cover"
+              width={400}
+              height={225}
+            />
+          </div>
+        )}
+        {showDetails && tool.launchedAt && (
+          <p className="text-muted-foreground mt-4 font-mono text-xs">
+            Shipped {formatLaunchDate(tool.launchedAt)}
+          </p>
+        )}
       </div>
     </Link>
   );
