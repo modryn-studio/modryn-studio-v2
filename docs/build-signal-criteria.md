@@ -8,12 +8,12 @@ How trend-detector evaluates a signal and how to interpret the output during dis
 
 Every scored keyword gets one of three tags:
 
-| Decision | Meaning |
-|---|---|
-| **BUILD GREEN** | Early stage, low competition, confirmed pain. Worth 48 hours. |
+| Decision         | Meaning                                                                                                                              |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| **BUILD GREEN**  | Early stage, low competition, confirmed pain. Worth 48 hours.                                                                        |
 | **BUILD YELLOW** | Promising but one flag (competition rising, lifecycle peaking, weak pain signal). Build only if the product angle is differentiated. |
-| **WATCH** | Trending but not actionable yet — competition too high, lifecycle unclear, or no Reddit pain found. Revisit in 1–2 weeks. |
-| **SKIP** | Saturated, fading, or no real pain signal. Ignore. |
+| **WATCH**        | Trending but not actionable yet — competition too high, lifecycle unclear, or no Reddit pain found. Revisit in 1–2 weeks.            |
+| **SKIP**         | Saturated, fading, or no real pain signal. Ignore.                                                                                   |
 
 ---
 
@@ -24,14 +24,16 @@ How fast is search volume rising over the last 7–14 days? A keyword growing 3x
 
 **2. Lifecycle stage**
 Derived from 30-day time series data. Three tags:
+
 - `EARLY` — rising but not yet at peak. The ideal window.
 - `PEAKING` — at or near maximum velocity. Still buildable but the window is closing.
 - `FADING` — past peak. Competitor tools now exist. Skip unless you have a clear angle.
 
 **3. Competitor density (two-pass)**
 Checked twice — not once.
+
 - Pass 1: raw keyword. "third places" → how many tools exist for "third places"?
-- Pass 2: specific product idea the LLM proposes. "Third-place finder for introverts" → how many tools exist for *that*?
+- Pass 2: specific product idea the LLM proposes. "Third-place finder for introverts" → how many tools exist for _that_?
 
 Both numbers matter. A keyword with zero competition but an obvious product idea with fourteen existing tools is not a BUILD GREEN — it's a trap.
 
