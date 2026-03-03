@@ -2,5 +2,5 @@
   "name": "Trend Detector",
   "description": "A private pipeline that runs every morning, pulls rising search trends from three sources, scores them against what's actually buildable in 48 hours, and writes a briefing. Future public tool: enter a niche, get back the five trends most worth building around this week.",
   "status": "building",
-  "logSlug": "2026-03-01-trend-detector"
+  "logSlug": "2026-03-02-trend-detector"
 }
