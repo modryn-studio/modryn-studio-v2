@@ -34,6 +34,10 @@ Usage: switch to Agent mode, then type:
 
 **`/social`** — Write ready-to-paste social copy for a log post or tool launch. Attach the MDX or tool JSON file, then run `/social`. Outputs X, Reddit (with flair selection + reason), shipordie.club (tool launches only), and a dev.to reminder. Uses your voice rules and brand guidelines automatically.
 
+**`/deploy`** — Two-part command for wiring a new tool into the studio.
+- Run from the **tool repo** first: verifies `basePath`, runs build, pushes to GitHub, gives Vercel deploy instructions, outputs the config you need.
+- Run from **this repo** after deploying to Vercel: adds the rewrite entry to `next.config.ts`, verifies the landing page JSON exists, sets status to `live`, commits and pushes.
+
 Usage: type any slash command in chat.
 
 ## Hooks (auto-runs after edits)
@@ -58,6 +62,7 @@ Configured via `editor.formatOnSave: true` in `.vscode/settings.json`. Requires 
 │   └── check.agent.md             ← @check agent (pre-ship quality gate)
 ├── prompts/
 │   ├── init.prompt.md             ← /init command (fills copilot-instructions + site.ts from context.md + brand.md)
+│   ├── deploy.prompt.md           ← /deploy command (wires tool repo into modrynstudio.com via Vercel rewrite)
 │   ├── tool.prompt.md             ← /tool command (creates or updates content/tools/<slug>.json; cross-repo PR if outside modryn-studio-v2)
 │   ├── log.prompt.md              ← /log command (drafts a build log post from git history)
 │   ├── deps.prompt.md             ← /deps command (update checker)
@@ -103,8 +108,11 @@ Run these in order when shipping a product:
 1. `@check` — quality gate (fix anything it flags before continuing)
 2. `/seo` — technical SEO audit and fixes (run from the product repo)
 3. `/launch` — distribution checklist: sharing hooks, OG, social, screenshots (run from the product repo)
-4. Merge the `/log` and `/tool` PRs on modryn-studio-v2
-5. `/social` — write and post copy (run from **this repo**, after PRs are merged)
+4. `/deploy` in the **tool repo** — verifies build, pushes, gives Vercel instructions, outputs studio config
+5. Deploy to Vercel → copy the `.vercel.app` URL
+6. `/deploy` in **this repo** — adds rewrite, sets tool status to live, pushes
+7. Merge the `/log` and `/tool` PRs on modryn-studio-v2
+8. `/social` — write and post copy (run from **this repo**, after PRs are merged)
 
 ## Day-to-Day Workflow
 
