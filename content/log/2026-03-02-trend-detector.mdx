@@ -1,0 +1,32 @@
+---
+title: "The machine is running. I haven't built anything from it yet."
+date: "2026-03-02"
+tag: "trend-detector"
+---
+
+A lot of people are still at "I should probably track trends." I have a pipeline that runs at 9AM without me, scores 400+ keywords across three data sources, validates against Reddit, checks competitor density, and outputs a ranked list of BUILD/WATCH/SKIP decisions before I've had coffee.
+
+That's real. That's done. And I haven't shipped a single thing from it yet.
+
+<!-- TODO: fill in narrative — the "brake check" feeling. The foundation being the point right now. -->
+
+## What shipped
+
+- **Two-pass competitor check.** The pipeline now checks competition twice — once on the raw keyword, once on the specific product idea the LLM generates. You can have zero competitors on "third places" and fourteen on "icebreaker generator." Both matter. You need both.
+- **RED gate.** If a keyword is already saturated with no Reddit pain signal, it never reaches the LLM. Obvious noise gets killed before it wastes a call. Three fewer API calls per run, every day.
+- **Lifecycle tags on every cluster.** Each cluster in the briefing now shows `EARLY`, `PEAKING`, or `FADING` based on 30-day time series data. I'm not just seeing what's trending — I'm seeing where in the curve it is.
+- **The emotional barrier prompt.** This one I think is going to matter. The LLM used to suggest link aggregators. "Enter your zip code, get five hiking clubs." That's an information gap solution. I added one instruction: build for the feeling that stops someone from acting, not the information gap. Today's output: "First-timer cheat sheet — what to wear, what to say, what to expect at your first meetup." Same trend. Completely different product.
+
+<!-- TODO: fill in narrative — expand on why the emotional barrier prompt feels different. The shift from information to courage. -->
+
+## Why
+
+<!-- TODO: fill in narrative — the honest version: the pipeline is the foundation, not the product. Signal quality needs to be proved before anything becomes public. But running it daily and watching it improve is useful in itself. -->
+
+The pipeline is not the product. It's the input. The question it's trying to answer is: of everything trending right now, what's actually worth 48 hours? I don't have a good answer to that yet because I haven't tested it. But the machine is running and the output is getting sharper.
+
+## What's next
+
+The first tool that comes out of a BUILD decision — that's the real test.
+
+<!-- TODO: fill in narrative — what you're watching in the briefing right now. What feels close. -->
