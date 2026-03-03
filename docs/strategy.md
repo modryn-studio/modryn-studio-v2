@@ -128,15 +128,20 @@ All future trend-chased tools deploy under `modrynstudio.com` as subdirectory pa
 - ✅ `modrynstudio.com/tools/hiking-finder` — inherits authority
 - ❌ `hiking-finder.modrynstudio.com` — treated as a new domain, no authority inheritance
 
-**Deployment options (pick one per tool):**
+**Chosen approach: separate repo + Vercel rewrites**
 
-**Option A: Routes in modryn-studio-v2 (recommended for 48hr builds)**
-Add the tool as routes directly in this repo. No extra Vercel project, no rewrites. The tool lives at `modrynstudio.com/[toolroute]`. Clean, fast, zero coordination overhead.
+Each tool is its own repo (from the boilerplate). It deploys to a free `.vercel.app` URL. `next.config.ts` in modryn-studio-v2 rewrites `modrynstudio.com/tools/[slug]/*` → the tool's Vercel URL. Google sees one domain and one authority footprint. The tool repo never needs a custom domain.
 
-**Option B: Separate repo + Vercel rewrites**
-Tool deploys to its own Vercel project. Add a rewrite in `next.config.ts` in modryn-studio-v2 that proxies `modrynstudio.com/tools/[slug]/*` → the tool's Vercel deployment URL. Google sees one domain. More complex — only worth it if the tool grows large enough to warrant its own repo.
+Setup per tool:
+1. Tool repo: set `basePath: '/tools/[slug]'` in its `next.config.ts`
+2. Tool repo: deploy to Vercel — note the `.vercel.app` deployment URL
+3. modryn-studio-v2: add one rewrite entry in `next.config.ts` pointing that path to the deployment URL
+4. modryn-studio-v2: add the tool JSON to `/content/tools/[slug].json` for the landing page
+
+See GitHub issue #15 for the exact `next.config.ts` rewrite pattern and `basePath` setup.
 
 **Other rules:**
+
 - `/tools/[slug]` in modryn-studio-v2 is always the landing page (SEO magnet, email capture)
 - One email list, one analytics dashboard, one SEO footprint
 - SpecifyThat stays on `specifythat.com` — it predates the studio. Nothing new gets its own domain unless it earns a standalone brand later.
