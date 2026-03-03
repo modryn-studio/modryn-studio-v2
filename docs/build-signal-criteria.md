@@ -15,6 +15,14 @@ Every scored keyword gets one of three tags:
 | **WATCH**        | Trending but not actionable yet — competition too high, lifecycle unclear, or no Reddit pain found. Revisit in 1–2 weeks.            |
 | **SKIP**         | Saturated, fading, or no real pain signal. Ignore.                                                                                   |
 
+Decisions are anchored purely to signal quality — demand strength × pain signal × competition gap. Build capacity and scope are not factors in the pipeline's evaluation. That's the discovery phase's job.
+
+**Two deterministic gates fire in code before the LLM is called:**
+- **RED gate** — Pass 1 competition is RED and pain signal is unreliable → auto-SKIP, no LLM call
+- **Score gate** — cluster score <50 and no confirmed pain → auto-SKIP, no LLM call
+
+If a cluster clears both gates, the LLM evaluates it. If the LLM returns SKIP, the briefing shows reasoning only — no `build_idea`, no routes. The pipeline already decided; discovery doesn't need to argue past it.
+
 ---
 
 ## The Four Scoring Axes
@@ -45,6 +53,8 @@ The filter that kills the most false positives. A keyword trending on Google but
 - "I've tried everything for Z, nothing works"
 
 No Reddit pain = WATCH at best, regardless of trend score.
+
+**Reliability matters.** The pipeline distinguishes reliable pain (on-topic subreddit, explicit frustration) from unreliable pain (off-topic subreddit hit that happened to include a pain word). Only reliable pain counts for gate decisions. If the briefing shows a pain signal but the subreddit context looks tangential, treat it as weak and apply the same skepticism you'd apply to no signal.
 
 ---
 

@@ -179,10 +179,11 @@ Do NOT lead with "AI" in copy or headlines. The backlash is real and targets AI 
 - Score: 0–100 composite (35% growth velocity, 25% buildability, 20% volume, 20% freshness)
 - Clustering: groups keywords into macro-themes by newsletter section headers, then shared stemmed tokens
 - Reddit validation: pain-framed queries in targeted subreddits confirm real frustration
-- Two-pass competitor check (Brave Search): Pass 1 on raw keyword (GREEN/YELLOW/RED/INCONCLUSIVE), Pass 2 on the LLM's specific build idea. RED + no pain → SKIP immediately (no LLM call)
+- Two-pass competitor check (Brave Search): Pass 1 on raw keyword (GREEN/YELLOW/RED/INCONCLUSIVE), Pass 2 on the LLM's specific build idea. Applied to top 5 clusters.
+- Deterministic pre-LLM gates (code-enforced, not prompt-based): RED + no reliable pain → SKIP; score <50 + no confirmed pain → SKIP. Saves ~2–3 LLM + Brave calls per run.
 - Lifecycle tags: `EARLY`/`PEAKING`/`FADING` derived from 30-day time series freshness scores
-- Reporter: GPT-5.2 generates BUILD/WATCH/SKIP decisions with emotional-barrier guidance ("build for the feeling that stops someone from acting, not the information gap")
-- `context_seed`: each BUILD decision includes `product_description`, `target_user`, `emotional_barrier`, `routes` — maps directly to boilerplate `context.md`
+- Reporter: GPT-5.2 generates BUILD/WATCH/SKIP decisions anchored to signal quality (demand strength × pain signal × competition gap). Capacity and scope are not evaluated here — that belongs in the discovery phase. Emotional-barrier guidance shapes what the product should address, not how complex it should be.
+- `context_seed`: each BUILD/WATCH decision includes `product_description`, `target_user`, `emotional_barrier`, `routes` — maps directly to boilerplate `context.md`. SKIP decisions output reasoning only.
 - Output: `data/signals_YYYY-MM-DD.json` (clusters + scores + Reddit + competition + `decisions` with `context_seed`), `briefings/briefing_YYYY-MM-DD.md` (plain-English morning briefing)
 - Site entry: `content/tools/trend-detector.json`, status: `"beta"`
 - Key files: `pipeline.py`, `fetcher.py`, `scorer.py`, `reporter.py`, `competition.py`, `rss_fetcher.py`, `email_ingest.py`
