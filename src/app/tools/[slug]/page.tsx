@@ -125,7 +125,10 @@ export default async function ToolPage({ params }: Props) {
         {tool.bullets && tool.bullets.length > 0 && (
           <ul className="mt-6 space-y-2">
             {tool.bullets.map((bullet, i) => (
-              <li key={i} className="text-muted-foreground flex items-start gap-2 font-mono text-sm">
+              <li
+                key={i}
+                className="text-muted-foreground flex items-start gap-2 font-mono text-sm"
+              >
                 <span className="text-amber mt-0.5 shrink-0">—</span>
                 <span>{bullet}</span>
               </li>
