@@ -1,0 +1,32 @@
+---
+title: "The machine is running. I haven't built anything from it yet."
+date: "2026-03-02"
+tag: "trend-detector"
+---
+
+The pipeline runs at 9AM without me. Scores 400+ keywords across three sources, validates against Reddit, checks competitor density, and outputs BUILD/WATCH/SKIP decisions before I've had coffee.
+
+Most people at this stage are still asking "what should I build?" I'm not. I have an answer every morning. And I still haven't shipped a single thing from it.
+
+That's not failure. That's the foundation. The pipeline is the input, not the product. The question it's trying to answer is: of everything trending right now, what's worth 48 hours? I don't have proof it's answering that correctly yet — because I haven't tested it against a real build decision. That's the next thing.
+
+## What shipped
+
+- **Two-pass competitor check.** The pipeline now checks competition twice. Once on the raw keyword, once on the specific product the LLM proposes. "Third places" has zero competitors. "Icebreaker generator" has fourteen. You need both numbers before you commit to anything.
+- **RED gate.** When a keyword is already saturated and there's no Reddit pain signal, it gets killed before it reaches the LLM. Obvious noise never wastes a call. Three fewer API calls per run, every day, automatically.
+- **Lifecycle tags.** Each cluster now shows `EARLY`, `PEAKING`, or `FADING` based on 30-day time series data. Not just what's trending — where in the curve it is.
+- **The emotional barrier prompt.** This one matters more than the others. The LLM used to suggest link aggregators. "Enter your zip code, get five hiking clubs." That solves an information gap — the user doesn't know where clubs are. But that's not what stops someone from going. What stops them is fear. Walking into a room full of strangers alone. Not knowing what to say. Not knowing if they'll fit in. I added one instruction to the prompt: build for the feeling that stops someone from acting, not the information gap. Today's output for the same trend: "First-timer cheat sheet — what to wear, what to say, what to expect at your first meetup." Same data. Completely different product.
+
+## Why
+
+The pipeline is not the product. It's the foundation. Before I built it, the decision was Twitter, Reddit, and gut feel. An hour of reading, still guessing. Now I have a ranked list with scores, competition data, and Reddit pain signals every morning.
+
+But signal quality has to be proved before any of this becomes a public tool. The only way to prove it is to use it — pick a BUILD decision, build the thing, and see if the traffic shows up. I haven't done that yet.
+
+Running it daily and watching the output sharpen is the work right now. The emotional barrier prompt was a real improvement. The two-pass competition check was a real improvement. Each one makes the BUILD/WATCH/SKIP call more accurate. But accurate decisions don't matter until one of them becomes a real product.
+
+## What's next
+
+Social connection has been the dominant signal for two days running. Four clusters — travel, local clubs, third places, making friends — all pointing at the same underlying thing. The pipeline scored `beginner-hiking-club-finder` as BUILD GREEN this morning. Low competition. Confirmed Reddit pain signal.
+
+That's the first real test.
