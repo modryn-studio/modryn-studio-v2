@@ -19,8 +19,25 @@ The shared Resend list is segmented per tool. One list, many segments, one broad
 Best fit for trend-chased micro-tools. No subscription overhead, no auth, no user accounts. Stays local-first.
 
 - $9 sweet spot — enough to filter freeloaders, low enough for impulse buy
-- Pattern: free tier works → user hits a limit → PayGate → Stripe Checkout → done → localStorage receipt
-- Stripe Checkout handles the entire payment UI. Never build a custom checkout in a 48-hour window.
+- Pattern: free tier works → user hits a limit → PayGate → localStorage receipt
+- Stripe handles the payment UI. Never build a custom checkout in a 48-hour window.
+
+**Two paths, same PayGate component:**
+
+| | Payment Links (default) | Checkout Sessions (upgrade) |
+|---|---|---|
+| Code needed | Zero | API route + `stripe` npm |
+| Env vars | None | `STRIPE_SECRET_KEY`, `STRIPE_PRICE_ID` |
+| Setup | Create link in Stripe Dashboard | Install SDK, configure route |
+| Best for | One price, one product | Dynamic pricing, coupons, programmatic control |
+
+Start with Payment Links. Upgrade to Checkout Sessions only when you need features Payment Links can't do.
+
+**Stripe operational notes:**
+- Disable Cash App Pay in Dashboard → Settings → Payment methods (90%+ of disputes come from it)
+- Test mode: use test keys + card 4242 4242 4242 4242 during dev, switch to live keys at deploy
+- Webhooks are NOT needed for localStorage receipt flow — add only when server-side verification is required (see issue #13)
+- Merchant of Record (Paddle/Lemon Squeezy) is not needed at current scale — evaluate when international tax compliance becomes a burden (see issue #14)
 
 Decision: set this in `context.md` before writing code. If the tool saves someone 30+ minutes of manual work, charge for it. If it's purely informational, email-only.
 
@@ -45,6 +62,7 @@ Tracked in GitHub issue — evaluate when any single tool crosses 50k/month cons
 Post in the subreddit where the pain lives, not the founder subreddit. The trend-detector briefing already identifies Reddit pain posts — use those subreddits directly.
 
 Rules:
+
 - Lead with the problem, not the product
 - Post as a person who built something, not a marketer
 - Engage comments for 24–48 hours — engagement = algorithm love
@@ -60,6 +78,7 @@ The trend-detector gives you a genuine edge: you know what people search for bef
 Pattern: head term + modifiers (city, experience level, variant) = hundreds of unique pages.
 
 Timeline reality check:
+
 - Indexing: 4–8 weeks on a new subdirectory
 - Meaningful traffic: 3–6 months
 - This is the month-3+ compounding play, not day-1 revenue
@@ -71,6 +90,7 @@ Wire the page template during the 48-hour build if applicable. Don't count on or
 ### 3. Building in Public on X
 
 Every briefing generates free daily content. Post the interesting one weekly:
+
 - "Today's trend signal: 9 breakout keywords about X. Here's what I built in 48 hours."
 - Always attach a screenshot or GIF of the tool in action
 
@@ -107,6 +127,7 @@ All future trend-chased tools deploy under `modrynstudio.com`. Domain authority 
 SpecifyThat stays on `specifythat.com` — it predates the studio and has its own domain age. That's fine. But nothing new gets a separate domain unless it earns a standalone brand later.
 
 This means:
+
 - `/tools/[slug]` is the landing page (already exists)
 - Tool UI lives at the appropriate route on modrynstudio.com
 - One email list, one analytics dashboard, one SEO footprint
