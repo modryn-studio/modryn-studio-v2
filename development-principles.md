@@ -30,6 +30,12 @@ Leverage these tools in every project:
 - **Gamify strategically** - Use competition, streaks, and points to drive early engagement. Transition to intrinsic motivation as users go deep, giving them "this is special and different" feeling.
 - **People love competition** - Build competitive elements into core mechanics.
 
+## Distribution
+- **pSEO is the long game** - Programmatic SEO pages (e.g. "best X for Y", comparison pages) compound over 2–4 months. Plant seeds at launch, harvest later.
+- **Reddit first, X second** - Reddit drives qualified traffic on launch day. X builds founder brand over time. Prioritize Reddit posts in niche subreddits where the target user already complains.
+- **Every product launches on modrynstudio.com** - The studio domain aggregates authority. Individual domains are exceptions (pre-existing brands only).
+- **Build log is distribution** - Every `/log` post is content that can be cross-posted to dev.to, shared on Reddit, and linked from X. The build log IS the content marketing strategy.
+
 ## Data & Evolution
 - **Data Flywheel Hack** - Every user interaction trains your AI. Your product gets smarter daily without manual effort. This compounds exponentially.
 - **Data collection for app evolution** - Instrument everything from day one. Build analytics before features.
