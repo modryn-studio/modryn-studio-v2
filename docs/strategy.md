@@ -123,11 +123,20 @@ Month 1+:          pSEO compounds, email list grows
 
 ## Domain Strategy
 
-All future trend-chased tools deploy under `modrynstudio.com`. Domain authority compounds across every tool.
+All future trend-chased tools deploy under `modrynstudio.com` as subdirectory paths — not subdomains. Subdirectories inherit domain authority. Subdomains are treated as separate sites by Google.
 
-This means:
+- ✅ `modrynstudio.com/tools/hiking-finder` — inherits authority
+- ❌ `hiking-finder.modrynstudio.com` — treated as a new domain, no authority inheritance
 
-- `/tools/[slug]` is the landing page (already exists)
-- Tool UI lives at the appropriate route on modrynstudio.com
+**Deployment options (pick one per tool):**
+
+**Option A: Routes in modryn-studio-v2 (recommended for 48hr builds)**
+Add the tool as routes directly in this repo. No extra Vercel project, no rewrites. The tool lives at `modrynstudio.com/[toolroute]`. Clean, fast, zero coordination overhead.
+
+**Option B: Separate repo + Vercel rewrites**
+Tool deploys to its own Vercel project. Add a rewrite in `next.config.ts` in modryn-studio-v2 that proxies `modrynstudio.com/tools/[slug]/*` → the tool's Vercel deployment URL. Google sees one domain. More complex — only worth it if the tool grows large enough to warrant its own repo.
+
+**Other rules:**
+- `/tools/[slug]` in modryn-studio-v2 is always the landing page (SEO magnet, email capture)
 - One email list, one analytics dashboard, one SEO footprint
-- If one tool blows up, the domain lifts all the others
+- SpecifyThat stays on `specifythat.com` — it predates the studio. Nothing new gets its own domain unless it earns a standalone brand later.
