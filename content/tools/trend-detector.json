@@ -1,6 +1,14 @@
 {
   "name": "Trend Detector",
-  "description": "A private pipeline that runs every morning, pulls rising search trends from three sources, scores them against what's actually buildable in 48 hours, and writes a briefing. Future public tool: enter a niche, get back the five trends most worth building around this week.",
+  "description": "Private pipeline. Pulls rising search trends every morning, scores them against what's buildable in 48 hours, and outputs BUILD/WATCH/SKIP decisions.",
   "status": "building",
-  "logSlug": "2026-03-02-trend-detector"
+  "logSlug": "2026-03-02-trend-detector",
+  "bullets": [
+    "Runs at 9AM daily via Task Scheduler — no input required",
+    "Three sources cross-referenced: Google Trends API, RSS, and newsletter",
+    "Scores each keyword 0-100: growth velocity, buildability, volume, freshness",
+    "Reddit pain signal validation — confirms real frustration before flagging a build",
+    "Two-pass competitor check — raw keyword first, then the specific product idea",
+    "BUILD/WATCH/SKIP decisions with lifecycle tags: EARLY, PEAKING, or FADING"
+  ]
 }

@@ -20,6 +20,8 @@ export interface Tool {
   launchedAt?: string;
   /** Slug of the /log post that documented this build */
   logSlug?: string;
+  /** Optional feature bullets shown on the tool detail page */
+  bullets?: string[];
 }
 
 const TOOLS_DIR = path.join(process.cwd(), 'content', 'tools');

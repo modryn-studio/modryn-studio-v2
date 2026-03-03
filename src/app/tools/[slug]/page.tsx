@@ -122,6 +122,17 @@ export default async function ToolPage({ params }: Props) {
           </a>
         )}
 
+        {tool.bullets && tool.bullets.length > 0 && (
+          <ul className="mt-6 space-y-2">
+            {tool.bullets.map((bullet, i) => (
+              <li key={i} className="text-muted-foreground flex items-start gap-2 font-mono text-sm">
+                <span className="text-amber mt-0.5 shrink-0">—</span>
+                <span>{bullet}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+
         {tool.status !== 'live' && (
           <div className="border-border bg-card mt-8 border p-6">
             <p className="text-muted-foreground font-mono text-sm">
