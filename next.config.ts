@@ -1,9 +1,9 @@
-import type { NextConfig } from "next";
-import createMDX from "@next/mdx";
+import type { NextConfig } from 'next';
+import createMDX from '@next/mdx';
 
 const nextConfig: NextConfig = {
   reactCompiler: true,
-  pageExtensions: ["ts", "tsx", "md", "mdx"],
+  pageExtensions: ['ts', 'tsx', 'md', 'mdx'],
   async rewrites() {
     // Each entry proxies a tool repo (deployed on Vercel) to modrynstudio.com/tools/[slug].
     // Run /deploy in this repo after deploying a tool to Vercel — it adds the entry automatically.

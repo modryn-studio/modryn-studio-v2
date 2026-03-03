@@ -133,6 +133,7 @@ All future trend-chased tools deploy under `modrynstudio.com` as subdirectory pa
 Each tool is its own repo (from the boilerplate). It deploys to a free `.vercel.app` URL. `next.config.ts` in modryn-studio-v2 rewrites `modrynstudio.com/tools/[slug]/*` → the tool's Vercel URL. Google sees one domain and one authority footprint. The tool repo never needs a custom domain.
 
 Setup per tool:
+
 1. Tool repo: set `basePath: '/tools/[slug]'` in its `next.config.ts`
 2. Tool repo: deploy to Vercel — note the `.vercel.app` deployment URL
 3. modryn-studio-v2: add one rewrite entry in `next.config.ts` pointing that path to the deployment URL

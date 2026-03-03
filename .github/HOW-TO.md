@@ -35,6 +35,7 @@ Usage: switch to Agent mode, then type:
 **`/social`** — Write ready-to-paste social copy for a log post or tool launch. Attach the MDX or tool JSON file, then run `/social`. Outputs X, Reddit (with flair selection + reason), shipordie.club (tool launches only), and a dev.to reminder. Uses your voice rules and brand guidelines automatically.
 
 **`/deploy`** — Two-part command for wiring a new tool into the studio.
+
 - Run from the **tool repo** first: verifies `basePath`, runs build, pushes to GitHub, gives Vercel deploy instructions, outputs the config you need.
 - Run from **this repo** after deploying to Vercel: adds the rewrite entry to `next.config.ts`, verifies the landing page JSON exists, sets status to `live`, commits and pushes.
 

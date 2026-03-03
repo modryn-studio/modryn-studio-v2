@@ -7,6 +7,7 @@ agent: agent
 This prompt runs from **modryn-studio-v2** after the tool repo has been deployed to Vercel.
 
 You need two pieces of information. Ask Luke if not provided:
+
 - **Tool slug** — e.g. `hiking-finder`
 - **Vercel URL** — e.g. `https://hiking-finder.vercel.app`
 
@@ -30,9 +31,11 @@ Important: the `destination` includes the full `/tools/[slug]` prefix — this m
 Check that `content/tools/[slug].json` exists.
 
 If it does NOT exist:
+
 > Stop. Run `/tool` first to create the landing page JSON, then run `/deploy` again.
 
 If it DOES exist, check these fields and update if needed:
+
 - `status` → set to `"live"`
 - `url` → set to `"https://modrynstudio.com/tools/[slug]"`
 
@@ -47,6 +50,7 @@ git push
 ## Step 4: Confirm
 
 Tell Luke:
+
 > ✅ `modrynstudio.com/tools/[slug]` is now live.
 > Landing page: `modrynstudio.com/tools/[slug]` (served from this repo)
 > Tool UI: `modrynstudio.com/tools/[slug]/` (proxied from Vercel)

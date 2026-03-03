@@ -62,6 +62,32 @@ A BUILD GREEN signal is only worth 48 hours if you can answer the emotional barr
 
 ---
 
+## context_seed — Pipeline-to-Boilerplate Bridge
+
+Every BUILD decision in the signals JSON now includes a `context_seed` object:
+
+```json
+{
+  "product_description": "First-timer cheat sheet for hiking club meetups",
+  "target_user": "People who want to join a hiking club but are afraid to show up alone",
+  "emotional_barrier": "Fear of walking into a group of strangers without knowing the norms",
+  "routes": ["/", "/quiz", "/results"]
+}
+```
+
+These four fields map directly to the boilerplate's `context.md` template. When you pick a BUILD decision to act on:
+
+1. Open the day's `data/signals_YYYY-MM-DD.json`
+2. Find the cluster's `decisions` entry
+3. Copy the `context_seed` values into the new tool's `context.md`
+4. Run `/init` — the boilerplate fills in stack, domain path, and basePath automatically
+
+This eliminates the "stare at a blank context.md" problem. The pipeline already did the emotional barrier analysis — don't redo it.
+
+**When to override context_seed:** If your discovery session (ProjectLoom or manual) surfaces a better angle than what the pipeline proposed, override it. The seed is a starting point, not a constraint. The pipeline sees trends and Reddit pain; you see the full competitive landscape and your own capacity.
+
+---
+
 ## What Makes a Signal Worth 48 Hours
 
 All five of these should be true for BUILD GREEN:

@@ -169,15 +169,21 @@ Do NOT lead with "AI" in copy or headlines. The backlash is real and targets AI 
 
 **Trend Detector** (`modryn-studio/trend-detector`)
 
-- Private Python pipeline — runs locally, not yet public
-- Engine: trendspy (`trending_now()` + `trending_now_showcase_timeline()`) — replaced pytrends-modern
+- Private Python pipeline — runs locally at 9AM daily via Windows Task Scheduler
+- Engine: trendspy (`trending_now()` + `trending_now_showcase_timeline()`)
 - Data sources (3-layer):
-  1. **trendspy** — real-time trending via Google's internal API (2-3 calls, pure requests)
+  1. **trendspy** — real-time trending via Google's internal API (no auth, pure requests)
   2. **Google Trends RSS** — public feed at `https://trends.google.com/trending/rss?geo=US` (no auth, XML → JSON)
   3. **Gmail newsletter ingest** — daily Google Trends email parsed via IMAP + BeautifulSoup (curated editorial picks with growth %, categories)
-- Cross-reference: trends appearing in 2+ sources = high-confidence signal → `data/signals_YYYY-MM-DD.json`
-- Site entry: `content/tools/trend-detector.json`, status: `"building"`
-- Key files: `fetcher.py`, `scorer.py`, `pipeline.py`, `rss_fetcher.py`, `email_ingest.py`
-- Run manually: `python pipeline.py --all` (runs all 3 sources + cross-reference)
-- Brand noise filter in `scorer.py` blocks known product names (claude, chatgpt, etc.)
-- Decision signal: search demand from pipeline + Reddit/HN complaint = build it
+- Cross-reference: trends appearing in 2+ sources get confidence boost (+20 for 2, +40 for 3)
+- Score: 0–100 composite (35% growth velocity, 25% buildability, 20% volume, 20% freshness)
+- Clustering: groups keywords into macro-themes by newsletter section headers, then shared stemmed tokens
+- Reddit validation: pain-framed queries in targeted subreddits confirm real frustration
+- Two-pass competitor check (Brave Search): Pass 1 on raw keyword (GREEN/YELLOW/RED/INCONCLUSIVE), Pass 2 on the LLM's specific build idea. RED + no pain → SKIP immediately (no LLM call)
+- Lifecycle tags: `EARLY`/`PEAKING`/`FADING` derived from 30-day time series freshness scores
+- Reporter: GPT-5.2 generates BUILD/WATCH/SKIP decisions with emotional-barrier guidance ("build for the feeling that stops someone from acting, not the information gap")
+- `context_seed`: each BUILD decision includes `product_description`, `target_user`, `emotional_barrier`, `routes` — maps directly to boilerplate `context.md`
+- Output: `data/signals_YYYY-MM-DD.json` (clusters + scores + Reddit + competition + `decisions` with `context_seed`), `briefings/briefing_YYYY-MM-DD.md` (plain-English morning briefing)
+- Site entry: `content/tools/trend-detector.json`, status: `"beta"`
+- Key files: `pipeline.py`, `fetcher.py`, `scorer.py`, `reporter.py`, `competition.py`, `rss_fetcher.py`, `email_ingest.py`
+- Run manually: `python pipeline.py` (no flags needed — default runs all 3 sources)
