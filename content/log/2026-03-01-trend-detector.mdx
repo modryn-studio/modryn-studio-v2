@@ -14,7 +14,7 @@ This morning it found four clusters independently: spring break travel, communit
 - **Three data sources, cross-referenced.** trendspy (Google's internal API — 400+ trending topics per call), Google Trends RSS, and Gmail newsletter ingest all run in parallel. A keyword appearing in 2+ sources gets a confidence boost. One source = a trend might be happening. Two sources = it's real.
 - **Scoring that actually means something.** Each keyword gets a 0–100 score: 35% growth velocity, 25% buildability (does the search query imply a tool someone would pay for?), 20% volume, 20% freshness from 30-day time series data.
 - **Reddit pain signal validation.** The top clusters get searched on Reddit automatically. The system flags posts with "wish there was", "looking for", "frustrated" — and marks results as unreliable if the pain posts are clearly off-topic. No false confidence.
-- **The whole thing runs ~7 API calls with zero paid services.**
+- **The whole thing runs ~13 API calls.** Free tier Brave Search for competitor checking, OpenAI for cluster naming. Everything else is free.
 
 ## Why
 

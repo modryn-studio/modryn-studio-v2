@@ -1,7 +1,7 @@
 {
   "name": "Trend Detector",
   "description": "Private pipeline. Pulls rising search trends every morning, scores them against what's buildable in 48 hours, and outputs BUILD/WATCH/SKIP decisions.",
-  "status": "building",
+  "status": "beta",
   "logSlug": "2026-03-02-trend-detector",
   "bullets": [
     "Runs at 9AM daily via Task Scheduler — no input required",
