@@ -125,8 +125,6 @@ Month 1+:          pSEO compounds, email list grows
 
 All future trend-chased tools deploy under `modrynstudio.com`. Domain authority compounds across every tool.
 
-SpecifyThat stays on `specifythat.com` — it predates the studio and has its own domain age. That's fine. But nothing new gets a separate domain unless it earns a standalone brand later.
-
 This means:
 
 - `/tools/[slug]` is the landing page (already exists)

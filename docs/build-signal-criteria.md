@@ -76,12 +76,23 @@ If only 3–4 are true, it's BUILD YELLOW — worth exploring in discovery, not 
 
 ---
 
-## How to Use This in Discovery
+## Naming a Tool
 
-1. Attach the morning briefing to the ProjectLoom chat
-2. For each BUILD GREEN signal, work through the five criteria above
-3. Use branching to explore different product angles for the same signal side by side
-4. Commit to one angle only when the emotional barrier is clear and the competitor gap is real
-5. Output: a filled `context.md` with Product, Target User, Route Map, and Monetization decided
+Tools ship under `modrynstudio.com/tools/[slug]` — no domain purchase, no social handle reservation required. The name is just the `<h1>` and the tool JSON entry.
 
-The discovery session should end with a specific product decision — not "I'm going to build something for people who want to meet new people" but "I'm building a first-meeting conversation card generator for people starting hiking clubs, $9 one-time."
+**What the name should do:**
+
+- Capture the moment of action, not the category
+- Be short enough to work as a slug without hyphens where possible
+- Feel like something a person would say, not a SaaS product
+
+**What to check before committing:**
+
+1. USPTO TESS (tess.uspto.gov) — 2-minute search for registered trademarks. If a hit comes back for something that would care, pick a different name. No legal exposure at this stage.
+2. Nothing else — not domain availability, not social handles, not Product Hunt namespace. None of that applies until the tool earns a standalone presence.
+
+**Do not:**
+
+- Name the tool after the category keyword (that's SEO bait, not a product name)
+- Lead with "AI" in the name or tagline — it's an implementation detail, not a selling point
+- Over-engineer the name during the 48-hour build — pick something that works, ship it, rename later if needed
