@@ -5,6 +5,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { getToolBySlug, getAllTools, type ToolStatus } from '@/lib/tools';
 import { ToolScreenshot } from '@/components/tool-screenshot';
+import EmailSignupInline from '@/components/email-signup-inline';
 import { ArrowLeft, ExternalLink } from 'lucide-react';
 
 function formatLaunchDate(iso: string): string {
@@ -136,17 +137,7 @@ export default async function ToolPage({ params }: Props) {
           </ul>
         )}
 
-        {tool.status !== 'live' && (
-          <div className="border-border bg-card mt-8 border p-6">
-            <p className="text-muted-foreground font-mono text-sm">
-              This tool is in progress. Sign up on the{' '}
-              <Link href="/#signup" className="text-amber hover:text-amber/80">
-                homepage
-              </Link>{' '}
-              to get notified when it launches.
-            </p>
-          </div>
-        )}
+        {tool.status !== 'live' && <EmailSignupInline />}
 
         {tool.logSlug && (
           <div className="mt-8">

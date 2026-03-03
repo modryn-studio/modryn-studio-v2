@@ -22,6 +22,8 @@ export interface Tool {
   logSlug?: string;
   /** Optional feature bullets shown on the tool detail page */
   bullets?: string[];
+  /** Subreddits where the target user's pain lives — used by /social for distribution */
+  subreddits?: string[];
 }
 
 const TOOLS_DIR = path.join(process.cwd(), 'content', 'tools');

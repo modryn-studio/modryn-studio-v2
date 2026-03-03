@@ -1,0 +1,113 @@
+# Monetization & Distribution Strategy
+
+Validated March 2, 2026. This is the operating playbook for every tool shipped from the trend-detector pipeline.
+
+---
+
+## Monetization — Ranked by Fit
+
+### Tier 1: Email Capture (every tool, no exceptions)
+
+Email is the meta-asset. Tools may live 1–3 months. The email list carries value across all of them.
+
+Every tool must have a reason to give you an email: notify me when X, save results, weekly digest. This is not optional — it's the compounding mechanism across the entire product studio.
+
+The shared Resend list is segmented per tool. One list, many segments, one broadcast when needed.
+
+### Tier 2: One-Time Payment ($5–$29)
+
+Best fit for trend-chased micro-tools. No subscription overhead, no auth, no user accounts. Stays local-first.
+
+- $9 sweet spot — enough to filter freeloaders, low enough for impulse buy
+- Pattern: free tier works → user hits a limit → PayGate → Stripe Checkout → done → localStorage receipt
+- Stripe Checkout handles the entire payment UI. Never build a custom checkout in a 48-hour window.
+
+Decision: set this in `context.md` before writing code. If the tool saves someone 30+ minutes of manual work, charge for it. If it's purely informational, email-only.
+
+### Tier 3: Affiliate Links (week 2+ only)
+
+Only when there's a natural product-adjacent next step the user already wants to take. Examples: hiking tool → AllTrails Pro, travel tool → booking.com, stock tool → broker referral.
+
+Don't wire this during the 48-hour build. Evaluate after launch if the tool sticks and the product fit is obvious.
+
+### Tier 4: Display Ads (50k+ monthly organic only)
+
+Not worth the CLS penalty and code bloat below 50k monthly visitors. At 10k visits/month you're earning $50–150. Use mediation (not a single network) when you do add them.
+
+Tracked in GitHub issue — evaluate when any single tool crosses 50k/month consistently.
+
+---
+
+## Distribution — Ranked by Impact
+
+### 1. Reddit (primary channel)
+
+Post in the subreddit where the pain lives, not the founder subreddit. The trend-detector briefing already identifies Reddit pain posts — use those subreddits directly.
+
+Rules:
+- Lead with the problem, not the product
+- Post as a person who built something, not a marketer
+- Engage comments for 24–48 hours — engagement = algorithm love
+- Never buy upvotes. Bans are permanent.
+- r/SideProject is the founder channel — useful but secondary
+
+Store target subreddits in the tool JSON `subreddits` field so `/social` generates tailored copy per community.
+
+### 2. Programmatic SEO (highest ceiling, slowest start)
+
+The trend-detector gives you a genuine edge: you know what people search for before pages exist.
+
+Pattern: head term + modifiers (city, experience level, variant) = hundreds of unique pages.
+
+Timeline reality check:
+- Indexing: 4–8 weeks on a new subdirectory
+- Meaningful traffic: 3–6 months
+- This is the month-3+ compounding play, not day-1 revenue
+
+Critical: each page needs genuine data differentiation. Swapping city names in a template will poison the domain. Use real API data per page.
+
+Wire the page template during the 48-hour build if applicable. Don't count on organic traffic before month 3.
+
+### 3. Building in Public on X
+
+Every briefing generates free daily content. Post the interesting one weekly:
+- "Today's trend signal: 9 breakout keywords about X. Here's what I built in 48 hours."
+- Always attach a screenshot or GIF of the tool in action
+
+### 4. Indie Hackers (week 2)
+
+Post-launch retrospective. The story of the system (trend-detector → 48hour build → launch) is as interesting as the tools.
+
+### Skip: Product Hunt
+
+Not worth the coordination overhead for trend-chased micro-tools. Your launch window is 48 hours; PH needs a week minimum.
+
+---
+
+## Per-Tool Launch Playbook
+
+```
+Day 0 (build):     Wire email capture + one monetization method
+Day 1 (launch):    Reddit post in the pain subreddit(s)
+                   X post with demo GIF
+                   Submit to google search console
+Day 2–3:           Engage Reddit comments aggressively
+                   Start pSEO pages if applicable
+Week 2:            Indie Hackers post — the build story
+                   Evaluate affiliate fit
+Month 1+:          pSEO compounds, email list grows
+```
+
+---
+
+## Domain Strategy
+
+All future trend-chased tools deploy under `modrynstudio.com`. Domain authority compounds across every tool.
+
+SpecifyThat stays on `specifythat.com` — it predates the studio and has its own domain age. That's fine. But nothing new gets a separate domain unless it earns a standalone brand later.
+
+This means:
+- `/tools/[slug]` is the landing page (already exists)
+- Tool UI lives at the appropriate route on modrynstudio.com
+- One email list, one analytics dashboard, one SEO footprint
+- If one tool blows up, the domain lifts all the others

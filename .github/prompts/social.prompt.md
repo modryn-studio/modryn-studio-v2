@@ -53,6 +53,7 @@ Reddit should sit between this raw register and the more polished log posts. Mor
 - Lowercase is on-brand
 - If it's a tool launch: lead with what problem it solves
 - If it's a log post: lead with the strongest take from the post
+- **Reminder:** attach a screenshot or short GIF of the tool in action. Capture the core outcome, not the landing page. Note this below the generated copy.
 
 ---
 
@@ -67,9 +68,16 @@ Reddit should sit between this raw register and the more polished log posts. Mor
 
 ---
 
-### Reddit (r/SideProject)
+### Reddit
 
-Pick the single best flair from this list:
+**Target subreddit selection:**
+First check the tool JSON for a `subreddits` field. If present, generate a separate Reddit post for each subreddit listed — tailored to that community's tone and rules. These are the "pain subreddits" where the target user actually hangs out.
+
+Always generate an r/SideProject post as well — but label it as the "founder channel" post. The pain subreddit posts are your primary distribution.
+
+If no `subreddits` field exists, default to r/SideProject only.
+
+Pick the single best flair from this list (for r/SideProject — other subreddits use their own flairs):
 
 | Flair                       | When to use                              |
 | --------------------------- | ---------------------------------------- |
