@@ -24,16 +24,17 @@ Best fit for trend-chased micro-tools. No subscription overhead, no auth, no use
 
 **Two paths, same PayGate component:**
 
-| | Payment Links (default) | Checkout Sessions (upgrade) |
-|---|---|---|
-| Code needed | Zero | API route + `stripe` npm |
-| Env vars | None | `STRIPE_SECRET_KEY`, `STRIPE_PRICE_ID` |
-| Setup | Create link in Stripe Dashboard | Install SDK, configure route |
-| Best for | One price, one product | Dynamic pricing, coupons, programmatic control |
+|             | Payment Links (default)         | Checkout Sessions (upgrade)                    |
+| ----------- | ------------------------------- | ---------------------------------------------- |
+| Code needed | Zero                            | API route + `stripe` npm                       |
+| Env vars    | None                            | `STRIPE_SECRET_KEY`, `STRIPE_PRICE_ID`         |
+| Setup       | Create link in Stripe Dashboard | Install SDK, configure route                   |
+| Best for    | One price, one product          | Dynamic pricing, coupons, programmatic control |
 
 Start with Payment Links. Upgrade to Checkout Sessions only when you need features Payment Links can't do.
 
 **Stripe operational notes:**
+
 - Disable Cash App Pay in Dashboard → Settings → Payment methods (90%+ of disputes come from it)
 - Test mode: use test keys + card 4242 4242 4242 4242 during dev, switch to live keys at deploy
 - Webhooks are NOT needed for localStorage receipt flow — add only when server-side verification is required (see issue #13)
