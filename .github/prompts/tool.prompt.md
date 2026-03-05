@@ -1,64 +1,35 @@
 ---
 name: tool
-description: 'Register a tool on modrynstudio.com. Works from any repo.'
+description: "Register or update a tool on modrynstudio.com via PR."
 agent: agent
 ---
 
-First, check whether the current workspace is the `modryn-studio/modryn-studio-v2` repository.
-
----
-
-## Case A — You are inside modryn-studio-v2
+You are in a project repo that is not `modryn-studio/modryn-studio-v2`. Register or update a tool entry on modrynstudio.com by opening a PR on that repo.
 
 Ask for the following if not already provided:
-
-1. **Name** — the display name (e.g. "Trend Detector")
-2. **Description** — one sentence, plain language, no jargon. What it does and who it's for.
-3. **Status** — one of: `live`, `beta`, `building`, `coming-soon`
-4. **URL** — (optional) external URL if the tool lives at a separate domain
-5. **Screenshot URL** — (optional) path or public URL to a light-mode preview image (e.g. `https://specifythat.com/screenshots/specifythat-light.png`)
-6. **Screenshot URL dark** — (optional) path or public URL to a dark-mode preview image. Falls back to the light screenshot if absent.
-7. **Launched date** — (optional, only if status is `live` or `beta`) ISO date the tool shipped, e.g. `2026-03-01`
-8. **Log slug** — (optional) slug of the `/log` post that documented this build (e.g. `2026-03-01-trend-detector`)
-
-Then:
-
-- Derive the slug from the name: lowercase, spaces → hyphens, remove special characters (e.g. "Trend Detector" → `trend-detector`)
-- Create `content/tools/<slug>.json`:
-  ```json
-  {
-    "name": "...",
-    "description": "...",
-    "status": "..."
-  }
-  ```
-  Only include optional fields (`url`, `screenshotUrl`, `screenshotUrlDark`, `launchedAt`, `logSlug`) if provided.
-- Confirm the file was created and show the final JSON.
-- Remind me: if status is `live`, the tool page at `/tools/<slug>` is now public and will appear in the sitemap on next build.
-
----
-
-## Case B — You are in a different project repo
-
-Ask for:
 
 1. **Name** — display name of the tool
 2. **Description** — one sentence. What it does, who it's for.
 3. **Status** — one of: `live`, `beta`, `building`, `coming-soon`
-4. **URL** — (optional) external URL if live at a separate domain
-5. **Screenshot URL** — (optional) path or public URL to a light-mode preview image
-6. **Screenshot URL dark** — (optional) path or public URL to a dark-mode preview image. Falls back to the light screenshot if absent.
-7. **Launched date** — (optional, only if status is `live` or `beta`) ISO date, e.g. `2026-03-01`
-8. **Log slug** — (optional) slug of the `/log` post documenting this build
+4. **URL** — (optional) external URL if the tool lives at a separate domain
+5. **Screenshots** — Check if `public/screenshots/<slug>-light.png` and `public/screenshots/<slug>-dark.png` exist in the current repo (use the slug derived in the step below).
+   - If both exist: use them. Commit any uncommitted screenshots before opening the PR.
+   - If only one exists: use it for `screenshotUrl` only.
+   - If neither exists: ask the user to drop screenshots into `public/screenshots/`. Preferred: `<slug>-light.png` + `<slug>-dark.png`. A single `<slug>.gif` is also accepted for an animated preview.
+   - Derive public URLs from the tool's `url` hostname: `https://<domain>/screenshots/<slug>-light.png` (light) and `https://<domain>/screenshots/<slug>-dark.png` (dark).
+   - Set `screenshotUrl` = light URL, `screenshotUrlDark` = dark URL (omit `screenshotUrlDark` if no dark variant exists).
+6. **Launched date** — (optional, only if status is `live` or `beta`) ISO date, e.g. `2026-03-01`
+7. **Log slug** — (optional) slug of the `/log` post documenting this build
+8. **Target subreddits** — (optional) 2–4 subreddits where the tool's target users hang out. Used by the `/social` prompt for launch-day distribution. Don't include r/SideProject (always included as founder channel). Example: `["r/webdev", "r/freelance"]`
 
 Then:
-
 - Derive the slug from the name (lowercase, spaces → hyphens, strip special chars)
 - Check if `content/tools/<slug>.json` already exists on `modryn-studio/modryn-studio-v2` main branch using the GitHub MCP
 - If it exists: update the file with the new values
 - If it does not exist: create it
-- Either way, use a branch named `tool/<slug>` and open a PR against `main` on `modryn-studio/modryn-studio-v2` with:
+- Include `subreddits` as an array in the JSON if provided (e.g. `"subreddits": ["r/webdev", "r/freelance"]`)
+- Use a branch named `tool/<slug>` and open a PR against `main` on `modryn-studio/modryn-studio-v2` with:
   - Title: `tool: add/update <tool name>`
   - Body: the JSON that was written, plus a one-line summary of what changed
-- Do NOT commit anything to the current repo — this change belongs in modryn-studio-v2 only
+- Do NOT commit anything to the current repo except screenshots (which belong in `public/screenshots/`)
 - Confirm the PR URL when done
