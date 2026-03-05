@@ -6,10 +6,12 @@ import EmailSignup from '@/components/email-signup';
 
 export const metadata: Metadata = {
   title: 'Modryn Studio — No Bloat, No Nonsense, Tools That Ship',
-  description: "Tools for people who don't have time for bad software. Fast, focused tools built one at a time.",
+  description:
+    "Tools for people who don't have time for bad software. Fast, focused tools built one at a time.",
   openGraph: {
     title: 'Modryn Studio — No Bloat, No Nonsense, Tools That Ship',
-    description: "Tools for people who don't have time for bad software. Fast, focused tools built one at a time.",
+    description:
+      "Tools for people who don't have time for bad software. Fast, focused tools built one at a time.",
     url: 'https://modrynstudio.com',
     siteName: 'Modryn Studio',
     type: 'website',
