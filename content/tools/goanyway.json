@@ -1,0 +1,13 @@
+{
+  "name": "GoAnyway",
+  "description": "Stop bailing on your first social event. Enter your activity and city — get a real event, what to expect, and a word-for-word first-hour script.",
+  "status": "live",
+  "url": "https://modrynstudio.com/tools/goanyway",
+  "launchedAt": "2026-03-05",
+  "bullets": [
+    "Finds a real upcoming event in your city",
+    "Tells you what to expect before you walk in",
+    "Gives you a word-for-word first-hour script"
+  ],
+  "subreddits": ["socialanxiety", "hiking", "climbing", "running", "MeetPeople"]
+}

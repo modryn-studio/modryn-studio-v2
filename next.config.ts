@@ -9,10 +9,10 @@ const nextConfig: NextConfig = {
     // Run /deploy in this repo after deploying a tool to Vercel — it adds the entry automatically.
     // See GitHub issue #15 for setup details.
     return [
-      // {
-      //   source: '/tools/example/:path*',
-      //   destination: 'https://example.vercel.app/tools/example/:path*',
-      // },
+      {
+        source: '/tools/goanyway/:path*',
+        destination: 'https://goanyway.vercel.app/tools/goanyway/:path*',
+      },
     ];
   },
 };
