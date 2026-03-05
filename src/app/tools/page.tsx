@@ -3,10 +3,10 @@ import { getAllTools } from '@/lib/tools';
 import { ToolCard } from '@/components/tool-card';
 
 export const metadata: Metadata = {
-  title: 'Tools — Modryn Studio',
+  title: 'All Tools — Modryn Studio | Live, Beta & In Progress',
   description: 'All tools from Modryn Studio — live, beta, and coming soon.',
   openGraph: {
-    title: 'Tools — Modryn Studio',
+    title: 'All Tools — Modryn Studio | Live, Beta & In Progress',
     description: 'All tools from Modryn Studio — live, beta, and coming soon.',
     url: 'https://modrynstudio.com/tools',
     siteName: 'Modryn Studio',

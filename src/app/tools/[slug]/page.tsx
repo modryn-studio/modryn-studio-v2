@@ -31,14 +31,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const tool = getToolBySlug(slug);
   if (!tool) return { title: 'Tool not found — Modryn Studio' };
 
+  const seoTitle = tool.tagline
+    ? `${tool.name}: ${tool.tagline} — Modryn Studio`
+    : `${tool.name} — Modryn Studio Tool`;
+
   return {
-    title: `${tool.name} — Modryn Studio`,
+    title: seoTitle,
     description: tool.description,
     alternates: {
       canonical: `https://modrynstudio.com/tools/${slug}`,
     },
     openGraph: {
-      title: `${tool.name} — Modryn Studio`,
+      title: seoTitle,
       description: tool.description,
       url: `https://modrynstudio.com/tools/${slug}`,
       siteName: 'Modryn Studio',

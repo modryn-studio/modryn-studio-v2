@@ -20,6 +20,8 @@ export interface Tool {
   launchedAt?: string;
   /** Slug of the /log post that documented this build */
   logSlug?: string;
+  /** Short tagline (~30 chars) used to enrich the SEO title tag */
+  tagline?: string;
   /** Optional feature bullets shown on the tool detail page */
   bullets?: string[];
   /** Subreddits where the target user's pain lives — used by /social for distribution */

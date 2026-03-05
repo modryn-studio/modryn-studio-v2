@@ -22,10 +22,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!post) return { title: 'Post not found — Modryn Studio' };
 
   return {
-    title: `${post.title} — Modryn Studio`,
+    title: `${post.title} | Modryn Studio Build Log`,
     description: post.description,
     openGraph: {
-      title: `${post.title} — Modryn Studio`,
+      title: `${post.title} | Modryn Studio Build Log`,
       description: post.description,
       url: `https://modrynstudio.com/log/${slug}`,
       siteName: 'Modryn Studio',

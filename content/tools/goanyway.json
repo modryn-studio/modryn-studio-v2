@@ -1,5 +1,6 @@
 {
   "name": "GoAnyway",
+  "tagline": "Find an event. Walk in confident.",
   "description": "Stop bailing on your first social event. Enter your activity and city — get a real event, what to expect, and a word-for-word first-hour script.",
   "status": "building",
   "url": "https://goanyway.vercel.app/tools/goanyway",

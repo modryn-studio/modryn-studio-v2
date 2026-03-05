@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy — Modryn Studio',
+  title: 'Privacy Policy — Modryn Studio | How We Handle Your Data',
   description: 'Privacy policy for Modryn Studio.',
 };
 

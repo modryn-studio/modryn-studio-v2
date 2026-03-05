@@ -4,11 +4,11 @@ import type { Metadata } from 'next';
 import EmailSignupInline from '@/components/email-signup-inline';
 
 export const metadata: Metadata = {
-  title: 'About — Modryn Studio',
+  title: 'About Luke — Founder of Modryn Studio, Building Solo',
   description:
     "I'm Luke. I build tools for people who don't have time for bad software. One person. Wisconsin. Shipping anyway.",
   openGraph: {
-    title: 'About — Modryn Studio',
+    title: 'About Luke — Founder of Modryn Studio, Building Solo',
     description:
       "I'm Luke. I build tools for people who don't have time for bad software. One person. Wisconsin. Shipping anyway.",
     url: 'https://modrynstudio.com/about',
