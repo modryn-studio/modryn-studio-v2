@@ -12,5 +12,6 @@
     "BUILD, WATCH, or SKIP verdict with confidence score and risk assessment",
     "Free Monday digest or paid daily briefing at $19/mo"
   ],
-  "subreddits": ["r/indiehackers", "r/SaaS", "r/startups", "r/Entrepreneur"]
+  "subreddits": ["r/indiehackers", "r/SaaS", "r/startups", "r/Entrepreneur"],
+  "logSlug": "2026-03-06-warranted"
 }

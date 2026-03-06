@@ -62,7 +62,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const cutoff = new Date();
-  cutoff.setDate(cutoff.getDate() - 7);
+  cutoff.setDate(cutoff.getDate() - 2);
   const cutoffStr = cutoff.toISOString().slice(0, 10);
 
   const newPostsCount = getAllPosts().filter((p) => p.date >= cutoffStr).length;
