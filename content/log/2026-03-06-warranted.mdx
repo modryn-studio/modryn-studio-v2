@@ -1,0 +1,39 @@
+---
+title: 'The pipeline was built. A product emerged.'
+date: '2026-03-06'
+tag: 'build'
+---
+
+The trend-detector pipeline has been running every morning for a week now. It's spitting out a briefing with daily BUILD / WATCH / SKIP verdicts.
+
+At some point yesterday, I realized the pipeline wasn't the interesting part. It was the briefing. The end result. Well, not really the end result (a working app/tool people actually pay for is the actual end result). But the moment that clicked, Warranted became a project.
+
+The pipeline pulls 400+ rising search trends, filters about 90% of the noise through `is_buildable()`, validates pain on [Reddit](https://reddit.com), checks competition via [Brave](https://search.brave.com), and runs [Claude](https://claude.ai) to produce a confidence score with sourced reasoning. Anyone can look at [Google Trends](https://trends.google.com). That's easy. But reading a raw trend list isn't enough. After a week of morning briefings, when it said BUILD with a confidence score and a reason, that's the moment this became a project.
+
+## What shipped
+
+The validation came first. Before writing a line of landing page code, I worked through five challenges to the concept:
+
+- **Sources.** trendspy is the PyPI package that calls Google's internal `trending_now()` API. That's 400+ rising topics per call. Also, that is NOT the unrelated French dropshipping tool. The source isn't the moat. The judgment layer is.
+
+- **Cadence.** Daily is the right call for this pipeline. Four consecutive days of output show meaningfully different clusters. I built the `trajectory` field (tracked by `trend_memory.py`) specifically to separate a one-day spike from a sustained trend. That field earns its place.
+
+- **Pricing.** $19/month at launch. Not because the value doesn't justify $39. It does. But at zero social proof, reducing friction matters a hell of a lot more than margin. The free tier shows enough to prove the pipeline is real and signal quality is high, but withholds the actual verdict and reasoning.
+
+- **Brand.** Amber `#F97415` as a semantic signal color, not an accent. Reserved for BUILD labels, the primary CTA, and the key data points, never as decoration. Killing the "we" language: "Runs every morning at 6am" earns more trust than "We run this daily."
+
+- **Name.** Warranted. As in: evidence-warranted confidence.
+
+Then the landing page. Single-page Next.js, with the permission/confidence frame as the core positioning: *You already know what's trending. This tells you whether it's worth building and why.* Free email signup (weekly Monday digest via Resend). Paid CTA ($19/mo Stripe Payment Link). Real verdict block visible before any copy.
+
+The pipeline is not connected. Deliberately. The landing page exists to validate demand. If people subscribe, the briefings start flowing.
+
+## Why
+
+As soon as I built the pipeline, I had a broad idea to make it public. But I was missing the bigger picture. The valuable part was always the BUILD call, not the raw trend data. That reframe changed the positioning, the copy, the name, and the price. I didn't change a single line of pipeline code.
+
+The hardest part of this is that I'm not testing a feature. I'm testing whether I built the right thing in the first place.
+
+## What's next
+
+The landing page is live. The rush is on to connect everything and have a fully functioning delivery system.
