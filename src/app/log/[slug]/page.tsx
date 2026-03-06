@@ -3,9 +3,10 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
 import { getPostBySlug, getAllPosts } from '@/lib/log';
+import { getAllTools } from '@/lib/tools';
 import { ShareButtons } from '@/components/share-buttons';
 import EmailSignupInline from '@/components/email-signup-inline';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -44,15 +45,29 @@ export default async function LogPostPage({ params }: Props) {
 
   if (!post) notFound();
 
+  // Find the tool this log post belongs to (if any)
+  const relatedTool = getAllTools().find((t) => t.logSlug === slug) ?? null;
+
   return (
     <div className="mx-auto max-w-3xl px-6 py-24">
-      <Link
-        href="/log"
-        className="text-muted-foreground hover:text-foreground inline-flex items-center gap-2 font-mono text-sm transition-colors"
-      >
-        <ArrowLeft className="h-3 w-3" />
-        Back to log
-      </Link>
+      <div className="flex items-center justify-between">
+        <Link
+          href="/log"
+          className="text-muted-foreground hover:text-foreground inline-flex items-center gap-2 font-mono text-sm transition-colors"
+        >
+          <ArrowLeft className="h-3 w-3" />
+          Back to log
+        </Link>
+        {relatedTool && (
+          <Link
+            href={`/tools/${relatedTool.slug}`}
+            className="text-muted-foreground hover:text-foreground inline-flex items-center gap-2 font-mono text-sm transition-colors"
+          >
+            {relatedTool.name}
+            <ArrowRight className="h-3 w-3" />
+          </Link>
+        )}
+      </div>
 
       <article className="mt-8">
         <div className="text-muted-foreground flex items-center gap-3 font-mono text-sm">
@@ -118,6 +133,16 @@ export default async function LogPostPage({ params }: Props) {
         </div>
 
         <ShareButtons title={post.title} slug={post.slug} />
+        {relatedTool && (
+          <div className="mt-8">
+            <Link
+              href={`/tools/${relatedTool.slug}`}
+              className="text-muted-foreground hover:text-foreground font-mono text-sm transition-colors"
+            >
+              {relatedTool.name} &rarr;
+            </Link>
+          </div>
+        )}
         <EmailSignupInline />
       </article>
     </div>
