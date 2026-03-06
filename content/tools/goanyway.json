@@ -4,10 +4,18 @@
   "description": "Stop bailing on your first social event. Enter your activity and city — get a real event, what to expect, and a word-for-word first-hour script.",
   "status": "building",
   "url": "https://goanyway.vercel.app/tools/goanyway",
+  "screenshotUrl": "https://goanyway.vercel.app/tools/goanyway/screenshots/goanyway-dark.png",
+  "logoUrl": "https://goanyway.vercel.app/tools/goanyway/icon.png",
   "bullets": [
     "Finds a real upcoming event in your city",
     "Tells you what to expect before you walk in",
     "Gives you a word-for-word first-hour script"
   ],
-  "subreddits": ["socialanxiety", "hiking", "climbing", "running", "MeetPeople"]
+  "subreddits": [
+    "socialanxiety",
+    "hiking",
+    "climbing",
+    "running",
+    "MeetPeople"
+  ]
 }
