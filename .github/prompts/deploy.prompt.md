@@ -36,8 +36,8 @@ If it does NOT exist:
 
 If it DOES exist, check these fields and update if needed:
 
-- `status` → set to `"live"`
-- `url` → set to the tool's actual URL (e.g. `"https://[slug].vercel.app/tools/[slug]"` — all tool repos use `basePath: '/tools/[slug]'`, so the root is 404 without the prefix). If the tool has a custom domain, use that root instead (e.g. `"https://specifythat.com"`). This is what the "Try it" button links to — do NOT set it to `modrynstudio.com/tools/[slug]` or it creates a circular link.
+- `status` → **do not change automatically**. Ask: "Is the tool ready to mark as live, or still building?" Only set to `"live"` if confirmed. Leave `"building"` or `"beta"` if the tool is still being wired up — the rewrite works regardless of status.
+- `url` → set to the tool's actual URL (e.g. `"https://[slug].vercel.app/tools/[slug]"` — all tool repos use `basePath: '/tools/[slug]'`, so the root is 404 without the prefix). If the tool has a custom domain, use that root instead (e.g. `"https://specifythat.com"`). This is what the "Try it" / "See it" button links to — do NOT set it to `modrynstudio.com/tools/[slug]` or it creates a circular link.
 
 ## Step 3: Commit and push
 
@@ -51,9 +51,9 @@ git push
 
 Tell Luke:
 
-> ✅ `modrynstudio.com/tools/[slug]` is now live.
-> Landing page: `modrynstudio.com/tools/[slug]` (served from this repo)
-> Tool UI: `modrynstudio.com/tools/[slug]/` (proxied from Vercel)
+> ✅ `modrynstudio.com/tools/[slug]` is wired up.
+> Landing page: `modrynstudio.com/tools/[slug]` (served from this repo, status badge reflects current status)
+> Tool UI: `modrynstudio.com/tools/[slug]/*` (proxied from `[vercel-url]/tools/[slug]/*`)
 >
 > Submit to Google Search Console if not already done:
 > Search Console → URL Inspection → paste `https://modrynstudio.com/tools/[slug]` → Request Indexing
