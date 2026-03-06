@@ -32,6 +32,7 @@ These are real messages Luke wrote. Use them to calibrate how he actually talks,
 > "we cannot have em dashes. reddit will flag those as spam."
 
 **Real X post (2026-03-06, Warranted launch):**
+
 > the trend-detector pipeline has been running every day for a week now. i made a landing page for anyone who wants a copy of the briefing it produces. i wrote about it here https://modrynstudio.com/log/2026-03-06-warranted
 
 What this shows:
