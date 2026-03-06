@@ -14,7 +14,7 @@ The pipeline pulls 400+ rising search trends, filters about 90% of the noise thr
 
 The validation came first. Before writing a line of landing page code, I worked through five challenges to the concept:
 
-- **Sources.** trendspy is the PyPI package that calls Google's internal `trending_now()` API — 400+ rising topics per call. Also, that is NOT the unrelated French dropshipping tool. The source isn't the moat. The judgment layer is.
+- **Sources.** trendspy is the PyPI package that calls Google's internal `trending_now()` API. That's 400+ rising topics per call. Also, that is NOT the unrelated French dropshipping tool. The source isn't the moat. The judgment layer is.
 
 - **Cadence.** Daily is the right call for this pipeline. Four consecutive days of output show meaningfully different clusters. I built the `trajectory` field (tracked by `trend_memory.py`) specifically to separate a one-day spike from a sustained trend. That field earns its place.
 
