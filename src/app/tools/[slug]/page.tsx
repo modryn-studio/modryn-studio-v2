@@ -105,7 +105,7 @@ export default async function ToolPage({ params }: Props) {
           </p>
         )}
 
-        {tool.screenshotUrl && (
+        {(tool.screenshotUrl || tool.screenshotUrlDark) && (
           <div className="border-border mt-8 overflow-hidden border">
             <ToolScreenshot
               lightUrl={tool.screenshotUrl}
@@ -118,10 +118,10 @@ export default async function ToolPage({ params }: Props) {
           </div>
         )}
 
-        {tool.status === 'live' && tool.url && (
+        {tool.status !== 'coming-soon' && tool.url && (
           <a href={tool.url} target="_blank" rel="noopener noreferrer">
             <Button className="bg-amber hover:bg-amber/90 mt-8 rounded-none px-6 font-mono text-sm text-white">
-              Try it
+              {tool.status === 'live' ? 'Try it' : 'See it'}
               <ExternalLink className="ml-2 h-4 w-4" />
             </Button>
           </a>
