@@ -37,7 +37,7 @@ If it does NOT exist:
 If it DOES exist, check these fields and update if needed:
 
 - `status` → set to `"live"`
-- `url` → set to `"https://modrynstudio.com/tools/[slug]"`
+- `url` → set to the tool's actual URL (e.g. `"https://[slug].vercel.app"` or its custom domain). This is what the "Try it" button links to — do NOT set it to `modrynstudio.com/tools/[slug]` or it creates a circular link.
 
 ## Step 3: Commit and push
 

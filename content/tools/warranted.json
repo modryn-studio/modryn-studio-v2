@@ -3,7 +3,7 @@
   "tagline": "Stop guessing. Start building the right thing.",
   "description": "Daily BUILD/SKIP verdict on trending ideas — Reddit pain validated, competition checked, confidence scored. For indie hackers who can execute fast but keep picking the wrong problems.",
   "status": "building",
-  "url": "https://modrynstudio.com/tools/warranted",
+  "url": "https://warranted.vercel.app",
   "screenshotUrlDark": "https://modrynstudio.com/tools/warranted/screenshots/warranted-dark.png",
   "bullets": [
     "Trending signals scored every morning before 6am",
