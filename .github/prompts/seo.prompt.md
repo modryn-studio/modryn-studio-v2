@@ -132,8 +132,8 @@ Check the codebase for:
 - [ ] `src/app/icon.png` exists (1024×1024 logomark)
 - [ ] `src/app/apple-icon.png` exists
 - [ ] OG title is 50–60 chars, description is 110–160 chars
-- [ ] `public/og-image.png` exists (1200×630px) OR `src/app/opengraph-image.tsx` exists (dynamic via `next/og`)
-- [ ] Key pages beyond home have per-page `opengraph-image.tsx` for unique social cards (flag if only root-level OG exists)
+- [ ] `src/app/opengraph-image.tsx` exists (homepage OG image, dynamic via `next/og`) -- **required**; `public/og-image.png` alone does NOT inject the image into metadata
+- [ ] Key pages beyond home (e.g. /result, /confirm) also have per-page `opengraph-image.tsx` for unique social cards
 - [ ] `src/config/site.ts` exists and is fully filled in (no TODO placeholder values)
 - [ ] `src/app/manifest.ts` exists (do NOT check for `public/manifest.json`)
 - [ ] `src/app/robots.ts` exists (do NOT check for `public/robots.txt`)
@@ -170,7 +170,10 @@ If you want isolated search performance data per tool (mirrors GA4 per-tool prop
 4. Done (also covers Yahoo and DuckDuckGo which use Bing's index)
 
 ## Step 3: Validation
-Tell me to check these once the site is deployed:
-- **OG preview:** https://opengraph.xyz — paste the live URL, verify title 50–60 chars, description 110–160 chars, image 1200×630
-- **JSON-LD:** https://search.google.com/test/rich-results — should show "1 valid item detected"
-- **DNS propagation:** https://www.whatsmydns.net — check TXT record has propagated
+Tell me to check these once the site is deployed.
+
+> **Use the direct Vercel URL for all validation tools** (e.g. https://yourapp.vercel.app/tools/yourtool), not the canonical modrynstudio.com URL. The root path /tools/yourtool on modrynstudio.com is served by modryn-studio-v2's static page -- your Next.js app only serves sub-paths via rewrite. The Vercel URL always serves your actual app.
+
+- **OG preview:** https://opengraph.xyz -- paste **direct Vercel URL**, verify title 50–60 chars, description 110–160 chars, image 1200×630
+- **JSON-LD:** https://search.google.com/test/rich-results -- paste **direct Vercel URL**, should show "1 valid item detected"
+- **DNS propagation:** https://www.whatsmydns.net -- check TXT record has propagated

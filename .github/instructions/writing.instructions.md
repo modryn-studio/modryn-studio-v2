@@ -107,7 +107,7 @@ State where things stand, or name the next decision point, or both.
 ---
 title: "Short, direct — no question marks, no hype"
 date: "YYYY-MM-DD"
-tag: ""
+tag: "launch | milestone | killed | learning | build"
 ---
 ```
 
