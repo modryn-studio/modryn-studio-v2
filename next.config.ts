@@ -13,6 +13,10 @@ const nextConfig: NextConfig = {
         source: '/tools/goanyway/:path*',
         destination: 'https://goanyway.vercel.app/tools/goanyway/:path*',
       },
+      {
+        source: '/tools/warranted/:path*',
+        destination: 'https://warranted.vercel.app/tools/warranted/:path*',
+      },
     ];
   },
 };
