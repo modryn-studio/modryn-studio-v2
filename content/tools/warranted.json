@@ -1,0 +1,16 @@
+{
+  "name": "Warranted",
+  "tagline": "Stop guessing. Start building the right thing.",
+  "description": "Daily BUILD/SKIP verdict on trending ideas — Reddit pain validated, competition checked, confidence scored. For indie hackers who can execute fast but keep picking the wrong problems.",
+  "status": "building",
+  "url": "https://modrynstudio.com/tools/warranted",
+  "screenshotUrlDark": "https://modrynstudio.com/tools/warranted/screenshots/warranted-dark.png",
+  "bullets": [
+    "Trending signals scored every morning before 6am",
+    "Reddit pain validation — real user frustration, not trend noise",
+    "Competition check via Brave Search — gaps flagged, crowded markets skipped",
+    "BUILD, WATCH, or SKIP verdict with confidence score and risk assessment",
+    "Free Monday digest or paid daily briefing at $19/mo"
+  ],
+  "subreddits": ["r/indiehackers", "r/SaaS", "r/startups", "r/Entrepreneur"]
+}
