@@ -82,16 +82,16 @@ Open chat: `Ctrl+Alt+I`
 
 ### All Slash Commands
 
-| Command    | What it does                                                               | When                                    |
-| ---------- | -------------------------------------------------------------------------- | --------------------------------------- |
-| `/init`    | One-time setup: fills `copilot-instructions.md` + `site.ts` from source docs | Once, at project start               |
-| `/update`  | Cascades edits from source docs into derived files                         | Any time `context.md` or `brand.md` changes |
-| `/assets`  | Generates favicons, OG image, and banner from your logomark                | Once when logomark is ready; re-run after logomark changes |
-| `/tool`    | Registers/updates this tool on modrynstudio.com via PR                    | Early (status: building) + at launch (status: live) |
-| `/log`     | Drafts a build log post and opens a PR on modryn-studio-v2                | Any time something worth documenting ships |
-| `/deps`    | Validates dependencies against live docs; flags version gaps + API changes | Any time you're questioning staleness   |
-| `/seo`     | Pre-launch SEO audit + Search Console / Bing setup                         | Pre-launch, once                        |
-| `/launch`  | Distribution checklist: sharing hooks, OG, social, community posting guide | Pre-launch, after `/seo`               |
+| Command   | What it does                                                                 | When                                                       |
+| --------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| `/init`   | One-time setup: fills `copilot-instructions.md` + `site.ts` from source docs | Once, at project start                                     |
+| `/update` | Cascades edits from source docs into derived files                           | Any time `context.md` or `brand.md` changes                |
+| `/assets` | Generates favicons, OG image, and banner from your logomark                  | Once when logomark is ready; re-run after logomark changes |
+| `/tool`   | Registers/updates this tool on modrynstudio.com via PR                       | Early (status: building) + at launch (status: live)        |
+| `/log`    | Drafts a build log post and opens a PR on modryn-studio-v2                   | Any time something worth documenting ships                 |
+| `/deps`   | Validates dependencies against live docs; flags version gaps + API changes   | Any time you're questioning staleness                      |
+| `/seo`    | Pre-launch SEO audit + Search Console / Bing setup                           | Pre-launch, once                                           |
+| `/launch` | Distribution checklist: sharing hooks, OG, social, community posting guide   | Pre-launch, after `/seo`                                   |
 
 > **modryn-studio-v2 only:** `/deploy` and `/social` exist only in that repo. Switch workspaces to run them.
 
@@ -102,6 +102,7 @@ Drop your logomark at `public/brand/logomark.png` (1024×1024, transparent backg
 The script auto-detects whether your mark is colored or grayscale and generates the correct light/dark favicon pair.
 
 **Optional overrides:**
+
 - `public/brand/logomark-dark.png` — hand-crafted dark favicon (skips auto-inversion)
 - `public/brand/banner.png` — 1280×320 README header (auto-generated if absent)
 
@@ -118,6 +119,7 @@ The script auto-detects whether your mark is colored or grayscale and generates 
 | `public/brand/banner.png` | README header (if not provided)  |
 
 Or run directly (requires [ImageMagick](https://imagemagick.org)):
+
 ```powershell
 .\scripts\generate-assets.ps1
 ```
