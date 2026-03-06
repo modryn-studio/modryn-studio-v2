@@ -31,6 +31,9 @@ These are real messages Luke wrote. Use them to calibrate how he actually talks,
 
 > "we cannot have em dashes. reddit will flag those as spam."
 
+**Real X post (2026-03-06, Warranted launch):**
+> the trend-detector pipeline has been running every day for a week now. i made a landing page for anyone who wants a copy of the briefing it produces. i wrote about it here https://modrynstudio.com/log/2026-03-06-warranted
+
 What this shows:
 
 - Lowercase, minimal punctuation, no filler
@@ -38,8 +41,11 @@ What this shows:
 - Honest about what he doesn't like, specific about why
 - Short asides in parentheses
 - Doesn't oversell or over-explain
+- **X posts are matter-of-fact, not "take"-led** — Luke states what happened, doesn't try to hook with a clever first line. No punchy opener, no tension framing. Just: here's what I did, here's where to read about it.
 
 Reddit should sit between this raw register and the more polished log posts. More casual than the blog, less abbreviated than a chat message.
+
+For X specifically: resist the urge to lead with a sharp take or reframe. Default to the plain statement of what shipped, what it does, and the link. Let the work speak.
 
 ---
 
@@ -48,11 +54,11 @@ Reddit should sit between this raw register and the more polished log posts. Mor
 ### X / Twitter
 
 - 3 lines max, no hashtags, no emojis unless they add meaning
-- First line = the hook (the take, the tension, the outcome)
+- Lowercase, plain statement — **not** a punchy take or tension hook. State what happened, what it does, link.
 - Last line = the link — bare URL, no "click here"
-- Lowercase is on-brand
-- If it's a tool launch: lead with what problem it solves
-- If it's a log post: lead with the strongest take from the post
+- Do NOT try to be clever or lead with a reframe. Luke's real posts are matter-of-fact. The work is the hook.
+- If it's a tool launch: what it does → where to read more
+- If it's a log post: what shipped or what you decided → the link
 - **Reminder:** attach a screenshot or short GIF of the tool in action. Capture the core outcome, not the landing page. Note this below the generated copy.
 
 ---
