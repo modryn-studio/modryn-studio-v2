@@ -4,6 +4,9 @@ import { useState, type FormEvent } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { analytics } from '@/lib/analytics';
+import { site } from '@/config/site';
+
+const shareUrl = `https://x.com/intent/post?text=${encodeURIComponent('Just signed up to follow the build at Modryn Studio. Fast, focused tools, built in public — one at a time. Worth watching.')}&url=${encodeURIComponent(site.url)}`;
 
 export default function EmailSignup() {
   const [email, setEmail] = useState('');
@@ -76,7 +79,15 @@ export default function EmailSignup() {
             </form>
           ) : (
             <div className="border-amber/30 bg-amber/5 text-amber mt-8 border p-4 font-mono text-sm">
-              You&apos;re on the list. Next launch, your inbox.
+              <p>You&apos;re on the list. Next launch, your inbox.</p>
+              <a
+                href={shareUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-3 inline-block underline underline-offset-4 opacity-75 hover:opacity-100 transition-opacity"
+              >
+                Share on X &rarr;
+              </a>
             </div>
           )}
 
