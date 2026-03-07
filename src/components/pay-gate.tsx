@@ -55,7 +55,11 @@ interface PayGateProps {
  * in localStorage and reveals the content. No accounts, no database.
  */
 export default function PayGate({ children, valueProposition, price, checkoutUrl }: PayGateProps) {
-  const hasPaid = useSyncExternalStore(subscribeToReceipt, getReceiptSnapshot, getReceiptServerSnapshot);
+  const hasPaid = useSyncExternalStore(
+    subscribeToReceipt,
+    getReceiptSnapshot,
+    getReceiptServerSnapshot
+  );
   const [loading, setLoading] = useState(false);
 
   // Side effects only — no setState. useSyncExternalStore picks up the localStorage write via the receipt-stored event.

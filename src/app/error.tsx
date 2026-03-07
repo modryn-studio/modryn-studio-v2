@@ -16,21 +16,21 @@ export default function Error({
 
   return (
     <div className="flex min-h-[60vh] flex-col items-center justify-center gap-6 px-4 text-center">
-      <p className="font-mono text-xs uppercase tracking-widest text-muted">Error</p>
-      <h1 className="text-2xl font-bold text-text">Something went wrong.</h1>
-      <p className="max-w-md text-sm text-muted">
+      <p className="text-muted font-mono text-xs tracking-widest uppercase">Error</p>
+      <h1 className="text-text text-2xl font-bold">Something went wrong.</h1>
+      <p className="text-muted max-w-md text-sm">
         An unexpected error occurred. Try again, or head back home.
       </p>
       <div className="flex gap-3">
         <button
           onClick={reset}
-          className="rounded border border-border px-4 py-2 text-sm text-text transition-colors hover:border-accent hover:text-accent"
+          className="border-border text-text hover:border-accent hover:text-accent rounded border px-4 py-2 text-sm transition-colors"
         >
           Try again
         </button>
         <Link
           href="/"
-          className="rounded bg-accent px-4 py-2 text-sm font-medium text-white transition-opacity hover:opacity-90"
+          className="bg-accent rounded px-4 py-2 text-sm font-medium text-white transition-opacity hover:opacity-90"
         >
           Go home
         </Link>
