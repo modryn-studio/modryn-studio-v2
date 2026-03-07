@@ -17,9 +17,60 @@ export const metadata: Metadata = {
   },
 };
 
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Who built Modryn Studio?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "Luke Hanner — a one-person studio out of Wisconsin. He builds focused tools for people who don't have time for bad software. No team, no investors, no nonsense.",
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How does Modryn Studio handle user data?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "Tools run on your device, don't require an account, don't store your data on servers, and charge you only for what you actually use. No subscriptions, no lock-in, no dark patterns. Your input stays on your machine.",
+      },
+    },
+    {
+      '@type': 'Question',
+      name: "What is Modryn Studio's business model?",
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Pay for what you use — like electricity. No monthly subscription, no cancel-anytime fine print. Top up when you want, stop when you want. Tools cost what they cost to run, plus a margin.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How are Modryn Studio tools built?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Trends are identified early, one problem is picked, one tool is built, and it ships in 48 hours. No team, no investors, no roadmap with 47 items on it.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Where is Modryn Studio headed?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "The goal is a world where anyone with an idea can just make the thing. In the meantime: focused tools for impatient people who don't want manuals, don't want ten features they'll never use, and don't want to be tricked into a subscription they can't cancel.",
+      },
+    },
+  ],
+};
+
 export default function AboutPage() {
   return (
     <div className="mx-auto max-w-3xl px-6 py-24">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       {/* Header */}
       <div className="flex flex-col gap-8 sm:flex-row sm:items-start sm:gap-12">
         <Image
