@@ -9,5 +9,6 @@
     "Tells you what to expect before you walk in",
     "Gives you a word-for-word first-hour script"
   ],
-  "subreddits": ["socialanxiety", "hiking", "climbing", "running", "MeetPeople"]
+  "subreddits": ["socialanxiety", "hiking", "climbing", "running", "MeetPeople"],
+  "logoUrl": "https://modrynstudio.com/tools/goanyway/icon.png"
 }

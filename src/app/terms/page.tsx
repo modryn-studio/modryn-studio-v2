@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Terms of Service — Modryn Studio | How This Site Works',
-  description: 'Terms of service for Modryn Studio.',
+  description:
+    'Terms of service for all tools at modrynstudio.com. Covers acceptable use, liability limits, and what you can expect from Modryn Studio as a builder.',
 };
 
 export default function TermsPage() {

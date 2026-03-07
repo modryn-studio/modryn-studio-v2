@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Privacy Policy — Modryn Studio | How We Handle Your Data',
-  description: 'Privacy policy for Modryn Studio.',
+  description:
+    "Modryn Studio's privacy policy. We don't sell your data, serve ads, or track you beyond basic analytics. Local-first tools — your data stays on your device.",
 };
 
 export default function PrivacyPage() {

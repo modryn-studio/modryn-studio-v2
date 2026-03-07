@@ -4,6 +4,12 @@ import createMDX from '@next/mdx';
 const nextConfig: NextConfig = {
   reactCompiler: true,
   pageExtensions: ['ts', 'tsx', 'md', 'mdx'],
+  images: {
+    remotePatterns: [
+      { protocol: 'https', hostname: 'modrynstudio.com' },
+      { protocol: 'https', hostname: '*.vercel.app' },
+    ],
+  },
   async rewrites() {
     // Each entry proxies a tool repo (deployed on Vercel) to modrynstudio.com/tools/[slug].
     // Run /deploy in this repo after deploying a tool to Vercel — it adds the entry automatically.

@@ -15,6 +15,8 @@ I'm Luke, a one-person studio owner building micro-SaaS products under Modryn St
 - Vercel for deployment
 - GA4 for custom event tracking (via `@/lib/analytics.ts` — never call `gtag()` directly)
 - Vercel Analytics `<Analytics />` component in `layout.tsx` for pageviews only — do not use their `track()` API
+- `@next/mdx` + `gray-matter` for build log MDX content
+- `nodemailer` (Gmail SMTP) + `resend` for email notifications and signups
 
 ## Project Structure
 
@@ -36,6 +38,77 @@ I'm Luke, a one-person studio owner building micro-SaaS products under Modryn St
 - `/about` → Who Luke is, how he works, his stack
 - `/privacy` → Privacy policy
 - `/terms` → Terms of service
+
+## README Standard
+
+Every project README follows this exact structure — no more, no less:
+
+```markdown
+![Project Name](public/brand/banner.png)
+
+# Project Name
+
+One-line tagline. Outcome-focused — lead with what the user gets, not the technology.
+
+→ [domain.com](https://domain.com)
+
+---
+
+Next.js · TypeScript · Tailwind CSS · Vercel
+```
+
+Rules:
+
+- **Banner image** — always first. Path is `public/brand/banner.png`.
+- **H1 title** — product name only, no subtitle.
+- **Tagline** — one sentence. What the user gets. No buzzwords ("powerful", "seamless", "AI-powered").
+- **Live link** — `→ [domain.com](https://domain.com)` format. Always present if live.
+- **Divider** — `---` separator before the stack line.
+- **Stack line** — `·`-separated list of core tech only. No version numbers, no descriptions.
+- **Nothing else.** No install instructions, no contributing section, no architecture diagrams, no screenshots beyond the banner. Real docs go in `/docs` or on the live site.
+
+## Tailwind v4
+
+This project uses Tailwind CSS v4. The rules are different from v3 — follow these exactly.
+
+**Design tokens live in `@theme`, not `:root`:**
+
+```css
+/* ✅ correct — generates text-accent, bg-surface, border-border, etc. */
+@theme {
+  --color-accent: #f97415;
+  --color-surface: #111111;
+  --color-border: #222222;
+  --color-muted: #666666;
+  --color-text: #e5e5e5;
+  --color-bg: #050505;
+  --font-heading: var(--font-sans);
+}
+
+/* ❌ wrong — :root creates CSS variables but NO utility classes */
+:root {
+  --color-accent: #f97415;
+}
+```
+
+**Use `(--color-*)` shorthand in class strings — never `[var(--color-*)]`:**
+
+```tsx
+// ✅ correct — TW v4 native shorthand
+<div className="border-(--color-border) bg-(--color-surface) text-(--color-muted)" />
+
+// ❌ wrong — v3 bracket notation, verbose and unnecessary in v4
+<div className="border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-muted)]" />
+```
+
+If tokens are defined in `@theme`, you can also use the short utility names directly:
+
+```tsx
+// ✅ also correct when @theme is properly set up
+<div className="border-border bg-surface text-muted text-accent" />
+```
+
+Never add `tailwind.config.*` — v4 has no config file. All theme customization goes in `globals.css` under `@theme`.
 
 ## API Route Logging
 

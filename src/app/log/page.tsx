@@ -4,10 +4,12 @@ import { getAllPosts } from '@/lib/log';
 
 export const metadata: Metadata = {
   title: 'Build Log — Modryn Studio | Real Builds, Shipped in Public',
-  description: 'Every build, kill, and lesson — posted as it happens.',
+  description:
+    'Every build, kill, and lesson from Modryn Studio — posted in real time. No retrospectives, just the raw feed of what shipped, what failed, and why.',
   openGraph: {
     title: 'Build Log — Modryn Studio | Real Builds, Shipped in Public',
-    description: 'Every build, kill, and lesson — posted as it happens.',
+    description:
+      'Every build, kill, and lesson from Modryn Studio — posted in real time. No retrospectives, just the raw feed of what shipped, what failed, and why.',
     url: 'https://modrynstudio.com/log',
     siteName: 'Modryn Studio',
     type: 'website',

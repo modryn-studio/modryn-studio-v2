@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { Wrench, Rocket, FlaskConical, Clock } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { type Tool, type ToolStatus } from '@/lib/tools';
@@ -53,8 +54,18 @@ export function ToolCard({ tool, showDetails = false }: { tool: Tool; showDetail
     >
       <div className="group border-border hover:bg-muted/50 relative border-r border-b p-8 transition-colors">
         <div className="flex items-start justify-between">
-          <div className="border-border flex h-10 w-10 items-center justify-center border">
-            {icon}
+          <div className="flex h-10 w-10 items-center justify-center overflow-hidden">
+            {tool.logoUrl ? (
+              <Image
+                src={tool.logoUrl}
+                alt={tool.name}
+                width={40}
+                height={40}
+                className="object-contain"
+              />
+            ) : (
+              icon
+            )}
           </div>
           <Badge className={`${status.className} font-mono text-xs`}>{status.label}</Badge>
         </div>

@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { getToolBySlug, getAllTools, type ToolStatus } from '@/lib/tools';
 import { ToolScreenshot } from '@/components/tool-screenshot';
 import EmailSignupInline from '@/components/email-signup-inline';
+import Image from 'next/image';
 import { ArrowLeft, ExternalLink } from 'lucide-react';
 
 function formatLaunchDate(iso: string): string {
@@ -89,6 +90,15 @@ export default async function ToolPage({ params }: Props) {
       </Link>
 
       <div className="mt-8">
+        {tool.logoUrl && (
+          <Image
+            src={tool.logoUrl}
+            alt={`${tool.name} logo`}
+            width={40}
+            height={40}
+            className="mb-3 object-contain"
+          />
+        )}
         <div className="flex items-center gap-4">
           <h1 className="font-heading text-3xl font-bold tracking-tighter md:text-4xl">
             {tool.name}
@@ -118,10 +128,10 @@ export default async function ToolPage({ params }: Props) {
           </div>
         )}
 
-        {tool.status !== 'coming-soon' && tool.url && (
+        {(tool.status === 'live' || tool.status === 'beta') && tool.url && (
           <a href={tool.url} target="_blank" rel="noopener noreferrer">
             <Button className="bg-amber hover:bg-amber/90 mt-8 rounded-none px-6 font-mono text-sm text-white">
-              {tool.status === 'live' ? 'Try it' : 'See it'}
+              {tool.status === 'live' ? 'Try it' : 'Try the beta'}
               <ExternalLink className="ml-2 h-4 w-4" />
             </Button>
           </a>

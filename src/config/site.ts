@@ -7,11 +7,12 @@ export const site = {
   url: 'https://modrynstudio.com',
   // Base description — used in <meta description>, manifest, JSON-LD
   description:
-    "Tools for people who don't have time for bad software. Fast, focused AI tools — built one at a time.",
+    "Tools for people who don't have time for bad software. Fast, focused tools built in public, launched one at a time.",
   // Longer form for social cards (OG / Twitter)
-  ogTitle: 'Modryn Studio | Fast, Focused AI Tools for Builders',
+  ogTitle: 'Modryn Studio | Fast, Focused Tools Built for Builders',
   ogDescription:
-    "Fast, focused AI tools built one at a time. No bloat, no nonsense. Built for people who don't have time for bad software.",
+    "Fast, focused tools built one at a time. No bloat, no nonsense. Built for people who don't have time for bad software.",
+  cta: 'Explore the tools →',
   founder: 'Luke Hanner',
   // Brand colors — used in manifest theme_color / background_color
   accent: '#F97415',

@@ -26,6 +26,8 @@ export interface Tool {
   bullets?: string[];
   /** Subreddits where the target user's pain lives — used by /social for distribution */
   subreddits?: string[];
+  /** Public URL to the tool's logomark (square, transparent bg, ideally /icon.png from the tool's deployment) */
+  logoUrl?: string;
 }
 
 const TOOLS_DIR = path.join(process.cwd(), 'content', 'tools');

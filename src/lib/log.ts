@@ -12,6 +12,8 @@ export interface LogPost {
   date: string;
   tag: LogTag;
   description: string;
+  /** Optional SEO-only title (150–160 chars). Overrides the auto-generated title tag without changing the displayed h1. */
+  seoTitle?: string;
   content: string;
 }
 
@@ -46,6 +48,7 @@ export function getAllPosts(): LogPost[] {
       date: data.date instanceof Date ? data.date.toISOString().slice(0, 10) : (data.date ?? ''),
       tag: data.tag ?? 'build',
       description: data.description ?? excerptFromContent(content),
+      seoTitle: data.seoTitle,
       content,
     } as LogPost;
   });
@@ -67,6 +70,7 @@ export function getPostBySlug(slug: string): LogPost | null {
     date: data.date instanceof Date ? data.date.toISOString().slice(0, 10) : (data.date ?? ''),
     tag: data.tag ?? 'build',
     description: data.description ?? excerptFromContent(content),
+    seoTitle: data.seoTitle,
     content,
   };
 }

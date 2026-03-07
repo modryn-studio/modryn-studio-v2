@@ -1,31 +1,31 @@
 CONTEXT: Modryn Studio
 
 WHO I AM:
-I'm Luke, a one-person studio owner building AI-first tools 
-and micro-SaaS products under Modryn Studio (modrynstudio.com). 
-I'm not a traditional developer — I build fast using AI-assisted 
+I'm Luke, a one-person studio owner building micro-SaaS products
+under Modryn Studio (modrynstudio.com).
+I'm not a traditional developer — I build fast using AI-assisted
 development. I ship in days, not months.
 
 WHAT I'M ACTUALLY DOING:
-I build AI-powered tools targeting trending search markets. 
-My pipeline: detect rising trends → score them → build a targeted 
-tool in 48 hours → capture organic search traffic early → monetize 
+I build tools targeting trending search markets.
+My pipeline: detect rising trends → score them → build a targeted
+tool in 48 hours → capture organic search traffic early → monetize
 with ads, one-time payments, or affiliate links.
 
-I recently applied for the Google Trends API alpha to power an 
-automated trend detection and scoring system. While waiting for 
-access, I'm building the pipeline with pytrends as a bridge.
+I run a private trend detection pipeline (trendspy + Google Trends
+RSS + Gmail newsletter ingest) that scores and clusters trends daily
+and generates BUILD/WATCH/SKIP decisions every morning.
 
 THE VISION:
-build modrynstudio.com as a product studio launchpad — a site 
-that works FOR me on every tool I ship. Not a brochure. Not an 
+Build modrynstudio.com as a product studio launchpad — a site
+that works FOR me on every tool I ship. Not a brochure. Not an
 agency site. A living site that grows with every product launch.
 
 THE SITE STRUCTURE:
 /                   → Hero + tools grid + build log preview + email signup
 /tools              → All tools (live, beta, coming soon)
 /tools/[slug]       → Individual tool page (SEO magnet + launch page)
-/log                → Build in public feed (MDX, planned)
+/log                → Build in public feed (MDX files)
 /log/[slug]         → Individual log post
 /about              → Who I am, how I work, my stack
 /privacy + /terms   → Standard legal pages
@@ -34,8 +34,9 @@ THE STACK:
 Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS v4,
 Radix UI + class-variance-authority + lucide-react (shadcn/ui pattern),
 Vercel deployment, Vercel Analytics, GA4 for custom events,
+@next/mdx + gray-matter for build log MDX content,
 nodemailer + Gmail SMTP for email notifications,
-MDX for build log content (planned, not yet installed).
+resend for transactional email.
 
 TOOLS/CONTENT:
 Stored as JSON/MDX files in /content — no database yet.
@@ -58,7 +59,7 @@ CORE PRINCIPLES:
    Logo | Tools | Log | About | [Get Updates] button
 
 2. HERO
-   Headline:    "I build AI tools for trending markets."
+   Headline:    "Tools for people who don't have time for bad software."
    Subheadline: "One-person studio. Ships in days."
    CTA:         [See the tools] [Follow the build]
 
@@ -89,7 +90,7 @@ This is important — each tool page is an **SEO magnet AND a launch page**:
 2. Status badge (Live / Beta / Coming Soon)
 3. What it does (2-3 sentences, plain language)
 4. Screenshot or GIF
-5. [Try it →] button (links to the tool)
+5. [Try it →] button (links to the tool) — live and beta only
 6. Email capture if not live yet ("Notify me when this launches")
 7. Related tools
 ```
@@ -103,16 +104,17 @@ MDX files. No CMS, no database. Just:
 ```
 /log
   └── /posts
-        ├── 2026-02-24-applied-for-trends-api.mdx
-        ├── 2026-02-22-scoped-trend-pipeline.mdx
-        └── 2026-02-20-killed-lifemanager.mdx
+        ├── 2026-02-25-the-site-is-live.mdx
+        ├── 2026-02-26-specifythat.mdx
+        └── 2026-03-06-warranted.mdx
 ```
 
 Each post has frontmatter:
 ```
 ---
-title: Applied for Google Trends API
-date: 2026-02-24
+title: The site is live
+date: 2026-02-25
+description: 150-160 char meta description (required)
 tag: milestone
 ---
 ```
@@ -128,8 +130,10 @@ Tools and log entries are just JSON/MDX files in the repo:
 ```
 /content
   ├── /tools
+  │     ├── specifythat.json
   │     ├── trend-detector.json
-  │     └── coming-soon-tool.json
+  │     ├── goanyway.json
+  │     └── warranted.json
   └── /log
         └── *.mdx posts
 ```
@@ -142,4 +146,5 @@ Adding a new tool = add a JSON file. That's it.
 
 **Never add a page that serves a business you're not running yet.**
 
-No pricing. No services. No "hire me" until you actually want clients. Every page earns its place by serving your actual users — the people who use your tools.
+No pricing. No services. No "hire me" until you actually want clients. Every page
+earns its place by serving your actual users — the people who use your tools.

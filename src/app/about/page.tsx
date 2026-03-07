@@ -6,11 +6,11 @@ import EmailSignupInline from '@/components/email-signup-inline';
 export const metadata: Metadata = {
   title: 'About Luke — Founder of Modryn Studio, Building Solo',
   description:
-    "I'm Luke. I build tools for people who don't have time for bad software. One person. Wisconsin. Shipping anyway.",
+    "I'm Luke — one-person studio out of Wisconsin. I build focused tools for people who don't have time for bad software. No team, no investors, no nonsense.",
   openGraph: {
     title: 'About Luke — Founder of Modryn Studio, Building Solo',
     description:
-      "I'm Luke. I build tools for people who don't have time for bad software. One person. Wisconsin. Shipping anyway.",
+      "I'm Luke — one-person studio out of Wisconsin. I build focused tools for people who don't have time for bad software. No team, no investors, no nonsense.",
     url: 'https://modrynstudio.com/about',
     siteName: 'Modryn Studio',
     type: 'profile',

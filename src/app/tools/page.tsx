@@ -4,10 +4,12 @@ import { ToolCard } from '@/components/tool-card';
 
 export const metadata: Metadata = {
   title: 'All Tools — Modryn Studio | Live, Beta & In Progress',
-  description: 'All tools from Modryn Studio — live, beta, and coming soon.',
+  description:
+    "Browse all tools from Modryn Studio — live, in beta, and coming soon. Fast, focused software for people who don't waste time on bad tools.",
   openGraph: {
     title: 'All Tools — Modryn Studio | Live, Beta & In Progress',
-    description: 'All tools from Modryn Studio — live, beta, and coming soon.',
+    description:
+      "Browse all tools from Modryn Studio — live, in beta, and coming soon. Fast, focused software for people who don't waste time on bad tools.",
     url: 'https://modrynstudio.com/tools',
     siteName: 'Modryn Studio',
     type: 'website',
