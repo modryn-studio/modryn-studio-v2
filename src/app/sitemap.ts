@@ -12,37 +12,37 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [
     {
       url: BASE_URL,
-      lastModified: new Date(),
+      lastModified: new Date('2026-03-06'),
       changeFrequency: 'weekly',
       priority: 1,
     },
     {
       url: `${BASE_URL}/tools`,
-      lastModified: new Date(),
+      lastModified: new Date('2026-03-06'),
       changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
       url: `${BASE_URL}/log`,
-      lastModified: new Date(),
+      lastModified: new Date('2026-03-06'),
       changeFrequency: 'weekly',
       priority: 0.8,
     },
     {
       url: `${BASE_URL}/about`,
-      lastModified: new Date(),
+      lastModified: new Date('2026-02-25'),
       changeFrequency: 'monthly',
       priority: 0.6,
     },
     {
       url: `${BASE_URL}/privacy`,
-      lastModified: new Date(),
+      lastModified: new Date('2026-02-25'),
       changeFrequency: 'yearly',
       priority: 0.3,
     },
     {
       url: `${BASE_URL}/terms`,
-      lastModified: new Date(),
+      lastModified: new Date('2026-02-25'),
       changeFrequency: 'yearly',
       priority: 0.3,
     },
@@ -60,7 +60,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     .filter((tool) => tool.status === 'live')
     .map((tool) => ({
       url: `${BASE_URL}/tools/${tool.slug}`,
-      lastModified: new Date(),
+      lastModified: new Date(tool.launchedAt ?? '2026-02-25'),
       changeFrequency: 'weekly',
       priority: 0.8,
     }));
