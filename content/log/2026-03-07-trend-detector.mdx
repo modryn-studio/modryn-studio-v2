@@ -1,0 +1,28 @@
+---
+title: 'The briefings are public now.'
+date: '2026-03-07'
+tag: 'trend-detector'
+description: 'Daily BUILD/WATCH/SKIP briefings are now live at modrynstudio.com. Plus: trend memory, Reddit pain validation overhaul, and a week of pipeline sharpening.'
+seoTitle: 'Trend Detector: daily briefings are public now | Modryn Studio Build Log'
+---
+
+The briefings are public. [Seven days are up already.](https://www.modrynstudio.com/tools/trend-detector/briefings) The pipeline auto-pushes the markdown file to the site after each run — Vercel rebuilds and the page is live in under a minute.
+
+Curious if this is actually useful to you — the format, the info, any of it.
+
+## What shipped
+
+- **Public briefings live.** Every daily briefing is now published at `/tools/trend-detector/briefings/[date]`. The pipeline auto-pushes via GitHub API after each run.
+- **Trend memory.** The pipeline now reads the last 7 days of output and annotates every cluster with `days_seen`, `trajectory` (rising/stable/fading), and `best_day_score`. A signal that's been building for 5 days reads differently than one that appeared this morning.
+- **Reddit validation overhaul.** One LLM call now handles both subreddit selection and pain query generation together. The queries use language real people post before a trend has a name — not the keyword itself, but the frustration underneath it. The briefing now surfaces up to 3 raw excerpts per cluster so I read real voices before the LLM's opinion.
+- **Pipeline hardening.** Scorer word-boundary filter, cluster deduplication, briefing format restructure, Reddit post injection into LLM context, gpt-5.4 upgrade. A week of work that doesn't feel like shipping but makes every future output better.
+
+## Why
+
+The briefings have been useful to me privately. One of them led directly to [GoAnyway](/tools/goanyway). The question is whether anyone else finds them useful. The only way to find out is to make them public.
+
+If people find them, read them, and come back, that's the signal I need before building anything on top of this.
+
+## What's next
+
+I'll start sharing and see if anyone cares.
