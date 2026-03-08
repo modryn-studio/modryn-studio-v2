@@ -163,6 +163,17 @@ export default async function ToolPage({ params }: Props) {
             </Link>
           </div>
         )}
+
+        {tool.briefingsPath && (
+          <div className="mt-4">
+            <Link
+              href={tool.briefingsPath}
+              className="text-muted-foreground hover:text-foreground font-mono text-sm transition-colors"
+            >
+              Read daily briefings &rarr;
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );

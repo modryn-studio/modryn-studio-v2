@@ -81,7 +81,7 @@ export default function EmailSignupInline() {
             href={shareUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-3 inline-block underline underline-offset-4 opacity-75 hover:opacity-100 transition-opacity"
+            className="mt-3 inline-block underline underline-offset-4 opacity-75 transition-opacity hover:opacity-100"
           >
             Share on X &rarr;
           </a>

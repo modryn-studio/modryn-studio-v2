@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next';
 import { getAllPosts } from '@/lib/log';
 import { getAllTools } from '@/lib/tools';
+import { getAllBriefings } from '@/lib/briefings';
 import { site } from '@/config/site';
 
 const BASE_URL = site.url;
@@ -65,5 +66,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     }));
 
-  return [...staticRoutes, ...logRoutes, ...toolRoutes];
+  const briefings = getAllBriefings();
+  const briefingIndexRoute: MetadataRoute.Sitemap[number] = {
+    url: `${BASE_URL}/tools/trend-detector/briefings`,
+    lastModified: briefings[0] ? new Date(briefings[0].date) : new Date('2026-03-07'),
+    changeFrequency: 'daily',
+    priority: 0.8,
+  };
+  const briefingRoutes: MetadataRoute.Sitemap = briefings.map((b) => ({
+    url: `${BASE_URL}/tools/trend-detector/briefings/${b.slug}`,
+    lastModified: new Date(b.date),
+    changeFrequency: 'monthly',
+    priority: 0.7,
+  }));
+
+  return [...staticRoutes, briefingIndexRoute, ...briefingRoutes, ...logRoutes, ...toolRoutes];
 }

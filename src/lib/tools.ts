@@ -28,6 +28,8 @@ export interface Tool {
   subreddits?: string[];
   /** Public URL to the tool's logomark (square, transparent bg, ideally /icon.png from the tool's deployment) */
   logoUrl?: string;
+  /** Path to the briefings index for this tool, if it has one */
+  briefingsPath?: string;
 }
 
 const TOOLS_DIR = path.join(process.cwd(), 'content', 'tools');

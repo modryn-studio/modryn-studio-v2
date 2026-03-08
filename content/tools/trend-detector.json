@@ -12,5 +12,6 @@
     "Reddit pain signal validation — confirms real frustration before flagging a build",
     "Two-pass competitor check — raw keyword first, then the specific product idea",
     "BUILD/WATCH/SKIP decisions with lifecycle tags: EARLY, PEAKING, or FADING"
-  ]
+  ],
+  "briefingsPath": "/tools/trend-detector/briefings"
 }
