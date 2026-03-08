@@ -7,6 +7,8 @@ import rehypeRaw from 'rehype-raw';
 import { ArrowLeft } from 'lucide-react';
 import { getBriefingByDate, getAllBriefings } from '@/lib/briefings';
 import { site } from '@/config/site';
+import BriefingTracker from '@/components/briefing-tracker';
+import EmailSignupInline from '@/components/email-signup-inline';
 
 type Props = { params: Promise<{ date: string }> };
 
@@ -148,6 +150,9 @@ export default async function BriefingPage({ params }: Props) {
           {briefing.content}
         </ReactMarkdown>
       </article>
+
+      <EmailSignupInline />
+      <BriefingTracker date={date} />
     </div>
   );
 }

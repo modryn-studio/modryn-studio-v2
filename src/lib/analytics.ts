@@ -26,4 +26,6 @@ export const analytics = {
   feedbackSubmit: () => track('feedback_submit'),
   toolClick: (props: { name: string; slug: string }) => track('tool_click', props),
   shareClick: (props: { platform: string; slug: string }) => track('share_click', props),
+  briefingViewed: (props: { date: string }) => track('briefing_viewed', props),
+  briefingReadComplete: (props: { date: string }) => track('briefing_read_complete', props),
 };
