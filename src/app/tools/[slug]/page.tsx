@@ -142,7 +142,9 @@ export default async function ToolPage({ params }: Props) {
 
         {tool.briefingsPath && (
           <div className="border-border mt-8 border p-5">
-            <p className="text-amber font-mono text-xs uppercase tracking-widest">Daily Briefings</p>
+            <p className="text-amber font-mono text-xs tracking-widest uppercase">
+              Daily Briefings
+            </p>
             <p className="text-muted-foreground mt-1 font-mono text-sm">
               BUILD / WATCH / SKIP decisions on rising trends, every morning.
             </p>

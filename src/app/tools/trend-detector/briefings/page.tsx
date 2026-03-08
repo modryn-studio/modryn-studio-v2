@@ -38,8 +38,8 @@ export default function BriefingsIndexPage() {
         Daily Briefings
       </h1>
       <p className="text-muted-foreground mt-3 font-mono text-sm">
-        Every morning my private pipeline scores 400+ rising search trends and outputs
-        BUILD / WATCH / SKIP decisions. This is the unfiltered output.
+        Every morning my private pipeline scores 400+ rising search trends and outputs BUILD / WATCH
+        / SKIP decisions. This is the unfiltered output.
       </p>
 
       {briefings.length > 0 ? (

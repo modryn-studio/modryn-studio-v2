@@ -13,9 +13,7 @@ const BRIEFINGS_DIR = path.join(process.cwd(), 'content', 'briefings');
 
 function excerptFromContent(content: string): string {
   const match = content.match(/\*Sources:.+?\*/);
-  return match
-    ? match[0].replace(/\*/g, '')
-    : 'Daily trend briefing from Modryn Studio.';
+  return match ? match[0].replace(/\*/g, '') : 'Daily trend briefing from Modryn Studio.';
 }
 
 export function getAllBriefings(): Briefing[] {

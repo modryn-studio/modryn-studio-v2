@@ -52,9 +52,14 @@ export default async function BriefingPage({ params }: Props) {
 
       <p className="text-muted-foreground mt-6 font-mono text-xs leading-relaxed">
         Every morning my private{' '}
-        <Link href="/tools/trend-detector" className="underline underline-offset-4 hover:text-foreground transition-colors">Trend Detector</Link>{' '}
-        pipeline scores 400+ rising search trends and outputs BUILD / WATCH / SKIP decisions.
-        This is the raw output.
+        <Link
+          href="/tools/trend-detector"
+          className="hover:text-foreground underline underline-offset-4 transition-colors"
+        >
+          Trend Detector
+        </Link>{' '}
+        pipeline scores 400+ rising search trends and outputs BUILD / WATCH / SKIP decisions. This
+        is the raw output.
       </p>
 
       <article className="mt-10">
