@@ -25,7 +25,7 @@ export default function EmailSignup() {
       const res = await fetch('/api/feedback', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ type: 'newsletter', email }),
+        body: JSON.stringify({ type: 'newsletter', email, page: 'homepage' }),
       });
 
       if (!res.ok) {
@@ -34,7 +34,7 @@ export default function EmailSignup() {
       }
 
       setDone(true);
-      analytics.newsletterSignup();
+      analytics.newsletterSignup({ source: 'homepage' });
     } catch {
       setError('Something went wrong. Try again.');
     } finally {

@@ -151,7 +151,7 @@ export default async function BriefingPage({ params }: Props) {
         </ReactMarkdown>
       </article>
 
-      <EmailSignupInline />
+      <EmailSignupInline source="briefing" />
       <BriefingTracker date={date} />
     </div>
   );

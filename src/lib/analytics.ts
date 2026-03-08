@@ -22,7 +22,7 @@ function track(eventName: string, props?: EventProps): void {
 // Pattern: namedAction: (props: { ... }) => track('event_name', props)
 export const analytics = {
   track,
-  newsletterSignup: () => track('newsletter_signup'),
+  newsletterSignup: (props?: { source?: string }) => track('newsletter_signup', props),
   feedbackSubmit: () => track('feedback_submit'),
   toolClick: (props: { name: string; slug: string }) => track('tool_click', props),
   shareClick: (props: { platform: string; slug: string }) => track('share_click', props),

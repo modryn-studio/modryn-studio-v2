@@ -8,7 +8,7 @@ import { site } from '@/config/site';
 
 const shareUrl = `https://x.com/intent/post?text=${encodeURIComponent('Just signed up to follow the build at Modryn Studio. Fast, focused tools, built in public — one at a time. Worth watching.')}&url=${encodeURIComponent(site.url)}`;
 
-export default function EmailSignupInline() {
+export default function EmailSignupInline({ source = 'tool' }: { source?: string }) {
   const [email, setEmail] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [done, setDone] = useState(false);
@@ -25,7 +25,7 @@ export default function EmailSignupInline() {
       const res = await fetch('/api/feedback', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ type: 'newsletter', email }),
+        body: JSON.stringify({ type: 'newsletter', email, page: source }),
       });
 
       if (!res.ok) {
@@ -34,7 +34,7 @@ export default function EmailSignupInline() {
       }
 
       setDone(true);
-      analytics.newsletterSignup();
+      analytics.newsletterSignup({ source });
     } catch {
       setError('Something went wrong. Try again.');
     } finally {
