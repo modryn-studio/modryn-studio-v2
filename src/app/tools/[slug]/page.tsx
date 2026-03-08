@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { getToolBySlug, getAllTools, type ToolStatus } from '@/lib/tools';
+import { getAllBriefings } from '@/lib/briefings';
 import { ToolScreenshot } from '@/components/tool-screenshot';
 import EmailSignupInline from '@/components/email-signup-inline';
 import Image from 'next/image';
@@ -77,6 +78,8 @@ export default async function ToolPage({ params }: Props) {
 
   if (!tool) notFound();
 
+  const latestBriefing = tool.briefingsPath ? (getAllBriefings()[0] ?? null) : null;
+
   const status = STATUS_LABEL[tool.status];
 
   return (
@@ -137,6 +140,35 @@ export default async function ToolPage({ params }: Props) {
           </a>
         )}
 
+        {tool.briefingsPath && (
+          <div className="border-border mt-8 border p-5">
+            <p className="text-amber font-mono text-xs uppercase tracking-widest">Daily Briefings</p>
+            <p className="text-muted-foreground mt-1 font-mono text-sm">
+              BUILD / WATCH / SKIP decisions on rising trends, every morning.
+            </p>
+            {latestBriefing && (
+              <p className="text-muted-foreground mt-1 font-mono text-xs">
+                Latest: {latestBriefing.date}
+              </p>
+            )}
+            <div className="mt-4 flex flex-wrap items-center gap-4">
+              {latestBriefing ? (
+                <Link href={`${tool.briefingsPath}/${latestBriefing.slug}`}>
+                  <Button className="bg-amber hover:bg-amber/90 rounded-none px-6 font-mono text-sm text-white">
+                    Read today&apos;s briefing
+                  </Button>
+                </Link>
+              ) : null}
+              <Link
+                href={tool.briefingsPath}
+                className="text-muted-foreground hover:text-foreground font-mono text-sm transition-colors"
+              >
+                All briefings &rarr;
+              </Link>
+            </div>
+          </div>
+        )}
+
         {tool.bullets && tool.bullets.length > 0 && (
           <ul className="mt-6 space-y-2">
             {tool.bullets.map((bullet, i) => (
@@ -160,17 +192,6 @@ export default async function ToolPage({ params }: Props) {
               className="text-muted-foreground hover:text-foreground font-mono text-sm transition-colors"
             >
               Read the build &rarr;
-            </Link>
-          </div>
-        )}
-
-        {tool.briefingsPath && (
-          <div className="mt-4">
-            <Link
-              href={tool.briefingsPath}
-              className="text-muted-foreground hover:text-foreground font-mono text-sm transition-colors"
-            >
-              Read daily briefings &rarr;
             </Link>
           </div>
         )}

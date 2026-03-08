@@ -50,6 +50,13 @@ export default async function BriefingPage({ params }: Props) {
         All briefings
       </Link>
 
+      <p className="text-muted-foreground mt-6 font-mono text-xs leading-relaxed">
+        Every morning my private{' '}
+        <Link href="/tools/trend-detector" className="underline underline-offset-4 hover:text-foreground transition-colors">Trend Detector</Link>{' '}
+        pipeline scores 400+ rising search trends and outputs BUILD / WATCH / SKIP decisions.
+        This is the raw output.
+      </p>
+
       <article className="mt-10">
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
@@ -85,19 +92,13 @@ export default async function BriefingPage({ params }: Props) {
                 {children}
               </a>
             ),
-            ul: ({ children }) => (
-              <ul className="mt-3 space-y-1 pl-4">{children}</ul>
-            ),
-            ol: ({ children }) => (
-              <ol className="mt-3 list-decimal space-y-1 pl-4">{children}</ol>
-            ),
+            ul: ({ children }) => <ul className="mt-3 space-y-1 pl-4">{children}</ul>,
+            ol: ({ children }) => <ol className="mt-3 list-decimal space-y-1 pl-4">{children}</ol>,
             li: ({ children }) => (
               <li className="text-muted-foreground font-mono text-sm">{children}</li>
             ),
             blockquote: ({ children }) => (
-              <blockquote className="border-amber/40 mt-4 border-l-2 pl-4">
-                {children}
-              </blockquote>
+              <blockquote className="border-amber/40 mt-4 border-l-2 pl-4">{children}</blockquote>
             ),
             code: ({ children, className }) => {
               const isBlock = className?.includes('language-');
@@ -123,9 +124,7 @@ export default async function BriefingPage({ params }: Props) {
                 {children}
               </th>
             ),
-            td: ({ children }) => (
-              <td className="border-border border-b px-3 py-2">{children}</td>
-            ),
+            td: ({ children }) => <td className="border-border border-b px-3 py-2">{children}</td>,
             details: ({ children, ...props }) => (
               <details
                 className="border-border mt-4 border p-4"
