@@ -23,7 +23,7 @@ export default function BriefingTracker({ date }: { date: string }) {
           observer.disconnect();
         }
       },
-      { threshold: 1.0 },
+      { threshold: 1.0 }
     );
 
     observer.observe(el);
