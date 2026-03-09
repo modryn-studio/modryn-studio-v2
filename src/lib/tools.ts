@@ -43,6 +43,8 @@ export interface ToolAudioExample {
   genre: string;
   /** URL to the audio file — relative path from public/, e.g. "/audio/examples/foo.mp3" */
   audioUrl: string;
+  /** URL to the cover/background image shown on the card */
+  coverUrl?: string;
 }
 
 const TOOLS_DIR = path.join(process.cwd(), 'content', 'tools');

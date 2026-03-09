@@ -1,0 +1,100 @@
+'use client';
+
+import { useRef, useState, useEffect } from 'react';
+import Image from 'next/image';
+import { Play, Pause } from 'lucide-react';
+import type { ToolAudioExample } from '@/lib/tools';
+
+interface Props {
+  example: ToolAudioExample;
+}
+
+export function SongCard({ example }: Props) {
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const [playing, setPlaying] = useState(false);
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    const onPlay = () => setPlaying(true);
+    const onPause = () => setPlaying(false);
+    const onEnded = () => { setPlaying(false); setProgress(0); };
+    const onTimeUpdate = () => {
+      if (audio.duration) setProgress(audio.currentTime / audio.duration);
+    };
+
+    audio.addEventListener('play', onPlay);
+    audio.addEventListener('pause', onPause);
+    audio.addEventListener('ended', onEnded);
+    audio.addEventListener('timeupdate', onTimeUpdate);
+    return () => {
+      audio.removeEventListener('play', onPlay);
+      audio.removeEventListener('pause', onPause);
+      audio.removeEventListener('ended', onEnded);
+      audio.removeEventListener('timeupdate', onTimeUpdate);
+    };
+  }, []);
+
+  function toggle() {
+    const audio = audioRef.current;
+    if (!audio) return;
+    if (playing) {
+      audio.pause();
+    } else {
+      audio.play();
+    }
+  }
+
+  return (
+    <div
+      className={`relative flex items-center gap-3 overflow-hidden border p-3 transition-colors ${
+        playing ? 'border-amber' : 'border-border'
+      }`}
+    >
+      {/* Cover + play button */}
+      <button
+        onClick={toggle}
+        aria-label={playing ? `Pause ${example.subtitle}` : `Play ${example.subtitle}`}
+        className="relative h-14 w-14 shrink-0 overflow-hidden bg-surface focus-visible:outline-2 focus-visible:outline-amber"
+      >
+        {example.coverUrl && (
+          <Image
+            src={example.coverUrl}
+            alt=""
+            fill
+            className="object-cover"
+            sizes="56px"
+          />
+        )}
+        <div className="absolute inset-0 flex items-center justify-center bg-black/50 transition-opacity hover:bg-black/40">
+          {playing ? (
+            <Pause className="h-5 w-5 fill-white text-white" />
+          ) : (
+            <Play className="h-5 w-5 fill-white text-white" />
+          )}
+        </div>
+      </button>
+
+      {/* Text */}
+      <div className="min-w-0 flex-1">
+        <p className="truncate font-mono text-sm font-semibold">{example.name}</p>
+        <p className="text-muted-foreground truncate font-mono text-xs">{example.subtitle}</p>
+      </div>
+
+      {/* Genre badge */}
+      <span className="border-border text-muted-foreground shrink-0 border px-2 py-0.5 font-mono text-xs">
+        {example.genre}
+      </span>
+
+      {/* Playhead progress bar */}
+      <div
+        className="absolute bottom-0 left-0 h-[2px] bg-amber transition-[width]"
+        style={{ width: `${progress * 100}%` }}
+      />
+
+      <audio ref={audioRef} src={example.audioUrl} preload="none" />
+    </div>
+  );
+}

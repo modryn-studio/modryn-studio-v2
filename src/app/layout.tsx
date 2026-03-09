@@ -8,6 +8,7 @@ import FeedbackWidget from '@/components/feedback-widget';
 import Script from 'next/script';
 import { site } from '@/config/site';
 import { SiteSchema } from '@/components/site-schema';
+import { AudioExclusiveManager } from '@/components/audio-exclusive-manager';
 import { getAllPosts } from '@/lib/log';
 import { getAllTools } from '@/lib/tools';
 import './globals.css';
@@ -79,6 +80,7 @@ export default async function RootLayout({
             <main className="flex-1">{children}</main>
             <Footer />
             <FeedbackWidget />
+            <AudioExclusiveManager />
           </div>
           <Analytics />
         </ThemeProvider>

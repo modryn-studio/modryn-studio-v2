@@ -18,49 +18,57 @@
       "name": "Monica",
       "subtitle": "Big 1-2",
       "genre": "pop",
-      "audioUrl": "/audio/examples/monica/audio.mp3"
+      "audioUrl": "/audio/examples/monica/audio.mp3",
+      "coverUrl": "/audio/examples/monica/bg.jpeg"
     },
     {
       "name": "Monica",
       "subtitle": "Sunshine's Out",
       "genre": "pop",
-      "audioUrl": "/audio/examples/monica-2/audio.mp3"
+      "audioUrl": "/audio/examples/monica-2/audio.mp3",
+      "coverUrl": "/audio/examples/monica-2/bg.jpeg"
     },
     {
       "name": "Lincoln",
       "subtitle": "Spidey Kicks",
       "genre": "EDM",
-      "audioUrl": "/audio/examples/lincoln/audio.mp3"
+      "audioUrl": "/audio/examples/lincoln/audio.mp3",
+      "coverUrl": "/audio/examples/lincoln/bg.jpeg"
     },
     {
       "name": "Nora",
       "subtitle": "Chi Chi's Jam",
       "genre": "pop",
-      "audioUrl": "/audio/examples/nora/audio.mp3"
+      "audioUrl": "/audio/examples/nora/audio.mp3",
+      "coverUrl": "/audio/examples/nora/bg.jpeg"
     },
     {
       "name": "Nora",
       "subtitle": "Ooh Yeah",
       "genre": "pop",
-      "audioUrl": "/audio/examples/nora-2/audio.mp3"
+      "audioUrl": "/audio/examples/nora-2/audio.mp3",
+      "coverUrl": "/audio/examples/nora-2/bg.jpeg"
     },
     {
       "name": "Paula",
       "subtitle": "P's Birthday",
       "genre": "rap",
-      "audioUrl": "/audio/examples/paula/audio.mp3"
+      "audioUrl": "/audio/examples/paula/audio.mp3",
+      "coverUrl": "/audio/examples/paula/bg.jpeg"
     },
     {
       "name": "Paula",
       "subtitle": "Take the Crown",
       "genre": "reggae",
-      "audioUrl": "/audio/examples/paula-reggae/audio.mp3"
+      "audioUrl": "/audio/examples/paula-reggae/audio.mp3",
+      "coverUrl": "/audio/examples/paula-reggae/bg.jpeg"
     },
     {
       "name": "Nick",
       "subtitle": "Slay Baddie",
       "genre": "rap",
-      "audioUrl": "/audio/examples/nick/audio.mp3"
+      "audioUrl": "/audio/examples/nick/audio.mp3",
+      "coverUrl": "/audio/examples/nick/bg.jpeg"
     }
   ]
 }
