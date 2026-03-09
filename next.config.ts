@@ -8,6 +8,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       { protocol: 'https', hostname: 'modrynstudio.com' },
       { protocol: 'https', hostname: '*.vercel.app' },
+      { protocol: 'https', hostname: 'songfor.gift' },
     ],
   },
   async rewrites() {
