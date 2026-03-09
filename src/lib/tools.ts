@@ -30,6 +30,19 @@ export interface Tool {
   logoUrl?: string;
   /** Path to the briefings index for this tool, if it has one */
   briefingsPath?: string;
+  /** Audio example clips showcased on the tool detail page */
+  examples?: ToolAudioExample[];
+}
+
+export interface ToolAudioExample {
+  /** Display name shown on the card, e.g. "Monica" */
+  name: string;
+  /** Short occasion label, e.g. "12th birthday" */
+  occasion: string;
+  /** Genre tag shown as a badge, e.g. "pop / hype" */
+  genre: string;
+  /** URL to the audio file — relative path from public/, e.g. "/audio/examples/foo.mp3" */
+  audioUrl: string;
 }
 
 const TOOLS_DIR = path.join(process.cwd(), 'content', 'tools');

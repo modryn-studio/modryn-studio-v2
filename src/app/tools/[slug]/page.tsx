@@ -206,6 +206,30 @@ export default async function ToolPage({ params }: Props) {
           </ul>
         )}
 
+        {tool.examples && tool.examples.length > 0 && (
+          <div className="mt-10">
+            <p className="text-muted-foreground mb-4 font-mono text-xs tracking-widest uppercase">
+              Real examples
+            </p>
+            <div className="space-y-4">
+              {tool.examples.map((ex, i) => (
+                <div key={i} className="border-border border p-4">
+                  <div className="mb-3 flex items-center justify-between">
+                    <div>
+                      <p className="font-mono text-sm font-semibold">{ex.name}</p>
+                      <p className="text-muted-foreground font-mono text-xs">{ex.occasion}</p>
+                    </div>
+                    <span className="border-border text-muted-foreground border px-2 py-0.5 font-mono text-xs">
+                      {ex.genre}
+                    </span>
+                  </div>
+                  <audio controls src={ex.audioUrl} className="w-full" />
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
         {tool.status !== 'live' && <EmailSignupInline toolName={tool.name} source={tool.slug} />}
       </div>
     </div>
