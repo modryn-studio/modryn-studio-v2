@@ -8,7 +8,13 @@ import { site } from '@/config/site';
 
 const shareUrl = `https://x.com/intent/post?text=${encodeURIComponent('Just signed up to follow the build at Modryn Studio. Fast, focused tools, built in public — one at a time. Worth watching.')}&url=${encodeURIComponent(site.url)}`;
 
-export default function EmailSignupInline({ source = 'tool' }: { source?: string }) {
+export default function EmailSignupInline({
+  source = 'tool',
+  toolName,
+}: {
+  source?: string;
+  toolName?: string;
+}) {
   const [email, setEmail] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [done, setDone] = useState(false);
@@ -46,9 +52,13 @@ export default function EmailSignupInline({ source = 'tool' }: { source?: string
     <div className="border-border mt-16 border-t pt-10">
       {!done ? (
         <>
-          <p className="font-heading text-foreground text-base font-semibold">Follow the build.</p>
+          <p className="font-heading text-foreground text-base font-semibold">
+            {toolName ? `Get notified when ${toolName} goes live.` : 'Follow the build.'}
+          </p>
           <p className="text-muted-foreground mt-1 font-mono text-sm">
-            Get notified when the next tool drops. No newsletters. Just launches.
+            {toolName
+              ? `Drop your email and we'll tell you the moment it's ready. No noise.`
+              : 'Get notified when the next tool drops. No newsletters. Just launches.'}
           </p>
           <form onSubmit={handleSubmit} className="mt-4 flex flex-col gap-3 sm:flex-row">
             <label htmlFor="inline-signup-email" className="sr-only">
@@ -76,7 +86,11 @@ export default function EmailSignupInline({ source = 'tool' }: { source?: string
         </>
       ) : (
         <div className="border-amber/30 bg-amber/5 text-amber border p-4 font-mono text-sm">
-          <p>You&apos;re on the list. Next launch, your inbox.</p>
+          <p>
+            {toolName
+              ? `You're on the list. We'll email you when ${toolName} launches.`
+              : "You're on the list. Next launch, your inbox."}
+          </p>
           <a
             href={shareUrl}
             target="_blank"

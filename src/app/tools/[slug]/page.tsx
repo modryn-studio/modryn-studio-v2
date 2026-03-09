@@ -131,14 +131,19 @@ export default async function ToolPage({ params }: Props) {
           </div>
         )}
 
-        {(tool.status === 'live' || tool.status === 'beta') && tool.url && (
-          <a href={tool.url} target="_blank" rel="noopener noreferrer">
-            <Button className="bg-amber hover:bg-amber/90 mt-8 rounded-none px-6 font-mono text-sm text-white">
-              {tool.status === 'live' ? 'Try it' : 'Try the beta'}
-              <ExternalLink className="ml-2 h-4 w-4" />
-            </Button>
-          </a>
-        )}
+        {(tool.status === 'live' || tool.status === 'beta' || tool.status === 'building') &&
+          tool.url && (
+            <a href={tool.url} target="_blank" rel="noopener noreferrer">
+              <Button className="bg-amber hover:bg-amber/90 mt-8 rounded-none px-6 font-mono text-sm text-white">
+                {tool.status === 'live'
+                  ? 'Try it'
+                  : tool.status === 'beta'
+                    ? 'Try the beta'
+                    : 'Preview it'}
+                <ExternalLink className="ml-2 h-4 w-4" />
+              </Button>
+            </a>
+          )}
 
         {tool.briefingsPath && (
           <div className="border-border mt-8 border p-5">
@@ -185,7 +190,7 @@ export default async function ToolPage({ params }: Props) {
           </ul>
         )}
 
-        {tool.status !== 'live' && <EmailSignupInline />}
+        {tool.status !== 'live' && <EmailSignupInline toolName={tool.name} source={tool.slug} />}
 
         {tool.logSlug && (
           <div className="mt-8">
