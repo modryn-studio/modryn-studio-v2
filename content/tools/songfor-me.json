@@ -6,56 +6,61 @@
   "url": "https://songfor.gift",
   "screenshotUrl": "https://songfor.gift/screenshots/songfor-me-light.png",
   "logoUrl": "https://songfor.gift/icon.png",
-  "subreddits": ["r/Gifts", "r/Parenting", "r/relationship_advice", "r/CasualConversation"],
+  "subreddits": [
+    "r/Gifts",
+    "r/Parenting",
+    "r/relationship_advice",
+    "r/CasualConversation"
+  ],
   "logSlug": "2026-03-09-songfor-me",
   "examples": [
     {
       "name": "Monica",
       "occasion": "birthday",
       "genre": "pop",
-      "audioUrl": "/audio/examples/Hey%20Monica,%20big%201-2!%20(Remastered).mp3"
+      "audioUrl": "/audio/examples/monica/audio.mp3"
     },
     {
       "name": "Lincoln",
       "occasion": "birthday",
-      "genre": "techno",
-      "audioUrl": "/audio/examples/Happy%20Birthday%20Lincoln.mp3"
+      "genre": "EDM",
+      "audioUrl": "/audio/examples/lincoln/audio.mp3"
     },
     {
       "name": "Chi Chi",
       "occasion": "birthday",
       "genre": "pop",
-      "audioUrl": "/audio/examples/Chi%20Chi's%20Birthday%20Jam.mp3"
+      "audioUrl": "/audio/examples/chi-chi-jam/audio.mp3"
     },
     {
       "name": "P",
       "occasion": "birthday",
       "genre": "rap",
-      "audioUrl": "/audio/examples/Ayyyy!%20It's%20P's%20birthday!.mp3"
+      "audioUrl": "/audio/examples/p/audio.mp3"
     },
     {
       "name": "Snickers",
       "occasion": "birthday",
       "genre": "rap",
-      "audioUrl": "/audio/examples/Slay%20Baddie%20Snickers.mp3"
+      "audioUrl": "/audio/examples/snickers/audio.mp3"
     },
     {
       "name": "PT",
       "occasion": "birthday",
       "genre": "reggae",
-      "audioUrl": "/audio/examples/PT.mp3"
+      "audioUrl": "/audio/examples/pt/audio.mp3"
     },
     {
       "name": "Chi Chi",
       "occasion": "birthday",
       "genre": "pop",
-      "audioUrl": "/audio/examples/Happy%20Birthday%20Chi%20Chi.mp3"
+      "audioUrl": "/audio/examples/chi-chi/audio.mp3"
     },
     {
       "name": "Sunshine",
       "occasion": "birthday",
       "genre": "pop",
-      "audioUrl": "/audio/examples/Sunshine's%20out%20and%20the%20sky's%20all%20blue%20(Remastered).mp3"
+      "audioUrl": "/audio/examples/sunshine/audio.mp3"
     }
   ]
 }
