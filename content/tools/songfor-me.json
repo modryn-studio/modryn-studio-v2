@@ -1,0 +1,10 @@
+{
+  "name": "songfor.me",
+  "tagline": "Make them a birthday song they'll never forget.",
+  "description": "Generate a personalized birthday song for someone you love, delivered in minutes.",
+  "status": "building",
+  "url": "https://songfor.gift",
+  "screenshotUrl": "https://songfor.gift/screenshots/songfor-me-light.png",
+  "logoUrl": "https://songfor.gift/icon.png",
+  "subreddits": ["r/Gifts", "r/Parenting", "r/relationship_advice", "r/CasualConversation"]
+}
