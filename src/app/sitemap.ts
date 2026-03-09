@@ -13,19 +13,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [
     {
       url: BASE_URL,
-      lastModified: new Date('2026-03-06'),
+      lastModified: new Date('2026-03-09'),
       changeFrequency: 'weekly',
       priority: 1,
     },
     {
       url: `${BASE_URL}/tools`,
-      lastModified: new Date('2026-03-06'),
+      lastModified: new Date('2026-03-09'),
       changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
       url: `${BASE_URL}/log`,
-      lastModified: new Date('2026-03-06'),
+      lastModified: new Date('2026-03-09'),
       changeFrequency: 'weekly',
       priority: 0.8,
     },
