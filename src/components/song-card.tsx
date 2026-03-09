@@ -20,7 +20,10 @@ export function SongCard({ example }: Props) {
 
     const onPlay = () => setPlaying(true);
     const onPause = () => setPlaying(false);
-    const onEnded = () => { setPlaying(false); setProgress(0); };
+    const onEnded = () => {
+      setPlaying(false);
+      setProgress(0);
+    };
     const onTimeUpdate = () => {
       if (audio.duration) setProgress(audio.currentTime / audio.duration);
     };
@@ -57,16 +60,10 @@ export function SongCard({ example }: Props) {
       <button
         onClick={toggle}
         aria-label={playing ? `Pause ${example.subtitle}` : `Play ${example.subtitle}`}
-        className="relative h-14 w-14 shrink-0 overflow-hidden bg-surface focus-visible:outline-2 focus-visible:outline-amber"
+        className="bg-surface focus-visible:outline-amber relative h-14 w-14 shrink-0 overflow-hidden focus-visible:outline-2"
       >
         {example.coverUrl && (
-          <Image
-            src={example.coverUrl}
-            alt=""
-            fill
-            className="object-cover"
-            sizes="56px"
-          />
+          <Image src={example.coverUrl} alt="" fill className="object-cover" sizes="56px" />
         )}
         <div className="absolute inset-0 flex items-center justify-center bg-black/50 transition-opacity hover:bg-black/40">
           {playing ? (
@@ -90,7 +87,7 @@ export function SongCard({ example }: Props) {
 
       {/* Playhead progress bar */}
       <div
-        className="absolute bottom-0 left-0 h-[2px] bg-amber transition-[width]"
+        className="bg-amber absolute bottom-0 left-0 h-[2px] transition-[width]"
         style={{ width: `${progress * 100}%` }}
       />
 
