@@ -217,7 +217,7 @@ export default async function ToolPage({ params }: Props) {
                   <div className="mb-3 flex items-center justify-between">
                     <div>
                       <p className="font-mono text-sm font-semibold">{ex.name}</p>
-                      <p className="text-muted-foreground font-mono text-xs">{ex.occasion}</p>
+                      <p className="text-muted-foreground font-mono text-xs">{ex.subtitle}</p>
                     </div>
                     <span className="border-border text-muted-foreground border px-2 py-0.5 font-mono text-xs">
                       {ex.genre}

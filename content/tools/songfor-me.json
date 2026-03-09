@@ -16,51 +16,51 @@
   "examples": [
     {
       "name": "Monica",
-      "occasion": "birthday",
+      "subtitle": "Big 1-2",
       "genre": "pop",
       "audioUrl": "/audio/examples/monica/audio.mp3"
     },
     {
+      "name": "Monica",
+      "subtitle": "Sunshine's Out",
+      "genre": "pop",
+      "audioUrl": "/audio/examples/monica-2/audio.mp3"
+    },
+    {
       "name": "Lincoln",
-      "occasion": "birthday",
+      "subtitle": "Spidey Kicks",
       "genre": "EDM",
       "audioUrl": "/audio/examples/lincoln/audio.mp3"
     },
     {
-      "name": "Chi Chi",
-      "occasion": "birthday",
+      "name": "Nora",
+      "subtitle": "Chi Chi's Jam",
       "genre": "pop",
-      "audioUrl": "/audio/examples/chi-chi-jam/audio.mp3"
+      "audioUrl": "/audio/examples/nora/audio.mp3"
     },
     {
-      "name": "P",
-      "occasion": "birthday",
+      "name": "Nora",
+      "subtitle": "Ooh Yeah",
+      "genre": "pop",
+      "audioUrl": "/audio/examples/nora-2/audio.mp3"
+    },
+    {
+      "name": "Paula",
+      "subtitle": "P's Birthday",
       "genre": "rap",
-      "audioUrl": "/audio/examples/p/audio.mp3"
+      "audioUrl": "/audio/examples/paula/audio.mp3"
     },
     {
-      "name": "Snickers",
-      "occasion": "birthday",
-      "genre": "rap",
-      "audioUrl": "/audio/examples/snickers/audio.mp3"
-    },
-    {
-      "name": "PT",
-      "occasion": "birthday",
+      "name": "Paula",
+      "subtitle": "Take the Crown",
       "genre": "reggae",
-      "audioUrl": "/audio/examples/pt/audio.mp3"
+      "audioUrl": "/audio/examples/paula-reggae/audio.mp3"
     },
     {
-      "name": "Chi Chi",
-      "occasion": "birthday",
-      "genre": "pop",
-      "audioUrl": "/audio/examples/chi-chi/audio.mp3"
-    },
-    {
-      "name": "Sunshine",
-      "occasion": "birthday",
-      "genre": "pop",
-      "audioUrl": "/audio/examples/sunshine/audio.mp3"
+      "name": "Nick",
+      "subtitle": "Slay Baddie",
+      "genre": "rap",
+      "audioUrl": "/audio/examples/nick/audio.mp3"
     }
   ]
 }

@@ -37,9 +37,9 @@ export interface Tool {
 export interface ToolAudioExample {
   /** Display name shown on the card, e.g. "Monica" */
   name: string;
-  /** Short occasion label, e.g. "12th birthday" */
-  occasion: string;
-  /** Genre tag shown as a badge, e.g. "pop / hype" */
+  /** Short song subtitle shown under the name, e.g. "Big 1-2" */
+  subtitle: string;
+  /** Genre tag shown as a badge, e.g. "pop" */
   genre: string;
   /** URL to the audio file — relative path from public/, e.g. "/audio/examples/foo.mp3" */
   audioUrl: string;
