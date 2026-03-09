@@ -73,7 +73,7 @@ export function ToolCard({ tool, showDetails = false }: { tool: Tool; showDetail
         <p className="text-muted-foreground mt-2 font-mono text-sm leading-relaxed">
           {tool.description}
         </p>
-        {showDetails && tool.screenshotUrl && (
+        {showDetails && (tool.screenshotUrl || tool.screenshotUrlDark) && (
           <div className="border-border mt-4 overflow-hidden border">
             <ToolScreenshot
               lightUrl={tool.screenshotUrl}
