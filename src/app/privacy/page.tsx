@@ -4,6 +4,15 @@ export const metadata: Metadata = {
   title: 'Privacy Policy — Modryn Studio | How We Handle Your Data',
   description:
     "Modryn Studio's privacy policy. We don't sell your data, serve ads, or track you beyond basic analytics. Local-first tools — your data stays on your device.",
+  openGraph: {
+    title: 'Privacy Policy — Modryn Studio | How We Handle Your Data',
+    description:
+      "Modryn Studio's privacy policy. We don't sell your data, serve ads, or track you beyond basic analytics. Local-first tools — your data stays on your device.",
+    url: 'https://modrynstudio.com/privacy',
+    siteName: 'Modryn Studio',
+    type: 'website',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Modryn Studio' }],
+  },
 };
 
 export default function PrivacyPage() {

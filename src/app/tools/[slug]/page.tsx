@@ -49,6 +49,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url: `https://modrynstudio.com/tools/${slug}`,
       siteName: 'Modryn Studio',
       type: 'website',
+      images: [{ url: '/og-image.png', width: 1200, height: 630, alt: tool.name }],
+    },
+    twitter: {
+      card: 'summary_large_image',
     },
   };
 }
@@ -133,16 +137,28 @@ export default async function ToolPage({ params }: Props) {
 
         {(tool.status === 'live' || tool.status === 'beta' || tool.status === 'building') &&
           tool.url && (
-            <a href={tool.url} target="_blank" rel="noopener noreferrer">
-              <Button className="bg-amber hover:bg-amber/90 mt-8 rounded-none px-6 font-mono text-sm text-white">
-                {tool.status === 'live'
-                  ? 'Try it'
-                  : tool.status === 'beta'
-                    ? 'Try the beta'
-                    : 'Preview it'}
-                <ExternalLink className="ml-2 h-4 w-4" />
-              </Button>
-            </a>
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <a href={tool.url} target="_blank" rel="noopener noreferrer">
+                <Button className="bg-amber hover:bg-amber/90 rounded-none px-6 font-mono text-sm text-white">
+                  {tool.status === 'live'
+                    ? 'Try it'
+                    : tool.status === 'beta'
+                      ? 'Try the beta'
+                      : 'Preview it'}
+                  <ExternalLink className="ml-2 h-4 w-4" />
+                </Button>
+              </a>
+              {tool.logSlug && (
+                <Link href={`/log/${tool.logSlug}`}>
+                  <Button
+                    variant="outline"
+                    className="border-border rounded-none px-6 font-mono text-sm"
+                  >
+                    Build log
+                  </Button>
+                </Link>
+              )}
+            </div>
           )}
 
         {tool.briefingsPath && (
@@ -191,17 +207,6 @@ export default async function ToolPage({ params }: Props) {
         )}
 
         {tool.status !== 'live' && <EmailSignupInline toolName={tool.name} source={tool.slug} />}
-
-        {tool.logSlug && (
-          <div className="mt-8">
-            <Link
-              href={`/log/${tool.logSlug}`}
-              className="text-muted-foreground hover:text-foreground font-mono text-sm transition-colors"
-            >
-              Read the build &rarr;
-            </Link>
-          </div>
-        )}
       </div>
     </div>
   );

@@ -31,6 +31,7 @@ No build-up. No wrap-up. No copy that sounds like a startup.
 - "In this post I'll explain..." — just start explaining
 - Never summarize what you just wrote at the end
 - No exclamation points
+- No em-dashes (—). Use a colon, a period, or rewrite the sentence.
 - Don't lead with tech — lead with outcome or tension
 
 ---

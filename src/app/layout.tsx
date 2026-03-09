@@ -26,7 +26,7 @@ const spaceMono = Space_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
-  title: site.name,
+  title: site.ogTitle,
   description: site.description,
   // manifest.ts in app/ is auto-detected — no need to declare it here
   icons: {

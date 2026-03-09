@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw';
+import remarkGfm from 'remark-gfm';
 import { getPostBySlug, getAllPosts } from '@/lib/log';
 import { getAllTools } from '@/lib/tools';
 import { ShareButtons } from '@/components/share-buttons';
@@ -31,6 +33,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url: `https://modrynstudio.com/log/${slug}`,
       siteName: 'Modryn Studio',
       type: 'article',
+      images: [{ url: '/og-image.png', width: 1200, height: 630, alt: post.title }],
     },
     authors: [{ name: 'Luke Hanner', url: 'https://modrynstudio.com/about' }],
     twitter: {
@@ -79,6 +82,8 @@ export default async function LogPostPage({ params }: Props) {
         </h1>
         <div className="mt-8">
           <ReactMarkdown
+            remarkPlugins={[remarkGfm]}
+            rehypePlugins={[rehypeRaw]}
             components={{
               h2: ({ children }) => (
                 <h2 className="font-heading mt-10 mb-3 text-xl font-bold tracking-tight">
@@ -126,6 +131,15 @@ export default async function LogPostPage({ params }: Props) {
                 <code className="bg-muted rounded px-1 py-0.5 font-mono text-xs">{children}</code>
               ),
               hr: () => <hr className="border-border my-8" />,
+              figure: ({ children }) => <figure className="my-6">{children}</figure>,
+              figcaption: ({ children }) => (
+                <figcaption className="text-muted-foreground mt-2 font-mono text-xs">
+                  {children}
+                </figcaption>
+              ),
+              audio: ({ src, controls }) => (
+                <audio controls={controls} src={src as string} className="w-full" />
+              ),
             }}
           >
             {post.content}

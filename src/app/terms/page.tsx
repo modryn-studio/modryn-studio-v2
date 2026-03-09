@@ -4,6 +4,15 @@ export const metadata: Metadata = {
   title: 'Terms of Service — Modryn Studio | How This Site Works',
   description:
     'Terms of service for all tools at modrynstudio.com. Covers acceptable use, liability limits, and what you can expect from Modryn Studio as a builder.',
+  openGraph: {
+    title: 'Terms of Service — Modryn Studio | How This Site Works',
+    description:
+      'Terms of service for all tools at modrynstudio.com. Covers acceptable use, liability limits, and what you can expect from Modryn Studio as a builder.',
+    url: 'https://modrynstudio.com/terms',
+    siteName: 'Modryn Studio',
+    type: 'website',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Modryn Studio' }],
+  },
 };
 
 export default function TermsPage() {
