@@ -6,5 +6,6 @@
   "url": "https://songfor.gift",
   "screenshotUrl": "https://songfor.gift/screenshots/songfor-me-light.png",
   "logoUrl": "https://songfor.gift/icon.png",
-  "subreddits": ["r/Gifts", "r/Parenting", "r/relationship_advice", "r/CasualConversation"]
+  "subreddits": ["r/Gifts", "r/Parenting", "r/relationship_advice", "r/CasualConversation"],
+  "logSlug": "2026-03-09-songfor-me"
 }
