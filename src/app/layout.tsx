@@ -9,6 +9,7 @@ import Script from 'next/script';
 import { site } from '@/config/site';
 import { SiteSchema } from '@/components/site-schema';
 import { AudioExclusiveManager } from '@/components/audio-exclusive-manager';
+import { PostHogProvider } from '@/components/posthog-provider';
 import { getAllPosts } from '@/lib/log';
 import { getAllTools } from '@/lib/tools';
 import './globals.css';
@@ -74,6 +75,7 @@ export default async function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${spaceGrotesk.variable} ${spaceMono.variable} antialiased`}>
+        <PostHogProvider>
         <ThemeProvider defaultTheme="system" storageKey="modryn-theme">
           <div className="noise-overlay bg-background text-foreground flex min-h-screen flex-col">
             <Navbar newPostsCount={newPostsCount} newToolsCount={newToolsCount} />
@@ -101,6 +103,7 @@ export default async function RootLayout({
             </Script>
           </>
         )}
+        </PostHogProvider>
       </body>
     </html>
   );
