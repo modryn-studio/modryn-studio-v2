@@ -45,6 +45,8 @@ export interface ToolAudioExample {
   audioUrl: string;
   /** URL to the cover/background image shown on the card */
   coverUrl?: string;
+  /** One-line context shown on the card: audience + occasion + memorable detail */
+  context?: string;
 }
 
 const TOOLS_DIR = path.join(process.cwd(), 'content', 'tools');

@@ -11,9 +11,12 @@ const shareUrl = `https://x.com/intent/post?text=${encodeURIComponent('Just sign
 export default function EmailSignupInline({
   source = 'tool',
   toolName,
+  wipUrl,
 }: {
   source?: string;
   toolName?: string;
+  /** If set, shows a 'peek at work in progress' link — used for building-status tools */
+  wipUrl?: string;
 }) {
   const [email, setEmail] = useState('');
   const [submitting, setSubmitting] = useState(false);
@@ -53,11 +56,11 @@ export default function EmailSignupInline({
       {!done ? (
         <>
           <p className="font-heading text-foreground text-base font-semibold">
-            {toolName ? `Get notified when ${toolName} goes live.` : 'Follow the build.'}
+            {toolName ? 'Be first when the intake opens.' : 'Follow the build.'}
           </p>
           <p className="text-muted-foreground mt-1 font-mono text-sm">
             {toolName
-              ? `Drop your email and we'll tell you the moment it's ready. No noise.`
+              ? `Drop your email. We'll tell you the moment it's ready.`
               : 'Get notified when the next tool drops. No newsletters. Just launches.'}
           </p>
           <form onSubmit={handleSubmit} className="mt-4 flex flex-col gap-3 sm:flex-row">
@@ -83,6 +86,19 @@ export default function EmailSignupInline({
             </Button>
           </form>
           {error && <p className="text-destructive mt-3 font-mono text-sm">{error}</p>}
+          {wipUrl && (
+            <p className="text-muted-foreground mt-3 font-mono text-xs">
+              Curious now?{' '}
+              <a
+                href={wipUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-amber underline underline-offset-2 transition-opacity hover:opacity-80"
+              >
+                Peek at the work in progress &rarr;
+              </a>
+            </p>
+          )}
         </>
       ) : (
         <div className="border-amber/30 bg-amber/5 text-amber border p-4 font-mono text-sm">

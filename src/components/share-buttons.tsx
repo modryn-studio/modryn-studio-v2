@@ -9,12 +9,16 @@ import { analytics } from '@/lib/analytics';
 interface ShareButtonsProps {
   title: string;
   slug: string;
+  /** Override the share URL. Defaults to the log post URL. */
+  urlOverride?: string;
+  /** Show Hacker News share button. Defaults to true. */
+  showHN?: boolean;
 }
 
-export function ShareButtons({ title, slug }: ShareButtonsProps) {
+export function ShareButtons({ title, slug, urlOverride, showHN = true }: ShareButtonsProps) {
   const [copied, setCopied] = useState(false);
 
-  const url = `${site.url}/log/${slug}`;
+  const url = urlOverride ?? `${site.url}/log/${slug}`;
   const encodedUrl = encodeURIComponent(url);
   const encodedTitle = encodeURIComponent(title);
 
@@ -34,10 +38,14 @@ export function ShareButtons({ title, slug }: ShareButtonsProps) {
       label: 'Reddit',
       href: `https://reddit.com/submit?url=${encodedUrl}&title=${encodedTitle}`,
     },
-    {
-      label: 'HN',
-      href: `https://news.ycombinator.com/submitlink?u=${encodedUrl}&t=${encodedTitle}`,
-    },
+    ...(showHN
+      ? [
+          {
+            label: 'HN',
+            href: `https://news.ycombinator.com/submitlink?u=${encodedUrl}&t=${encodedTitle}`,
+          },
+        ]
+      : []),
   ];
 
   return (

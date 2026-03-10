@@ -7,9 +7,11 @@ import { getToolBySlug, getAllTools, type ToolStatus } from '@/lib/tools';
 import { getAllBriefings } from '@/lib/briefings';
 import { ToolScreenshot } from '@/components/tool-screenshot';
 import EmailSignupInline from '@/components/email-signup-inline';
-import Image from 'next/image';
-import { ArrowLeft, ExternalLink } from 'lucide-react';
+import { ToolCtaButton } from '@/components/tool-cta-button';
+import { ShareButtons } from '@/components/share-buttons';
 import { SongCard } from '@/components/song-card';
+import Image from 'next/image';
+import { ArrowLeft } from 'lucide-react';
 
 function formatLaunchDate(iso: string): string {
   return new Intl.DateTimeFormat('en-US', {
@@ -113,6 +115,9 @@ export default async function ToolPage({ params }: Props) {
           </h1>
           <Badge className={`${status.className} font-mono text-xs`}>{status.label}</Badge>
         </div>
+        {tool.tagline && (
+          <p className="text-amber mt-2 font-mono text-sm">{tool.tagline}</p>
+        )}
         <p className="text-muted-foreground mt-4 font-mono text-sm leading-relaxed md:text-base">
           {tool.description}
         </p>
@@ -136,19 +141,15 @@ export default async function ToolPage({ params }: Props) {
           </div>
         )}
 
-        {(tool.status === 'live' || tool.status === 'beta' || tool.status === 'building') &&
-          tool.url && (
+        {(tool.status === 'live' || tool.status === 'beta') && tool.url && (
             <div className="mt-8 flex flex-wrap items-center gap-3">
-              <a href={tool.url} target="_blank" rel="noopener noreferrer">
-                <Button className="bg-amber hover:bg-amber/90 rounded-none px-6 font-mono text-sm text-white">
-                  {tool.status === 'live'
-                    ? 'Try it'
-                    : tool.status === 'beta'
-                      ? 'Try the beta'
-                      : 'Preview it'}
-                  <ExternalLink className="ml-2 h-4 w-4" />
-                </Button>
-              </a>
+              <ToolCtaButton
+                href={tool.url}
+                label={tool.status === 'live' ? 'Try it' : 'Try the beta'}
+                toolName={tool.name}
+                toolSlug={tool.slug}
+                toolStatus={tool.status}
+              />
               {tool.logSlug && (
                 <Link href={`/log/${tool.logSlug}`}>
                   <Button
@@ -161,6 +162,19 @@ export default async function ToolPage({ params }: Props) {
               )}
             </div>
           )}
+
+        {tool.status === 'building' && tool.logSlug && (
+          <div className="mt-8">
+            <Link href={`/log/${tool.logSlug}`}>
+              <Button
+                variant="outline"
+                className="border-border rounded-none px-6 font-mono text-sm"
+              >
+                Build log
+              </Button>
+            </Link>
+          </div>
+        )}
 
         {tool.briefingsPath && (
           <div className="border-border mt-8 border p-5">
@@ -209,18 +223,36 @@ export default async function ToolPage({ params }: Props) {
 
         {tool.examples && tool.examples.length > 0 && (
           <div className="mt-10">
-            <p className="text-muted-foreground mb-4 font-mono text-xs tracking-widest uppercase">
+            <p className="text-muted-foreground mb-1 font-mono text-xs tracking-widest uppercase">
               Real examples
+            </p>
+            <p className="text-muted-foreground mb-4 font-mono text-xs">
+              Songs I made for real people. Press play.
             </p>
             <div className="space-y-2">
               {tool.examples.map((ex, i) => (
-                <SongCard key={i} example={ex} />
+                <SongCard key={i} example={ex} toolSlug={tool.slug} />
               ))}
             </div>
           </div>
         )}
 
-        {tool.status !== 'live' && <EmailSignupInline toolName={tool.name} source={tool.slug} />}
+        {tool.examples && tool.examples.length > 0 && (
+          <ShareButtons
+            title={tool.tagline ?? tool.name}
+            slug={tool.slug}
+            urlOverride={`https://modrynstudio.com/tools/${tool.slug}`}
+            showHN={false}
+          />
+        )}
+
+        {tool.status !== 'live' && (
+          <EmailSignupInline
+            toolName={tool.name}
+            source={tool.slug}
+            wipUrl={tool.status === 'building' && tool.url ? tool.url : undefined}
+          />
+        )}
       </div>
     </div>
   );

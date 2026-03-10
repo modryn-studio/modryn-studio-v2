@@ -28,4 +28,9 @@ export const analytics = {
   shareClick: (props: { platform: string; slug: string }) => track('share_click', props),
   briefingViewed: (props: { date: string }) => track('briefing_viewed', props),
   briefingReadComplete: (props: { date: string }) => track('briefing_read_complete', props),
+  audioPlay: (props: { toolSlug: string; exampleName: string; genre: string }) =>
+    track('audio_play', props),
+  audioLike: (props: { toolSlug: string; exampleName: string; genre: string }) =>
+    track('audio_like', props),
+  toolCta: (props: { name: string; slug: string; status: string }) => track('tool_cta_click', props),
 };
