@@ -22,6 +22,8 @@ export interface Tool {
   logSlug?: string;
   /** Short tagline (~30 chars) used to enrich the SEO title tag */
   tagline?: string;
+  /** Override the full SEO title tag (50–60 chars). Falls back to name + tagline if absent. */
+  seoTitle?: string;
   /** Optional feature bullets shown on the tool detail page */
   bullets?: string[];
   /** Subreddits where the target user's pain lives — used by /social for distribution */

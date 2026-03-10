@@ -18,6 +18,7 @@ export default async function Image({ params }: Props) {
   const tool = getToolBySlug(slug);
 
   const name = tool?.name ?? 'Tool';
+  const tagline = tool?.tagline ?? '';
   const description = tool?.description ?? '';
   const status = tool?.status ?? 'building';
   const truncatedDesc = description.length > 100 ? description.slice(0, 100) + '…' : description;
@@ -65,6 +66,19 @@ export default async function Image({ params }: Props) {
         >
           {name}
         </div>
+        {tagline && (
+          <div
+            style={{
+              color: '#F97415',
+              fontSize: '28px',
+              fontWeight: 600,
+              letterSpacing: '-0.01em',
+              maxWidth: '900px',
+            }}
+          >
+            {tagline}
+          </div>
+        )}
         {truncatedDesc && (
           <div
             style={{
