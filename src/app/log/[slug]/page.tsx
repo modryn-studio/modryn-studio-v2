@@ -9,6 +9,7 @@ import { getAllTools, type ToolStatus } from '@/lib/tools';
 import { Badge } from '@/components/ui/badge';
 import { ShareButtons } from '@/components/share-buttons';
 import EmailSignupInline from '@/components/email-signup-inline';
+import { LogPostTracker } from '@/components/log-post-tracker';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 const STATUS_CONFIG: Record<ToolStatus, { label: string; className: string }> = {
@@ -91,6 +92,7 @@ export default async function LogPostPage({ params }: Props) {
         )}
       </div>
 
+      <LogPostTracker slug={post.slug} title={post.title} />
       <article className="mt-8">
         <div className="text-muted-foreground flex items-center gap-3 font-mono text-sm">
           <time>{post.date}</time>

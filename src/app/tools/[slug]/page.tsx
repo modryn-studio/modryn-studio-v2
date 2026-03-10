@@ -12,6 +12,7 @@ import { ShareButtons } from '@/components/share-buttons';
 import { SongCard } from '@/components/song-card';
 import Image from 'next/image';
 import { ArrowLeft } from 'lucide-react';
+import { ToolPageTracker } from '@/components/tool-page-tracker';
 
 function formatLaunchDate(iso: string): string {
   return new Intl.DateTimeFormat('en-US', {
@@ -92,6 +93,7 @@ export default async function ToolPage({ params }: Props) {
 
   return (
     <div className="mx-auto max-w-3xl px-6 py-24">
+      <ToolPageTracker name={tool.name} slug={tool.slug} status={tool.status} />
       <Link
         href="/tools"
         className="text-muted-foreground hover:text-foreground inline-flex items-center gap-2 font-mono text-sm transition-colors"
@@ -236,14 +238,12 @@ export default async function ToolPage({ params }: Props) {
           </div>
         )}
 
-        {tool.examples && tool.examples.length > 0 && (
-          <ShareButtons
-            title={tool.tagline ?? tool.name}
-            slug={tool.slug}
-            urlOverride={`https://modrynstudio.com/tools/${tool.slug}`}
-            showHN={false}
-          />
-        )}
+        <ShareButtons
+          title={tool.tagline ?? tool.name}
+          slug={tool.slug}
+          urlOverride={`https://modrynstudio.com/tools/${tool.slug}`}
+          showHN={false}
+        />
 
         {tool.status !== 'live' && (
           <EmailSignupInline

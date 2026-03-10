@@ -40,4 +40,9 @@ export const analytics = {
     track('audio_like', props),
   toolCta: (props: { name: string; slug: string; status: string }) =>
     track('tool_cta_click', props),
+  toolPageViewed: (props: { name: string; slug: string; status: string }) =>
+    track('tool_page_viewed', props),
+  logPostViewed: (props: { slug: string; title: string }) => track('log_post_viewed', props),
+  logPostReadComplete: (props: { slug: string; title: string }) =>
+    track('log_post_read_complete', props),
 };
