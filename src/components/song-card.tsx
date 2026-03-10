@@ -13,8 +13,11 @@ interface Props {
 
 export function SongCard({ example, toolSlug = 'unknown' }: Props) {
   const audioRef = useRef<HTMLAudioElement>(null);
+  const progressBarRef = useRef<HTMLDivElement>(null);
+  const isDragging = useRef(false);
   const [playing, setPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [seeking, setSeeking] = useState(false);
   const hasTrackedPlay = useRef(false);
 
   // Persist like state in localStorage keyed by audioUrl
@@ -76,6 +79,33 @@ export function SongCard({ example, toolSlug = 'unknown' }: Props) {
     }
   }
 
+  function seek(clientX: number) {
+    const bar = progressBarRef.current;
+    const audio = audioRef.current;
+    if (!bar || !audio || !audio.duration) return;
+    const rect = bar.getBoundingClientRect();
+    const fraction = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
+    audio.currentTime = fraction * audio.duration;
+    setProgress(fraction);
+  }
+
+  function onPointerDown(e: React.PointerEvent<HTMLDivElement>) {
+    isDragging.current = true;
+    setSeeking(true);
+    e.currentTarget.setPointerCapture(e.pointerId);
+    seek(e.clientX);
+  }
+
+  function onPointerMove(e: React.PointerEvent<HTMLDivElement>) {
+    if (!isDragging.current) return;
+    seek(e.clientX);
+  }
+
+  function onPointerUp() {
+    isDragging.current = false;
+    setSeeking(false);
+  }
+
   return (
     <div
       className={`relative overflow-hidden border p-3 transition-colors ${
@@ -131,11 +161,19 @@ export function SongCard({ example, toolSlug = 'unknown' }: Props) {
         </p>
       )}
 
-      {/* Playhead progress bar */}
+      {/* Seekable progress bar — tall pointer target, thin visual */}
       <div
-        className="bg-amber absolute bottom-0 left-0 h-0.5 transition-[width]"
-        style={{ width: `${progress * 100}%` }}
-      />
+        ref={progressBarRef}
+        className="absolute bottom-0 left-0 right-0 h-4 cursor-pointer"
+        onPointerDown={onPointerDown}
+        onPointerMove={onPointerMove}
+        onPointerUp={onPointerUp}
+      >
+        <div
+          className={`bg-amber absolute bottom-0 left-0 h-0.5 ${seeking ? '' : 'transition-[width]'}`}
+          style={{ width: `${progress * 100}%` }}
+        />
+      </div>
 
       <audio ref={audioRef} src={example.audioUrl} preload="metadata" />
     </div>

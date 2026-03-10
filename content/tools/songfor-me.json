@@ -15,12 +15,28 @@
   "logSlug": "2026-03-09-songfor-me",
   "examples": [
     {
-      "name": "Monica",
-      "subtitle": "Big 1-2",
-      "genre": "pop",
-      "audioUrl": "/audio/examples/monica/audio.mp3",
-      "coverUrl": "/audio/examples/monica/bg.jpeg",
-      "context": "Full party — family and friends. Her 12th birthday. The campfire sleepover out back made the second verse."
+      "name": "Nick",
+      "subtitle": "Slay Baddie",
+      "genre": "rap",
+      "audioUrl": "/audio/examples/nick/audio.mp3",
+      "coverUrl": "/audio/examples/nick/bg.jpeg",
+      "context": "He bought himself a motorcycle for his birthday. His girlfriend's nickname, the famous basement foosball table, and the carpet everyone jokes about — all in there."
+    },
+    {
+      "name": "Paula",
+      "subtitle": "P's Birthday",
+      "genre": "rap",
+      "audioUrl": "/audio/examples/paula/audio.mp3",
+      "coverUrl": "/audio/examples/paula/bg.jpeg",
+      "context": "Family gathering. Pregnant at the time — plants, four cats, her dog, and her Pokémon collection all made the cut."
+    },
+    {
+      "name": "Paula",
+      "subtitle": "Take the Crown",
+      "genre": "reggae",
+      "audioUrl": "/audio/examples/paula-reggae/audio.mp3",
+      "coverUrl": "/audio/examples/paula-reggae/bg.jpeg",
+      "context": "Same gathering, different genre. Paula loves reggae. This one was written to match her actual playlist."
     },
     {
       "name": "Monica",
@@ -29,6 +45,14 @@
       "audioUrl": "/audio/examples/monica-2/audio.mp3",
       "coverUrl": "/audio/examples/monica-2/bg.jpeg",
       "context": "Same party, different vibe. A second song for the same big night."
+    },
+    {
+      "name": "Monica",
+      "subtitle": "Big 1-2",
+      "genre": "pop",
+      "audioUrl": "/audio/examples/monica/audio.mp3",
+      "coverUrl": "/audio/examples/monica/bg.jpeg",
+      "context": "Full party — family and friends. Her 12th birthday. The campfire sleepover out back made the second verse."
     },
     {
       "name": "Lincoln",
@@ -53,30 +77,6 @@
       "audioUrl": "/audio/examples/nora-2/audio.mp3",
       "coverUrl": "/audio/examples/nora-2/bg.jpeg",
       "context": "Same party, second song. Different groove for the same celebration."
-    },
-    {
-      "name": "Paula",
-      "subtitle": "P's Birthday",
-      "genre": "rap",
-      "audioUrl": "/audio/examples/paula/audio.mp3",
-      "coverUrl": "/audio/examples/paula/bg.jpeg",
-      "context": "Family gathering. Pregnant at the time — plants, four cats, her dog, and her Pokémon collection all made the cut."
-    },
-    {
-      "name": "Paula",
-      "subtitle": "Take the Crown",
-      "genre": "reggae",
-      "audioUrl": "/audio/examples/paula-reggae/audio.mp3",
-      "coverUrl": "/audio/examples/paula-reggae/bg.jpeg",
-      "context": "Same gathering, different genre. Paula loves reggae. This one was written to match her actual playlist."
-    },
-    {
-      "name": "Nick",
-      "subtitle": "Slay Baddie",
-      "genre": "rap",
-      "audioUrl": "/audio/examples/nick/audio.mp3",
-      "coverUrl": "/audio/examples/nick/bg.jpeg",
-      "context": "He bought himself a motorcycle for his birthday. His girlfriend's nickname, the famous basement foosball table, and the carpet everyone jokes about — all in there."
     }
   ]
 }
