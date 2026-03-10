@@ -164,7 +164,7 @@ export function SongCard({ example, toolSlug = 'unknown' }: Props) {
       {/* Seekable progress bar — tall pointer target, thin visual */}
       <div
         ref={progressBarRef}
-        className="absolute bottom-0 left-0 right-0 h-4 cursor-pointer"
+        className="absolute right-0 bottom-0 left-0 h-4 cursor-pointer"
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
         onPointerUp={onPointerUp}
