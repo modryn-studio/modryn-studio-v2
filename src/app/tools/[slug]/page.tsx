@@ -115,9 +115,7 @@ export default async function ToolPage({ params }: Props) {
           </h1>
           <Badge className={`${status.className} font-mono text-xs`}>{status.label}</Badge>
         </div>
-        {tool.tagline && (
-          <p className="text-amber mt-2 font-mono text-sm">{tool.tagline}</p>
-        )}
+        {tool.tagline && <p className="text-amber mt-2 font-mono text-sm">{tool.tagline}</p>}
         <p className="text-muted-foreground mt-4 font-mono text-sm leading-relaxed md:text-base">
           {tool.description}
         </p>
@@ -142,26 +140,26 @@ export default async function ToolPage({ params }: Props) {
         )}
 
         {(tool.status === 'live' || tool.status === 'beta') && tool.url && (
-            <div className="mt-8 flex flex-wrap items-center gap-3">
-              <ToolCtaButton
-                href={tool.url}
-                label={tool.status === 'live' ? 'Try it' : 'Try the beta'}
-                toolName={tool.name}
-                toolSlug={tool.slug}
-                toolStatus={tool.status}
-              />
-              {tool.logSlug && (
-                <Link href={`/log/${tool.logSlug}`}>
-                  <Button
-                    variant="outline"
-                    className="border-border rounded-none px-6 font-mono text-sm"
-                  >
-                    Build log
-                  </Button>
-                </Link>
-              )}
-            </div>
-          )}
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            <ToolCtaButton
+              href={tool.url}
+              label={tool.status === 'live' ? 'Try it' : 'Try the beta'}
+              toolName={tool.name}
+              toolSlug={tool.slug}
+              toolStatus={tool.status}
+            />
+            {tool.logSlug && (
+              <Link href={`/log/${tool.logSlug}`}>
+                <Button
+                  variant="outline"
+                  className="border-border rounded-none px-6 font-mono text-sm"
+                >
+                  Build log
+                </Button>
+              </Link>
+            )}
+          </div>
+        )}
 
         {tool.status === 'building' && tool.logSlug && (
           <div className="mt-8">

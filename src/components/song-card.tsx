@@ -48,6 +48,7 @@ export function SongCard({ example, toolSlug = 'unknown' }: Props) {
     const onEnded = () => {
       setPlaying(false);
       setProgress(0);
+      analytics.audioComplete({ toolSlug, exampleName: example.name, genre: example.genre });
     };
     const onTimeUpdate = () => {
       if (audio.duration) setProgress(audio.currentTime / audio.duration);
