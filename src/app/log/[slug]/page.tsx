@@ -53,7 +53,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url: `https://modrynstudio.com/log/${slug}`,
       siteName: 'Modryn Studio',
       type: 'article',
-      images: [{ url: '/og-image.png', width: 1200, height: 630, alt: post.title }],
     },
     authors: [{ name: 'Luke Hanner', url: 'https://modrynstudio.com/about' }],
     twitter: {
