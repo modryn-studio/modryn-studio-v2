@@ -8,7 +8,7 @@ import { ArrowLeft } from 'lucide-react';
 import { getBriefingByDate, getAllBriefings } from '@/lib/briefings';
 import { site } from '@/config/site';
 import BriefingTracker from '@/components/briefing-tracker';
-import EmailSignupInline from '@/components/email-signup-inline';
+import BriefingFeedback from '@/components/briefing-feedback';
 
 type Props = { params: Promise<{ date: string }> };
 
@@ -151,7 +151,7 @@ export default async function BriefingPage({ params }: Props) {
         </ReactMarkdown>
       </article>
 
-      <EmailSignupInline source="briefing" />
+      <BriefingFeedback date={date} />
       <BriefingTracker date={date} />
     </div>
   );

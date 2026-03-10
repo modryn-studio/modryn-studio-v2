@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Hero from '@/components/hero';
 import ToolsGrid from '@/components/tools-grid';
+import BriefingsPreview from '@/components/briefings-preview';
 import BuildLog from '@/components/build-log';
 import EmailSignup from '@/components/email-signup';
 
@@ -24,6 +25,7 @@ export default function Home() {
     <>
       <Hero />
       <ToolsGrid />
+      <BriefingsPreview />
       <BuildLog />
       <EmailSignup />
     </>
