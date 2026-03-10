@@ -19,8 +19,7 @@ export const analytics = {
   shareClick: (props: { platform: string; slug: string }) => track('share_click', props),
   briefingViewed: (props: { date: string }) => track('briefing_viewed', props),
   briefingReadComplete: (props: { date: string }) => track('briefing_read_complete', props),
-  briefingReaction: (props: { date: string; useful: boolean }) =>
-    track('briefing_reaction', props),
+  briefingReaction: (props: { date: string; useful: boolean }) => track('briefing_reaction', props),
   audioPlay: (props: { toolSlug: string; exampleName: string; genre: string }) =>
     track('audio_play', props),
   audioComplete: (props: { toolSlug: string; exampleName: string; genre: string }) =>

@@ -33,6 +33,15 @@ export function SongCard({ example, toolSlug = 'unknown' }: Props) {
     localStorage.setItem(likeKey, next ? '1' : '0');
     if (next) {
       analytics.audioLike({ toolSlug, exampleName: example.name, genre: example.genre });
+      fetch('/api/feedback', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: 'feedback',
+          message: `Song liked: ${example.name}${example.genre ? ` (${example.genre})` : ''}`,
+          page: `tools/${toolSlug}`,
+        }),
+      }).catch(() => {});
     }
   }, [liked, likeKey, toolSlug, example.name, example.genre]);
 
