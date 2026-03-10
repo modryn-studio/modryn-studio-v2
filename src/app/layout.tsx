@@ -5,11 +5,9 @@ import { Analytics } from '@vercel/analytics/react';
 import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
 import FeedbackWidget from '@/components/feedback-widget';
-import Script from 'next/script';
 import { site } from '@/config/site';
 import { SiteSchema } from '@/components/site-schema';
 import { AudioExclusiveManager } from '@/components/audio-exclusive-manager';
-import { PostHogProvider } from '@/components/posthog-provider';
 import { getAllPosts } from '@/lib/log';
 import { getAllTools } from '@/lib/tools';
 import './globals.css';
@@ -75,7 +73,6 @@ export default async function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${spaceGrotesk.variable} ${spaceMono.variable} antialiased`}>
-        <PostHogProvider>
         <ThemeProvider defaultTheme="system" storageKey="modryn-theme">
           <div className="noise-overlay bg-background text-foreground flex min-h-screen flex-col">
             <Navbar newPostsCount={newPostsCount} newToolsCount={newToolsCount} />
@@ -87,23 +84,6 @@ export default async function RootLayout({
           <Analytics />
         </ThemeProvider>
         <SiteSchema />
-        {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
-          <>
-            <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}
-              strategy="afterInteractive"
-            />
-            <Script id="ga4-init" strategy="afterInteractive">
-              {`
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', '${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}');
-              `}
-            </Script>
-          </>
-        )}
-        </PostHogProvider>
       </body>
     </html>
   );

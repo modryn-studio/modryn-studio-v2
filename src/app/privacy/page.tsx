@@ -45,18 +45,16 @@ export default function PrivacyPage() {
         <section>
           <h2 className="font-heading text-foreground text-lg font-semibold">Analytics</h2>
           <p className="mt-2">
-            We use Google Analytics 4, PostHog, and Vercel Analytics to understand how people use
-            the site — page views, device types, general location. No personally identifiable
-            information is collected through analytics.
+            We use Vercel Analytics to understand how people use the site — page views, device
+            types, general location. No personally identifiable information is collected.
           </p>
         </section>
 
         <section>
           <h2 className="font-heading text-foreground text-lg font-semibold">Cookies</h2>
           <p className="mt-2">
-            Google Analytics sets cookies to distinguish users and sessions. PostHog sets a
-            first-party cookie for session tracking (proxied through our own domain). We store a
-            theme preference in localStorage (not a cookie). No advertising cookies.
+            We store a theme preference in localStorage. Vercel Analytics does not set cookies. No
+            advertising cookies.
           </p>
         </section>
 
@@ -64,8 +62,8 @@ export default function PrivacyPage() {
           <h2 className="font-heading text-foreground text-lg font-semibold">Third parties</h2>
           <p className="mt-2">
             Email notifications are sent via Gmail SMTP. Newsletter signups are stored in Resend,
-            which we use to send broadcast emails. Analytics data is processed by Google, PostHog,
-            and Vercel. No other third-party services have access to your data.
+            which we use to send broadcast emails. Page view analytics are processed by Vercel. No
+            other third-party services have access to your data.
           </p>
         </section>
 

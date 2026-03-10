@@ -13,9 +13,7 @@ I'm Luke, a one-person studio owner building micro-SaaS products under Modryn St
 - `class-variance-authority`, `clsx`, `tailwind-merge` for component variants and class merging
 - `lucide-react` for icons
 - Vercel for deployment
-- GA4 + PostHog for custom event tracking (via `@/lib/analytics.ts` — never call `gtag()` or `posthog.capture()` directly)
-- PostHog provider (`PostHogProvider`) wraps `layout.tsx` — pageviews proxied via `/ingest`
-- Vercel Analytics `<Analytics />` component in `layout.tsx` for pageviews only — do not use their `track()` API
+- Vercel Analytics `<Analytics />` in `layout.tsx` — zero-config pageview tracking, no env vars needed
 - `@next/mdx` + `gray-matter` for build log MDX content
 - `nodemailer` (Gmail SMTP) + `resend` for email notifications and signups
 
@@ -144,18 +142,9 @@ export async function POST(req: Request): Promise<Response> {
 
 ## Analytics
 
-All custom events MUST go through `analytics` from `@/lib/analytics.ts` — never call `gtag()` or `posthog.capture()` directly.
+Vercel Analytics (`<Analytics />` in `layout.tsx`) handles pageviews automatically — no config needed.
 
-```typescript
-import { analytics } from '@/lib/analytics';
-analytics.track('event_name', { prop: value });
-```
-
-Add a named method to `analytics.ts` for each distinct user action. Named methods are typed and
-discoverable — no magic strings scattered across 10 files.
-
-GA4 measurement ID is loaded via `NEXT_PUBLIC_GA_MEASUREMENT_ID` in `layout.tsx`.
-PostHog key is loaded via `NEXT_PUBLIC_POSTHOG_KEY` — same key used across all Modryn Studio projects.
+`src/lib/analytics.ts` exists as a no-op stub with named methods. Wire in a real provider later if needed. Do not add GA4 or PostHog without explicit instruction — keep it simple.
 
 ## Dev Server
 

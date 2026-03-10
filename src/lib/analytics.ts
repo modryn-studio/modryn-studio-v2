@@ -1,25 +1,12 @@
-// analytics.ts — event tracking abstraction (GA4 + PostHog)
-// Never call gtag() or posthog.capture() directly outside this file.
-// Add a named method for each distinct user action — keeps events typed
-// and discoverable instead of magic strings scattered across the codebase.
-
-import posthog from 'posthog-js';
-
-declare global {
-  interface Window {
-    gtag: (command: string, ...args: unknown[]) => void;
-  }
-}
+// analytics.ts — event tracking stub
+// Vercel Analytics (<Analytics /> in layout.tsx) handles pageviews automatically.
+// Named methods are kept so call sites stay typed — swap in a provider here when needed.
 
 type EventProps = Record<string, string | number | boolean | undefined>;
 
-function track(eventName: string, props?: EventProps): void {
-  // SSR guard — both gtag and posthog are browser-only
-  if (typeof window === 'undefined') return;
-  if (typeof window.gtag === 'function') {
-    window.gtag('event', eventName, props);
-  }
-  posthog.capture(eventName, props);
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function track(_eventName: string, _props?: EventProps): void {
+  // no-op
 }
 
 // Add project-specific named methods below.
