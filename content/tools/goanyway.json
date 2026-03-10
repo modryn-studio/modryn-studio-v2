@@ -5,7 +5,7 @@
   "status": "beta",
   "url": "https://goanyway.vercel.app/tools/goanyway",
   "screenshotUrlDark": "https://goanyway.vercel.app/tools/goanyway/screenshots/goanyway-dark.png",
-  "logoUrl": "https://goanyway.vercel.app/tools/goanyway/icon.png",
+  "logoUrl": "/logos/goanyway.png",
   "launchedAt": "2026-03-06",
   "logSlug": "2026-03-06-goanyway",
   "bullets": [
@@ -13,5 +13,11 @@
     "Tells you what to expect before you walk in",
     "Gives you a word-for-word first-hour script"
   ],
-  "subreddits": ["socialanxiety", "hiking", "climbing", "running", "MeetPeople"]
+  "subreddits": [
+    "socialanxiety",
+    "hiking",
+    "climbing",
+    "running",
+    "MeetPeople"
+  ]
 }

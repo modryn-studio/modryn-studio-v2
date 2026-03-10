@@ -4,7 +4,11 @@
   "description": "Private pipeline. Pulls rising search trends every morning, scores them against what's buildable in 48 hours, and outputs BUILD/WATCH/SKIP decisions.",
   "status": "beta",
   "logSlug": "2026-03-02-trend-detector",
-  "subreddits": ["r/Python", "r/Entrepreneur", "r/SideProject"],
+  "subreddits": [
+    "r/Python",
+    "r/Entrepreneur",
+    "r/SideProject"
+  ],
   "bullets": [
     "Runs at 9AM daily via Task Scheduler — no input required",
     "Three sources cross-referenced: Google Trends API, RSS, and newsletter",
@@ -13,5 +17,7 @@
     "Two-pass competitor check — raw keyword first, then the specific product idea",
     "BUILD/WATCH/SKIP decisions with lifecycle tags: EARLY, PEAKING, or FADING"
   ],
-  "briefingsPath": "/tools/trend-detector/briefings"
+  "briefingsPath": "/tools/trend-detector/briefings",
+  "logoUrl": "/brand/logomark-240.png",
+  "launchedAt": "2026-03-02"
 }

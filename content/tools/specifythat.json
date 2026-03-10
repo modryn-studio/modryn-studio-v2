@@ -7,5 +7,18 @@
   "screenshotUrl": "https://specifythat.com/screenshots/specifythat-light.png",
   "screenshotUrlDark": "https://specifythat.com/screenshots/specifythat-dark.png",
   "launchedAt": "2026-02-28",
-  "logSlug": "2026-02-28-specifythat-v2"
+  "logSlug": "2026-02-28-specifythat-v2",
+  "logoUrl": "/logos/specifythat.png",
+  "bullets": [
+    "Describe your idea in plain English",
+    "Answer 13 focused questions about scope, stack, and users",
+    "Download a build-ready context file in under 60 seconds",
+    "Works with Copilot, Cursor, Claude, and any AI coding tool"
+  ],
+  "subreddits": [
+    "r/webdev",
+    "r/SideProject",
+    "r/ChatGPTCoding",
+    "r/cursor"
+  ]
 }
