@@ -36,8 +36,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const tool = getToolBySlug(slug);
   if (!tool) return { title: 'Tool not found — Modryn Studio' };
 
-  const seoTitle = tool.seoTitle
-    ?? (tool.tagline
+  const seoTitle =
+    tool.seoTitle ??
+    (tool.tagline
       ? `${tool.name}: ${tool.tagline} — Modryn Studio`
       : `${tool.name} — Modryn Studio Tool`);
 
