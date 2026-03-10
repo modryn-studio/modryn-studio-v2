@@ -6,12 +6,7 @@
   "url": "https://songfor.gift",
   "screenshotUrl": "https://songfor.gift/screenshots/songfor-me-light.png",
   "logoUrl": "/logos/songfor-me.png",
-  "subreddits": [
-    "r/Gifts",
-    "r/Parenting",
-    "r/relationship_advice",
-    "r/CasualConversation"
-  ],
+  "subreddits": ["r/Gifts", "r/Parenting", "r/relationship_advice", "r/CasualConversation"],
   "logSlug": "2026-03-09-songfor-me",
   "examples": [
     {
@@ -23,28 +18,12 @@
       "context": "He bought himself a motorcycle for his birthday. His girlfriend's nickname, the famous basement foosball table, and the carpet everyone jokes about — all in there."
     },
     {
-      "name": "Paula",
-      "subtitle": "P's Birthday",
-      "genre": "rap",
-      "audioUrl": "/audio/examples/paula/audio.mp3",
-      "coverUrl": "/audio/examples/paula/bg.jpeg",
-      "context": "Family gathering. Pregnant at the time — plants, four cats, her dog, and her Pokémon collection all made the cut."
-    },
-    {
-      "name": "Paula",
-      "subtitle": "Take the Crown",
-      "genre": "reggae",
-      "audioUrl": "/audio/examples/paula-reggae/audio.mp3",
-      "coverUrl": "/audio/examples/paula-reggae/bg.jpeg",
-      "context": "Same gathering, different genre. Paula loves reggae. This one was written to match her actual playlist."
-    },
-    {
       "name": "Monica",
       "subtitle": "Sunshine's Out",
       "genre": "pop",
       "audioUrl": "/audio/examples/monica-2/audio.mp3",
       "coverUrl": "/audio/examples/monica-2/bg.jpeg",
-      "context": "Same party, different vibe. A second song for the same big night."
+      "context": "Full party — family and friends. Her 12th birthday. The campfire sleepover out back made the second verse."
     },
     {
       "name": "Monica",
@@ -52,7 +31,23 @@
       "genre": "pop",
       "audioUrl": "/audio/examples/monica/audio.mp3",
       "coverUrl": "/audio/examples/monica/bg.jpeg",
-      "context": "Full party — family and friends. Her 12th birthday. The campfire sleepover out back made the second verse."
+      "context": "Same party, different vibe. A second song for the same big night."
+    },
+    {
+      "name": "Paula",
+      "subtitle": "Take the Crown",
+      "genre": "reggae",
+      "audioUrl": "/audio/examples/paula-reggae/audio.mp3",
+      "coverUrl": "/audio/examples/paula-reggae/bg.jpeg",
+      "context": "Family gathering. Paula loves reggae. Pregnant at the time — plants, four cats, her dog, and her Pokémon collection all made the cut."
+    },
+    {
+      "name": "Paula",
+      "subtitle": "P's Birthday",
+      "genre": "rap",
+      "audioUrl": "/audio/examples/paula/audio.mp3",
+      "coverUrl": "/audio/examples/paula/bg.jpeg",
+      "context": "Same gathering, different genre. She got two."
     },
     {
       "name": "Lincoln",
