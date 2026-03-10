@@ -5,10 +5,30 @@ import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 import remarkGfm from 'remark-gfm';
 import { getPostBySlug, getAllPosts } from '@/lib/log';
-import { getAllTools } from '@/lib/tools';
+import { getAllTools, type ToolStatus } from '@/lib/tools';
+import { Badge } from '@/components/ui/badge';
 import { ShareButtons } from '@/components/share-buttons';
 import EmailSignupInline from '@/components/email-signup-inline';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
+
+const STATUS_CONFIG: Record<ToolStatus, { label: string; className: string }> = {
+  live: {
+    label: 'Live',
+    className: 'border-green-600/20 bg-green-500/10 text-green-600 dark:text-green-400',
+  },
+  beta: {
+    label: 'Beta',
+    className: 'border-blue-600/20 bg-blue-500/10 text-blue-600 dark:text-blue-400',
+  },
+  building: {
+    label: 'Building',
+    className: 'border-orange-600/20 bg-orange-500/10 text-orange-600 dark:text-orange-400',
+  },
+  'coming-soon': {
+    label: 'Coming Soon',
+    className: 'border-muted-foreground/20 bg-muted text-muted-foreground',
+  },
+};
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -146,18 +166,43 @@ export default async function LogPostPage({ params }: Props) {
           </ReactMarkdown>
         </div>
 
-        <ShareButtons title={post.title} slug={post.slug} />
+        {/* Featured tool card */}
         {relatedTool && (
-          <div className="mt-8">
+          <div className="border-border mt-12 border p-6">
+            <p className="text-muted-foreground mb-3 font-mono text-xs tracking-widest uppercase">
+              The tool
+            </p>
+            <div className="flex items-start justify-between gap-4">
+              <div className="min-w-0">
+                <p className="font-heading text-base font-semibold">{relatedTool.name}</p>
+                {relatedTool.tagline && (
+                  <p className="text-amber mt-0.5 font-mono text-sm">{relatedTool.tagline}</p>
+                )}
+              </div>
+              <Badge
+                className={`${STATUS_CONFIG[relatedTool.status].className} shrink-0 font-mono text-xs`}
+              >
+                {STATUS_CONFIG[relatedTool.status].label}
+              </Badge>
+            </div>
             <Link
               href={`/tools/${relatedTool.slug}`}
-              className="text-muted-foreground hover:text-foreground font-mono text-sm transition-colors"
+              className="text-muted-foreground hover:text-foreground mt-4 inline-flex items-center gap-1.5 font-mono text-sm transition-colors"
             >
-              {relatedTool.name} &rarr;
+              See the tool <ArrowRight className="h-3 w-3" />
             </Link>
           </div>
         )}
-        <EmailSignupInline />
+
+        <EmailSignupInline
+          source={relatedTool?.slug ?? 'log'}
+          toolName={relatedTool?.name}
+          wipUrl={
+            relatedTool?.status === 'building' && relatedTool.url ? relatedTool.url : undefined
+          }
+        />
+
+        <ShareButtons title={post.title} slug={post.slug} />
       </article>
     </div>
   );
