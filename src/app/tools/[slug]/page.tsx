@@ -52,7 +52,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url: `https://modrynstudio.com/tools/${slug}`,
       siteName: 'Modryn Studio',
       type: 'website',
-      images: [{ url: '/og-image.png', width: 1200, height: 630, alt: tool.name }],
     },
     twitter: {
       card: 'summary_large_image',
