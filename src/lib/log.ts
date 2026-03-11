@@ -11,6 +11,10 @@ export interface LogPost {
   title: string;
   date: string;
   tag: LogTag;
+  /** Optional tool slug to associate this post with a tool page. */
+  tool?: string;
+  /** Optional author-curated related post slugs (ordered by priority). */
+  related?: string[];
   description: string;
   /** Optional SEO-only title (150–160 chars). Overrides the auto-generated title tag without changing the displayed h1. */
   seoTitle?: string;
@@ -47,6 +51,12 @@ export function getAllPosts(): LogPost[] {
       title: data.title ?? filename,
       date: data.date instanceof Date ? data.date.toISOString().slice(0, 10) : (data.date ?? ''),
       tag: data.tag ?? 'build',
+      tool: typeof data.tool === 'string' ? data.tool : undefined,
+      related: Array.isArray(data.related)
+        ? data.related.filter(
+            (item): item is string => typeof item === 'string' && item.trim().length > 0
+          )
+        : undefined,
       description: data.description ?? excerptFromContent(content),
       seoTitle: data.seoTitle,
       content,
@@ -69,6 +79,12 @@ export function getPostBySlug(slug: string): LogPost | null {
     title: data.title ?? slug,
     date: data.date instanceof Date ? data.date.toISOString().slice(0, 10) : (data.date ?? ''),
     tag: data.tag ?? 'build',
+    tool: typeof data.tool === 'string' ? data.tool : undefined,
+    related: Array.isArray(data.related)
+      ? data.related.filter(
+          (item): item is string => typeof item === 'string' && item.trim().length > 0
+        )
+      : undefined,
     description: data.description ?? excerptFromContent(content),
     seoTitle: data.seoTitle,
     content,

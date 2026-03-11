@@ -5,7 +5,7 @@ import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 import remarkGfm from 'remark-gfm';
 import { getPostBySlug, getAllPosts } from '@/lib/log';
-import { getAllTools, type ToolStatus } from '@/lib/tools';
+import { getAllTools, getToolBySlug, type ToolStatus } from '@/lib/tools';
 import { Badge } from '@/components/ui/badge';
 import { ShareButtons } from '@/components/share-buttons';
 import EmailSignupInline from '@/components/email-signup-inline';
@@ -70,9 +70,23 @@ export default async function LogPostPage({ params, searchParams }: Props) {
 
   if (!post) notFound();
 
-  // Find the tool this log post belongs to (if any)
-  const relatedTool = getAllTools().find((t) => t.logSlug === slug) ?? null;
   const allPosts = getAllPosts();
+  const explicitTool = post.tool ? getToolBySlug(post.tool) : null;
+  // Keep the old logSlug lookup as a fallback while older posts migrate.
+  const inferredTool = explicitTool
+    ? null
+    : (getAllTools().find((t) => t.logSlug === slug) ?? null);
+  const relatedTool = explicitTool ?? inferredTool;
+
+  const relatedPosts = (post.related ?? [])
+    .map((relatedSlug) => allPosts.find((candidate) => candidate.slug === relatedSlug) ?? null)
+    .filter((candidate, index, items): candidate is NonNullable<typeof candidate> => {
+      if (!candidate || candidate.slug === post.slug) return false;
+      return items.findIndex((item) => item?.slug === candidate.slug) === index;
+    });
+  const previousPost = relatedPosts[0] ?? null;
+  const additionalRelatedPosts = previousPost ? relatedPosts.slice(1) : relatedPosts;
+
   const rawTag = resolvedSearchParams?.tag?.trim();
   const validTags = new Set(allPosts.map((item) => item.tag));
   const backTag = rawTag && validTags.has(rawTag) ? rawTag : null;
@@ -111,6 +125,21 @@ export default async function LogPostPage({ params, searchParams }: Props) {
         <h1 className="font-heading mt-4 text-3xl font-bold tracking-tighter md:text-4xl">
           {post.title}
         </h1>
+
+        {previousPost && (
+          <div className="border-border mt-6 border p-4">
+            <p className="text-muted-foreground font-mono text-xs tracking-widest uppercase">
+              Previously
+            </p>
+            <Link
+              href={`/log/${previousPost.slug}`}
+              className="text-foreground hover:text-amber font-heading mt-1 inline-flex items-center gap-1.5 text-base font-semibold transition-colors"
+            >
+              {previousPost.title}
+              <ArrowRight className="h-3 w-3" />
+            </Link>
+          </div>
+        )}
 
         {relatedTool && (
           <div className="border-border mt-8 border p-6">
@@ -240,6 +269,26 @@ export default async function LogPostPage({ params, searchParams }: Props) {
               <div />
             )}
           </div>
+        )}
+
+        {additionalRelatedPosts.length > 0 && (
+          <section className="border-border mt-8 border-t pt-8">
+            <h2 className="font-heading text-xl font-semibold tracking-tight">Related posts</h2>
+            <div className="mt-4 grid gap-3 sm:grid-cols-2">
+              {additionalRelatedPosts.map((relatedPost) => (
+                <Link
+                  key={relatedPost.slug}
+                  href={`/log/${relatedPost.slug}`}
+                  className="border-border hover:bg-muted border p-4 transition-colors"
+                >
+                  <p className="text-muted-foreground font-mono text-xs tracking-wide uppercase">
+                    {relatedPost.date}
+                  </p>
+                  <p className="font-heading mt-1 text-base font-semibold">{relatedPost.title}</p>
+                </Link>
+              ))}
+            </div>
+          </section>
         )}
 
         <EmailSignupInline
