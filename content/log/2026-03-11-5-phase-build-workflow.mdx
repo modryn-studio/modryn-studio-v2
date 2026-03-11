@@ -1,0 +1,33 @@
+---
+title: "The five-phase workflow I use to ship indie products"
+date: "2026-03-11"
+tag: "build"
+seoTitle: "Five-phase indie product workflow: ship live before you build | Build Log"
+description: "I rebuilt my Copilot boilerplate around a five-phase workflow — get live first, track before building, distribute before polishing. Here's what changed and why."
+---
+
+The old workflow had four phases. Ship, then track, then iterate. In practice I kept finding I'd built features nobody had seen yet, tracking nothing, with no distribution until the day I declared it "done."
+
+<!-- TODO: fill in narrative — what triggered the rethink? Was there a specific moment during songfor.me where the old order bit you? Any sentence about the why is enough. -->
+
+I reworked the whole thing. Five phases now:
+
+**Phase 1: Foundation** — same as before. Docs, setup, deps. Run `/setup` (renamed from `/init` — VS Code 1.111 ships a built-in `/init` slash command that would shadow it).
+
+**Phase 2: Go Live** — get a URL, even if the product isn't done. Deploy, register the tool on modrynstudio.com as `status: building`, run the first `/log` post. Every day a URL exists is a day Google can index it.
+
+**Phase 3: Instrument & Distribute** — wire analytics, run `/seo`, run `/launch`, run `@check` as a quality gate, post on socials. All before writing a single line of core product code.
+
+**Phase 4: Build the Core** — the actual product work. One killer feature, end to end. `/validate` before major implementations. When stuck: competitor research → `/validate` focused → Plan mode → roadmap.
+
+**Phase 5: Iterate** — `@check` → `/tool` update → `/log` post → `/social` if warranted. Repeat until first paying user.
+
+<!-- TODO: fill in narrative — what surprised you about validating this order against Pieter Levels and Marc Lou? Did it confirm your instincts or push back anywhere? One honest paragraph. -->
+
+The biggest shift: distribution isn't the end state. It's a habit you build from day one. Waiting until you have something "worth sharing" means you're building in the dark — no data, no feedback, nothing compounding while you work.
+
+`@check` got promoted too. It's not a one-time pre-ship gate — it runs at transition points: end of Phase 3 (setup clean before building features?) and after every major Phase 4 implementation (ready for users?). Before running it, switch the chat permissions picker to **Bypass Approvals** so it can run end-to-end without interrupting itself on every file edit.
+
+<!-- TODO: fill in narrative — anything else worth calling out? The /validate two-modes distinction? The when-stuck playbook? The #debugEventsSnapshot tip? Pick one, add a sentence or two. -->
+
+The boilerplate is at [github.com/modryn-studio/nextjs_boilerplate](https://github.com/modryn-studio/nextjs_boilerplate). Public, free to copy. Built for one-person studios that ship fast.
