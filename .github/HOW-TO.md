@@ -80,6 +80,14 @@ At this point you have: a live site, tracking, SEO filed, a public tool listing,
 
 Now build the one killer feature. Wire the complete flow end-to-end — from user input to delivered output. Not ten features. One.
 
+### Minimum Money Loop
+
+Wire the complete loop end-to-end before polishing any single piece. One real order through the whole system beats a perfect intake with no delivery.
+
+Open `context.md` → find `## Minimum Money Loop` → keep it visible. Every build session, ask: *does this work advance the loop, or is it polish?*
+
+**Hard rule: do not touch the landing page until the loop has run once with a real order.**
+
 **The dev loop:**
 
 - `Ctrl+Shift+B` — starts the dev server, pipes output to `dev.log`. Tell Copilot **"check logs"** at any point.
@@ -88,7 +96,19 @@ Now build the one killer feature. Wire the complete flow end-to-end — from use
 
 **Before a major implementation:**
 
-Run `/validate` with a focus area: "validate my approach to the intake flow" or "validate the payment integration plan." You tell it what to focus on — it researches and challenges your assumptions before you build.
+Run `/validate` with a focus area. The mechanics matter — this only works correctly in **Agent mode**:
+
+1. Type `/validate` in the chat input — VS Code will show a dropdown suggesting the prompt. Select it so the prompt file actually loads.
+2. In the **same message**, after the slash command, add your focus question.
+3. Submit. The agent runs the full prompt file + your focus question with live web search.
+
+Example messages:
+
+- `/validate — validate my approach to the [feature] before I build it. Is this the right pattern for this user type?`
+- `/validate — validate whether the pricing is still in the right range given what competitors are doing`
+- `/validate — validate my plan to build [feature] next. What should I know about how competitors handle this?`
+
+**If the output looks entirely offline** (no fetched URLs, no live competitor data cited): you're in Ask or Plan mode, not Agent mode. Switch to Agent and run again.
 
 **When you're stuck:**
 
@@ -141,7 +161,7 @@ You have a working core feature. Now loop: ship → validate → distribute → 
 | ----------- | --------- | ---------------------------------------------------------------------------- |
 | `/setup`    | Once      | Fills `copilot-instructions.md` + `site.ts` from source docs                 |
 | `/update`   | Reusable  | Cascades source doc edits into derived files                                 |
-| `/validate` | Reusable  | Validates context + brand against live data. Use focused: "validate X"       |
+| `/validate` | Reusable  | Reads `context.md`, `brand.md`, `strategy.md` + web-searches to validate. **Agent mode only.** Phase 1: run open-ended. Phase 4+: add focus question in same message. |
 | `/assets`   | Reusable  | Generates favicons, icons, banner from logomark                              |
 | `/tool`     | Reusable  | Registers/updates tool on modrynstudio.com (`building` → `live`)             |
 | `/log`      | Reusable  | Drafts a build log post — run at every milestone                             |
