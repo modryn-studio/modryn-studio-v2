@@ -154,6 +154,27 @@ html {
   overflow-x: hidden;
 }
 
+/* Log post audio players */
+.log-audio-wrap {
+  border: 1px solid hsl(var(--border));
+  background: hsl(var(--muted) / 0.35);
+  padding: 6px;
+}
+
+.log-audio {
+  display: block;
+  width: 100%;
+}
+
+.dark .log-audio-wrap {
+  background: hsl(var(--card));
+  border-color: hsl(var(--border));
+}
+
+.dark .log-audio {
+  color-scheme: dark;
+}
+
 /* Noise texture overlay */
 .noise-overlay::before {
   content: '';

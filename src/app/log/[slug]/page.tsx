@@ -224,7 +224,9 @@ export default async function LogPostPage({ params, searchParams }: Props) {
                 </figcaption>
               ),
               audio: ({ src, controls }) => (
-                <audio controls={controls} src={src as string} className="w-full" />
+                <div className="log-audio-wrap my-3">
+                  <audio controls={controls} src={src as string} className="log-audio w-full" />
+                </div>
               ),
             }}
           >
