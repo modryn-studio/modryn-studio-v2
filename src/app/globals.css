@@ -156,9 +156,9 @@ html {
 
 /* Log post audio players */
 .log-audio-wrap {
-  border: 1px solid hsl(var(--border));
-  background: hsl(var(--muted) / 0.35);
-  padding: 6px;
+  border: 0;
+  background: transparent;
+  padding: 0;
 }
 
 .log-audio {
@@ -167,8 +167,8 @@ html {
 }
 
 .dark .log-audio-wrap {
-  background: hsl(var(--card));
-  border-color: hsl(var(--border));
+  background: transparent;
+  border-color: transparent;
 }
 
 .dark .log-audio {
