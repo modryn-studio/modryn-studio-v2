@@ -10,6 +10,7 @@ import EmailSignupInline from '@/components/email-signup-inline';
 import { ToolCtaButton } from '@/components/tool-cta-button';
 import { ShareButtons } from '@/components/share-buttons';
 import { SongCard } from '@/components/song-card';
+import { GeminiComparison } from '@/components/gemini-comparison';
 import Image from 'next/image';
 import { ArrowLeft } from 'lucide-react';
 import { ToolPageTracker } from '@/components/tool-page-tracker';
@@ -227,6 +228,14 @@ export default async function ToolPage({ params, searchParams }: Props) {
           </div>
         )}
 
+        {tool.geminiComparison && (
+          <GeminiComparison
+            toolSlug={tool.slug}
+            gemini={tool.geminiComparison.gemini}
+            songforme={tool.geminiComparison.songforme}
+          />
+        )}
+
         {tool.bullets && tool.bullets.length > 0 && (
           <ul className="mt-6 space-y-2">
             {tool.bullets.map((bullet, i) => (
@@ -252,31 +261,6 @@ export default async function ToolPage({ params, searchParams }: Props) {
               ))}
             </div>
           </div>
-        )}
-
-        {tool.geminiComparison && (
-          <section className="border-border mt-12 border-t pt-8">
-            <h2 className="font-heading text-xl font-semibold tracking-tight">
-              Gemini vs. songfor.me
-            </h2>
-            <p className="text-muted-foreground mt-1 font-mono text-xs">
-              Same details. Different result.
-            </p>
-            <div className="mt-4 grid gap-4 sm:grid-cols-2">
-              <div>
-                <p className="text-muted-foreground mb-2 font-mono text-xs tracking-widest uppercase">
-                  Gemini
-                </p>
-                <SongCard example={tool.geminiComparison.gemini} toolSlug={tool.slug} />
-              </div>
-              <div>
-                <p className="text-muted-foreground mb-2 font-mono text-xs tracking-widest uppercase">
-                  songfor.me
-                </p>
-                <SongCard example={tool.geminiComparison.songforme} toolSlug={tool.slug} />
-              </div>
-            </div>
-          </section>
         )}
 
         {relatedTools.length > 0 && (
