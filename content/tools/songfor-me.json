@@ -7,12 +7,7 @@
   "url": "https://songfor.gift",
   "screenshotUrl": "https://songfor.gift/screenshots/songfor-me-light.png",
   "logoUrl": "/logos/songfor-me.png",
-  "subreddits": [
-    "r/Gifts",
-    "r/Parenting",
-    "r/relationship_advice",
-    "r/CasualConversation"
-  ],
+  "subreddits": ["r/Gifts", "r/Parenting", "r/relationship_advice", "r/CasualConversation"],
   "logSlug": "2026-03-09-songfor-me",
   "examples": [
     {
@@ -79,5 +74,20 @@
       "coverUrl": "/audio/examples/nora-2/bg.jpeg",
       "context": "Same party, second song. Different groove for the same celebration."
     }
-  ]
+  ],
+  "geminiComparison": {
+    "gemini": {
+      "name": "Gemini",
+      "subtitle": "Crotch Rocket Celebration",
+      "genre": "rap",
+      "audioUrl": "/audio/examples/gemini-vs/Crotch_Rocket_Celebration.mp3"
+    },
+    "songforme": {
+      "name": "Nick",
+      "subtitle": "Slay Baddie",
+      "genre": "rap",
+      "audioUrl": "/audio/examples/nick/audio.mp3",
+      "coverUrl": "/audio/examples/nick/bg.jpeg"
+    }
+  }
 }

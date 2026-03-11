@@ -34,6 +34,11 @@ export interface Tool {
   briefingsPath?: string;
   /** Audio example clips showcased on the tool detail page */
   examples?: ToolAudioExample[];
+  /** Side-by-side audio comparison (Gemini vs songfor.me) shown on the tool detail page */
+  geminiComparison?: {
+    gemini: ToolAudioExample;
+    songforme: ToolAudioExample;
+  };
 }
 
 export interface ToolAudioExample {

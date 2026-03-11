@@ -254,6 +254,31 @@ export default async function ToolPage({ params, searchParams }: Props) {
           </div>
         )}
 
+        {tool.geminiComparison && (
+          <section className="border-border mt-12 border-t pt-8">
+            <h2 className="font-heading text-xl font-semibold tracking-tight">
+              Gemini vs. songfor.me
+            </h2>
+            <p className="text-muted-foreground mt-1 font-mono text-xs">
+              Same details. Different result.
+            </p>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2">
+              <div>
+                <p className="text-muted-foreground mb-2 font-mono text-xs tracking-widest uppercase">
+                  Gemini
+                </p>
+                <SongCard example={tool.geminiComparison.gemini} toolSlug={tool.slug} />
+              </div>
+              <div>
+                <p className="text-muted-foreground mb-2 font-mono text-xs tracking-widest uppercase">
+                  songfor.me
+                </p>
+                <SongCard example={tool.geminiComparison.songforme} toolSlug={tool.slug} />
+              </div>
+            </div>
+          </section>
+        )}
+
         {relatedTools.length > 0 && (
           <section className="border-border mt-12 border-t pt-8">
             <h2 className="font-heading text-xl font-semibold tracking-tight">Try next</h2>
