@@ -84,7 +84,7 @@ Now build the one killer feature. Wire the complete flow end-to-end — from use
 
 Wire the complete loop end-to-end before polishing any single piece. One real order through the whole system beats a perfect intake with no delivery.
 
-Open `context.md` → find `## Minimum Money Loop` → keep it visible. Every build session, ask: *does this work advance the loop, or is it polish?*
+Open `context.md` → find `## Minimum Money Loop` → keep it visible. Every build session, ask: _does this work advance the loop, or is it polish?_
 
 **Hard rule: do not touch the landing page until the loop has run once with a real order.**
 
@@ -157,19 +157,19 @@ You have a working core feature. Now loop: ship → validate → distribute → 
 
 ### Reusable vs. One-Time Commands
 
-| Command     | Frequency | What it does                                                                 |
-| ----------- | --------- | ---------------------------------------------------------------------------- |
-| `/setup`    | Once      | Fills `copilot-instructions.md` + `site.ts` from source docs                 |
-| `/update`   | Reusable  | Cascades source doc edits into derived files                                 |
+| Command     | Frequency | What it does                                                                                                                                                          |
+| ----------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `/setup`    | Once      | Fills `copilot-instructions.md` + `site.ts` from source docs                                                                                                          |
+| `/update`   | Reusable  | Cascades source doc edits into derived files                                                                                                                          |
 | `/validate` | Reusable  | Reads `context.md`, `brand.md`, `strategy.md` + web-searches to validate. **Agent mode only.** Phase 1: run open-ended. Phase 4+: add focus question in same message. |
-| `/assets`   | Reusable  | Generates favicons, icons, banner from logomark                              |
-| `/tool`     | Reusable  | Registers/updates tool on modrynstudio.com (`building` → `live`)             |
-| `/log`      | Reusable  | Drafts a build log post — run at every milestone                             |
-| `/deps`     | Reusable  | Validates dependencies against live docs                                     |
-| `/seo`      | Once      | SEO audit + Search Console + Bing setup                                      |
-| `/launch`   | Once      | Distribution checklist: sharing hooks, OG, social prep                       |
-| `@check`    | Reusable  | Quality gate: bugs, secrets, lint, build → auto-fixes, commits. Never pushes |
-| `@prebuilt` | Once      | Pre-build discovery: researches market, fills `context.md` + `brand.md`      |
+| `/assets`   | Reusable  | Generates favicons, icons, banner from logomark                                                                                                                       |
+| `/tool`     | Reusable  | Registers/updates tool on modrynstudio.com (`building` → `live`)                                                                                                      |
+| `/log`      | Reusable  | Drafts a build log post — run at every milestone                                                                                                                      |
+| `/deps`     | Reusable  | Validates dependencies against live docs                                                                                                                              |
+| `/seo`      | Once      | SEO audit + Search Console + Bing setup                                                                                                                               |
+| `/launch`   | Once      | Distribution checklist: sharing hooks, OG, social prep                                                                                                                |
+| `@check`    | Reusable  | Quality gate: bugs, secrets, lint, build → auto-fixes, commits. Never pushes                                                                                          |
+| `@prebuilt` | Once      | Pre-build discovery: researches market, fills `context.md` + `brand.md`                                                                                               |
 
 > **modryn-studio-v2 only:** `/deploy` and `/social` exist only in that repo. Switch workspaces to run them.
 
