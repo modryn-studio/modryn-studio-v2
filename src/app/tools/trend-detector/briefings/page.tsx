@@ -5,14 +5,14 @@ import { getAllBriefings } from '@/lib/briefings';
 import { site } from '@/config/site';
 
 export const metadata: Metadata = {
-  title: 'Daily Trend Briefings — Modryn Studio',
+  title: 'Daily Trend Briefings — BUILD/WATCH/SKIP | Modryn Studio',
   description:
     'Every morning Trend Detector scores 400+ rising search trends and outputs BUILD/WATCH/SKIP decisions. Read the daily briefings.',
   alternates: {
     canonical: `${site.url}/tools/trend-detector/briefings`,
   },
   openGraph: {
-    title: 'Daily Trend Briefings — Modryn Studio',
+    title: 'Daily Trend Briefings — BUILD/WATCH/SKIP | Modryn Studio',
     description:
       'Every morning Trend Detector scores 400+ rising search trends and outputs BUILD/WATCH/SKIP decisions. Read the daily briefings.',
     url: `${site.url}/tools/trend-detector/briefings`,

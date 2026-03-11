@@ -58,7 +58,7 @@ export default function EmailSignupInline({
           <p className="font-heading text-foreground text-base font-semibold">
             {toolName ? 'Be first when the intake opens.' : 'Follow the build.'}
           </p>
-          <p className="text-muted-foreground mt-1 font-mono text-sm">
+          <p className="text-muted-foreground mt-1 text-sm">
             {toolName
               ? `Drop your email. We'll tell you the moment it's ready.`
               : 'Get notified when the next tool drops. No newsletters. Just launches.'}
@@ -75,12 +75,12 @@ export default function EmailSignupInline({
               onChange={(e) => setEmail(e.target.value)}
               required
               disabled={submitting}
-              className="border-foreground/20 placeholder:text-muted-foreground focus-visible:ring-amber h-10 flex-1 rounded-none border-2 bg-transparent px-4 font-mono text-sm focus-visible:ring-1"
+              className="border-foreground/20 placeholder:text-muted-foreground focus-visible:ring-amber h-11 flex-1 rounded-none border-2 bg-transparent px-4 text-sm focus-visible:ring-1"
             />
             <Button
               type="submit"
               disabled={submitting}
-              className="bg-amber hover:bg-amber/90 h-10 rounded-none px-6 font-mono text-sm font-bold text-white disabled:opacity-50"
+              className="bg-amber hover:bg-amber/90 h-11 rounded-none px-6 font-mono text-sm font-bold text-white disabled:opacity-50"
             >
               {submitting ? 'Sending...' : 'Notify me'}
             </Button>

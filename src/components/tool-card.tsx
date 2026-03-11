@@ -43,13 +43,22 @@ const STATUS_ICON: Record<ToolStatus, React.ReactNode> = {
   'coming-soon': <Clock className="text-amber h-5 w-5" />,
 };
 
-export function ToolCard({ tool, showDetails = false }: { tool: Tool; showDetails?: boolean }) {
+export function ToolCard({
+  tool,
+  showDetails = false,
+  href,
+}: {
+  tool: Tool;
+  showDetails?: boolean;
+  href?: string;
+}) {
   const status = STATUS_CONFIG[tool.status];
   const icon = STATUS_ICON[tool.status];
+  const targetHref = href ?? `/tools/${tool.slug}`;
 
   return (
     <Link
-      href={`/tools/${tool.slug}`}
+      href={targetHref}
       onClick={() => analytics.toolClick({ name: tool.name, slug: tool.slug })}
     >
       <div className="group border-border hover:bg-muted/50 relative border-r border-b p-8 transition-colors">
@@ -70,9 +79,12 @@ export function ToolCard({ tool, showDetails = false }: { tool: Tool; showDetail
           <Badge className={`${status.className} font-mono text-xs`}>{status.label}</Badge>
         </div>
         <h3 className="font-heading mt-4 text-lg font-semibold">{tool.name}</h3>
-        <p className="text-muted-foreground mt-2 font-mono text-sm leading-relaxed">
-          {tool.description}
-        </p>
+        <p className="text-muted-foreground mt-2 text-sm leading-relaxed">{tool.description}</p>
+        {tool.launchedAt && (
+          <p className="text-muted-foreground mt-3 font-mono text-xs">
+            Shipped {formatLaunchDate(tool.launchedAt)}
+          </p>
+        )}
         {showDetails && (tool.screenshotUrl || tool.screenshotUrlDark) && (
           <div className="border-border mt-4 overflow-hidden border">
             <ToolScreenshot
@@ -84,11 +96,6 @@ export function ToolCard({ tool, showDetails = false }: { tool: Tool; showDetail
               height={225}
             />
           </div>
-        )}
-        {showDetails && tool.launchedAt && (
-          <p className="text-muted-foreground mt-4 font-mono text-xs">
-            Shipped {formatLaunchDate(tool.launchedAt)}
-          </p>
         )}
       </div>
     </Link>

@@ -1,13 +1,18 @@
 {
   "name": "songfor.me",
-  "seoTitle": "songfor.me — Personalized Birthday Songs",
+  "seoTitle": "songfor.me — Personalized Birthday Songs | Modryn Studio",
   "tagline": "Make them a birthday song they'll never forget.",
   "description": "Personalized birthday songs with their name, inside jokes, and memories. Delivered in minutes. Give them a song they'll actually remember.",
   "status": "building",
   "url": "https://songfor.gift",
   "screenshotUrl": "https://songfor.gift/screenshots/songfor-me-light.png",
   "logoUrl": "/logos/songfor-me.png",
-  "subreddits": ["r/Gifts", "r/Parenting", "r/relationship_advice", "r/CasualConversation"],
+  "subreddits": [
+    "r/Gifts",
+    "r/Parenting",
+    "r/relationship_advice",
+    "r/CasualConversation"
+  ],
   "logSlug": "2026-03-09-songfor-me",
   "examples": [
     {

@@ -7,7 +7,7 @@
   /* Font families – set by next/font CSS variables */
   --font-heading: var(--font-space-grotesk), sans-serif;
   --font-mono: var(--font-space-mono), monospace;
-  --font-body: var(--font-space-mono), monospace;
+  --font-body: var(--font-space-grotesk), sans-serif;
 
   /* Border radius – brutalist: 0 everywhere */
   --radius-sm: 0px;
@@ -108,7 +108,7 @@
   --secondary: 0 0% 10%;
   --secondary-foreground: 0 0% 90%;
   --muted: 0 0% 10%;
-  --muted-foreground: 0 0% 55%;
+  --muted-foreground: 0 0% 68%;
   --accent: 25 95% 53%;
   --accent-foreground: 0 0% 100%;
   --destructive: 0 62.8% 30.6%;
@@ -133,7 +133,7 @@ button,
 body {
   background: hsl(var(--background));
   color: hsl(var(--foreground));
-  font-family: var(--font-space-mono), monospace;
+  font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;

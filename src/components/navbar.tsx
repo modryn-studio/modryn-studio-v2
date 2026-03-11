@@ -61,11 +61,11 @@ export default function Navbar({ newToolsCount = 0, newPostsCount = 0 }: NavbarP
             <Link
               key={link.label}
               href={link.href}
-              className="text-muted-foreground hover:text-foreground relative px-3 py-2 font-mono text-sm transition-colors"
+              className="text-muted-foreground hover:text-foreground relative px-3 py-2 text-sm transition-colors"
             >
               {link.label}
               {link.badge > 0 && (
-                <span className="bg-amber ml-1 inline-flex h-4 min-w-4 items-center justify-center rounded-full px-1 font-mono text-[10px] text-white">
+                <span className="bg-amber ml-1 inline-flex h-4 min-w-4 items-center justify-center rounded-none px-1 font-mono text-[10px] text-white">
                   {link.badge > 9 ? '9+' : link.badge}
                 </span>
               )}
@@ -147,11 +147,11 @@ export default function Navbar({ newToolsCount = 0, newPostsCount = 0 }: NavbarP
               key={link.label}
               href={link.href}
               onClick={() => setMobileOpen(false)}
-              className="text-muted-foreground hover:text-foreground block py-2 font-mono text-sm transition-colors"
+              className="text-muted-foreground hover:text-foreground block py-2 text-sm transition-colors"
             >
               {link.label}
               {link.badge > 0 && (
-                <span className="bg-amber ml-1 inline-flex h-4 min-w-4 items-center justify-center rounded-full px-1 font-mono text-[10px] text-white">
+                <span className="bg-amber ml-1 inline-flex h-4 min-w-4 items-center justify-center rounded-none px-1 font-mono text-[10px] text-white">
                   {link.badge > 9 ? '9+' : link.badge}
                 </span>
               )}

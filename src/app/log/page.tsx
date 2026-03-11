@@ -17,37 +17,100 @@ export const metadata: Metadata = {
   },
 };
 
-export default function LogPage() {
+type LogPageProps = {
+  searchParams?: Promise<{ tag?: string }>;
+};
+
+export default async function LogPage({ searchParams }: LogPageProps) {
+  const resolvedSearchParams = searchParams ? await searchParams : undefined;
   const posts = getAllPosts();
+  const tags = Array.from(new Set(posts.map((post) => post.tag))).sort((a, b) =>
+    a.localeCompare(b)
+  );
+  const tagFilter = resolvedSearchParams?.tag?.trim();
+  const activeTag = tagFilter && tags.includes(tagFilter) ? tagFilter : null;
+  const visiblePosts = activeTag ? posts.filter((post) => post.tag === activeTag) : posts;
 
   return (
-    <div className="mx-auto max-w-6xl px-6 py-24">
+    <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 md:py-24">
       <h1 className="font-heading text-4xl font-bold tracking-tighter sm:text-5xl">Build Log</h1>
-      <p className="text-muted-foreground mt-4 font-mono text-sm">
+      <p className="text-muted-foreground mt-4 text-sm md:text-base">
         Every build, kill, and lesson — posted as it happens.
       </p>
 
-      {posts.length > 0 ? (
+      {activeTag && (
+        <div className="mt-4 flex items-center gap-3">
+          <p className="text-muted-foreground font-mono text-xs tracking-wide uppercase">
+            Showing {activeTag} ({visiblePosts.length})
+          </p>
+          <Link
+            href="/log"
+            className="text-amber font-mono text-xs tracking-wide uppercase underline underline-offset-2"
+          >
+            Clear filter
+          </Link>
+        </div>
+      )}
+
+      <div className="mt-6 flex flex-wrap gap-2">
+        <Link
+          href="/log"
+          className={`border-border px-3 py-1.5 font-mono text-xs uppercase transition-colors ${
+            activeTag === null ? 'bg-amber text-white' : 'text-muted-foreground hover:bg-muted'
+          }`}
+        >
+          All ({posts.length})
+        </Link>
+        {tags.map((tag) => {
+          const count = posts.filter((post) => post.tag === tag).length;
+          return (
+            <Link
+              key={tag}
+              href={`/log?tag=${encodeURIComponent(tag)}`}
+              className={`border-border px-3 py-1.5 font-mono text-xs uppercase transition-colors ${
+                activeTag === tag ? 'bg-amber text-white' : 'text-muted-foreground hover:bg-muted'
+              }`}
+            >
+              {tag} ({count})
+            </Link>
+          );
+        })}
+      </div>
+
+      {visiblePosts.length > 0 ? (
         <div className="border-border bg-card mt-10 border font-mono text-sm">
-          {posts.map((post, i) => (
+          {visiblePosts.map((post, i) => (
             <Link
               key={post.slug}
-              href={`/log/${post.slug}`}
-              className={`flex flex-col gap-1 px-4 py-4 sm:flex-row sm:items-center sm:gap-4 ${
-                i < posts.length - 1 ? 'border-border border-b' : ''
-              } hover:bg-muted/50 transition-colors`}
+              href={
+                activeTag
+                  ? `/log/${post.slug}?tag=${encodeURIComponent(activeTag)}`
+                  : `/log/${post.slug}`
+              }
+              className={`hover:bg-muted/50 flex flex-col gap-1 px-4 py-4 transition-colors sm:flex-row sm:items-center sm:gap-4 ${
+                i < visiblePosts.length - 1 ? 'border-border border-b' : ''
+              }`}
             >
               <span className="text-muted-foreground/60 shrink-0 tabular-nums">{post.date}</span>
               <span className="text-amber inline-block w-fit text-xs tracking-wider uppercase">
                 [{post.tag}]
               </span>
-              <span className="text-foreground">{post.title}</span>
+              <span className="font-heading text-foreground text-base">{post.title}</span>
             </Link>
           ))}
         </div>
       ) : (
         <div className="border-border bg-card text-muted-foreground mt-10 border p-6 font-mono text-sm">
-          First entry dropping soon.
+          No posts match this filter yet.
+          {activeTag && (
+            <>
+              {' '}
+              <Link href="/log" className="text-amber underline underline-offset-2">
+                Clear filter
+              </Link>
+              .
+            </>
+          )}
         </div>
       )}
     </div>

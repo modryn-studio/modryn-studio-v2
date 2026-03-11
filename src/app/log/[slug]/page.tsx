@@ -33,6 +33,7 @@ const STATUS_CONFIG: Record<ToolStatus, { label: string; className: string }> = 
 
 type Props = {
   params: Promise<{ slug: string }>;
+  searchParams?: Promise<{ tag?: string }>;
 };
 
 export async function generateStaticParams() {
@@ -62,20 +63,29 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function LogPostPage({ params }: Props) {
+export default async function LogPostPage({ params, searchParams }: Props) {
   const { slug } = await params;
+  const resolvedSearchParams = searchParams ? await searchParams : undefined;
   const post = getPostBySlug(slug);
 
   if (!post) notFound();
 
   // Find the tool this log post belongs to (if any)
   const relatedTool = getAllTools().find((t) => t.logSlug === slug) ?? null;
+  const allPosts = getAllPosts();
+  const rawTag = resolvedSearchParams?.tag?.trim();
+  const validTags = new Set(allPosts.map((item) => item.tag));
+  const backTag = rawTag && validTags.has(rawTag) ? rawTag : null;
+  const postIndex = allPosts.findIndex((p) => p.slug === slug);
+  const newerPost = postIndex > 0 ? allPosts[postIndex - 1] : null;
+  const olderPost =
+    postIndex >= 0 && postIndex < allPosts.length - 1 ? allPosts[postIndex + 1] : null;
 
   return (
     <div className="mx-auto max-w-3xl px-6 py-24">
       <div className="flex items-center justify-between">
         <Link
-          href="/log"
+          href={backTag ? `/log?tag=${encodeURIComponent(backTag)}` : '/log'}
           className="text-muted-foreground hover:text-foreground inline-flex items-center gap-2 font-mono text-sm transition-colors"
         >
           <ArrowLeft className="h-3 w-3" />
@@ -101,6 +111,34 @@ export default async function LogPostPage({ params }: Props) {
         <h1 className="font-heading mt-4 text-3xl font-bold tracking-tighter md:text-4xl">
           {post.title}
         </h1>
+
+        {relatedTool && (
+          <div className="border-border mt-8 border p-6">
+            <p className="text-muted-foreground mb-3 font-mono text-xs tracking-widest uppercase">
+              The tool
+            </p>
+            <div className="flex items-start justify-between gap-4">
+              <div className="min-w-0">
+                <p className="font-heading text-base font-semibold">{relatedTool.name}</p>
+                {relatedTool.tagline && (
+                  <p className="text-amber mt-0.5 font-mono text-sm">{relatedTool.tagline}</p>
+                )}
+              </div>
+              <Badge
+                className={`${STATUS_CONFIG[relatedTool.status].className} shrink-0 font-mono text-xs`}
+              >
+                {STATUS_CONFIG[relatedTool.status].label}
+              </Badge>
+            </div>
+            <Link
+              href={`/tools/${relatedTool.slug}`}
+              className="text-muted-foreground hover:text-foreground mt-4 inline-flex items-center gap-1.5 font-mono text-sm transition-colors"
+            >
+              See the tool <ArrowRight className="h-3 w-3" />
+            </Link>
+          </div>
+        )}
+
         <div className="mt-8">
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
@@ -115,9 +153,7 @@ export default async function LogPostPage({ params }: Props) {
                 <h3 className="font-heading mt-8 mb-2 text-lg font-semibold">{children}</h3>
               ),
               p: ({ children }) => (
-                <p className="text-foreground/80 mb-4 font-mono text-sm leading-relaxed">
-                  {children}
-                </p>
+                <p className="text-foreground/85 mb-4 text-base leading-relaxed">{children}</p>
               ),
               strong: ({ children }) => (
                 <strong className="text-foreground font-semibold">{children}</strong>
@@ -133,12 +169,12 @@ export default async function LogPostPage({ params }: Props) {
                 </a>
               ),
               ul: ({ children }) => (
-                <ul className="text-foreground/80 mb-4 ml-4 list-disc font-mono text-sm leading-relaxed">
+                <ul className="text-foreground/85 mb-4 ml-4 list-disc text-base leading-relaxed">
                   {children}
                 </ul>
               ),
               ol: ({ children }) => (
-                <ol className="text-foreground/80 mb-4 ml-4 list-decimal font-mono text-sm leading-relaxed">
+                <ol className="text-foreground/85 mb-4 ml-4 list-decimal text-base leading-relaxed">
                   {children}
                 </ol>
               ),
@@ -167,31 +203,42 @@ export default async function LogPostPage({ params }: Props) {
           </ReactMarkdown>
         </div>
 
-        {/* Featured tool card */}
-        {relatedTool && (
-          <div className="border-border mt-12 border p-6">
-            <p className="text-muted-foreground mb-3 font-mono text-xs tracking-widest uppercase">
-              The tool
-            </p>
-            <div className="flex items-start justify-between gap-4">
-              <div className="min-w-0">
-                <p className="font-heading text-base font-semibold">{relatedTool.name}</p>
-                {relatedTool.tagline && (
-                  <p className="text-amber mt-0.5 font-mono text-sm">{relatedTool.tagline}</p>
-                )}
-              </div>
-              <Badge
-                className={`${STATUS_CONFIG[relatedTool.status].className} shrink-0 font-mono text-xs`}
+        {(newerPost || olderPost) && (
+          <div className="border-border mt-12 grid gap-3 border-t pt-8 sm:grid-cols-2">
+            {newerPost ? (
+              <Link
+                href={
+                  backTag
+                    ? `/log/${newerPost.slug}?tag=${encodeURIComponent(backTag)}`
+                    : `/log/${newerPost.slug}`
+                }
+                className="border-border hover:bg-muted border p-4 transition-colors"
               >
-                {STATUS_CONFIG[relatedTool.status].label}
-              </Badge>
-            </div>
-            <Link
-              href={`/tools/${relatedTool.slug}`}
-              className="text-muted-foreground hover:text-foreground mt-4 inline-flex items-center gap-1.5 font-mono text-sm transition-colors"
-            >
-              See the tool <ArrowRight className="h-3 w-3" />
-            </Link>
+                <p className="text-muted-foreground font-mono text-xs tracking-wide uppercase">
+                  Newer post
+                </p>
+                <p className="font-heading mt-1 text-base font-semibold">{newerPost.title}</p>
+              </Link>
+            ) : (
+              <div />
+            )}
+            {olderPost ? (
+              <Link
+                href={
+                  backTag
+                    ? `/log/${olderPost.slug}?tag=${encodeURIComponent(backTag)}`
+                    : `/log/${olderPost.slug}`
+                }
+                className="border-border hover:bg-muted border p-4 transition-colors"
+              >
+                <p className="text-muted-foreground font-mono text-xs tracking-wide uppercase">
+                  Older post
+                </p>
+                <p className="font-heading mt-1 text-base font-semibold">{olderPost.title}</p>
+              </Link>
+            ) : (
+              <div />
+            )}
           </div>
         )}
 

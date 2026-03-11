@@ -7,11 +7,11 @@ export default function BuildLog() {
 
   return (
     <section id="log" className="border-border border-t">
-      <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
-        <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl">
+      <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-24">
+        <h2 className="font-heading text-2xl font-semibold tracking-tight sm:text-3xl md:text-4xl">
           What I&apos;m actually doing
         </h2>
-        <p className="text-muted-foreground mt-4 font-mono text-sm md:text-base">
+        <p className="text-muted-foreground mt-4 text-sm md:text-base">
           Every build, kill, and lesson — posted as it happens.
         </p>
 
@@ -41,10 +41,10 @@ export default function BuildLog() {
 
         <Link
           href="/log"
-          className="text-amber hover:text-amber/80 mt-6 inline-flex items-center gap-2 font-mono text-sm transition-colors"
+          className="border-border hover:bg-muted mt-6 inline-flex items-center gap-2 border px-4 py-2 font-mono text-sm transition-colors"
         >
           See all updates
-          <ArrowRight className="h-3 w-3" />
+          <ArrowRight className="h-4 w-4" />
         </Link>
       </div>
     </section>

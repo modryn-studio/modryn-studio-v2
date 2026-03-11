@@ -44,12 +44,12 @@ export default function EmailSignup() {
 
   return (
     <section id="signup" className="border-border border-t">
-      <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
+      <div className="mx-auto max-w-6xl px-6 py-16 md:py-20">
         <div className="mx-auto max-w-lg text-center">
-          <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl">
+          <h2 className="font-heading text-2xl font-semibold tracking-tight sm:text-3xl md:text-4xl">
             Don&apos;t miss the drop.
           </h2>
-          <p className="text-muted-foreground mt-4 font-mono text-sm md:text-base">
+          <p className="text-muted-foreground mt-4 text-sm md:text-base">
             I build tools fast. Get notified when the next one goes live. No newsletters. Just
             launches.
           </p>

@@ -24,10 +24,10 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <EmailSignup />
       <ToolsGrid />
       <BriefingsPreview />
       <BuildLog />
-      <EmailSignup />
     </>
   );
 }

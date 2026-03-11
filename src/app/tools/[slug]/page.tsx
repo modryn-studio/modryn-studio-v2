@@ -25,6 +25,7 @@ function formatLaunchDate(iso: string): string {
 
 type Props = {
   params: Promise<{ slug: string }>;
+  searchParams?: Promise<{ status?: string }>;
 };
 
 export async function generateStaticParams() {
@@ -81,13 +82,26 @@ const STATUS_LABEL: Record<ToolStatus, { label: string; className: string }> = {
   },
 };
 
-export default async function ToolPage({ params }: Props) {
+export default async function ToolPage({ params, searchParams }: Props) {
   const { slug } = await params;
+  const resolvedSearchParams = searchParams ? await searchParams : undefined;
+  const validStatuses = ['live', 'beta', 'building', 'coming-soon'] as const;
+  const rawStatus = resolvedSearchParams?.status;
+  const backStatus = validStatuses.includes(rawStatus as (typeof validStatuses)[number])
+    ? rawStatus
+    : undefined;
   const tool = getToolBySlug(slug);
 
   if (!tool) notFound();
 
   const latestBriefing = tool.briefingsPath ? (getAllBriefings()[0] ?? null) : null;
+  const relatedTools = getAllTools()
+    .filter((candidate) => candidate.slug !== tool.slug)
+    .sort((a, b) => {
+      const rank = { live: 0, beta: 1, building: 2, 'coming-soon': 3 } as const;
+      return rank[a.status] - rank[b.status];
+    })
+    .slice(0, 3);
 
   const status = STATUS_LABEL[tool.status];
 
@@ -95,7 +109,7 @@ export default async function ToolPage({ params }: Props) {
     <div className="mx-auto max-w-3xl px-6 py-24">
       <ToolPageTracker name={tool.name} slug={tool.slug} status={tool.status} />
       <Link
-        href="/tools"
+        href={backStatus ? `/tools?status=${backStatus}` : '/tools'}
         className="text-muted-foreground hover:text-foreground inline-flex items-center gap-2 font-mono text-sm transition-colors"
       >
         <ArrowLeft className="h-3 w-3" />
@@ -119,7 +133,7 @@ export default async function ToolPage({ params }: Props) {
           <Badge className={`${status.className} font-mono text-xs`}>{status.label}</Badge>
         </div>
         {tool.tagline && <p className="text-amber mt-2 font-mono text-sm">{tool.tagline}</p>}
-        <p className="text-muted-foreground mt-4 font-mono text-sm leading-relaxed md:text-base">
+        <p className="text-muted-foreground mt-4 text-sm leading-relaxed md:text-base">
           {tool.description}
         </p>
 
@@ -165,7 +179,12 @@ export default async function ToolPage({ params }: Props) {
         )}
 
         {tool.status === 'building' && tool.logSlug && (
-          <div className="mt-8">
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            <a href="#notify">
+              <Button className="bg-amber hover:bg-amber/90 rounded-none px-6 font-mono text-sm text-white">
+                Notify me when it launches
+              </Button>
+            </a>
             <Link href={`/log/${tool.logSlug}`}>
               <Button
                 variant="outline"
@@ -211,12 +230,9 @@ export default async function ToolPage({ params }: Props) {
         {tool.bullets && tool.bullets.length > 0 && (
           <ul className="mt-6 space-y-2">
             {tool.bullets.map((bullet, i) => (
-              <li
-                key={i}
-                className="text-muted-foreground flex items-start gap-2 font-mono text-sm"
-              >
+              <li key={i} className="text-muted-foreground flex items-start gap-2">
                 <span className="text-amber mt-0.5 shrink-0">—</span>
-                <span>{bullet}</span>
+                <span className="text-sm leading-relaxed">{bullet}</span>
               </li>
             ))}
           </ul>
@@ -238,6 +254,30 @@ export default async function ToolPage({ params }: Props) {
           </div>
         )}
 
+        {relatedTools.length > 0 && (
+          <section className="border-border mt-12 border-t pt-8">
+            <h2 className="font-heading text-xl font-semibold tracking-tight">Try next</h2>
+            <div className="mt-4 grid gap-3 sm:grid-cols-3">
+              {relatedTools.map((candidate) => (
+                <Link
+                  key={candidate.slug}
+                  href={
+                    backStatus
+                      ? `/tools/${candidate.slug}?status=${backStatus}`
+                      : `/tools/${candidate.slug}`
+                  }
+                  className="border-border hover:bg-muted border p-4 transition-colors"
+                >
+                  <p className="font-heading text-sm font-semibold">{candidate.name}</p>
+                  <p className="text-muted-foreground mt-1 text-sm leading-relaxed">
+                    {candidate.tagline ?? candidate.description}
+                  </p>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
+
         <ShareButtons
           title={tool.tagline ?? tool.name}
           slug={tool.slug}
@@ -246,11 +286,13 @@ export default async function ToolPage({ params }: Props) {
         />
 
         {tool.status !== 'live' && (
-          <EmailSignupInline
-            toolName={tool.name}
-            source={tool.slug}
-            wipUrl={tool.status === 'building' && tool.url ? tool.url : undefined}
-          />
+          <div id="notify">
+            <EmailSignupInline
+              toolName={tool.name}
+              source={tool.slug}
+              wipUrl={tool.status === 'building' && tool.url ? tool.url : undefined}
+            />
+          </div>
         )}
       </div>
     </div>
