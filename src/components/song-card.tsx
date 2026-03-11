@@ -9,9 +9,10 @@ import type { ToolAudioExample } from '@/lib/tools';
 interface Props {
   example: ToolAudioExample;
   toolSlug?: string;
+  autoPlayNextInList?: boolean;
 }
 
-export function SongCard({ example, toolSlug = 'unknown' }: Props) {
+export function SongCard({ example, toolSlug = 'unknown', autoPlayNextInList = false }: Props) {
   const audioRef = useRef<HTMLAudioElement>(null);
   const progressBarRef = useRef<HTMLDivElement>(null);
   const isDragging = useRef(false);
@@ -61,6 +62,17 @@ export function SongCard({ example, toolSlug = 'unknown' }: Props) {
       setPlaying(false);
       setProgress(0);
       analytics.audioComplete({ toolSlug, exampleName: example.name, genre: example.genre });
+
+      if (!autoPlayNextInList) return;
+
+      const currentCard = audio.closest('[data-song-card]');
+      const nextCard = currentCard?.nextElementSibling as HTMLElement | null;
+      const nextAudio = nextCard?.querySelector('audio') as HTMLAudioElement | null;
+      if (!nextAudio) return;
+
+      nextAudio.play().catch(() => {
+        // Ignore browser autoplay restrictions and keep manual controls available.
+      });
     };
     const onTimeUpdate = () => {
       if (audio.duration) setProgress(audio.currentTime / audio.duration);
@@ -76,7 +88,7 @@ export function SongCard({ example, toolSlug = 'unknown' }: Props) {
       audio.removeEventListener('ended', onEnded);
       audio.removeEventListener('timeupdate', onTimeUpdate);
     };
-  }, [toolSlug, example.name, example.genre]);
+  }, [toolSlug, example.name, example.genre, autoPlayNextInList]);
 
   function toggle() {
     const audio = audioRef.current;
@@ -117,6 +129,7 @@ export function SongCard({ example, toolSlug = 'unknown' }: Props) {
 
   return (
     <div
+      data-song-card
       className={`relative overflow-hidden border p-3 transition-colors ${
         playing ? 'border-amber' : 'border-border'
       }`}

@@ -257,7 +257,12 @@ export default async function ToolPage({ params, searchParams }: Props) {
             </p>
             <div className="space-y-2">
               {tool.examples.map((ex, i) => (
-                <SongCard key={i} example={ex} toolSlug={tool.slug} />
+                <SongCard
+                  key={i}
+                  example={ex}
+                  toolSlug={tool.slug}
+                  autoPlayNextInList={tool.slug === 'songfor-me'}
+                />
               ))}
             </div>
           </div>

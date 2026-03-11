@@ -33,15 +33,4 @@ export const analytics = {
   logPostViewed: (props: { slug: string; title: string }) => track('log_post_viewed', props),
   logPostReadComplete: (props: { slug: string; title: string }) =>
     track('log_post_read_complete', props),
-  comparisonClipPlay: (props: {
-    toolSlug: string;
-    side: 'gemini' | 'songforme';
-    clipName: string;
-    genre: string;
-  }) => track('comparison_clip_play', props),
-  comparisonPairHeard: (props: {
-    toolSlug: string;
-    person: string;
-    firstPlayed: 'gemini' | 'songforme';
-  }) => track('comparison_pair_heard', props),
 };

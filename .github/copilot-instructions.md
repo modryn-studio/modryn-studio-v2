@@ -146,6 +146,8 @@ Vercel Analytics (`<Analytics />` in `layout.tsx`) handles pageviews automatical
 
 `src/lib/analytics.ts` exists as a no-op stub with named methods. Wire in a real provider later if needed. Do not add GA4 or PostHog without explicit instruction — keep it simple.
 
+**Plan: Vercel Hobby.** Custom events require Vercel Pro ($20/mo) — they are not visible in the dashboard on Hobby. Do not instrument custom events (scroll depth, click tracking, conversion funnels, screenshot views, etc.). `analytics.ts` is intentionally a no-op and should stay that way until the plan is explicitly upgraded. Adding real event dispatch without an upgrade creates dead code that misleads future readers.
+
 ## Dev Server
 
 Start with `Ctrl+Shift+B` (default build task). This runs:
