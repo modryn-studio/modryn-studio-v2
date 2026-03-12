@@ -22,18 +22,18 @@ that works FOR me on every tool I ship. Not a brochure. Not an
 agency site. A living site that grows with every product launch.
 
 THE SITE STRUCTURE:
-/                   → Hero + tools grid + build log preview + email signup
-/tools              → All tools (live, beta, coming soon)
-/tools/[slug]       → Individual tool page (SEO magnet + launch page)
-/log                → Build in public feed (MDX files)
-/log/[slug]         → Individual log post
-/about              → Who I am, how I work, my stack
-/privacy + /terms   → Standard legal pages
+/ → Hero + tools grid + build log preview + email signup
+/tools → All tools (live, beta, coming soon)
+/tools/[slug] → Individual tool page (SEO magnet + launch page)
+/log → Build in public feed (MDX files)
+/log/[slug] → Individual log post
+/about → Who I am, how I work, my stack
+/privacy + /terms → Standard legal pages
 
 THE STACK:
 Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS v4,
 Radix UI + class-variance-authority + lucide-react (shadcn/ui pattern),
-Vercel deployment, Vercel Analytics, GA4 for custom events,
+Vercel deployment, Vercel Analytics,
 @next/mdx + gray-matter for build log MDX content,
 nodemailer + Gmail SMTP for email notifications,
 resend for transactional email.
@@ -44,6 +44,7 @@ Adding a new tool = add a JSON file.
 Adding a log post = add an MDX file.
 
 CORE PRINCIPLES:
+
 - Every page earns its place — no pages for businesses I'm not running
 - Ship fast, stay honest — empty is better than fake
 - The site is a launchpad, not a portfolio
@@ -110,6 +111,7 @@ MDX files. No CMS, no database. Just:
 ```
 
 Each post has frontmatter:
+
 ```
 ---
 title: The site is live
