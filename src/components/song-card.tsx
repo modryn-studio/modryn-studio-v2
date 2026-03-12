@@ -139,7 +139,7 @@ export function SongCard({ example, toolSlug = 'unknown', autoPlayNextInList = f
         <button
           onClick={toggle}
           aria-label={playing ? `Pause ${example.subtitle}` : `Play ${example.subtitle}`}
-          className="bg-surface focus-visible:outline-amber relative h-14 w-14 shrink-0 overflow-hidden focus-visible:outline-2"
+          className="bg-card focus-visible:outline-amber relative h-14 w-14 shrink-0 overflow-hidden focus-visible:outline-2"
         >
           {example.coverUrl && (
             <Image src={example.coverUrl} alt="" fill className="object-cover" sizes="56px" />

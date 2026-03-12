@@ -2,6 +2,7 @@
 
 import { useSyncExternalStore, useEffect, useState } from 'react';
 import { analytics } from '@/lib/analytics';
+import { Button } from '@/components/ui/button';
 
 const RECEIPT_KEY = 'payment_receipt';
 const RECEIPT_EVENT = 'receipt-stored';
@@ -93,6 +94,9 @@ export default function PayGate({ children, valueProposition, price, checkoutUrl
       const data = await res.json();
       if (data.url) {
         window.location.href = data.url;
+      } else {
+        // Checkout returned an error — re-enable button so user can retry
+        setLoading(false);
       }
     } catch {
       setLoading(false);
@@ -102,18 +106,14 @@ export default function PayGate({ children, valueProposition, price, checkoutUrl
   if (hasPaid) return <>{children}</>;
 
   return (
-    <div className="mx-auto max-w-md border-2 border-(--color-border) p-8 text-center">
+    <div className="border-border bg-card mx-auto max-w-md rounded-2xl border p-8 text-center">
       <h3 className="font-heading text-xl font-semibold">{valueProposition}</h3>
-      <p className="mt-4 font-mono text-sm text-(--color-muted)">
+      <p className="text-muted-foreground mt-4 font-mono text-sm">
         One-time payment. No account required. Works instantly.
       </p>
-      <button
-        onClick={handleCheckout}
-        disabled={loading}
-        className="mt-6 h-12 w-full rounded-none bg-(--color-accent) px-8 font-mono text-sm font-bold text-white hover:opacity-90 disabled:opacity-50"
-      >
+      <Button onClick={handleCheckout} disabled={loading} className="mt-6 h-12 w-full rounded-none">
         {loading ? 'Redirecting...' : `Pay ${price}`}
-      </button>
+      </Button>
     </div>
   );
 }

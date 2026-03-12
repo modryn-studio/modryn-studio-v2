@@ -169,7 +169,7 @@ export default async function ToolPage({ params, searchParams }: Props) {
             {tool.logSlug && (
               <Link href={`/log/${tool.logSlug}`}>
                 <Button
-                  variant="outline"
+                  variant="secondary"
                   className="border-border rounded-none px-6 font-mono text-sm"
                 >
                   Build log
@@ -188,7 +188,7 @@ export default async function ToolPage({ params, searchParams }: Props) {
             </a>
             <Link href={`/log/${tool.logSlug}`}>
               <Button
-                variant="outline"
+                variant="secondary"
                 className="border-border rounded-none px-6 font-mono text-sm"
               >
                 Build log

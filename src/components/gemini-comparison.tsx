@@ -81,7 +81,7 @@ export function GeminiComparison({ gemini, songforme }: Props) {
           </p>
           <div className="border-border bg-background border p-3">
             <div className="flex items-center gap-3">
-              <div className="bg-surface relative h-14 w-14 shrink-0 overflow-hidden">
+              <div className="bg-card relative h-14 w-14 shrink-0 overflow-hidden">
                 {songforme.coverUrl && (
                   <Image
                     src={songforme.coverUrl}

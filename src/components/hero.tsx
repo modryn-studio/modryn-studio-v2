@@ -22,7 +22,7 @@ export default function Hero() {
         </a>
         <a href="#tools">
           <Button
-            variant="outline"
+            variant="secondary"
             className="border-border hover:bg-muted h-11 rounded-none px-6 font-mono text-sm"
           >
             Browse the tools

@@ -71,9 +71,8 @@ export default function Navbar({ newToolsCount = 0, newPostsCount = 0 }: NavbarP
               )}
             </Link>
           ))}
-          <Button
-            variant="ghost"
-            size="icon"
+          {/* custom shape — intentionally raw <button> */}
+          <button
             onClick={toggleTheme}
             aria-label={
               mounted
@@ -82,7 +81,7 @@ export default function Navbar({ newToolsCount = 0, newPostsCount = 0 }: NavbarP
                   : 'Switch to dark mode'
                 : 'Toggle theme'
             }
-            className="ml-2 h-9 w-9"
+            className="text-muted-foreground hover:text-foreground ml-2 flex h-9 w-9 items-center justify-center transition-colors focus-visible:outline-none"
           >
             {mounted ? (
               resolvedTheme === 'dark' ? (
@@ -93,7 +92,7 @@ export default function Navbar({ newToolsCount = 0, newPostsCount = 0 }: NavbarP
             ) : (
               <span className="h-4 w-4" />
             )}
-          </Button>
+          </button>
           <Link href="/#signup">
             <Button className="bg-amber hover:bg-amber/90 ml-2 rounded-none font-mono text-sm text-white">
               Get Updates
@@ -103,9 +102,8 @@ export default function Navbar({ newToolsCount = 0, newPostsCount = 0 }: NavbarP
 
         {/* Mobile controls */}
         <div className="flex items-center gap-2 md:hidden">
-          <Button
-            variant="ghost"
-            size="icon"
+          {/* custom shape — intentionally raw <button> */}
+          <button
             onClick={toggleTheme}
             aria-label={
               mounted
@@ -114,7 +112,7 @@ export default function Navbar({ newToolsCount = 0, newPostsCount = 0 }: NavbarP
                   : 'Switch to dark mode'
                 : 'Toggle theme'
             }
-            className="h-9 w-9"
+            className="text-muted-foreground hover:text-foreground flex h-9 w-9 items-center justify-center transition-colors focus-visible:outline-none"
           >
             {mounted ? (
               resolvedTheme === 'dark' ? (
@@ -125,17 +123,16 @@ export default function Navbar({ newToolsCount = 0, newPostsCount = 0 }: NavbarP
             ) : (
               <span className="h-4 w-4" />
             )}
-          </Button>
-          <Button
-            variant="ghost"
-            size="icon"
+          </button>
+          {/* custom shape — intentionally raw <button> */}
+          <button
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={mobileOpen}
-            className="h-9 w-9"
+            className="text-muted-foreground hover:text-foreground flex h-9 w-9 items-center justify-center transition-colors focus-visible:outline-none"
           >
             {mobileOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
-          </Button>
+          </button>
         </div>
       </div>
 

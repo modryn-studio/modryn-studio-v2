@@ -28,14 +28,14 @@ Exception: intentionally non-standard shapes (circular icon buttons, custom medi
 Use named utilities generated from `@theme` in `globals.css`. Never use `[var(--color-*)]` arbitrary syntax.
 
 ```tsx
-// ✅ correct
-<div className="bg-accent text-white border-border bg-surface text-muted" />
+// ✅ correct — shadcn token names
+<div className="bg-accent text-accent-foreground border-border bg-card text-muted-foreground" />
 
 // ❌ wrong — verbose, not idiomatic TW v4
 <div className="bg-[var(--color-accent)] border-[var(--color-border)]" />
 ```
 
-Core tokens: `bg-accent`, `bg-bg`, `bg-surface`, `border-border`, `text-text`, `text-muted`, `text-accent`, `bg-secondary`
+Core tokens: `bg-background`, `text-foreground`, `bg-card`, `bg-muted`, `text-muted-foreground`, `bg-accent`, `text-accent`, `text-accent-foreground`, `border-border`, `bg-secondary`
 
 ## Responsive Patterns
 

@@ -1,6 +1,7 @@
 import { createRouteLogger } from '@/lib/route-logger';
 import nodemailer from 'nodemailer';
 import { Resend } from 'resend';
+import { site } from '@/config/site';
 
 const log = createRouteLogger('feedback');
 
@@ -26,11 +27,11 @@ function buildHtml(body: FeedbackBody): string {
   return `
     <div style="font-family: monospace; padding: 20px; max-width: 500px;">
       <h2 style="margin: 0 0 16px;">${heading}</h2>
-      ${body.email ? `<p><strong>Email:</strong> ${body.email}</p>` : ''}
+      <p><strong>Email:</strong> ${body.email || '(not provided)'}</p>
       ${body.message ? `<p><strong>Message:</strong><br/>${body.message}</p>` : ''}
       ${body.page ? `<p><strong>Page:</strong> ${body.page}</p>` : ''}
       <hr style="margin: 16px 0; border: 1px solid #333;" />
-      <p style="color: #666; font-size: 12px;">Sent from modrynstudio.com</p>
+      <p style="color: #666; font-size: 12px;">Sent from <strong>${site.name}</strong> &mdash; <a href="${site.url}">${site.url}</a></p>
     </div>
   `;
 }
@@ -50,11 +51,11 @@ export async function POST(req: Request): Promise<Response> {
 
     // Validate email — required for newsletter, optional for feedback/bug
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (body.type === 'newsletter') {
-      if (!body.email || !emailRegex.test(body.email)) {
-        log.warn(ctx.reqId, 'Invalid email', { email: body.email });
-        return log.end(ctx, Response.json({ error: 'Invalid email' }, { status: 400 }));
-      }
+    const hasEmail = body.email && emailRegex.test(body.email);
+
+    if (body.type === 'newsletter' && !hasEmail) {
+      log.warn(ctx.reqId, 'Invalid email for newsletter', { email: body.email });
+      return log.end(ctx, Response.json({ error: 'Valid email required' }, { status: 400 }));
     }
 
     // Check env vars
@@ -74,9 +75,9 @@ export async function POST(req: Request): Promise<Response> {
     });
 
     const subjectMap: Record<FeedbackType, string> = {
-      newsletter: `📬 New signup: ${body.email}`,
-      feedback: body.email ? `💬 Feedback from ${body.email}` : '💬 Anonymous feedback',
-      bug: body.email ? `🐛 Bug report from ${body.email}` : '🐛 Anonymous bug report',
+      newsletter: `📬 [${site.name}] New signup: ${body.email}`,
+      feedback: `💬 [${site.name}] Feedback${body.email ? ` from ${body.email}` : ''}`,
+      bug: `🐛 [${site.name}] Bug report${body.email ? ` from ${body.email}` : ''}`,
     };
 
     await transporter.sendMail({
@@ -84,6 +85,8 @@ export async function POST(req: Request): Promise<Response> {
       to: feedbackTo,
       subject: subjectMap[body.type],
       html: buildHtml(body),
+      // replyTo lets you hit Reply in Gmail and go straight to the user
+      ...(hasEmail && { replyTo: body.email }),
     });
 
     log.info(ctx.reqId, 'Email sent', { to: feedbackTo });
@@ -100,8 +103,9 @@ export async function POST(req: Request): Promise<Response> {
             email: body.email!,
             unsubscribed: false,
             ...(segmentId && { segments: [{ id: segmentId }] }),
+            properties: { source: site.name },
           });
-          log.info(ctx.reqId, 'Resend contact created', { segmentId });
+          log.info(ctx.reqId, 'Resend contact created', { segmentId, source: site.name });
         } catch (resendError) {
           // Non-fatal — inbox notification already sent, list add failed silently
           log.warn(ctx.reqId, 'Resend contact creation failed', { error: resendError });

@@ -3,6 +3,9 @@
 import { useState, useRef, useEffect } from 'react';
 import { X, Send } from 'lucide-react';
 import { analytics } from '@/lib/analytics';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
 
 type WidgetState = 'idle' | 'open' | 'submitting' | 'done';
 
@@ -11,12 +14,33 @@ export default function FeedbackWidget() {
   const [message, setMessage] = useState('');
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
+  const [keyboardOffset, setKeyboardOffset] = useState(0);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const collapseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     if (state === 'open') textareaRef.current?.focus();
   }, [state]);
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || !window.visualViewport) return;
+
+    const viewport = window.visualViewport;
+
+    const updateKeyboardOffset = () => {
+      const offset = Math.max(0, window.innerHeight - viewport.height - viewport.offsetTop);
+      setKeyboardOffset(offset > 120 ? offset : 0);
+    };
+
+    updateKeyboardOffset();
+    viewport.addEventListener('resize', updateKeyboardOffset);
+    viewport.addEventListener('scroll', updateKeyboardOffset);
+
+    return () => {
+      viewport.removeEventListener('resize', updateKeyboardOffset);
+      viewport.removeEventListener('scroll', updateKeyboardOffset);
+    };
+  }, []);
 
   // Open via custom event — used by the mobile footer trigger
   useEffect(() => {
@@ -81,7 +105,7 @@ export default function FeedbackWidget() {
         <p className="font-mono text-sm">Thanks. Noted. 👊</p>
       ) : (
         <>
-          <textarea
+          <Textarea
             ref={textareaRef}
             value={message}
             onChange={(e) => setMessage(e.target.value)}
@@ -89,27 +113,28 @@ export default function FeedbackWidget() {
             placeholder="What's broken? What's missing? What do you need?"
             disabled={state === 'submitting'}
             rows={4}
-            className="border-border placeholder:text-muted-foreground focus:border-amber w-full resize-none border bg-transparent p-3 font-mono text-sm transition-colors outline-none disabled:opacity-50"
+            className="rounded-none"
           />
-          <input
+          <Input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             onKeyDown={handleKeyDown}
             placeholder="Email (optional — for a reply)"
             disabled={state === 'submitting'}
-            className="border-border placeholder:text-muted-foreground focus:border-amber mt-2 w-full border bg-transparent p-3 font-mono text-xs transition-colors outline-none disabled:opacity-50"
+            className="mt-2 rounded-none text-xs"
           />
-          {error && <p className="text-destructive mt-2 font-mono text-xs">{error}</p>}
+          {error && <p className="text-accent mt-2 font-mono text-xs">{error}</p>}
           <div className="mt-3 flex justify-end">
-            <button
+            <Button
               onClick={handleSubmit}
               disabled={!message.trim() || state === 'submitting'}
-              className="bg-amber hover:bg-amber/90 disabled:bg-muted flex items-center gap-2 px-4 py-2 font-mono text-xs font-bold text-white transition-colors disabled:cursor-not-allowed disabled:text-white/50"
+              size="sm"
+              className="flex items-center gap-2 rounded-none"
             >
               <Send size={12} />
               {state === 'submitting' ? 'Sending...' : 'Send'}
-            </button>
+            </Button>
           </div>
         </>
       )}
@@ -136,6 +161,7 @@ export default function FeedbackWidget() {
         className={`fixed inset-x-0 bottom-0 z-50 transition-transform duration-300 ease-out md:hidden ${
           isOpen ? 'translate-y-0' : 'translate-y-full'
         }`}
+        style={{ bottom: keyboardOffset }}
       >
         {/* Tap-outside backdrop */}
         {isOpen && <div className="fixed inset-0 -z-10 bg-black/20" onClick={close} />}

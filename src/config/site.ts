@@ -14,6 +14,7 @@ export const site = {
     "Fast, focused tools built one at a time. No bloat, no nonsense. Built for people who don't have time for bad software.",
   cta: 'Explore the tools →',
   founder: 'Luke Hanner',
+  email: 'hello@modrynstudio.com',
   // Brand colors — used in manifest theme_color / background_color
   accent: '#F97415',
   bg: '#050505',
