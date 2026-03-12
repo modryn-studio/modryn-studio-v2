@@ -3,17 +3,15 @@
 import { useRef } from 'react';
 import Image from 'next/image';
 import type { ToolAudioExample } from '@/lib/tools';
-import { analytics } from '@/lib/analytics';
 
 type Side = 'gemini' | 'songforme';
 
 type Props = {
-  toolSlug: string;
   gemini: ToolAudioExample;
   songforme: ToolAudioExample;
 };
 
-export function GeminiComparison({ toolSlug, gemini, songforme }: Props) {
+export function GeminiComparison({ gemini, songforme }: Props) {
   const geminiAudioRef = useRef<HTMLAudioElement>(null);
   const songformeAudioRef = useRef<HTMLAudioElement>(null);
   const heardRef = useRef<{ gemini: boolean; songforme: boolean; first: Side | null }>({
@@ -22,7 +20,7 @@ export function GeminiComparison({ toolSlug, gemini, songforme }: Props) {
     first: null,
   });
 
-  function onPlay(side: Side, clip: ToolAudioExample) {
+  function onPlay(side: Side) {
     if (heardRef.current[side]) return;
 
     heardRef.current[side] = true;
@@ -71,7 +69,7 @@ export function GeminiComparison({ toolSlug, gemini, songforme }: Props) {
               controls
               preload="metadata"
               src={gemini.audioUrl}
-              onPlay={() => onPlay('gemini', gemini)}
+              onPlay={() => onPlay('gemini')}
               onEnded={onGeminiEnded}
             />
           </div>
@@ -114,7 +112,7 @@ export function GeminiComparison({ toolSlug, gemini, songforme }: Props) {
                 controls
                 preload="metadata"
                 src={songforme.audioUrl}
-                onPlay={() => onPlay('songforme', songforme)}
+                onPlay={() => onPlay('songforme')}
               />
             </div>
           </div>
