@@ -16,14 +16,6 @@
   "logSlug": "2026-03-09-songfor-me",
   "examples": [
     {
-      "name": "Nick",
-      "subtitle": "Slay Baddie",
-      "genre": "rap",
-      "audioUrl": "/audio/examples/nick/audio.mp3",
-      "coverUrl": "/audio/examples/nick/bg.jpeg",
-      "context": "He bought himself a motorcycle for his birthday. His girlfriend's nickname, the famous basement foosball table, and the carpet everyone jokes about — all in there."
-    },
-    {
       "name": "Monica",
       "subtitle": "Sunshine's Out",
       "genre": "pop",
