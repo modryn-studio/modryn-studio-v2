@@ -228,10 +228,10 @@ export default async function ToolPage({ params, searchParams }: Props) {
           </div>
         )}
 
-        {tool.geminiComparison && (
+        {tool.aiComparison && (
           <GeminiComparison
-            gemini={tool.geminiComparison.gemini}
-            songforme={tool.geminiComparison.songforme}
+            genericai={tool.aiComparison.genericai}
+            songforme={tool.aiComparison.songforme}
           />
         )}
 

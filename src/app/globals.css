@@ -175,6 +175,63 @@ html {
   color-scheme: dark;
 }
 
+/* Song card seek bar */
+.song-seek {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 44px; /* iOS HIG minimum touch target */
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.song-seek::-webkit-slider-runnable-track {
+  height: 2px;
+  border-radius: 0;
+  background: linear-gradient(
+    to right,
+    hsl(var(--amber)) var(--song-seek-pct, 0%),
+    hsl(var(--border)) var(--song-seek-pct, 0%)
+  );
+}
+
+.song-seek::-moz-range-track {
+  height: 2px;
+  border-radius: 0;
+  background: hsl(var(--border));
+}
+
+.song-seek::-moz-range-progress {
+  height: 2px;
+  background: hsl(var(--amber));
+}
+
+.song-seek::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: hsl(var(--amber));
+  margin-top: -6px;
+  border: none;
+}
+
+.song-seek::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: hsl(var(--amber));
+  border: none;
+}
+
+.song-seek:focus-visible {
+  outline: 2px solid hsl(var(--amber));
+  outline-offset: 2px;
+}
+
 /* Noise texture overlay */
 .noise-overlay::before {
   content: '';

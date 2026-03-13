@@ -14,11 +14,9 @@ interface Props {
 
 export function SongCard({ example, toolSlug = 'unknown', autoPlayNextInList = false }: Props) {
   const audioRef = useRef<HTMLAudioElement>(null);
-  const progressBarRef = useRef<HTMLDivElement>(null);
-  const isDragging = useRef(false);
   const [playing, setPlaying] = useState(false);
-  const [progress, setProgress] = useState(0);
-  const [seeking, setSeeking] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
   const hasTrackedPlay = useRef(false);
 
   // Persist like state in localStorage keyed by audioUrl
@@ -60,7 +58,7 @@ export function SongCard({ example, toolSlug = 'unknown', autoPlayNextInList = f
     const onPause = () => setPlaying(false);
     const onEnded = () => {
       setPlaying(false);
-      setProgress(0);
+      setCurrentTime(0);
       analytics.audioComplete({ toolSlug, exampleName: example.name, genre: example.genre });
 
       if (!autoPlayNextInList) return;
@@ -74,19 +72,20 @@ export function SongCard({ example, toolSlug = 'unknown', autoPlayNextInList = f
         // Ignore browser autoplay restrictions and keep manual controls available.
       });
     };
-    const onTimeUpdate = () => {
-      if (audio.duration) setProgress(audio.currentTime / audio.duration);
-    };
+    const onTimeUpdate = () => setCurrentTime(audio.currentTime);
+    const onLoadedMetadata = () => setDuration(audio.duration);
 
     audio.addEventListener('play', onPlay);
     audio.addEventListener('pause', onPause);
     audio.addEventListener('ended', onEnded);
     audio.addEventListener('timeupdate', onTimeUpdate);
+    audio.addEventListener('loadedmetadata', onLoadedMetadata);
     return () => {
       audio.removeEventListener('play', onPlay);
       audio.removeEventListener('pause', onPause);
       audio.removeEventListener('ended', onEnded);
       audio.removeEventListener('timeupdate', onTimeUpdate);
+      audio.removeEventListener('loadedmetadata', onLoadedMetadata);
     };
   }, [toolSlug, example.name, example.genre, autoPlayNextInList]);
 
@@ -96,43 +95,33 @@ export function SongCard({ example, toolSlug = 'unknown', autoPlayNextInList = f
     if (playing) {
       audio.pause();
     } else {
-      audio.play();
+      audio.play().catch(() => {
+        // Ignore browser autoplay restrictions.
+      });
     }
   }
 
-  function seek(clientX: number) {
-    const bar = progressBarRef.current;
+  function onSeek(e: React.ChangeEvent<HTMLInputElement>) {
     const audio = audioRef.current;
-    if (!bar || !audio || !audio.duration) return;
-    const rect = bar.getBoundingClientRect();
-    const fraction = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
-    audio.currentTime = fraction * audio.duration;
-    setProgress(fraction);
+    if (!audio) return;
+    const val = Number(e.target.value);
+    audio.currentTime = val;
+    setCurrentTime(val);
   }
 
-  function onPointerDown(e: React.PointerEvent<HTMLDivElement>) {
-    isDragging.current = true;
-    setSeeking(true);
-    e.currentTarget.setPointerCapture(e.pointerId);
-    seek(e.clientX);
+  function fmt(s: number): string {
+    if (!isFinite(s) || s < 0) return '0:00';
+    const m = Math.floor(s / 60);
+    const sec = Math.floor(s % 60);
+    return `${m}:${sec.toString().padStart(2, '0')}`;
   }
 
-  function onPointerMove(e: React.PointerEvent<HTMLDivElement>) {
-    if (!isDragging.current) return;
-    seek(e.clientX);
-  }
-
-  function onPointerUp() {
-    isDragging.current = false;
-    setSeeking(false);
-  }
+  const pct = duration > 0 ? (currentTime / duration) * 100 : 0;
 
   return (
     <div
       data-song-card
-      className={`relative overflow-hidden border p-3 transition-colors ${
-        playing ? 'border-amber' : 'border-border'
-      }`}
+      className={`border p-3 transition-colors ${playing ? 'border-amber' : 'border-border'}`}
     >
       <div className="flex items-center gap-3">
         {/* Cover + play button */}
@@ -176,26 +165,33 @@ export function SongCard({ example, toolSlug = 'unknown', autoPlayNextInList = f
         </button>
       </div>
 
+      {/* Seek row */}
+      <div className="mt-3 flex items-center gap-2">
+        <span className="text-muted-foreground w-9 shrink-0 font-mono text-xs tabular-nums">
+          {fmt(currentTime)}
+        </span>
+        <input
+          type="range"
+          className="song-seek flex-1"
+          style={{ '--song-seek-pct': `${pct}%` } as React.CSSProperties}
+          min={0}
+          max={duration > 0 ? duration : 100}
+          step={0.1}
+          value={currentTime}
+          onChange={onSeek}
+          aria-label="Seek"
+        />
+        <span className="text-muted-foreground w-9 shrink-0 text-right font-mono text-xs tabular-nums">
+          {fmt(duration)}
+        </span>
+      </div>
+
       {/* Context line */}
       {example.context && (
-        <p className="text-muted-foreground mt-2 pl-17 font-mono text-xs leading-relaxed">
+        <p className="text-muted-foreground mt-1 pl-11 font-mono text-xs leading-relaxed">
           {example.context}
         </p>
       )}
-
-      {/* Seekable progress bar — tall pointer target, thin visual */}
-      <div
-        ref={progressBarRef}
-        className="absolute right-0 bottom-0 left-0 h-4 cursor-pointer"
-        onPointerDown={onPointerDown}
-        onPointerMove={onPointerMove}
-        onPointerUp={onPointerUp}
-      >
-        <div
-          className={`bg-amber absolute bottom-0 left-0 h-0.5 ${seeking ? '' : 'transition-[width]'}`}
-          style={{ width: `${progress * 100}%` }}
-        />
-      </div>
 
       <audio ref={audioRef} src={example.audioUrl} preload="metadata" />
     </div>
