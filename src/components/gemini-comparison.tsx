@@ -14,7 +14,7 @@ export function GeminiComparison({ genericai, songforme }: Props) {
         Generic AI vs. songfor.me
       </h2>
       <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
-        Same person. Same details. First one plays automatically.
+        Same person. Same details. Second plays when the first finishes.
       </p>
 
       <div className="mt-5 space-y-2">
