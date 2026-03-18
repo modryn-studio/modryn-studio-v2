@@ -1,10 +1,11 @@
 CONTEXT: Modryn Studio
 
 WHO I AM:
-I'm Luke, a one-person studio owner building micro-SaaS products
-under Modryn Studio (modrynstudio.com).
-I'm not a traditional developer — I build fast using AI-assisted
-development. I ship in days, not months.
+I'm Luke, a one-person studio owner building agent pipelines that
+deliver finished results under Modryn Studio (modrynstudio.com).
+I identify what result someone will pay for, build the pipeline
+that delivers it, and own the system. The user describes the
+problem; the tool hands back the answer.
 
 WHAT I'M ACTUALLY DOING:
 I build agent pipelines that deliver finished results. I identify
