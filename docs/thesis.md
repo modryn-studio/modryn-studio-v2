@@ -28,6 +28,18 @@ I'm a solo developer who builds and runs agent pipelines. I detect what results 
 
 If I can't answer that cleanly, I don't build it.
 
+## Operating Rules
+
+- **Build outcomes, not tools.** Sell results. Not software the user has to operate.
+- **Don't build chatbots.** Avoid commoditized layers. If every solo dev can ship it in an hour, it's already the floor.
+- **Own the system, not the labor.** I'm the orchestrator. The pipeline does the work.
+- **Distribution is the moat.** Build the audience before you build the product. Being known and findable before launch is worth more than another feature.
+- **Stay in the window.** This era is early-mid innings. Move now, not after it's obvious.
+
+## The Window
+
+Early-mover advantage in this era is probably 18–36 months. I'll know it's closing when every agency and enterprise vendor is selling the same thing. That's not a reason to panic — it's a reason to move.
+
 ## What I Don't Know Yet
 
 Which specific industry or profession I'm building for at scale. That answer comes from signal — users, search data, what sticks. The thesis doesn't require it. The strategy will.

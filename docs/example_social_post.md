@@ -11,12 +11,13 @@ Used by the `/social` prompt as calibration context.
 
 **Two-beat structure for tool launches:**
 
-- **Line 1 (hook):** the real moment or outcome — the interesting thing that makes a stranger pause. One sentence, lowercase, no filler.
+- **Line 1 (hook):** the real moment or outcome — the interesting thing that makes a stranger pause. One sentence, no filler.
 - **Line 2 (context + CTA):** name the project, say what it is plainly, one concrete detail (number of examples, what it does). End with bare URL to the tool page.
 - **For tool launches: link to the tool page**, not the log post
 - **Single CTA only** — don't say "read the log post AND check out the tool page". Pick one destination.
 - **Same post works for X and shipordie.club** — don't over-differentiate
-- Lowercase throughout. No hashtags. No emojis unless they add meaning.
+- No hashtags. No emojis unless they add meaning.
+- **Capitalized sentences.** Earlier posts were lowercase throughout. As of March 2026, sentences are capitalized normally. The register is still direct and minimal — capitalization is the only change.
 
 ### Reddit
 
@@ -99,6 +100,23 @@ The Reddit post ends with an invite to debate. That's what gets comments. Don't 
 > https://modrynstudio.com/tools/songfor-me
 
 **Structure:** Line 1 = real social proof moment (hook). Line 2 = project name + what it is + concrete detail + bare URL. Single CTA only.
+
+---
+
+### 2026-03-18 — Era thesis log post (X)
+
+**What Luke wrote (approved, not yet published):**
+
+> Shipping fast is no longer the goal. Distribution is the moat now. We're in the agentic AI era.
+> modrynstudio.com/log/2026-03-18-the-era-thesis
+
+**Notes:**
+
+- Log post, not a tool launch — no two-beat structure, just the take
+- Three declarative sentences. Each one stands alone. No setup, no payoff.
+- Capitalized sentences — confirmed shift from lowercase-throughout style
+- Link to the log post (correct for non-launch posts)
+- No URL label, no "I wrote about it" — just the URL bare on its own line
 
 ---
 
