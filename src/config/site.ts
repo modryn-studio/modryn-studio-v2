@@ -7,11 +7,12 @@ export const site = {
   url: 'https://modrynstudio.com',
   // Base description — used in <meta description>, manifest, JSON-LD
   description:
-    "Tools for people who don't have time for bad software. Fast, focused tools built in public, launched one at a time.",
+    'Describe the problem. Get back the answer. One-person studio building pipelines that deliver finished results — shipped in public, one at a time.',
   // Longer form for social cards (OG / Twitter)
-  ogTitle: 'Modryn Studio | Fast, Focused Tools Built for Builders',
+  ogTitle: 'Modryn Studio | Describe the Problem. Get the Answer.',
   ogDescription:
-    "Fast, focused tools built one at a time. No bloat, no nonsense. Built for people who don't have time for bad software.",
+    'One person. Wisconsin. Building the pipelines that hand you a finished result — not another tool to figure out. No fluff. No friction.',
+
   cta: 'Explore the tools →',
   founder: 'Luke Hanner',
   email: 'hello@modrynstudio.com',

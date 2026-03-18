@@ -17,7 +17,7 @@
 
 - **Start small. Don't think big.** - Ship one killer feature, not ten mediocre ones. Launch in days, not weeks.
 - **Your enemy is perfection, BUT the first prototype must function really well** - Ugly is acceptable. Broken is not. Polish the core action ruthlessly.
-- **Old World (Human Developer) = months to MVP. New World (AI-Assisted) = days to MVP** - Use time saved for user research and distribution, not more features.
+- **Old World (Human Developer) = months to MVP. New World (AI-Assisted) = days to MVP** - Use time saved for user research and distribution, not more features. Speed is table stakes now — everyone ships fast. The edge is what you do with the time you save.
 
 ## AI-First Development
 
@@ -31,6 +31,7 @@ Leverage these tools in every project:
 
 ## Distribution
 
+- **Distribution is the moat, not dev speed** - Every solo dev can ship fast with AI in 2026. Speed is table stakes. The edge is audience: being known, trusted, and findable before you launch. Time saved with AI goes into distribution and user research, not more features.
 - **pSEO is the long game** - Programmatic SEO pages (e.g. "best X for Y", comparison pages) compound over 2–4 months. Plant seeds at launch, harvest later.
 - **Reddit first, X second** - Reddit drives qualified traffic on launch day. X builds founder brand over time. Prioritize Reddit posts in niche subreddits where the target user already complains.
 - **Every product launches on modrynstudio.com** - The studio domain aggregates authority. Individual domains are exceptions (pre-existing brands only).

@@ -7,10 +7,14 @@ I'm not a traditional developer — I build fast using AI-assisted
 development. I ship in days, not months.
 
 WHAT I'M ACTUALLY DOING:
-I build tools targeting trending search markets.
-My pipeline: detect rising trends → score them → build a targeted
-tool in 48 hours → capture organic search traffic early → monetize
-with ads, one-time payments, or affiliate links.
+I build agent pipelines that deliver finished results. I identify
+what result someone will pay for, build the pipeline that delivers it,
+and own the system. The user describes the problem; the tool hands
+back the answer.
+
+My pipeline: detect trends → identify the result someone needs →
+build the pipeline that delivers it → distribute early → monetize
+with one-time payments or email capture.
 
 I run a private trend detection pipeline (trendspy + Google Trends
 RSS + Gmail newsletter ingest) that scores and clusters trends daily
@@ -60,9 +64,9 @@ CORE PRINCIPLES:
    Logo | Tools | Log | About | [Get Updates] button
 
 2. HERO
-   Headline:    "Tools for people who don't have time for bad software."
-   Subheadline: "One-person studio. Ships in days."
-   CTA:         [See the tools] [Follow the build]
+   Headline:    "Describe the problem. Get back the answer."
+   Subheadline: "I build pipelines that hand you a finished result — not another tool to figure out."
+   CTA:         [Don't miss the next drop] [Browse the tools]
 
 3. TOOLS GRID
    Cards: name, one-line description, status badge (Live/Beta/Building)

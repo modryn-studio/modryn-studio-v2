@@ -2,7 +2,7 @@
 
 ## Who I Am
 
-I'm Luke, a one-person studio owner building micro-SaaS products under Modryn Studio (modrynstudio.com). I build fast using AI-assisted development — detecting rising trends, scoring them, and shipping a targeted tool in 48 hours to capture organic search traffic early. The site is a product studio launchpad that grows with every tool I ship, not a portfolio or agency brochure. Target users are impatient people who hate bad software and don't want to do the research — they want it handed to them, fast.
+I'm Luke, a one-person studio owner building agent pipelines that deliver finished results under Modryn Studio (modrynstudio.com). I identify what result someone will pay for, build the pipeline that delivers it, and own the system. The user describes the problem; the tool hands back the answer. The site is a product studio launchpad that grows with every pipeline I ship, not a portfolio or agency brochure. Target users are impatient people who hate bad software and don't want to do the research — they want it handed to them, fast.
 
 ## Stack
 
@@ -195,7 +195,8 @@ Convert → "I don't want to miss the next one"
 
 **Copy Examples (use as reference)**
 
-- Hero: "Tools for people who don't have time for bad software."
+- Hero: "Describe the problem. Get back the answer."
+- Sub-copy: "I build pipelines that hand you a finished result — not another tool to figure out."
 - CTA: "Don't miss the drop."
 - Footer: "Built by Luke. Paid for by a day job. Shipping anyway."
 

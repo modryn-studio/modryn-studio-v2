@@ -4,13 +4,13 @@ import type { Metadata } from 'next';
 import EmailSignupInline from '@/components/email-signup-inline';
 
 export const metadata: Metadata = {
-  title: 'About Luke — Founder of Modryn Studio, Building Solo',
+  title: 'About Luke — Modryn Studio',
   description:
-    "I'm Luke — one-person studio out of Wisconsin. I build focused tools for people who don't have time for bad software. No team, no investors, no nonsense.",
+    "I'm Luke — one-person studio out of Wisconsin. I find problems worth solving and build the pipeline that delivers the answer. No team. No investors. Just shipping.",
   openGraph: {
-    title: 'About Luke — Founder of Modryn Studio, Building Solo',
+    title: 'About Luke — Modryn Studio',
     description:
-      "I'm Luke — one-person studio out of Wisconsin. I build focused tools for people who don't have time for bad software. No team, no investors, no nonsense.",
+      "I'm Luke — one-person studio out of Wisconsin. I find problems worth solving and build the pipeline that delivers the answer. No team. No investors. Just shipping.",
     url: 'https://modrynstudio.com/about',
     siteName: 'Modryn Studio',
     type: 'profile',
@@ -27,7 +27,7 @@ const faqSchema = {
       name: 'Who built Modryn Studio?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: "Luke Hanner — a one-person studio out of Wisconsin. He builds focused tools for people who don't have time for bad software. No team, no investors, no nonsense.",
+        text: 'Luke — a one-person studio out of Wisconsin. He finds problems worth solving and builds the pipeline that delivers the answer. No team, no investors, no nonsense.',
       },
     },
     {
@@ -51,7 +51,7 @@ const faqSchema = {
       name: 'How are Modryn Studio tools built?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Trends are identified early, one problem is picked, one tool is built, and it ships in 48 hours. No team, no investors, no roadmap with 47 items on it.',
+        text: 'Trends are identified early, and specific results people will pay for are isolated. Then a pipeline that delivers that result is built and shipped. No team, no investors, no long roadmaps.',
       },
     },
     {
@@ -59,7 +59,7 @@ const faqSchema = {
       name: 'Where is Modryn Studio headed?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: "The goal is a world where anyone with an idea can just make the thing. In the meantime: focused tools for impatient people who don't want manuals, don't want ten features they'll never use, and don't want to be tricked into a subscription they can't cancel.",
+        text: 'The goal is a portfolio of pipelines — each one delivering a specific result to a specific kind of person — that compounds over time into a real business. One result at a time.',
       },
     },
   ],
@@ -84,7 +84,7 @@ export default function AboutPage() {
         />
         <div>
           <h1 className="font-heading text-4xl font-bold tracking-tighter sm:text-5xl">
-            I&apos;m Luke. I build tools for people who don&apos;t have time for bad software.
+            I don&apos;t build tools. I build pipelines that hand you the answer.
           </h1>
           <p className="text-muted-foreground mt-4 font-mono text-sm">
             One person. Wisconsin. Shipping anyway.
@@ -121,19 +121,48 @@ export default function AboutPage() {
         <section>
           <h2 className="font-heading text-foreground text-xl font-semibold">The Way I See It</h2>
           <div className="mt-4 space-y-4 font-mono">
-            <p>Software shouldn&apos;t require a computer science degree to build or to use.</p>
             <p>
-              I believe we&apos;re heading toward a world where anyone with an idea can just... make
-              the thing. A business owner who needs a custom tool builds it in an afternoon. Someone
-              who wants a task tracker that works exactly the way their brain works just makes it.
+              Software isn&apos;t a tool you pick up anymore. It&apos;s an agent that acts for you.
             </p>
-            <p>That future is closer than most people think. I&apos;m building toward it.</p>
             <p>
-              In the meantime, I build focused tools for impatient people. The ones who don&apos;t
-              want to read a manual, don&apos;t want to pay for ten features they&apos;ll never use,
-              and don&apos;t want to be tricked into a subscription they can&apos;t cancel.
+              That changes what people will pay for. Nobody wants another interface to learn,
+              another dashboard to configure, another tool that makes them do the work. They want
+              the finished thing. The answer. The result.
             </p>
-            <p>I&apos;m one of those people. That&apos;s why I build for them.</p>
+            <p>
+              The builders who figure out how to deliver that — without friction, without an
+              account, without a subscription trap — are going to win the next five years.
+            </p>
+            <p>That&apos;s the bet I&apos;m making.</p>
+          </div>
+        </section>
+
+        {/* Section 3 */}
+        <section>
+          <h2 className="font-heading text-foreground text-xl font-semibold">The Model</h2>
+          <div className="mt-4 space-y-4 font-mono">
+            <p>
+              I run a trend detection pipeline every morning. It scores what&apos;s rising, clusters
+              related signals, and surfaces the results people are actively searching for.
+            </p>
+            <p>
+              Then I ask one question:{' '}
+              <em>
+                is there a result here someone will pay for — that I can deliver almost entirely
+                through an agent pipeline, owning the system?
+              </em>
+            </p>
+            <p>If yes, I build it. If the answer&apos;s fuzzy, I skip it.</p>
+            <p>
+              Everyone can build fast now. That&apos;s not the edge anymore. The edge is
+              distribution — being known, findable, and trusted before you launch. I use the time AI
+              saves me to get in front of the right people, not to add more features.
+            </p>
+            <p>
+              The business model is simple: pay for what you use, like electricity. No monthly
+              subscription. No &quot;cancel anytime&quot; fine print. My tools cost what they cost
+              to run, plus a margin. That&apos;s it.
+            </p>
           </div>
         </section>
 
@@ -162,29 +191,6 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Section 3 */}
-        <section>
-          <h2 className="font-heading text-foreground text-xl font-semibold">The Model</h2>
-          <div className="mt-4 space-y-4 font-mono">
-            <p>I find trends early. I pick one problem. I build one tool. I ship it in 48 hours.</p>
-            <p>No team. No investors. No roadmap with 47 items on it.</p>
-            <p>
-              AI-assisted development means I can move at a speed that wasn&apos;t possible two
-              years ago. I use that speed advantage to take more bets, learn faster, and get more
-              shots at building something people actually care about.
-            </p>
-            <p>
-              The business model is simple: pay for what you use, like electricity. No monthly
-              subscription. No &quot;cancel anytime&quot; fine print. Top up when you want, stop
-              when you want. My tools cost what they cost to run, plus a margin. That&apos;s it.
-            </p>
-            <p>
-              It&apos;s a numbers game. I know most ideas won&apos;t land. The ones that do will
-              make the ones that didn&apos;t worth it.
-            </p>
-          </div>
-        </section>
-
         {/* Section 4 */}
         <section>
           <h2 className="font-heading text-foreground text-xl font-semibold">
@@ -192,14 +198,18 @@ export default function AboutPage() {
           </h2>
           <div className="mt-4 space-y-4 font-mono">
             <p>
-              Marketing. Specifically the social media part: the comments, the threads, the
-              &quot;engage with your audience&quot; grind. I&apos;m working on it.
+              Distribution. The social media grind — comments, threads, the &quot;engage with your
+              audience&quot; machine. I&apos;m working on it.
             </p>
             <p>
-              I&apos;m better at building than selling. Most builders are. The plan is to let the
-              tools speak, let search do the work, and build an audience the slow honest way.
+              I know it&apos;s the actual job now. Building is the easy part. Getting in front of
+              the right person, at the right moment, with the right message — that&apos;s what
+              separates a useful pipeline from one nobody ever finds.
             </p>
-            <p>No shortcuts. No spam. Just shipping things worth sharing.</p>
+            <p>
+              No shortcuts. No spam. Just building things worth sharing and getting better at
+              sharing them.
+            </p>
           </div>
         </section>
 
@@ -211,7 +221,7 @@ export default function AboutPage() {
               There&apos;s a version of Tuesday I&apos;m working toward where I wake up, make
               coffee, and just build the next thing.
             </p>
-            <p>No alarm. No commute. Just the next project.</p>
+            <p>No alarm. No commute. Just the next pipeline.</p>
             <p>Modryn Studio is the bet I&apos;m making to get there.</p>
           </div>
         </section>

@@ -5,13 +5,13 @@ export default function Hero() {
   return (
     <section className="mx-auto max-w-6xl px-6 py-20 md:py-28 lg:py-36">
       <h1 className="font-heading text-4xl leading-tight font-bold tracking-tighter sm:text-5xl lg:text-6xl">
-        Tools for people who don&apos;t
+        Describe the problem.
         <br className="hidden sm:block" />
-        have time for bad software.
+        Get back the answer.
       </h1>
       <p className="text-muted-foreground mt-6 max-w-xl text-base leading-relaxed md:text-lg">
-        I&apos;m Luke. I build fast, focused AI tools — one at a time. No fluff. No traps. Just
-        things that work.
+        I&apos;m Luke. I build pipelines that hand you a finished result — not another tool to
+        figure out. No fluff. No friction. Just the thing you needed.
       </p>
       <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
         <a href="#signup">
