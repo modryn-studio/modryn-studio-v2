@@ -30,6 +30,9 @@ export default function BuildLog() {
                   [{post.tag}]
                 </span>
                 <span className="text-foreground">{post.title}</span>
+                <span className="text-muted-foreground/50 ml-auto shrink-0 font-mono text-xs">
+                  {post.readingTime} min
+                </span>
               </Link>
             ))}
           </div>

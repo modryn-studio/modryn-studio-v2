@@ -36,6 +36,7 @@ Leverage these tools in every project:
 - **Reddit first, X second** - Reddit drives qualified traffic on launch day. X builds founder brand over time. Prioritize Reddit posts in niche subreddits where the target user already complains.
 - **Every product launches on modrynstudio.com** - The studio domain aggregates authority. Individual domains are exceptions (pre-existing brands only).
 - **Build log is distribution** - Every `/log` post is content that can be cross-posted to dev.to, shared on Reddit, and linked from X. The build log IS the content marketing strategy.
+- **Show, don't just tell in log posts** - Every post that ships a visible feature must include a screenshot or screen recording (GIF). Drop the file in `public/log/[slug]-demo.gif` and reference it with `![demo](/log/slug-demo.gif)`. Cover images go in `public/log/covers/` — generate them with `node scripts/gen-cover.mjs --slug <slug>`. Callout boxes use `<div class="callout">key insight</div>`. Diagrams use fenced ` ```mermaid ``` ` blocks.
 
 ## User Experience
 
