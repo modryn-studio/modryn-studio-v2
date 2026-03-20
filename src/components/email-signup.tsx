@@ -52,7 +52,7 @@ export default function EmailSignup() {
             newsletters, no noise. Just launches.{' '}
             <Link
               href="/about"
-              className="text-muted-foreground underline underline-offset-2 transition-colors hover:text-foreground"
+              className="text-muted-foreground hover:text-foreground underline underline-offset-2 transition-colors"
             >
               Who&apos;s building this?
             </Link>

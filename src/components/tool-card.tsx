@@ -94,7 +94,7 @@ function MiniEmailCapture({ slug }: { slug: string }) {
 
   if (done) {
     return (
-      <div className="border-border flex items-center gap-2 border-t px-8 py-4 font-mono text-xs text-amber">
+      <div className="border-border text-amber flex items-center gap-2 border-t px-8 py-4 font-mono text-xs">
         <Check className="h-3 w-3" />
         You&apos;re on the list.
       </div>
@@ -110,7 +110,7 @@ function MiniEmailCapture({ slug }: { slug: string }) {
         onChange={(e) => setEmail(e.target.value)}
         required
         disabled={submitting}
-        className="h-10 flex-1 bg-transparent px-4 font-mono text-xs text-foreground placeholder:text-muted-foreground/60 focus:outline-none disabled:opacity-50"
+        className="text-foreground placeholder:text-muted-foreground/60 h-10 flex-1 bg-transparent px-4 font-mono text-xs focus:outline-none disabled:opacity-50"
       />
       <button
         type="submit"

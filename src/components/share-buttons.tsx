@@ -17,7 +17,13 @@ interface ShareButtonsProps {
   showHN?: boolean;
 }
 
-export function ShareButtons({ title, slug, shareText, urlOverride, showHN = true }: ShareButtonsProps) {
+export function ShareButtons({
+  title,
+  slug,
+  shareText,
+  urlOverride,
+  showHN = true,
+}: ShareButtonsProps) {
   const [copied, setCopied] = useState(false);
 
   const url = urlOverride ?? `${site.url}/log/${slug}`;

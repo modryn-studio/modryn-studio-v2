@@ -6,10 +6,10 @@
 
 # Modryn Studio
 
-Tools for people who don't have time for bad software — built one at a time, shipped fast, no fluff.
+Fast, focused tools for people who hate bad software — built one at a time, shipped fast, no fluff.
 
 → [modrynstudio.com](https://modrynstudio.com)
 
 ---
 
-Next.js 16 · TypeScript · Tailwind CSS v4 · Vercel · GA4 · Resend
+Next.js 16 · TypeScript · Tailwind CSS v4 · Vercel · Resend

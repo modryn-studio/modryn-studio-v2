@@ -7,9 +7,9 @@ export const site = {
   url: 'https://modrynstudio.com',
   // Base description — used in <meta description>, manifest, JSON-LD
   description:
-    'Describe the problem. Get back the answer. One-person studio building pipelines that deliver finished results — shipped in public, one at a time.',
+    'Fast, focused tools for people who hate bad software. One-person studio building pipelines that deliver finished results — shipped in public, one at a time.',
   // Longer form for social cards (OG / Twitter)
-  ogTitle: 'Modryn Studio | Describe the Problem. Get the Answer.',
+  ogTitle: 'Modryn Studio | Fast, Focused Tools. No Bloat.',
   ogDescription:
     'One person. Wisconsin. Building the pipelines that hand you a finished result — not another tool to figure out. No fluff. No friction.',
 

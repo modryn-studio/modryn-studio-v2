@@ -30,7 +30,7 @@ I'm Luke, a one-person studio owner building agent pipelines that deliver finish
 ## Route Map
 
 - `/` → Hero + tools grid + build log preview + email signup
-- `/tools` → All tools (live, beta, coming soon)
+- `/tools` → All tools in a list layout — name, tagline, description, top bullets, Open/Details CTA
 - `/tools/[slug]` → Individual tool page — SEO magnet + launch page with status badge, description, screenshot, and email capture if not live
 - `/log` → Build in public feed (MDX files)
 - `/log/[slug]` → Individual log post
@@ -195,10 +195,11 @@ Convert → "I don't want to miss the next one"
 
 **Copy Examples (use as reference)**
 
-- Hero: "Describe the problem. Get back the answer."
+- Hero H1: "Fast, focused tools for people who hate bad software."
 - Sub-copy: "I build pipelines that hand you a finished result — not another tool to figure out."
-- CTA: "Don't miss the drop."
+- CTA: "Follow the builds."
 - Footer: "Built by Luke. Paid for by a day job. Shipping anyway."
+- Post-signup: "You're on the list. Next launch, your inbox." → "Read the build log →"
 
 ## Core Rules
 

@@ -70,7 +70,10 @@ export function getAllPosts(): LogPost[] {
         : undefined,
       description: data.description ?? excerptFromContent(content),
       seoTitle: data.seoTitle,
-      shareText: typeof data.shareText === 'string' && data.shareText.trim() ? data.shareText.trim() : undefined,
+      shareText:
+        typeof data.shareText === 'string' && data.shareText.trim()
+          ? data.shareText.trim()
+          : undefined,
       cover: typeof data.cover === 'string' && data.cover.trim() ? data.cover.trim() : undefined,
       content,
       readingTime: calcReadingTime(content),

@@ -29,8 +29,8 @@ Convert → "I don't want to miss the next one"
 
 ## Copy Examples (Use These as Reference)
 
-- Hero H1:    "Fast, focused tools for people who hate bad software."
-- Sub-copy:   "I build pipelines that hand you a finished result — not another tool to figure out."
-- CTA:        "Follow the builds."
-- Footer:     "Built by Luke. Paid for by a day job. Shipping anyway."
+- Hero H1: "Fast, focused tools for people who hate bad software."
+- Sub-copy: "I build pipelines that hand you a finished result — not another tool to figure out."
+- CTA: "Follow the builds."
+- Footer: "Built by Luke. Paid for by a day job. Shipping anyway."
 - Post-signup: "You're on the list. Next launch, your inbox." → "Read the build log →"

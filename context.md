@@ -130,11 +130,15 @@ Each post has frontmatter:
 title: The site is live
 date: 2026-02-25
 description: 150-160 char meta description (required)
-tag: milestone
+tag: studio
+shareText: Optional custom X share text (defaults to title if absent)
 ---
 ```
 
-Tags: `milestone` `launch` `killed` `learning` `build`
+Tags are topic-based — use the tool slug or a topic name:
+`studio` `strategy` `workflow` `specifythat` `trend-detector` `songfor-me` `warranted`
+
+Do NOT use outcome tags: ~~`milestone`~~ ~~`launch`~~ ~~`build`~~
 
 ---
 

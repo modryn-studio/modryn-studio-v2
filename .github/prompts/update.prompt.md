@@ -60,7 +60,18 @@ If the URL field in `context.md` is blank, leave `next.config.ts` as-is and warn
 
 ---
 
-## Step 5: Report
+## Step 5: Cascade into `README.md`
+
+Update only if the values differ. Do not reformat the file — preserve the `<picture>` block, H1, live link, and divider exactly.
+
+- **Tagline** (line after `# Modryn Studio`): pull from `brand.md` Copy Examples — use the hero H1 value, appended with " — built one at a time, shipped fast, no fluff."
+- **Stack line** (after `---`): derive from `package.json`. Format: `Name · Name · Name`. Major packages only. Never list a package not in `package.json`. GA4 is NOT used — never include it. Current accurate list: `Next.js 16 · TypeScript · Tailwind CSS v4 · Vercel · Resend`
+
+If both are already accurate, leave the file alone.
+
+---
+
+## Step 6: Report
 
 After cascading, report:
 
