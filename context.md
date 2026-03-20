@@ -28,9 +28,9 @@ agency site. A living site that grows with every product launch.
 
 THE SITE STRUCTURE:
 / → Hero + tools grid + build log preview + email signup
-/tools → All tools (live, beta, coming soon)
+/tools → All tools in a list layout (name, tagline, description, top bullets, Open/Details CTA)
 /tools/[slug] → Individual tool page (SEO magnet + launch page)
-/log → Build in public feed (MDX files)
+/log → Build in public feed (MDX files, filterable by topic tag)
 /log/[slug] → Individual log post
 /about → Who I am, how I work, my stack
 /privacy + /terms → Standard legal pages
@@ -54,6 +54,7 @@ CORE PRINCIPLES:
 - Ship fast, stay honest — empty is better than fake
 - The site is a launchpad, not a portfolio
 - Build in public — every launch, kill, and milestone gets a log post
+- Log posts use topic-based tags (tool slug or topic name: specifythat, trend-detector, songfor-me, warranted, strategy, workflow, studio) — not outcome tags (build/launch/milestone)
 - Email list bridges users from one tool to the next
 
 ---
@@ -65,21 +66,28 @@ CORE PRINCIPLES:
    Logo | Tools | Log | About | [Get Updates] button
 
 2. HERO
-   Headline:    "Describe the problem. Get back the answer."
-   Subheadline: "I build pipelines that hand you a finished result — not another tool to figure out."
-   CTA:         [Don't miss the next drop] [Browse the tools]
+   Building-now pill: "● Building now: [tool name]" (dynamic, only when a tool has status: building)
+   Headline:    "Fast, focused tools for people who hate bad software."
+   Subheadline: "I'm Luke. One builder. One pipeline at a time. I pick the best
+                 opportunity, build the thing that hands back a finished result,
+                 and ship it. More about how I work →"
+   CTA:         [Follow the builds] [Browse the tools]
 
 3. TOOLS GRID
-   Cards: name, one-line description, status badge (Live/Beta/Building)
-   Empty state: "First tool dropping soon — follow the build"
+   Cards: screenshot (if available), logo, name, description, status badge
+   Coming-soon cards: inline "Notify me when live" email capture instead of a link
 
 4. BUILD LOG PREVIEW
-   Last 3 log entries (date + title)
+   Last 3 log entries (date + title + tag + reading time)
    [See all updates →]
 
 5. EMAIL SIGNUP
-   "Follow the journey — get notified when new tools drop."
+   Headline: "Follow the builds."
+   Sub-copy: "I ship something new every few weeks. Get notified when the next
+              one drops — no newsletters, no noise. Just launches.
+              Who's building this? →"
    [email input] [Notify me]
+   After submit: "You're on the list. Next launch, your inbox." + "Read the build log →"
 
 6. FOOTER
    Logo | Links | "Built by Luke @ Modryn Studio"
