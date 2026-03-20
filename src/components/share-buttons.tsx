@@ -9,18 +9,21 @@ import { analytics } from '@/lib/analytics';
 interface ShareButtonsProps {
   title: string;
   slug: string;
+  /** Custom share text for X/Twitter. Defaults to the post title. */
+  shareText?: string;
   /** Override the share URL. Defaults to the log post URL. */
   urlOverride?: string;
   /** Show Hacker News share button. Defaults to true. */
   showHN?: boolean;
 }
 
-export function ShareButtons({ title, slug, urlOverride, showHN = true }: ShareButtonsProps) {
+export function ShareButtons({ title, slug, shareText, urlOverride, showHN = true }: ShareButtonsProps) {
   const [copied, setCopied] = useState(false);
 
   const url = urlOverride ?? `${site.url}/log/${slug}`;
   const encodedUrl = encodeURIComponent(url);
   const encodedTitle = encodeURIComponent(title);
+  const encodedXText = encodeURIComponent(shareText ?? title);
 
   const handleCopy = async () => {
     await navigator.clipboard.writeText(url);
@@ -32,7 +35,7 @@ export function ShareButtons({ title, slug, urlOverride, showHN = true }: ShareB
   const links = [
     {
       label: 'X / Twitter',
-      href: `https://x.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`,
+      href: `https://x.com/intent/tweet?text=${encodedXText}&url=${encodedUrl}`,
     },
     {
       label: 'Reddit',

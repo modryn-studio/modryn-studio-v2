@@ -365,7 +365,7 @@ export default async function LogPostPage({ params, searchParams }: Props) {
         <div className="mt-8">
           <PostLikeButton slug={post.slug} title={post.title} />
         </div>
-        <ShareButtons title={post.title} slug={post.slug} />
+        <ShareButtons title={post.title} slug={post.slug} shareText={post.shareText} />
       </article>
     </div>
   );

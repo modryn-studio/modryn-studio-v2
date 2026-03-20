@@ -9,6 +9,7 @@ const nextConfig: NextConfig = {
       { protocol: 'https', hostname: 'modrynstudio.com' },
       { protocol: 'https', hostname: '*.vercel.app' },
       { protocol: 'https', hostname: 'songfor.gift' },
+      { protocol: 'https', hostname: 'specifythat.com' },
     ],
   },
   async rewrites() {

@@ -4,9 +4,6 @@ import { useState, type FormEvent } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { analytics } from '@/lib/analytics';
-import { site } from '@/config/site';
-
-const shareUrl = `https://x.com/intent/post?text=${encodeURIComponent('Just signed up to follow the build at Modryn Studio. Fast, focused tools, built in public — one at a time. Worth watching.')}&url=${encodeURIComponent(site.url)}`;
 
 export default function EmailSignupInline({
   source = 'tool',
@@ -107,14 +104,6 @@ export default function EmailSignupInline({
               ? `You're on the list. We'll email you when ${toolName} launches.`
               : "You're on the list. Next launch, your inbox."}
           </p>
-          <a
-            href={shareUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-3 inline-block underline underline-offset-4 opacity-75 transition-opacity hover:opacity-100"
-          >
-            Share on X &rarr;
-          </a>
         </div>
       )}
     </div>

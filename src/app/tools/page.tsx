@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { getAllTools } from '@/lib/tools';
-import { ToolCard } from '@/components/tool-card';
 
 export const metadata: Metadata = {
   title: 'All Tools — Modryn Studio | Live, Beta & In Progress',
@@ -97,16 +97,67 @@ export default async function ToolsPage({ searchParams }: ToolsPageProps) {
       </div>
 
       {visibleTools.length > 0 ? (
-        <div className="border-border mt-12 grid grid-cols-1 gap-0 border-t border-l md:grid-cols-2 lg:grid-cols-3">
-          {visibleTools.map((tool) => (
-            <ToolCard
-              key={tool.slug}
-              tool={tool}
-              showDetails
-              href={activeStatus ? `/tools/${tool.slug}?status=${activeStatus}` : undefined}
-            />
-          ))}
-        </div>
+      <div className="mt-12 border-border border-t">
+        {visibleTools.map((tool) => (
+          <Link
+            key={tool.slug}
+            href={`/tools/${tool.slug}`}
+            className="group border-border flex items-start gap-5 border-b py-6 transition-colors hover:bg-muted/30"
+          >
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden">
+              {tool.logoUrl ? (
+                <Image
+                  src={tool.logoUrl}
+                  alt={tool.name}
+                  width={40}
+                  height={40}
+                  className="object-contain"
+                />
+              ) : (
+                <div className="bg-muted h-10 w-10" />
+              )}
+            </div>
+            <div className="min-w-0 flex-1">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="font-heading text-base font-semibold">{tool.name}</span>
+                <span
+                  className={`font-mono text-xs ${
+                    tool.status === 'live'
+                      ? 'text-green-500'
+                      : tool.status === 'beta'
+                        ? 'text-blue-400'
+                        : tool.status === 'building'
+                          ? 'text-orange-400'
+                          : 'text-muted-foreground'
+                  }`}
+                >
+                  [{STATUS_LABELS[tool.status]}]
+                </span>
+              </div>
+              {tool.tagline && (
+                <p className="text-amber mt-0.5 font-mono text-sm">{tool.tagline}</p>
+              )}
+              <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
+                {tool.description}
+              </p>
+              {tool.bullets && tool.bullets.length > 0 && (
+                <ul className="mt-3 flex flex-wrap gap-x-5 gap-y-1">
+                  {tool.bullets.slice(0, 2).map((b) => (
+                    <li key={b} className="text-muted-foreground font-mono text-xs">
+                      · {b}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+            <div className="shrink-0 self-center pl-4">
+              <span className="font-mono text-xs text-muted-foreground transition-colors group-hover:text-foreground">
+                {tool.status === 'live' || tool.status === 'beta' ? 'Open →' : 'Details →'}
+              </span>
+            </div>
+          </Link>
+        ))}
+      </div>
       ) : (
         <div className="border-border bg-card text-muted-foreground mt-12 border p-8 font-mono text-sm">
           No tools match this filter yet.

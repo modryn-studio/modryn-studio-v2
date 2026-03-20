@@ -1,12 +1,10 @@
 'use client';
 
 import { useState, type FormEvent } from 'react';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { analytics } from '@/lib/analytics';
-import { site } from '@/config/site';
-
-const shareUrl = `https://x.com/intent/post?text=${encodeURIComponent('Just signed up to follow the build at Modryn Studio. Fast, focused tools, built in public — one at a time. Worth watching.')}&url=${encodeURIComponent(site.url)}`;
 
 export default function EmailSignup() {
   const [email, setEmail] = useState('');
@@ -47,11 +45,17 @@ export default function EmailSignup() {
       <div className="mx-auto max-w-6xl px-6 py-16 md:py-20">
         <div className="mx-auto max-w-lg text-center">
           <h2 className="font-heading text-2xl font-semibold tracking-tight sm:text-3xl md:text-4xl">
-            Don&apos;t miss the drop.
+            Follow the builds.
           </h2>
           <p className="text-muted-foreground mt-4 text-sm md:text-base">
-            I build tools fast. Get notified when the next one goes live. No newsletters. Just
-            launches.
+            I ship something new every few weeks. Get notified when the next one drops — no
+            newsletters, no noise. Just launches.{' '}
+            <Link
+              href="/about"
+              className="text-muted-foreground underline underline-offset-2 transition-colors hover:text-foreground"
+            >
+              Who&apos;s building this?
+            </Link>
           </p>
 
           {!done ? (
@@ -80,14 +84,12 @@ export default function EmailSignup() {
           ) : (
             <div className="border-amber/30 bg-amber/5 text-amber mt-8 border p-4 font-mono text-sm">
               <p>You&apos;re on the list. Next launch, your inbox.</p>
-              <a
-                href={shareUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href="/log"
                 className="mt-3 inline-block underline underline-offset-4 opacity-75 transition-opacity hover:opacity-100"
               >
-                Share on X &rarr;
-              </a>
+                Read the build log &rarr;
+              </Link>
             </div>
           )}
 
