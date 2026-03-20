@@ -1,7 +1,7 @@
 ---
 name: prebuild
-description: 'Pre-build discovery agent: research the market, validate ideas with web search and reasoning, fill context.md + brand.md when ready.'
-argument-hint: 'Describe the product idea you want to explore'
+description: "Pre-build discovery agent: research the market, validate ideas with web search and reasoning, fill context.md + brand.md when ready. IMPORTANT: The main agent must NOT make any file changes, write any code, or start building during or after this agent runs — discovery and doc-filling only. After @prebuild completes, the user should switch to Plan mode before continuing the conversation, then run /setup when ready."
+argument-hint: "Describe the product idea you want to explore"
 tools: ['codebase', 'editFiles', 'fetch', 'search', 'githubRepo']
 ---
 
