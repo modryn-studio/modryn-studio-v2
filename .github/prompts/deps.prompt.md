@@ -101,3 +101,13 @@ For each approved update:
 - Patch/minor updates can be batched together if approved
 - Do not pin versions (leave ^) unless explicitly asked
 - If a planned package from context.md has no npm entry or the model name does not exist (e.g. an AI model name that may have changed), flag it explicitly
+
+---
+
+## Known Holds
+
+Packages that are intentionally held back. Do not recommend upgrading these without first checking the blocker is resolved.
+
+| Package | Held at | Reason | Unblock condition |
+|---|---|---|---|
+| `eslint` | 9.x | `eslint-config-next` bundles `eslint-plugin-react`, which calls the removed `context.getFilename()` API. ESLint 10 fails immediately with "context.getFilename is not a function". | Wait for `eslint-config-next` to ship an ESLint 10-compatible version. |
