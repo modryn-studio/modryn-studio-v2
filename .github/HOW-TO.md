@@ -54,6 +54,8 @@ Get a URL as fast as possible. A live site — even a landing page — is worth 
 
 1. Run `/tool` — registers the tool on modrynstudio.com with `status: "building"`. Merge the PR right away.
 2. Run `/log` — first build log post. Document the idea, the origin, the plan. Merge the PR.
+3. **If there's a paid tier planned: add a founding member price now.** Email = curiosity. Pre-order = validation. Even $4.99 proves someone will exchange money, not just attention. Wire Stripe checkout before the core product exists and link it from the hero CTA. Worst case: zero buyers and you learned something before writing a line of core product code. (Paul Buchheit to YC founders: "Go sell the product ASAP before wasting time building it.")
+4. **Once you have 5+ pre-orders or serious signups: schedule calls.** Don't wait until launch. One 20-minute call with a real buyer reveals more than 100 passive signups. Ask: what's their current system, what have they tried, what made them act? The real product core surfaces here — not from what you planned to build.
 
 > Don't wait until launch for `/tool` and `/log`. Every day the URL exists is a day Google can index it. Every log post is content that compounds.
 
@@ -85,7 +87,11 @@ Wire the complete loop end-to-end before polishing any single piece. One real or
 
 Open `context.md` → find `## Minimum Money Loop` → keep it visible. Every build session, ask: _does this work advance the loop, or is it polish?_
 
-**Hard rule: do not touch the landing page until the loop has run once with a real order.**
+**Default rule: do not touch the landing page until the loop has run once with a real order.**
+
+The `/setup` page is enough to capture warm traffic (log readers, social followers). Don't polish it. Build the feature and use real product output as the landing page upgrade after the loop runs — that's proof, not decoration.
+
+**Exception — put output on the page first if you already have it:** If you have real examples of the finished result before the feature is built (audio samples, screenshots, a completed demo), add them to the landing page _before_ building the ordering flow. That's not polish — it's the conversion mechanism, and it can't wait. The rule is: don't build UI you don't need yet. Real output you already have is never wasted.
 
 **The dev loop:**
 
@@ -94,6 +100,21 @@ Open `context.md` → find `## Minimum Money Loop` → keep it visible. Every bu
 - Run `/deps` if you're unsure whether a package is current.
 
 **Before a major implementation:**
+
+**Scan GitHub for reference implementations.** Before building any non-trivial feature — backend service, data pipeline, integration, complex UI pattern — spend 20 minutes reading 2-3 open-source repos that have solved a similar problem. You're not looking for code to copy. You're looking for patterns to borrow and mistakes to skip.
+
+How to search: use `mcp_github_search_repositories` with short 2-3 word queries (multi-word phrases return zero results). Read the root directory listing, then `README.md` + the main entry file. That's usually enough to understand the architecture.
+
+What to extract:
+
+- **API / interface shape** — how do callers start a job, poll for progress, handle errors?
+- **Data/state schema** — what does the data flowing through the system look like?
+- **Core algorithm or pattern** — what's the non-obvious decision at the center of this thing?
+- **What they skipped** — scope they punted on that you might need (or should also skip)
+
+Drop your findings in a `docs/` note before writing a line of code. One file, bullet points. It becomes the implicit spec you build against.
+
+To use it during a build session: drag the file into chat or type `#file:docs/your-reference.md` in your first message. It's research scaffolding — not a source doc, not maintained after the feature ships.
 
 Run `/validate` with a focus area. The mechanics matter — this only works correctly in **Agent mode**:
 
