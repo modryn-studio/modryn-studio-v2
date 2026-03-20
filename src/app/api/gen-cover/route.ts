@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
-import { GoogleGenerativeAI } from '@google/generative-ai';
+import { GoogleGenAI } from '@google/genai';
 import matter from 'gray-matter';
 import { createRouteLogger } from '@/lib/route-logger';
 
@@ -63,18 +63,17 @@ export async function POST(req: Request): Promise<Response> {
       `Post concept: "${concept}". ` +
       'Output in 16:9 landscape aspect ratio.';
 
-    const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({ model: 'gemini-3.1-flash-image-preview' });
-
-    const result = await model.generateContent({
+    const ai = new GoogleGenAI({ apiKey });
+    const result = await ai.models.generateContent({
+      model: 'gemini-3.1-flash-image-preview',
       contents: [{ role: 'user', parts: [{ text: prompt }] }],
-      generationConfig: {
+      config: {
         responseModalities: ['IMAGE'],
         imageConfig: { aspectRatio: '16:9', imageSize: '1K' },
       } as Record<string, unknown>,
     });
 
-    const candidate = result.response.candidates?.[0];
+    const candidate = result.candidates?.[0];
     let imageData: { mimeType: string; data: string } | null = null;
     for (const part of candidate?.content?.parts ?? []) {
       if (part.inlineData?.mimeType?.startsWith('image/')) {
