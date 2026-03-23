@@ -10,8 +10,6 @@ I have three ideas open in tabs right now.
 
 That is the actual problem. Not a shortage of ideas. No system for knowing which one is real.
 
-<!-- TODO: fill in narrative: what is the specific idea or frustration that pushed you to start this? describe the tabs-open moment. -->
-
 ## The idea
 
 One input. You describe a frustration or an idea in plain English. The tool runs the full validation pipeline (market read, competition scan, differentiation angle, buildability score) and hands back a verdict and a this-week action list. Not a report to decode. A decision, plus what to do next if the answer is yes.
@@ -19,28 +17,29 @@ One input. You describe a frustration or an idea in plain English. The tool runs
 The free output is the verdict: a score 1-10, the reasoning behind it, and three concrete tasks for this week. The $9 unlock is the full build brief: a shareable one-pager with market positioning, brand direction, and a route plan.
 
 ```mermaid
-graph LR
-  A[Plain English input] --> B[Market Read]
-  B --> C[Competition Scan]
-  C --> D[Differentiation Angle]
+graph TD
+  A[Plain English input]
+  A --> B[Market Read]
+  A --> C[Competition Scan]
+  B --> D[Differentiation Angle]
+  C --> D
   D --> E[Buildability Score]
-  E --> F[Next-Action Queue]
-  F --> G[PayGate]
+  D --> F[Next-Action Queue]
+  E --> G{PayGate}
+  F --> G
   G --> H[Full Build Brief]
-  style F fill:#E8C547,color:#111110,stroke:#E8C547
   style E fill:#E8C547,color:#111110,stroke:#E8C547
+  style F fill:#E8C547,color:#111110,stroke:#E8C547
 ```
 
 ## Why this exists
 
 Four tools already do idea validation: WorthBuild, IdeaProof, ValidateMySaaS, ProductGapHunt. I checked all four. Every one of them hands you an analysis: competitor features, market size estimates, risk scores. None of them hand you a to-do list.
 
-<div class="callout">The top complaint across every competitor: “I get a report, but I still don’t know what to actually do next.”</div>
+<div class="callout">The top complaint across every competitor: "I get a report, but I still don't know what to actually do next."</div>
 
 That is the gap. The output that matters is not the market size number. It is: which subreddit do I post in first, which two competitors should I read reviews for, which piece of the money loop do I wire this week.
 
-<!-- TODO: fill in narrative: what made this feel like the right build right now? the era thesis? a specific competitor gap? something you read? -->
-
-## What’s next
+## What's next
 
 Building the /discover route. The single text input that kicks off the full streaming pipeline. That is the whole product. Everything else is scaffolding.
