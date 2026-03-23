@@ -98,65 +98,81 @@ export default async function ToolsPage({ searchParams }: ToolsPageProps) {
 
       {visibleTools.length > 0 ? (
         <div className="border-border mt-12 border-t">
-          {visibleTools.map((tool) => (
-            <Link
-              key={tool.slug}
-              href={`/tools/${tool.slug}`}
-              className="group border-border hover:bg-muted/30 flex items-start gap-5 border-b py-6 transition-colors"
-            >
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden">
-                {tool.logoUrl ? (
-                  <Image
-                    src={tool.logoUrl}
-                    alt={tool.name}
-                    width={40}
-                    height={40}
-                    className="object-contain"
-                  />
-                ) : (
-                  <div className="bg-muted h-10 w-10" />
-                )}
-              </div>
-              <div className="min-w-0 flex-1">
-                <div className="flex flex-wrap items-center gap-2">
-                  <span className="font-heading text-base font-semibold">{tool.name}</span>
-                  <span
-                    className={`font-mono text-xs ${
-                      tool.status === 'live'
-                        ? 'text-green-500'
-                        : tool.status === 'beta'
-                          ? 'text-blue-400'
-                          : tool.status === 'building'
-                            ? 'text-orange-400'
-                            : 'text-muted-foreground'
-                    }`}
-                  >
-                    [{STATUS_LABELS[tool.status]}]
+          {visibleTools.map((tool) => {
+            const isComingSoon = tool.status === 'coming-soon';
+            const rowContent = (
+              <>
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden">
+                  {tool.logoUrl ? (
+                    <Image
+                      src={tool.logoUrl}
+                      alt={tool.name}
+                      width={40}
+                      height={40}
+                      className="object-contain"
+                    />
+                  ) : (
+                    <div className="bg-muted h-10 w-10" />
+                  )}
+                </div>
+                <div className="min-w-0 flex-1">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="font-heading text-base font-semibold">{tool.name}</span>
+                    <span
+                      className={`font-mono text-xs ${
+                        tool.status === 'live'
+                          ? 'text-green-500'
+                          : tool.status === 'beta'
+                            ? 'text-blue-400'
+                            : tool.status === 'building'
+                              ? 'text-orange-400'
+                              : 'text-muted-foreground'
+                      }`}
+                    >
+                      [{STATUS_LABELS[tool.status]}]
+                    </span>
+                  </div>
+                  {tool.tagline && (
+                    <p className="text-amber mt-0.5 font-mono text-sm">{tool.tagline}</p>
+                  )}
+                  <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
+                    {tool.description}
+                  </p>
+                  {tool.bullets && tool.bullets.length > 0 && (
+                    <ul className="mt-3 flex flex-wrap gap-x-5 gap-y-1">
+                      {tool.bullets.slice(0, 2).map((b) => (
+                        <li key={b} className="text-muted-foreground font-mono text-xs">
+                          · {b}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+                <div className="shrink-0 self-center pl-4">
+                  <span className="text-muted-foreground group-hover:text-foreground font-mono text-xs transition-colors">
+                    {tool.status === 'live' || tool.status === 'beta' ? 'Open →' : isComingSoon ? '' : 'Details →'}
                   </span>
                 </div>
-                {tool.tagline && (
-                  <p className="text-amber mt-0.5 font-mono text-sm">{tool.tagline}</p>
-                )}
-                <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
-                  {tool.description}
-                </p>
-                {tool.bullets && tool.bullets.length > 0 && (
-                  <ul className="mt-3 flex flex-wrap gap-x-5 gap-y-1">
-                    {tool.bullets.slice(0, 2).map((b) => (
-                      <li key={b} className="text-muted-foreground font-mono text-xs">
-                        · {b}
-                      </li>
-                    ))}
-                  </ul>
-                )}
+              </>
+            );
+
+            return isComingSoon ? (
+              <div
+                key={tool.slug}
+                className="border-border flex cursor-default items-start gap-5 border-b py-6 opacity-60"
+              >
+                {rowContent}
               </div>
-              <div className="shrink-0 self-center pl-4">
-                <span className="text-muted-foreground group-hover:text-foreground font-mono text-xs transition-colors">
-                  {tool.status === 'live' || tool.status === 'beta' ? 'Open →' : 'Details →'}
-                </span>
-              </div>
-            </Link>
-          ))}
+            ) : (
+              <Link
+                key={tool.slug}
+                href={`/tools/${tool.slug}`}
+                className="group border-border hover:bg-muted/30 flex items-start gap-5 border-b py-6 transition-colors"
+              >
+                {rowContent}
+              </Link>
+            );
+          })}
         </div>
       ) : (
         <div className="border-border bg-card text-muted-foreground mt-12 border p-8 font-mono text-sm">
