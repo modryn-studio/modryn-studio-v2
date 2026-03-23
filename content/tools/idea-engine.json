@@ -1,0 +1,19 @@
+{
+  "name": "idea-engine",
+  "tagline": "Type the idea. Get the verdict.",
+  "description": "A single-input product discovery engine for solo developers. Describe an idea or frustration in plain language and get a buildability score, reasoning, and a concrete this-week action list.",
+  "status": "building",
+  "bullets": [
+    "Describe your idea or frustration in plain English",
+    "Get a buildability score 1–10 with full reasoning",
+    "Walk away with three concrete tasks for this week",
+    "Unlock the full build brief for $9"
+  ],
+  "logoUrl": "/logos/idea-engine.png",
+  "logSlug": "2026-03-23-idea-engine",
+  "subreddits": [
+    "r/indiehackers",
+    "r/Entrepreneur",
+    "r/EntrepreneurRideAlong"
+  ]
+}
