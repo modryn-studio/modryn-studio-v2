@@ -24,6 +24,10 @@ const nextConfig: NextConfig = {
         source: '/tools/warranted/:path*',
         destination: 'https://warranted.vercel.app/tools/warranted/:path*',
       },
+      {
+        source: '/tools/idea-engine/:path*',
+        destination: 'https://idea-engine-rho.vercel.app/tools/idea-engine/:path*',
+      },
     ];
   },
 };
