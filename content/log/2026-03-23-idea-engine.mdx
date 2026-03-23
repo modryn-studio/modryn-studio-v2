@@ -1,29 +1,22 @@
 ---
-title: "I built a product validator that hands you a verdict, not a report"
+title: "The one frustration that kept coming back"
 date: "2026-03-23"
 tag: "build"
-seoTitle: "Building idea-engine: a score, reasoning, and three tasks in one input | Build Log"
-description: "Solo devs don’t lack ideas — they lack a system for deciding which one is real. idea-engine runs the full validation pipeline and hands back a verdict and a to-do list, not a framework to think through."
+seoTitle: "Starting idea-engine: the frustration that made me build a product validator | Build Log"
+description: "Solo devs don’t lack ideas — they lack a system for deciding which one is real. I’m building idea-engine to solve the decision problem before writing a line of product code."
 ---
 
-Every validation framework I’ve seen hands you another thing to fill out.
+I have three ideas open in tabs right now.
 
-Five competitors, three market size estimates, a SWOT grid. You read it, nod, and still don’t know what to actually build this week.
+That’s the actual problem. Not a shortage of ideas — a shortage of a way to decide which one is worth the next three months of evenings.
 
-<!-- TODO: fill in narrative — why this frustration now? was there a specific moment? -->
+<!-- TODO: fill in narrative — what’s the specific idea or frustration that pushed you to start this? describe the tabs-open moment. -->
 
-## What shipped
+## The idea
 
-- The project is live as a repository — context, brand tokens, and the full pipeline design are locked in
-- Landing page is wired with a proof panel: a real example discovery run hardcoded above the fold, so the first thing you see is example output, not a feature list
-- Discovery pipeline designed: five stages (market read, competition scan, differentiation angle, buildability score, brief generation) streaming through Claude — free tier stops at the score + next-action queue, $9 unlocks the full build brief
-- Ran a live validation pass — four real competitors confirmed, YC Spring 2026 RFS verified, Reddit pain signal strong across r/indiehackers and r/Entrepreneur
+One input. You describe a frustration or an idea in plain English. The tool runs the full validation pipeline — market read, competition scan, differentiation angle, buildability score — and hands back a verdict and a this-week action list. Not a report to decode. A decision, plus what to do next if the answer is yes.
 
-<!-- TODO: fill in narrative — any surprises during the validation pass? what did the competitor research reveal that changed the design? -->
-
-## Why
-
-The gap isn’t market research — every tool does that. The gap is the last mile: what do I actually do this week?
+The free output is the verdict: a score 1–10, the reasoning behind it, and three concrete tasks for this week. The $9 unlock is the full build brief — a shareable one-pager with market positioning, brand direction, and a route plan.
 
 ```mermaid
 graph LR
@@ -38,12 +31,16 @@ graph LR
   style E fill:#E8C547,color:#111110,stroke:#E8C547
 ```
 
-Four active competitors — WorthBuild, IdeaProof, ValidateMySaaS, ProductGapHunt — all hand you an analysis. None of them hand you a this-week action list. That’s the gap.
+## Why this exists
 
-<div class="callout">The verdict and the to-do list are free. The brief is the unlock.</div>
+Four tools already do idea validation: WorthBuild, IdeaProof, ValidateMySaaS, ProductGapHunt. I checked all four. Every one of them hands you an analysis: competitor features, market size estimates, risk scores. None of them hand you a to-do list.
 
-<!-- TODO: fill in narrative — what made you believe this was the right thing to build right now? was it the YC RFS? the competitor gap? something else? -->
+<div class="callout">The top complaint across every competitor: “I get a report, but I still don’t know what to actually do next.”</div>
 
-## What's next
+That’s the gap. The output that matters isn’t the market size number. It’s: which subreddit do I post in first, which two competitors should I read reviews for, which piece of the money loop do I wire this week.
 
-Building the /discover route — the single text input, streaming pipeline, score card, and PayGate wired end to end.
+<!-- TODO: fill in narrative — what made this feel like the right build right now? YC Spring 2026 RFS? a specific competitor gap? something you read? -->
+
+## What’s next
+
+Building the /discover route — the single text input that kicks off the full streaming pipeline. That’s the whole product. Everything else is scaffolding around that one interaction.
