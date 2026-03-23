@@ -150,7 +150,11 @@ export default async function ToolsPage({ searchParams }: ToolsPageProps) {
                 </div>
                 <div className="shrink-0 self-center pl-4">
                   <span className="text-muted-foreground group-hover:text-foreground font-mono text-xs transition-colors">
-                    {tool.status === 'live' || tool.status === 'beta' ? 'Open →' : isComingSoon ? '' : 'Details →'}
+                    {tool.status === 'live' || tool.status === 'beta'
+                      ? 'Open →'
+                      : isComingSoon
+                        ? ''
+                        : 'Details →'}
                   </span>
                 </div>
               </>
