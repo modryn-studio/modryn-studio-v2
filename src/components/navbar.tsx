@@ -36,6 +36,7 @@ export default function Navbar({ newToolsCount = 0, newPostsCount = 0 }: NavbarP
   const navLinks = [
     { label: 'Tools', href: '/tools', badge: newToolsCount },
     { label: 'Log', href: '/log', badge: newPostsCount },
+    { label: 'Playbook', href: '/playbook', badge: 0 },
     { label: 'About', href: '/about', badge: 0 },
   ];
 
