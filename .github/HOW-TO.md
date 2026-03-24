@@ -54,10 +54,12 @@ Get a URL as fast as possible. A live site — even a landing page — is worth 
   4. Set `mode: standalone-domain` and `url:` in `context.md` → run `/update`
 
 - **Subdirectory on modrynstudio.com** (default for most tools) →
-  1. Deploy to Vercel (note the `.vercel.app` URL)
+  1. Deploy to Vercel (note the `.vercel.app` URL) — **this includes a landing page. You don't need a finished product. Any live page at the Vercel URL is enough.**
   2. Switch back to **modryn-studio-v2** in VS Code
   3. Run `/deploy` — adds the rewrite wiring `modrynstudio.com/tools/[slug]/*` → your Vercel URL
   4. Set `mode: modryn-app` and `url:` in `context.md` → run `/update`
+
+  > `status: "building"` + active rewrite is the standard state while the product is in development. The rewrite stays in `next.config.ts` throughout — when the real product ships, it replaces the landing page at the same Vercel URL and the rewrite keeps working with no changes needed in modryn-studio-v2.
 
 ---
 
