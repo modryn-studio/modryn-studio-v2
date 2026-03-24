@@ -68,4 +68,39 @@ Which specific industry or profession I'm building for at scale. That answer com
 
 ---
 
+## Reference Frameworks
+
+These aren't the operating rules — they're lenses other people built that I've found useful. Summarized here for personal reference.
+
+### Marc Lou — Tactical Execution
+
+How to build and position once you've chosen the opportunity.
+
+1. Find a market you care about
+2. Copy a product people already pay for
+3. Add your signature to make it yours
+
+**When it applies:** After the opportunity is validated. Marc Lou answers "how do I build this?" not "should I build this?"
+
+### Peter Thiel — Strategic Observation (Zero to One)
+
+How to spot the opportunity before you build.
+
+1. Bet on a contrarian truth — what do you believe that most people don't?
+2. Start by dominating a small market
+3. Strive to be a monopoly in that market
+
+**When it applies:** Before you commit to anything. Thiel's first question — "what contrarian truth do you believe that most people don't?" — is the best forcing function for observation. Not because the goal is a monopoly, but because the question makes you look before you act.
+
+### The Sequence for Lifestyle/Freedom
+
+Thiel's lens first, then Marc Lou's framework kicks in:
+
+1. **Observe** — what do you already see that others miss? (Thiel's contrarian truth question)
+2. **Validate** — do people already pay for something in that space? (Marc Lou step 2)
+3. **Filter** — does building this add to my freedom or subtract from it?
+4. **Build** — copy what works, add your signature, ship (Marc Lou steps 1 + 3)
+
+---
+
 _Living document. Update when the era shifts._
