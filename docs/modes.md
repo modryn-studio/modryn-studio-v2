@@ -1,6 +1,6 @@
 # Building Modes
 
-Two ways to build in the agentic AI / Web 4.0 era. Not mutually exclusive — run both in parallel.
+Two ways to build in the agentic AI / Web 4.0 era. **Mode 1 is the current path.** Mode 2 is a future option — it implies infrastructure obligations (uptime, schema versioning, developer support, technical documentation) that are inconsistent with a calm, solo-run business at this stage. Research is in `mode2-verticals.md`. Revisit when Mode 1 recurring revenue is proven and you have capacity headroom.
 
 ---
 

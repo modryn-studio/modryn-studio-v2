@@ -45,6 +45,7 @@ If I can't answer that cleanly, I don't build it.
 - **Own the system, not the labor.** I'm the orchestrator. The pipeline does the work.
 - **Distribution is the moat.** Build the audience before you build the product. Being known and findable before launch is worth more than another feature.
 - **Stay in the window.** This era is early-mid innings. Move now, not after it's obvious.
+- **Filter everything through freedom.** Before adding a feature, a dependency, a partnership, or a pricing model: does this add to my freedom or subtract from it? If it creates ongoing obligation, maintenance surface, or complexity that requires attention to sustain — it's a no.
 
 ## The Window
 
@@ -52,13 +53,14 @@ Early-mover advantage in this era is probably 18–36 months. I'll know it's clo
 
 ## Idea Evaluation Framework
 
-Before committing to any build, answer all three:
+Before committing to any build, answer all four:
 
 1. **Find a market you care about** — a market you already understand from experience, frustration, or obsession.
 2. **Find what people already pay for in that market** — proven demand. Name it. Note the price. Note the top complaint. You looked this up. Cite a source.
 3. **Add your signature** — the one thing you do differently. "Same job, for a different person" counts. "Same thing, without the worst thing" counts. Avoid: "better", "faster", "cheaper" without a specific mechanism.
+4. **Check the maintenance cost** — boring enough that competitors ignore it is a feature, not a flaw. Ask: once this is built, does it run with minimal intervention? If the answer requires daily attention, developer support, or ongoing infrastructure ownership to sustain revenue, it contradicts the goal.
 
-If you can't complete all three, you don't have a product — you have a hypothesis. Don't build.
+If you can't complete all four, you don't have a product — you have a hypothesis. Don't build.
 
 ## What I Don't Know Yet
 

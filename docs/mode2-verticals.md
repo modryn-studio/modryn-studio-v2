@@ -1,5 +1,7 @@
 # Mode 2 — Vertical Landscape
 
+> **Archive — not the current path.** Mode 2 requires uptime SLAs, schema versioning, developer support, and technical documentation. That is complexity that subtracts from freedom. Revisit if Mode 1 recurring revenue is stable and you have capacity to take on infrastructure obligations. Research preserved below for when that moment comes.
+
 ## What Mode 2 Is
 
 REST JSON API as the product. Pre-computed pipeline: raw data collection → normalization → scoring → stable output. Developer pays monthly subscription. Agent calls the endpoint, gets structured intelligence, skips the stitching.

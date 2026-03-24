@@ -59,7 +59,7 @@ const faqSchema = {
       name: 'Where is Modryn Studio headed?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'The goal is a portfolio of pipelines — each one delivering a specific result to a specific kind of person — that compounds over time into a real business. One result at a time.',
+        text: 'A small set of pipelines, each delivering a specific result, each running mostly without me. Revenue that covers the day job and then some. No investors, no employees, no meetings. Stability over growth. That is it.',
       },
     },
   ],
