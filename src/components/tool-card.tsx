@@ -130,12 +130,12 @@ function CardContent({ tool }: { tool: Tool }) {
   return (
     <>
       {(tool.screenshotUrl || tool.screenshotUrlDark) && (
-        <div className="border-border relative w-full overflow-hidden border-b">
+        <div className="border-border relative aspect-video w-full overflow-hidden border-b">
           <ToolScreenshot
             lightUrl={tool.screenshotUrl}
             darkUrl={tool.screenshotUrlDark}
             alt={`${tool.name} preview`}
-            className="w-full object-cover object-top"
+            className="absolute inset-0 h-full w-full object-cover object-top"
             width={640}
             height={360}
           />

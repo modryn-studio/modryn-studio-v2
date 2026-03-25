@@ -13,9 +13,11 @@ what result someone will pay for, build the pipeline that delivers it,
 and own the system. The user describes the problem; the tool hands
 back the answer.
 
-My pipeline: detect trends → identify the result someone needs →
-build the pipeline that delivers it → distribute early → monetize
-with one-time payments or email capture.
+My discovery loop: Surface a signal (Input) → form an observation
+about what it means → articulate a contrarian thesis → validate
+or invalidate → build the thing. The trend detector (trendspy +
+Google Trends RSS + Gmail newsletter ingest) is one input to that
+loop, not the driver of it.
 
 I run a private trend detection pipeline (trendspy + Google Trends
 RSS + Gmail newsletter ingest) that scores and clusters trends daily
@@ -33,6 +35,7 @@ THE SITE STRUCTURE:
 /log → Build in public feed (MDX files, filterable by topic tag)
 /log/[slug] → Individual log post
 /about → Who I am, how I work, my stack
+/playbook → Workflow + how I build (path-finder tool lives here)
 /privacy + /terms → Standard legal pages
 
 THE STACK:
@@ -136,7 +139,7 @@ shareText: Optional custom X share text (defaults to title if absent)
 ```
 
 Tags are topic-based — use the tool slug or a topic name:
-`studio` `strategy` `workflow` `specifythat` `trend-detector` `songfor-me` `warranted`
+`studio` `strategy` `workflow` `specifythat` `trend-detector` `songfor-me` `warranted` `idea-engine` `goanyway` `path-finder`
 
 Do NOT use outcome tags: ~~`milestone`~~ ~~`launch`~~ ~~`build`~~
 
@@ -152,7 +155,9 @@ Tools and log entries are just JSON/MDX files in the repo:
   │     ├── specifythat.json
   │     ├── trend-detector.json
   │     ├── goanyway.json
-  │     └── warranted.json
+  │     ├── warranted.json
+  │     ├── idea-engine.json
+  │     └── songfor-me.json
   └── /log
         └── *.mdx posts
 ```

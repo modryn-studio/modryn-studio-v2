@@ -6,6 +6,7 @@ export default function ToolsGrid() {
   const liveCount = tools.filter((t) => t.status === 'live').length;
   const betaCount = tools.filter((t) => t.status === 'beta').length;
   const buildingCount = tools.filter((t) => t.status === 'building').length;
+  const comingSoonCount = tools.filter((t) => t.status === 'coming-soon').length;
 
   return (
     <section id="tools" className="border-border border-t">
@@ -15,6 +16,7 @@ export default function ToolsGrid() {
         </h2>
         <p className="text-muted-foreground mt-3 font-mono text-xs tracking-wide uppercase">
           {liveCount} live · {betaCount} beta · {buildingCount} building
+          {comingSoonCount > 0 ? ` · ${comingSoonCount} coming soon` : ''}
         </p>
 
         <div className="border-border mt-12 grid grid-cols-1 border-t border-l md:grid-cols-2 lg:grid-cols-3">

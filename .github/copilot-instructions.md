@@ -35,6 +35,7 @@ I'm Luke, a one-person studio owner building agent pipelines that deliver finish
 - `/log` → Build in public feed (MDX files)
 - `/log/[slug]` → Individual log post
 - `/about` → Who Luke is, how he works, his stack
+- `/playbook` → Workflow frameworks and pre-build tools (path-finder lives here)
 - `/privacy` → Privacy policy
 - `/terms` → Terms of service
 
