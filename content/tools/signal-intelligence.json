@@ -3,7 +3,7 @@
   "tagline": "Train yourself to see what others miss.",
   "description": "A personal daily dashboard for observing market signals, capturing insights, and forming contrarian theses over time. Built for solo developers who already know how to build — but are still figuring out what to build.",
   "status": "beta",
-  "url": "https://www.modrynstudio.com/tools/signal-intelligence",
+  "url": "https://github.com/modryn-studio/signal-intelligence-dashboard",
   "github": "https://github.com/modryn-studio/signal-intelligence-dashboard",
   "bullets": [
     "Agent fetches HN, Product Hunt, Indie Hackers, r/SaaS, and r/Entrepreneur daily — filtered by Claude against a rotating focus question",

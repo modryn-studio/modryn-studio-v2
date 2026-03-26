@@ -5,7 +5,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { getToolBySlug, getAllTools, type ToolStatus } from '@/lib/tools';
 import { getAllBriefings } from '@/lib/briefings';
-import { ToolScreenshot } from '@/components/tool-screenshot';
+import { ScreenshotLightbox } from '@/components/screenshot-lightbox';
 import EmailSignupInline from '@/components/email-signup-inline';
 import { ToolCtaButton } from '@/components/tool-cta-button';
 import { ShareButtons } from '@/components/share-buttons';
@@ -146,27 +146,14 @@ export default async function ToolPage({ params, searchParams }: Props) {
 
         {(tool.screenshotUrl || tool.screenshotUrlDark) && (
           <div className="border-border mt-8 overflow-hidden border">
-            {tool.url ? (
-              <a href={tool.url} target="_blank" rel="noopener noreferrer" className="block">
-                <ToolScreenshot
-                  lightUrl={tool.screenshotUrl}
-                  darkUrl={tool.screenshotUrlDark}
-                  alt={`${tool.name} screenshot`}
-                  className="w-full object-cover transition-opacity hover:opacity-90"
-                  width={900}
-                  height={506}
-                />
-              </a>
-            ) : (
-              <ToolScreenshot
-                lightUrl={tool.screenshotUrl}
-                darkUrl={tool.screenshotUrlDark}
-                alt={`${tool.name} screenshot`}
-                className="w-full object-cover"
-                width={900}
-                height={506}
-              />
-            )}
+            <ScreenshotLightbox
+              lightUrl={tool.screenshotUrl}
+              darkUrl={tool.screenshotUrlDark}
+              alt={`${tool.name} screenshot`}
+              className="w-full object-cover"
+              width={900}
+              height={506}
+            />
           </div>
         )}
 
