@@ -26,6 +26,10 @@ export interface Tool {
   seoTitle?: string;
   /** Optional feature bullets shown on the tool detail page */
   bullets?: string[];
+  /** Long-form markdown guide shown below bullets on the tool detail page */
+  guide?: string;
+  /** When true, clicking the screenshot opens a fullscreen lightbox instead of linking out */
+  screenshotLightbox?: boolean;
   /** Subreddits where the target user's pain lives — used by /social for distribution */
   subreddits?: string[];
   /** Public URL to the tool's logomark (square, transparent bg, ideally /icon.png from the tool's deployment) */
