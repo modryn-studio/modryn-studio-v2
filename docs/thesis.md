@@ -18,6 +18,14 @@ Customers don't want tools anymore. They want results. The product category that
 
 The competitive edge right now is not shipping speed. It's **distribution** — being known, trusted, and findable before you launch. The builder who wins is the one with an audience, not the fastest IDE.
 
+## The End State
+
+The current frame — "user describes the problem, AI hands back the answer" — is still reactive. The human initiates. The AI responds.
+
+That's not the destination. The destination is a dashboard where the AI has a list of things it wants to do, and the human's job is quality control. Not operator. Not prompter. Reviewer.
+
+That shift changes the right product design now: stop building form/response UX. Build proposal/approval UX. The output is already generated — the user reviews it, approves it, ships it. "Here's what I found. Accept or reject." That's the logical end of agentic software, and building toward it now is the contrarian move.
+
 ## Builder Identity
 
 I go deep so others don't have to. I find the signal in the noise, make sense of it, and hand people the answer.

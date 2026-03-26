@@ -53,6 +53,7 @@ Adding a log post = add an MDX file.
 
 CORE PRINCIPLES:
 
+- Build proposal/approval UX, not form/response UX — the AI proposes, the human reviews. Design toward the end state now.
 - Every page earns its place — no pages for businesses I'm not running
 - Ship fast, stay honest — empty is better than fake
 - The site is a launchpad, not a portfolio
