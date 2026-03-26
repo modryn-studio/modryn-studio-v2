@@ -22,8 +22,7 @@ export default function Hero() {
       )}
       <h1 className="font-heading text-4xl leading-tight font-bold tracking-tighter sm:text-5xl lg:text-6xl">
         Fast, focused tools
-        <br className="hidden sm:block" />
-        for people who hate bad software.
+        <br className="hidden sm:block" /> for people who hate bad software.
       </h1>
       <p className="text-muted-foreground mt-6 max-w-xl text-base leading-relaxed md:text-lg">
         I&apos;m Luke. One builder. One pipeline at a time. I pick the best opportunity, build the

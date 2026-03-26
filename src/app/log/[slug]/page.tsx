@@ -112,7 +112,7 @@ export default async function LogPostPage({ params, searchParams }: Props) {
           <ArrowLeft className="h-3 w-3" />
           Back to log
         </Link>
-        {relatedTool && (
+        {relatedTool && relatedTool.status !== 'coming-soon' && (
           <Link
             href={`/tools/${relatedTool.slug}`}
             className="text-muted-foreground hover:text-foreground inline-flex items-center gap-2 font-mono text-sm transition-colors"
@@ -185,12 +185,14 @@ export default async function LogPostPage({ params, searchParams }: Props) {
                 {STATUS_CONFIG[relatedTool.status].label}
               </Badge>
             </div>
-            <Link
-              href={`/tools/${relatedTool.slug}`}
-              className="text-muted-foreground hover:text-foreground mt-4 inline-flex items-center gap-1.5 font-mono text-sm transition-colors"
-            >
-              See the tool <ArrowRight className="h-3 w-3" />
-            </Link>
+            {relatedTool.status !== 'coming-soon' && (
+              <Link
+                href={`/tools/${relatedTool.slug}`}
+                className="text-muted-foreground hover:text-foreground mt-4 inline-flex items-center gap-1.5 font-mono text-sm transition-colors"
+              >
+                See the tool <ArrowRight className="h-3 w-3" />
+              </Link>
+            )}
           </div>
         )}
 
