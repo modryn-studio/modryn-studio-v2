@@ -1,0 +1,21 @@
+{
+  "name": "Signal Intelligence",
+  "tagline": "Train yourself to see what others miss.",
+  "description": "A personal daily dashboard for observing market signals, capturing insights, and forming contrarian theses over time. For solo developers who already know how to build — but are still figuring out what to build. Pulls signals from HN, Product Hunt, Indie Hackers, and Reddit. Claude filters the noise. You log what you see, form theses, and let patterns surface.",
+  "status": "beta",
+  "github": "https://github.com/modryn-studio/signal-intelligence-dashboard",
+  "bullets": [
+    "Pulls signals daily from HN, Product Hunt, Indie Hackers, r/SaaS, and r/Entrepreneur",
+    "Claude filters raw signals — only what's worth noticing reaches your feed",
+    "One focusing question per day — trains pattern recognition, not data consumption",
+    "Observation log with tags — capture what you see before you forget it",
+    "Contrarian truths tracker — form theses with conviction levels and lifecycle status",
+    "Full insight chain wired in the UI: Signal → Observation → Thesis in two clicks",
+    "Weekly digest — what you spotted, what it means, what you'd bet on",
+    "Open source — fork it, point it at your own Neon DB and Anthropic key, ship it"
+  ],
+  "subreddits": ["r/SideProject", "r/buildinpublic", "r/Entrepreneur"],
+  "logSlug": "2026-03-24-signal-intelligence-dashboard",
+  "logoUrl": "/brand/logomark-240.png",
+  "launchedAt": "2026-03-24"
+}
