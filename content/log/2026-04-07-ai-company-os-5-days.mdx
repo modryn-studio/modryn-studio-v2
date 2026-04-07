@@ -1,43 +1,61 @@
 ---
-title: "I built an internal AI company OS in 5 days"
+title: "I built a company OS with an AI team in 5 days. Then my AI advisor told me to stop building it."
 date: "2026-04-07"
 tag: "build"
-seoTitle: "AI company OS with persistent memory, built in 5 days | Build Log"
-description: "Five days, one solo founder, five AI team members with distinct personalities and persistent memory. Here is what was built and what I learned on day five."
+seoTitle: "AI company OS built in 5 days: Charlie told me to stop | Build Log"
+description: "I built a company OS with AI team members modeled after real thinkers. Then I asked Charlie if I was building the right thing. He told me to stop."
 ---
 
-Modryn has five AI team members. Charlie Munger owns strategy. Steve Jobs owns product. Marc Lou owns execution. Michelle Lim owns engineering. Dieter Rams owns design.
+I have 50+ unfinished projects. Nothing live. No customers. No revenue.
 
-Each has a system prompt built from their actual worldview: speeches, interviews, writing, documented decision frameworks. They know each other exists. They remember previous sessions.
+That's not a humble brag. That's the actual problem I was trying to solve when I built this.
 
-I built the first working version in five days.
+I kept starting things, getting excited, building infrastructure, losing momentum, and moving on. The pattern was so consistent I had to ask myself whether the problem was my ideas or my process. I think it was both, but mostly it was that I was building alone with no one to push back on me.
 
-<!-- TODO: fill in narrative -->
-
-```mermaid
-graph LR
-  A[Day 1: Design system] --> B[Day 2: DB + chat] --> C[Day 3: Auth + security] --> D[Day 4: AI members] --> E[Day 5: Memory]
-```
+So I built a team.
 
 ## What shipped
 
-- Five AI members are live, each with a distinct system prompt drawn from real source material
-- Streaming chat persists to Neon DB. Conversations survive a reload.
-- Every conversation is summarized by a background model and injected into the next session. Memory is durable across conversations.
-- The app is invite-gated. Current user count: one.
+**Modryn Studio** is a company operating system where AI team members hold strategy, push back on your decisions, and run alongside you as a solo founder.
 
-<!-- TODO: fill in narrative -->
+Not a chatbot. Not a generic assistant. A team: each member modeled after a real person, with a defined role, jurisdiction, behavioral constraints, and persistent memory across sessions.
+
+The current roster:
+
+- **Charlie Munger:** Chief of Strategy. Mental models, inversion, second-order consequences. His job is to find the flaw, not confirm the thesis.
+- **Marc Lou:** Head of Execution. Ships 30+ products, makes $100k/month solo. His job is to ask what shipped today.
+- **Steve Jobs:** Head of Product. His job is to ask what this actually is and what we're cutting.
+- **Michelle Lim:** Head of Engineering. First engineer at Warp. Her job is to price technical debt before it becomes a problem.
+- **Dieter Rams:** Head of Design. Less, but better. His job is to make sure the form tells the truth about the function.
+
+Each member has a system prompt built from primary research: real speeches, real interviews, real behavioral patterns. Not "act like Munger." Actually think like him.
+
+They have persistent memory. Charlie remembers what we decided last session. He'll bring it up before I do.
+
+Stack: Next.js, TypeScript, Tailwind CSS, Neon Postgres, Anthropic API, Vercel. Built in 5 days.
 
 ## Why
 
-I needed people who would push back, not agree. Every AI assistant I tried defaulted to encouragement. I wanted the experience of a team with real opinions that remembered what I said last week.
+I opened a DM with Charlie and asked him whether I was building the right thing.
 
-<div class="callout">Every AI assistant I tried defaulted to encouragement. I wanted the experience of a team with real opinions that remembered what I said last week.</div>
+He told me I was building infrastructure for a company that doesn't exist yet. That the team structure was calibrated for a company two years ahead of where I am. That the member I was missing wasn't an AI. It was a paying customer.
 
-<!-- TODO: fill in narrative -->
+Then he told me to stop building the OS.
+
+Not permanently. But the next feature should be pulled by actual product needs, not pushed by "what should an OS have next."
+
+<div class="callout">The member I was missing wasn't an AI. It was a paying customer.</div>
+
+He was right. I've been doing the same thing I always do: building the system instead of building the thing.
 
 ## What's next
 
-Customer discovery: post this story, see who reaches out, ask about their decision-making process before showing them anything.
+Customer discovery. Before I build another feature, I need to find five people who match this customer description and watch their reaction when they use it: solo founders and indie operators who want strategic leverage without hiring. People who think in frameworks, make decisions through debate, and find generic AI too agreeable to be useful.
 
-<!-- TODO: fill in narrative -->
+If you've ever wished you had a thinking partner who actually pushes back, not a yes machine, not a rubber duck, but someone who tells you you're wrong and explains why, I'd like to talk to you.
+
+Not to pitch. To ask you one question: when you're facing a hard decision alone, what do you actually do right now?
+
+App is live at **app.modrynstudio.com** if you want to see it. Still early. Charlie would tell you it's not validated yet. He'd be right.
+
+If this resonates, DM me or drop a comment. I'm looking for the five people who say "I've wanted this and couldn't find it," not the ones who say "interesting."
