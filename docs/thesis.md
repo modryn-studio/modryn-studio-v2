@@ -16,6 +16,8 @@ Raw AI wrapper plays are commoditized. Everyone can ship fast with AI — a work
 
 Customers don't want tools anymore. They want results. The product category that's winning is results delivered by a pipeline — not software you operate, but an outcome you receive. You describe the problem. Something hands you the answer.
 
+The pattern of 0.1% tools: they don't make you do the research — they fetch the source material, read it, form a judgment, and hand you the answer. You approve or edit, not do the work. That's the bar.
+
 The competitive edge right now is not shipping speed. It's **distribution** — being known, trusted, and findable before you launch. The builder who wins is the one with an audience, not the fastest IDE.
 
 ## The End State
@@ -29,6 +31,8 @@ That shift changes the right product design now: stop building form/response UX.
 ## Builder Identity
 
 I go deep so others don't have to. I find the signal in the noise, make sense of it, and hand people the answer.
+
+You're not paid for what you already know — you're paid for what you can figure out.
 
 **The filter — before committing to any build:**
 

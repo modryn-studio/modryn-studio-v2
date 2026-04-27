@@ -9,7 +9,8 @@
     "start": "next start",
     "lint": "eslint",
     "new-post": "node scripts/new-post.mjs",
-    "gen-cover": "node scripts/gen-cover.mjs"
+    "gen-cover": "node scripts/gen-cover.mjs",
+    "check-deps": "npx npm-check-updates"
   },
   "dependencies": {
     "@google/genai": "1.46.0",
@@ -24,15 +25,16 @@
     "gray-matter": "4.0.3",
     "lucide-react": "0.577.0",
     "mermaid": "11.13.0",
-    "next": "16.2.0",
-    "nodemailer": "8.0.3",
+    "next": "16.2.4",
+    "nodemailer": "8.0.5",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "react-markdown": "10.1.0",
     "rehype-raw": "7.0.0",
     "remark-gfm": "4.0.1",
-    "resend": "6.9.4",
-    "tailwind-merge": "3.5.0"
+    "resend": "6.12.0",
+    "tailwind-merge": "3.5.0",
+    "zod": "4.3.6"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "4.2.2",
